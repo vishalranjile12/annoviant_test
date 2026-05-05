@@ -14,21 +14,21 @@ export const Footer = () => (
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 text-sm">
           <div>
             <div className="font-semibold text-white mb-3">Platform</div>
-            <a href="#technology" className="block py-1 hover:text-secondary">Technology</a>
-            <a href="#evidence" className="block py-1 hover:text-secondary">Evidence</a>
-            <a href="#pipeline" className="block py-1 hover:text-secondary">Pipeline</a>
+            <a href="/technology" className="block py-1 hover:text-secondary">Technology</a>
+            <a href="/applications" className="block py-1 hover:text-secondary">Applications</a>
+            <a href="/#pipeline" className="block py-1 hover:text-secondary">Pipeline</a>
           </div>
           <div>
             <div className="font-semibold text-white mb-3">Engage</div>
-            <a href="#audiences" className="block py-1 hover:text-secondary">For Clinicians</a>
-            <a href="#audiences" className="block py-1 hover:text-secondary">For Investors</a>
-            <a href="#contact" className="block py-1 hover:text-secondary">Contact</a>
+            <a href="/#audiences" className="block py-1 hover:text-secondary">For Clinicians</a>
+            <a href="/#audiences" className="block py-1 hover:text-secondary">For Investors</a>
+            <a href="/contact" className="block py-1 hover:text-secondary">Contact</a>
           </div>
           <div>
             <div className="font-semibold text-white mb-3">Company</div>
-            <a href="#" className="block py-1 hover:text-secondary">About</a>
-            <a href="#" className="block py-1 hover:text-secondary">News</a>
-            <a href="#" className="block py-1 hover:text-secondary">Careers</a>
+            <a href="/about" className="block py-1 hover:text-secondary">About</a>
+            <a href="/news" className="block py-1 hover:text-secondary">News</a>
+            <a href="/contact" className="block py-1 hover:text-secondary">Contact</a>
           </div>
         </div>
       </div>
