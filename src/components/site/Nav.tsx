@@ -71,10 +71,10 @@ export const Nav = () => {
       role="banner"
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground">Skip to main content</a>
-      <div className="container mx-auto flex items-center justify-between h-16 md:h-20">
+      <div className="container mx-auto flex items-center h-16 md:h-20">
         <Logo light={transparent} />
 
-        <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
+        <nav className="hidden lg:flex items-center gap-1 ml-auto" aria-label="Primary">
           {groups.map((g) => (
             <div key={g.label} className="relative group">
               <button
@@ -108,14 +108,14 @@ export const Nav = () => {
           ))}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2">
+        <div className="hidden lg:flex items-center gap-2 ml-8 xl:ml-12">
           <Button asChild variant={transparent ? "secondary" : "default"} size="sm" className={transparent ? "" : "gradient-primary text-primary-foreground border-0"}>
             <Link to="/contact">Request a Briefing</Link>
           </Button>
         </div>
 
         <button
-          className={`lg:hidden p-2 rounded-md ${transparent ? "text-white" : "text-foreground"}`}
+          className={`lg:hidden ml-auto p-2 rounded-md ${transparent ? "text-white" : "text-foreground"}`}
           onClick={() => setOpen(!open)}
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}

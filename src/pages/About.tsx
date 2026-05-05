@@ -105,7 +105,7 @@ const AboutPage = () => {
             </p>
           </div>
           <blockquote className="rounded-2xl bg-card border border-border p-9 shadow-card">
-            <p className="text-xl md:text-2xl font-medium text-foreground leading-snug">
+            <p className="font-handwritten text-3xl md:text-4xl text-foreground leading-tight">
               &ldquo;Our work is grounded in a simple goal: cardiovascular implants that
               integrate, adapt, and endure, for adults and for the children who deserve a
               chance to grow with their hearts.&rdquo;
