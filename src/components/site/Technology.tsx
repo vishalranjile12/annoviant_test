@@ -1,11 +1,13 @@
-import { CheckCircle2 } from "lucide-react";
-import scaffold from "@/assets/tissue-scaffold.jpg";
+import { Link } from "react-router-dom";
+import { CheckCircle2, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+const scaffold = "/hero/heart-matrix.jpg";
 
 const features = [
-  "Proprietary decellularization preserves the native extracellular matrix",
-  "Engineered to resist calcification and immune rejection",
-  "Promotes host-cell repopulation and tissue regeneration in vivo",
-  "Scalable across cardiovascular and soft-tissue indications",
+  "Proprietary decellularization designed to preserve the native extracellular matrix",
+  "Engineered to resist calcification and minimize immune response",
+  "Supports host-cell repopulation and tissue remodeling in pre-clinical models",
+  "Multi-indication: cardiovascular and soft-tissue applications",
 ];
 
 export const Technology = () => (
@@ -34,7 +36,7 @@ export const Technology = () => (
           <p className="text-white/75 medical-body mb-8">
             TxGuard™ is built on a proprietary tissue-processing platform that removes
             immunogenic cellular material while preserving the structural and biochemical
-            integrity of the extracellular matrix — giving the body the blueprint it needs
+            integrity of the extracellular matrix, giving the body the blueprint it needs
             to regenerate functional, durable tissue.
           </p>
           <ul className="space-y-3.5">
@@ -45,6 +47,14 @@ export const Technology = () => (
               </li>
             ))}
           </ul>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild className="gradient-primary border-0">
+              <Link to="/technology">Explore the platform <ArrowRight className="ml-1 h-4 w-4" /></Link>
+            </Button>
+            <Button asChild variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white bg-transparent">
+              <Link to="/clinical-evidence">Clinical evidence</Link>
+            </Button>
+          </div>
         </div>
       </div>
     </div>

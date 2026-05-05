@@ -28,6 +28,11 @@ export default {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
         },
+        "accent-soft": "hsl(var(--accent-soft))",
+        empathy: {
+          DEFAULT: "hsl(var(--empathy))",
+          foreground: "hsl(var(--empathy-foreground))",
+        },
         success: {
           DEFAULT: "hsl(var(--success))",
           foreground: "hsl(var(--success-foreground))",
