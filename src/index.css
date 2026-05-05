@@ -100,6 +100,12 @@
 }
 
 @layer utilities {
+  .font-handwritten {
+    font-family: 'Caveat', 'Segoe Script', 'Bradley Hand', cursive;
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.25;
+  }
   .gradient-hero { background: var(--gradient-hero); }
   .gradient-primary { background: var(--gradient-primary); }
   .gradient-empathy { background: var(--gradient-empathy); }
