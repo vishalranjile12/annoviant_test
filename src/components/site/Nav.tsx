@@ -2,19 +2,51 @@ import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Logo } from "./Logo";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
-const links = [
-  { href: "/technology", label: "Technology" },
-  { href: "/applications", label: "Applications" },
-  { href: "/about", label: "About" },
-  { href: "/news", label: "News" },
-  { href: "/contact", label: "Contact" },
+type NavLink = { href: string; label: string; description?: string };
+type NavGroup = { label: string; href?: string; children?: NavLink[] };
+
+const groups: NavGroup[] = [
+  {
+    label: "Technology",
+    children: [
+      { href: "/technology", label: "About TxGuard®", description: "How the regenerative platform works" },
+      { href: "/technology#mechanism", label: "Mechanism of Action", description: "From scaffold to living tissue" },
+    ],
+  },
+  {
+    label: "Solutions",
+    children: [
+      { href: "/solutions/pediatric", label: "Pediatric", description: "Pulmonary-valved conduit for CHD" },
+      { href: "/solutions/cardiovascular", label: "Cardiovascular", description: "Adult heart valve & vascular" },
+      { href: "/applications", label: "All Applications", description: "Soft-tissue platform indications" },
+    ],
+  },
+  {
+    label: "Clinical Evidence",
+    children: [
+      { href: "/clinical-evidence", label: "Evidence Hub", description: "Pre-clinical data & comparison" },
+      { href: "/publications", label: "Publications & Patents", description: "Peer-reviewed papers, IP portfolio" },
+      { href: "/faq", label: "Clinical FAQ", description: "Answers for surgeons and partners" },
+      { href: "/news", label: "News & Press", description: "Grants, milestones, coverage" },
+    ],
+  },
+  {
+    label: "Company",
+    children: [
+      { href: "/about", label: "About Annoviant", description: "Mission, values, ecosystem" },
+      { href: "/founder-story", label: "Founder Story", description: "Ajay Houde · vision and journey" },
+      { href: "/team", label: "Our Team", description: "Leadership, advisors, collaborators" },
+      { href: "/contact", label: "Contact", description: "Request a briefing" },
+    ],
+  },
 ];
 
 export const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
   const { pathname } = useLocation();
   const isHome = pathname === "/";
   const transparent = isHome && !scrolled;
@@ -26,50 +58,102 @@ export const Nav = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+    setMobileExpanded(null);
+  }, [pathname]);
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-smooth ${
-        transparent ? "bg-transparent" : "bg-background/85 backdrop-blur-lg border-b border-border"
+        transparent ? "bg-transparent" : "bg-background/90 backdrop-blur-lg border-b border-border"
       }`}
+      role="banner"
     >
+      <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground">Skip to main content</a>
       <div className="container mx-auto flex items-center justify-between h-16 md:h-20">
         <Logo light={transparent} />
-        <nav className="hidden md:flex items-center gap-7">
-          {links.map((l) => (
-            <Link
-              key={l.href}
-              to={l.href}
-              className={`text-sm font-medium transition-smooth hover:text-secondary ${
-                transparent ? "text-white/85" : "text-foreground/80"
-              } ${pathname === l.href ? "text-secondary" : ""}`}
-            >
-              {l.label}
-            </Link>
+
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
+          {groups.map((g) => (
+            <div key={g.label} className="relative group">
+              <button
+                className={`flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-md transition-smooth ${
+                  transparent ? "text-white/85 hover:text-white" : "text-foreground/80 hover:text-primary"
+                }`}
+                aria-haspopup="true"
+              >
+                {g.label}
+                <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+              </button>
+              {g.children && (
+                <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-smooth">
+                  <div className="w-72 rounded-xl border border-border bg-popover shadow-elegant p-2">
+                    {g.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        to={c.href}
+                        className="block rounded-md px-3 py-2.5 hover:bg-muted transition-smooth"
+                      >
+                        <div className="text-sm font-semibold text-foreground">{c.label}</div>
+                        {c.description && (
+                          <div className="text-xs text-muted-foreground mt-0.5">{c.description}</div>
+                        )}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           ))}
         </nav>
-        <div className="hidden md:flex items-center gap-3">
-          <Button asChild variant={transparent ? "secondary" : "outline"} size="sm">
-            <Link to="/contact">Request Briefing</Link>
+
+        <div className="hidden lg:flex items-center gap-2">
+          <Button asChild variant={transparent ? "secondary" : "default"} size="sm" className={transparent ? "" : "gradient-primary text-primary-foreground border-0"}>
+            <Link to="/contact">Request a Briefing</Link>
           </Button>
         </div>
+
         <button
-          className={`md:hidden p-2 rounded ${transparent ? "text-white" : "text-foreground"}`}
+          className={`lg:hidden p-2 rounded-md ${transparent ? "text-white" : "text-foreground"}`}
           onClick={() => setOpen(!open)}
-          aria-label="Menu"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
         >
           {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
+
       {open && (
-        <div className="md:hidden bg-background border-t border-border">
-          <div className="container mx-auto py-4 flex flex-col gap-3">
-            {links.map((l) => (
-              <Link key={l.href} to={l.href} onClick={() => setOpen(false)} className="text-foreground/80 py-2">
-                {l.label}
-              </Link>
+        <div className="lg:hidden bg-background border-t border-border max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="container mx-auto py-4 flex flex-col gap-1">
+            {groups.map((g) => (
+              <div key={g.label} className="border-b border-border/60 last:border-0 py-2">
+                <button
+                  className="w-full flex items-center justify-between px-2 py-2 text-left font-semibold text-foreground"
+                  onClick={() => setMobileExpanded(mobileExpanded === g.label ? null : g.label)}
+                  aria-expanded={mobileExpanded === g.label}
+                >
+                  {g.label}
+                  <ChevronDown className={`h-4 w-4 transition-smooth ${mobileExpanded === g.label ? "rotate-180" : ""}`} />
+                </button>
+                {mobileExpanded === g.label && g.children && (
+                  <div className="pl-3 pb-2 flex flex-col gap-1">
+                    {g.children.map((c) => (
+                      <Link
+                        key={c.href}
+                        to={c.href}
+                        className="px-2 py-2 rounded-md text-sm text-foreground/85 hover:bg-muted"
+                      >
+                        {c.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
-            <Button asChild className="mt-2">
-              <Link to="/contact">Request Briefing</Link>
+            <Button asChild className="mt-3 gradient-primary border-0">
+              <Link to="/contact">Request a Briefing</Link>
             </Button>
           </div>
         </div>

@@ -1,27 +1,56 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { toast } from "sonner";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, ShieldCheck, CheckCircle2 } from "lucide-react";
+
+const ROLES = ["clinician", "investor", "partner", "patient", "media", "other"] as const;
+type Role = (typeof ROLES)[number];
+
+const ROLE_LABEL: Record<Role, string> = {
+  clinician: "Surgeon / Clinician / Researcher",
+  investor: "Investor",
+  partner: "Healthcare partner / Strategic",
+  patient: "Patient or family member",
+  media: "Media",
+  other: "Other",
+};
 
 export const Contact = () => {
+  const [params] = useSearchParams();
+  const initialRole = (params.get("role") as Role) || "clinician";
+  const [role, setRole] = useState<Role>(ROLES.includes(initialRole) ? initialRole : "clinician");
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    const r = params.get("role") as Role;
+    if (r && ROLES.includes(r)) setRole(r);
+  }, [params]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
     setTimeout(() => {
       setSubmitting(false);
+      setSubmitted(true);
       (e.target as HTMLFormElement).reset();
-      toast.success("Thank you — we'll be in touch within two business days.");
+      toast.success("Inquiry received, our team will respond within two business days.");
     }, 700);
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32 gradient-deep text-white relative overflow-hidden">
+    <section id="contact" className="py-24 md:py-32 gradient-deep text-white relative overflow-hidden" aria-labelledby="contact-heading">
       <div aria-hidden className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-secondary/25 blur-[140px]" />
       <div className="container mx-auto relative">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
@@ -29,59 +58,102 @@ export const Contact = () => {
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
               Request a briefing
             </p>
-            <h2 className="text-white mb-5">Let's advance regenerative medicine — together.</h2>
+            <h2 id="contact-heading" className="text-white mb-5">Let's advance regenerative medicine, together</h2>
             <p className="text-white/75 medical-body mb-8">
-              Whether you're a surgeon, investor, or healthcare organization, our team will
+              Whether you're a surgeon, investor, healthcare partner, or family, our team will
               respond with materials matched to your context.
             </p>
-            <ul className="space-y-3 text-white/80 text-sm">
-              <li className="flex items-center gap-3"><Mail className="h-4 w-4 text-secondary" /> partnerships@annoviant.com</li>
-              <li className="flex items-center gap-3"><MapPin className="h-4 w-4 text-secondary" /> United States</li>
+            <ul className="space-y-3 text-white/80 text-sm" aria-label="Direct contact">
+              <li className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-secondary flex-shrink-0" />
+                <a href="mailto:partnerships@annoviant.com" className="hover:text-white">partnerships@annoviant.com</a>
+              </li>
+              <li className="flex items-center gap-3">
+                <MapPin className="h-4 w-4 text-secondary flex-shrink-0" /> Alpharetta, Georgia · United States
+              </li>
+              <li className="flex items-center gap-3">
+                <ShieldCheck className="h-4 w-4 text-secondary flex-shrink-0" /> Inquiries handled per our privacy policy
+              </li>
             </ul>
           </div>
 
-          <form onSubmit={onSubmit} className="lg:col-span-3 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm p-7 md:p-9 space-y-5">
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="name" className="text-white/85">Full name</Label>
-                <Input id="name" required className="bg-white/5 border-white/15 text-white placeholder:text-white/40" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email" className="text-white/85">Email</Label>
-                <Input id="email" type="email" required className="bg-white/5 border-white/15 text-white placeholder:text-white/40" />
-              </div>
+          {submitted ? (
+            <div className="lg:col-span-3 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm p-8 md:p-10 flex flex-col items-start gap-4">
+              <div className="h-12 w-12 rounded-full bg-success/20 grid place-items-center"><CheckCircle2 className="h-6 w-6 text-success" /></div>
+              <h3 className="text-white text-xl">Thank you, your inquiry was received</h3>
+              <p className="text-white/75 text-sm">
+                Our clinical and partnerships team will review your request and respond within
+                two business days with materials matched to your role.
+              </p>
+              <Button onClick={() => setSubmitted(false)} variant="secondary" size="sm">Send another</Button>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="org" className="text-white/85">Organization</Label>
-                <Input id="org" className="bg-white/5 border-white/15 text-white placeholder:text-white/40" />
+          ) : (
+            <form
+              onSubmit={onSubmit}
+              className="lg:col-span-3 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm p-7 md:p-9 space-y-5"
+              aria-describedby="contact-help"
+            >
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="name" className="text-white/85">Full name <span className="text-secondary">*</span></Label>
+                  <Input id="name" name="name" required autoComplete="name" className="bg-white/5 border-white/15 text-white placeholder:text-white/40" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="email" className="text-white/85">Professional email <span className="text-secondary">*</span></Label>
+                  <Input id="email" name="email" type="email" required autoComplete="email" className="bg-white/5 border-white/15 text-white placeholder:text-white/40" />
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="org" className="text-white/85">Organization / Hospital</Label>
+                  <Input id="org" name="org" autoComplete="organization" className="bg-white/5 border-white/15 text-white placeholder:text-white/40" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="role" className="text-white/85">I am a… <span className="text-secondary">*</span></Label>
+                  <Select value={role} onValueChange={(v) => setRole(v as Role)} name="role">
+                    <SelectTrigger id="role" className="bg-white/5 border-white/15 text-white">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {ROLES.map((r) => (
+                        <SelectItem key={r} value={r}>{ROLE_LABEL[r]}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="reason" className="text-white/85">Reason for inquiry</Label>
+                  <Select name="reason" defaultValue="clinical">
+                    <SelectTrigger id="reason" className="bg-white/5 border-white/15 text-white">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="clinical">Clinical data / collaboration</SelectItem>
+                      <SelectItem value="investment">Investment</SelectItem>
+                      <SelectItem value="partnership">Partnership</SelectItem>
+                      <SelectItem value="media">Media</SelectItem>
+                      <SelectItem value="patient">Patient / family update</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
               <div className="space-y-2">
-                <Label className="text-white/85">I am a…</Label>
-                <Select defaultValue="surgeon">
-                  <SelectTrigger className="bg-white/5 border-white/15 text-white">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="surgeon">Surgeon / Clinician</SelectItem>
-                    <SelectItem value="investor">Investor</SelectItem>
-                    <SelectItem value="partner">Healthcare partner</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label htmlFor="msg" className="text-white/85">How can we help?</Label>
+                <Textarea id="msg" name="msg" rows={4} className="bg-white/5 border-white/15 text-white placeholder:text-white/40" placeholder="Optional context, clinical area, fund focus, or specific question." />
               </div>
-            </div>
-            <div className="space-y-2">
-              <Label htmlFor="msg" className="text-white/85">How can we help?</Label>
-              <Textarea id="msg" rows={4} className="bg-white/5 border-white/15 text-white placeholder:text-white/40" />
-            </div>
-            <Button type="submit" size="lg" disabled={submitting} className="gradient-primary border-0 shadow-glow w-full sm:w-auto">
-              {submitting ? "Sending…" : "Request briefing"}
-            </Button>
-            <p className="text-xs text-white/50">
-              By submitting, you agree to be contacted by Annoviant regarding your inquiry.
-            </p>
-          </form>
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                <Button type="submit" size="lg" disabled={submitting} className="gradient-primary border-0 shadow-glow w-full sm:w-auto">
+                  {submitting ? "Sending…" : "Send inquiry"}
+                </Button>
+                <p id="contact-help" className="text-xs text-white/55 inline-flex items-center gap-2">
+                  <ShieldCheck className="h-3.5 w-3.5 text-secondary" />
+                  Secure transmission. We respond within two business days.
+                </p>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </section>

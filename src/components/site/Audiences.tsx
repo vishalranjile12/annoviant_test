@@ -1,5 +1,5 @@
 import { Stethoscope, TrendingUp, Building2, ArrowRight } from "lucide-react";
-import heart from "@/assets/heart-hologram.jpg";
+const heart = "/hero/txguard-bg.png";
 
 const cards = [
   {
@@ -30,7 +30,7 @@ export const Audiences = () => (
         <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
           Built for the people who move medicine forward
         </p>
-        <h2 className="mb-5">Choose your path.</h2>
+        <h2 className="mb-5">Choose your path</h2>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         {cards.map(({ icon: Icon, title, body, cta }) => (

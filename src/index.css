@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    /* Annoviant brand — Innovation Blue / Regeneration Cyan */
+    /* Annoviant brand, per audit recipes (BRAND_BOOK):
+       Innovation Blue #004A99, Regeneration Cyan #00A3E0, Clinical Success #28a745 */
     --background: 0 0% 100%;
     --foreground: 215 25% 15%;
 
@@ -24,10 +25,14 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 210 30% 96%;
-    --muted-foreground: 215 16% 40%;
+    --muted-foreground: 215 16% 38%;
 
+    /* Empathy warmth (warm pastel accent for parent-facing CTAs) */
     --accent: 197 100% 44%;
     --accent-foreground: 215 50% 12%;
+    --accent-soft: 28 95% 95%;
+    --empathy: 28 90% 60%;
+    --empathy-foreground: 0 0% 100%;
 
     /* Clinical Success #28a745 */
     --success: 134 61% 41%;
@@ -49,6 +54,7 @@
     /* Brand gradients */
     --gradient-hero: linear-gradient(135deg, hsl(215 70% 8%) 0%, hsl(211 90% 18%) 50%, hsl(197 90% 30%) 100%);
     --gradient-primary: linear-gradient(135deg, hsl(211 100% 30%), hsl(197 100% 44%));
+    --gradient-empathy: linear-gradient(135deg, hsl(28 90% 60%), hsl(20 90% 65%));
     --gradient-subtle: linear-gradient(180deg, hsl(210 40% 98%), hsl(0 0% 100%));
     --gradient-deep: linear-gradient(180deg, hsl(215 70% 8%), hsl(215 60% 12%));
 
@@ -74,17 +80,29 @@
     font-family: 'Inter', system-ui, sans-serif;
     @apply tracking-tight;
   }
-  h1 { font-size: clamp(1.75rem, 4vw + 1rem, 3rem); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
-  h2 { font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.015em; }
+  /* Recipe-specified scale: H1 48px desktop / 36 tablet / 28 mobile,
+     H2 32px, H3 24px, body 16px / 1.6 */
+  h1 { font-size: clamp(1.75rem, 4vw + 1rem, 3rem); font-weight: 700; line-height: 1.2; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.5rem, 2.5vw + 0.5rem, 2rem); font-weight: 700; line-height: 1.25; letter-spacing: -0.015em; }
   h3 { font-size: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem); font-weight: 600; line-height: 1.3; }
-  p  { line-height: 1.6; }
+  p  { font-size: 1rem; line-height: 1.6; }
 
   .medical-body { max-width: 75ch; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }
 
 @layer utilities {
   .gradient-hero { background: var(--gradient-hero); }
   .gradient-primary { background: var(--gradient-primary); }
+  .gradient-empathy { background: var(--gradient-empathy); }
   .gradient-deep { background: var(--gradient-deep); }
   .text-gradient {
     background: var(--gradient-primary);
@@ -96,4 +114,19 @@
   .shadow-glow { box-shadow: var(--shadow-glow); }
   .shadow-card { box-shadow: var(--shadow-card); }
   .transition-smooth { transition: var(--transition-smooth); }
+
+  .animate-fade-up {
+    animation: fade-up 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
+  }
+  .animate-fade-in {
+    animation: fade-in 800ms ease both;
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
 }
