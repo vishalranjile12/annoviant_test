@@ -1,16 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Nav } from "@/components/site/Nav";
+import { Hero } from "@/components/site/Hero";
+import { Problem } from "@/components/site/Problem";
+import { Technology } from "@/components/site/Technology";
+import { Evidence } from "@/components/site/Evidence";
+import { Audiences } from "@/components/site/Audiences";
+import { Pipeline } from "@/components/site/Pipeline";
+import { Contact } from "@/components/site/Contact";
+import { Footer } from "@/components/site/Footer";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
+  const ld = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Annoviant",
+    url: "https://annoviant.com/",
+    description:
+      "Annoviant develops TxGuard™, a patented regenerative tissue platform for cardiovascular and soft-tissue applications.",
+    sameAs: [],
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
-    </div>
+    <main>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
+      <Nav />
+      <Hero />
+      <Problem />
+      <Technology />
+      <Evidence />
+      <Audiences />
+      <Pipeline />
+      <Contact />
+      <Footer />
+    </main>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
