@@ -58,24 +58,58 @@ const milestones = [
 ];
 
 const FounderStoryPage = () => {
-  const ld = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Ajay Houde",
-    jobTitle: "Co-founder & CEO, Annoviant",
-    worksFor: { "@type": "Organization", name: "Annoviant, Inc." },
-    description:
-      "Ajay Houde is the co-founder and CEO of Annoviant, a regenerative medicine company developing TxGuard®. Over 25+ years he has been named on 60+ U.S. patents and led product development at Kimberly-Clark Health Care.",
-    email: "ahoude@annoviant.com",
-    image: "https://annoviant.com/wp-content/uploads/2022/05/headshot_ajay-houde-1.jpg",
-    sameAs: ["https://www.linkedin.com/in/ajayhoude/"],
-    award: [
-      "Medical Design Excellence Award (2008, InteguSEAL Microbial Sealant)",
-      "Kimberly-Clark Innovation Operational Excellence Award (2012)",
-      "Kimberly-Clark Corporation Legacy Award (2010)",
-      "Kimberly-Clark New Product Launch Awards (2006, 2007, 2009, 2010, 2014)",
-    ],
-  };
+  const ld = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://annoviant.com/founder-story#ajay",
+      name: "Ajay Houde",
+      jobTitle: "Co-founder & CEO, Annoviant",
+      worksFor: { "@type": "Organization", name: "Annoviant, Inc." },
+      description:
+        "Ajay Houde is the co-founder and CEO of Annoviant, a regenerative medicine company developing TxGuard®. Over 25+ years he has been named on 60+ U.S. patents and led product development at Kimberly-Clark Health Care.",
+      email: "ahoude@annoviant.com",
+      image: "https://annoviant.com/team/ajay-houde.jpg",
+      sameAs: ["https://www.linkedin.com/in/ajayhoude/"],
+      award: [
+        "Medical Design Excellence Award (2008, InteguSEAL Microbial Sealant)",
+        "Kimberly-Clark Innovation Operational Excellence Award (2012)",
+        "Kimberly-Clark Corporation Legacy Award (2010)",
+        "Kimberly-Clark New Product Launch Awards (2006, 2007, 2009, 2010, 2014)",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://annoviant.com/founder-story#naren",
+      name: "Narendra Vyavahare",
+      alternateName: "Naren Vyavahare",
+      jobTitle: "Co-founder & CTO, Annoviant; Hunter Endowed Chair and Professor of Bioengineering, Clemson University",
+      worksFor: [
+        { "@type": "Organization", name: "Annoviant, Inc." },
+        { "@type": "EducationalOrganization", name: "Clemson University" },
+      ],
+      description:
+        "Narendra (Naren) Vyavahare, PhD, is the co-founder and CTO of Annoviant and the Hunter Endowed Chair and Professor of Bioengineering at Clemson University. With more than 150 publications, 15+ international and U.S. patents, and Director of NIH-funded SC BioCRAFT, his research focuses on heart-valve biomaterials and extracellular-matrix remodeling for tissue regeneration.",
+      image: "https://annoviant.com/team/naren-vyavahare.jpg",
+      sameAs: [
+        "https://www.linkedin.com/in/narendra-vyavahare-147a4213/",
+        "https://www.youtube.com/watch?v=h8u6cgM4toE",
+      ],
+      award: [
+        "Fellow of the American Institute of Medical and Biological Engineering (AIMBE)",
+        "McQueen Quattlebaum Faculty Excellence Award, Clemson University",
+        "Alumni Award for Outstanding Achievement in Research, Clemson University",
+      ],
+      knowsAbout: [
+        "Heart valve biomaterials",
+        "Extracellular matrix remodeling",
+        "Tissue regeneration",
+        "Site-specific therapies",
+        "Vascular calcification",
+      ],
+    },
+  ];
 
   return (
     <main id="main">
@@ -353,12 +387,12 @@ const FounderStoryPage = () => {
         </div>
       </article>
 
-      {/* Milestone timeline */}
+      {/* Ajay's milestone timeline */}
       <section className="py-20 md:py-28 bg-muted/40" aria-labelledby="journey-heading">
         <div className="container mx-auto max-w-4xl">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-4">
-              The journey
+              Ajay&rsquo;s journey
             </p>
             <h2 id="journey-heading" className="mb-12">Three decades in motion</h2>
           </Reveal>
@@ -375,6 +409,238 @@ const FounderStoryPage = () => {
           </ol>
         </div>
       </section>
+
+      {/* Naren's editorial section */}
+      <section
+        id="naren"
+        className="relative pt-24 md:pt-32 pb-20 md:pb-28 gradient-hero text-white overflow-hidden"
+        aria-labelledby="naren-heading"
+      >
+        <img
+          src="/hero/microscope.jpg"
+          alt=""
+          aria-hidden
+          width={1920}
+          height={1080}
+          className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-screen"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-surface-deep/95 via-surface-deep/85 to-surface-deep" />
+        <div aria-hidden className="absolute -top-40 -left-40 h-[500px] w-[500px] rounded-full bg-primary/30 blur-[140px]" />
+        <div aria-hidden className="absolute -bottom-40 -right-40 h-[450px] w-[450px] rounded-full bg-secondary/25 blur-[140px]" />
+
+        <div className="container mx-auto relative">
+          <Reveal>
+            <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+              <div className="lg:col-span-7 order-2 lg:order-1">
+                <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-5">
+                  And his co-founder · Narendra Vyavahare, PhD
+                </p>
+                <h2 id="naren-heading" className="text-white mb-6 text-balance leading-[1.05]">
+                  The scientist who&rsquo;s spent <span className="text-gradient">25 years on the biology</span> behind TxGuard®
+                </h2>
+                <p className="text-lg md:text-xl text-white/80 medical-body">
+                  Naren has been a Hunter Endowed Chair and Professor of Bioengineering at
+                  Clemson University since 1999. The science under TxGuard® didn&rsquo;t arrive
+                  overnight, it came out of his lab.
+                </p>
+
+                <div className="mt-10 flex flex-wrap gap-3">
+                  <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white bg-transparent min-h-[44px]">
+                    <a
+                      href="https://www.linkedin.com/in/narendra-vyavahare-147a4213/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Linkedin className="mr-1.5 h-4 w-4" /> Connect on LinkedIn
+                    </a>
+                  </Button>
+                  <Button asChild size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white min-h-[44px]">
+                    <a href="#tedx">
+                      <PlayCircle className="mr-1.5 h-4 w-4" /> Watch his TEDx talk
+                    </a>
+                  </Button>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 order-1 lg:order-2 relative">
+                <div aria-hidden className="absolute -inset-6 rounded-[2rem] gradient-primary blur-2xl opacity-50" />
+                <figure className="relative rounded-[1.5rem] overflow-hidden border border-white/20 shadow-elegant">
+                  <img
+                    src="/team/naren-vyavahare.jpg"
+                    alt="Narendra (Naren) Vyavahare, PhD, Co-founder and CTO of Annoviant; Hunter Endowed Chair and Professor of Bioengineering, Clemson University"
+                    width={640}
+                    height={800}
+                    loading="lazy"
+                    className="w-full aspect-[4/5] object-cover"
+                  />
+                  <figcaption className="absolute bottom-0 inset-x-0 p-5 bg-gradient-to-t from-surface-deep/95 via-surface-deep/60 to-transparent">
+                    <div className="text-xs uppercase tracking-widest text-secondary font-semibold">Naren Vyavahare</div>
+                    <div className="text-sm text-white/85">Co-founder & CTO, Annoviant</div>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+
+            {/* Verified record stats */}
+            <dl className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-4xl">
+              {[
+                ["150+", "peer-reviewed papers and conference proceedings"],
+                ["15+", "U.S. and international patents"],
+                ["26+", "years at Clemson as a Hunter Endowed Chair"],
+                ["AIMBE", "Fellow, with NIH-funded SC BioCRAFT"],
+              ].map(([n, l]) => (
+                <div key={l}>
+                  <dt className="sr-only">{l}</dt>
+                  <dd>
+                    <span className="text-2xl md:text-3xl font-bold text-white">{n}</span>
+                    <span className="block text-xs text-white/60 mt-1">{l}</span>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Naren's narrative + TEDx video */}
+      <article className="py-20 md:py-28">
+        <div className="container mx-auto max-w-3xl">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-4">
+              Chapter one · The scientist
+            </p>
+            <h2 className="mb-8">From a high-school classroom in India to a Clemson endowed chair</h2>
+            <p className="text-lg text-foreground/85 leading-relaxed mb-6">
+              <span className="float-left font-bold text-6xl md:text-7xl leading-[0.85] mr-3 mt-1 text-primary">N</span>
+              aren grew up in India and trained in chemistry before crossing the Atlantic to do
+              the work that has defined his career. He came to the United States as a Research
+              Assistant Professor at the University of Pennsylvania School of Medicine, with a
+              stop at the University of Michigan along the way. In November 1999, he joined
+              Clemson University, where he&rsquo;s been ever since.
+            </p>
+            <p className="text-lg text-foreground/85 leading-relaxed mb-6">
+              At Clemson, his lab focuses on heart-valve biomaterials, site-specific therapies,
+              and the slow, painstaking science of extracellular-matrix remodeling, the biology
+              that lets a tissue scaffold actually become living tissue. The lab&rsquo;s work has
+              produced 150+ journal publications, 15+ international and U.S. patents, and trained
+              the next generation: 15 PhDs and 21 MS students graduated as their major advisor.
+            </p>
+            <p className="text-lg text-foreground/85 leading-relaxed">
+              He directs the NIH-funded South Carolina Bioengineering Center of Regeneration and
+              Formation of Tissues (SC BioCRAFT). He&rsquo;s a Fellow of the American Institute of
+              Medical and Biological Engineering (AIMBE). Clemson has recognized him with the
+              McQueen Quattlebaum Faculty Excellence Award and an Alumni Award for outstanding
+              achievement in research. None of those titles tell you what he&rsquo;s really like in
+              a meeting, which is patient, exact, and absolutely committed to the next experiment.
+            </p>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <figure className="my-12 border-l-4 border-secondary pl-6 md:pl-8 py-2">
+              <Quote className="h-6 w-6 text-secondary mb-4" aria-hidden />
+              <blockquote className="font-handwritten text-3xl md:text-5xl text-foreground leading-tight">
+                &ldquo;Elastin is the rubber band of life. Once you understand how to preserve it,
+                you understand how to keep tissue alive.&rdquo;
+              </blockquote>
+              <figcaption className="mt-5 text-sm text-muted-foreground uppercase tracking-widest font-semibold">
+                Naren Vyavahare · TEDxGreenville
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          {/* TEDx video */}
+          <Reveal>
+            <div id="tedx" className="my-12">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-4">
+                Watch · TEDxGreenville
+              </p>
+              <h3 className="mb-5">Elastin: the rubber band of life</h3>
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-elegant border border-border bg-surface-deep">
+                <iframe
+                  src="https://www.youtube-nocookie.com/embed/h8u6cgM4toE?rel=0"
+                  title="Naren Vyavahare, TEDxGreenville, Elastin: the rubber band of life"
+                  loading="lazy"
+                  allow="accelerated-2d-canvas; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+              <p className="text-xs text-muted-foreground mt-4">
+                In about twelve minutes, Naren explains why elastin, the protein that gives your
+                skin and your heart valves their resilience, is one of biology&rsquo;s most
+                underappreciated heroes, and why preserving it is at the core of how Annoviant
+                builds tissue that lasts.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-4 mt-8">
+              Chapter two · From bench to bedside
+            </p>
+            <h2 className="mb-8">Three companies, one through-line</h2>
+            <p className="text-lg text-foreground/85 leading-relaxed mb-6">
+              Most of Naren&rsquo;s career has been academic. The translational chapter began in
+              2016 with Elastrin Therapeutics, where he&rsquo;s Co-Founder and CSO, focused on
+              targeting elastin-degrading diseases like vascular calcification. In 2018 he and
+              Ajay co-founded Annoviant to bring decades of his lab&rsquo;s heart-valve biomaterials
+              work toward patients. Later that same year, he co-founded Elastintech as well.
+            </p>
+            <p className="text-lg text-foreground/85 leading-relaxed">
+              The three companies share a thread, the patient, slow, careful preservation of the
+              extracellular matrix that lets tissue function and heal. Naren is the reason that
+              science exists, decades before anyone tried to commercialize it.
+            </p>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <figure className="my-12 border-l-4 border-[hsl(var(--empathy))] pl-6 md:pl-8 py-2 bg-accent-soft/40 rounded-r-xl pr-6 md:pr-8 -mx-2">
+              <Sparkles className="h-6 w-6 text-[hsl(var(--empathy))] mb-4" aria-hidden />
+              <blockquote className="font-handwritten text-2xl md:text-4xl text-foreground leading-tight">
+                &ldquo;You don&rsquo;t replace tissue. You give the body what it needs to remake
+                itself. Then you wait.&rdquo;
+              </blockquote>
+            </figure>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="my-16 rounded-2xl border border-border bg-card p-8 md:p-10 shadow-card">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-4">
+                Connect with Naren
+              </p>
+              <p className="text-foreground/85 leading-relaxed mb-6">
+                If you&rsquo;re a researcher, surgeon, or grad student interested in elastin, ECM
+                preservation, or regenerative biomaterials, the easiest way to start a conversation
+                is on LinkedIn or through Clemson Bioengineering.
+              </p>
+              <div className="flex items-center justify-between gap-4 flex-wrap">
+                <div className="flex items-center gap-4">
+                  <img
+                    src="/team/naren-vyavahare.jpg"
+                    alt=""
+                    aria-hidden
+                    loading="lazy"
+                    className="h-14 w-14 rounded-full object-cover border-2 border-border"
+                  />
+                  <div>
+                    <div className="font-semibold text-foreground">Narendra Vyavahare, PhD</div>
+                    <div className="text-sm text-muted-foreground">Co-founder & CTO, Annoviant · Hunter Endowed Chair, Clemson</div>
+                  </div>
+                </div>
+                <a
+                  href="https://www.linkedin.com/in/narendra-vyavahare-147a4213/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-secondary transition-smooth"
+                >
+                  <Linkedin className="h-4 w-4" /> Connect on LinkedIn
+                </a>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </article>
 
       {/* Closing CTA */}
       <section className="py-20 md:py-28 gradient-deep text-white relative overflow-hidden">
