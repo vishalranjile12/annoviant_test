@@ -8,6 +8,7 @@ import { Explainer } from "@/components/site/Explainer";
 import { Evidence } from "@/components/site/Evidence";
 import { Partners } from "@/components/site/Partners";
 import { PersonaSelector } from "@/components/site/PersonaSelector";
+import { InvestorSignals } from "@/components/site/InvestorSignals";
 import { Pipeline } from "@/components/site/Pipeline";
 import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
@@ -89,6 +90,7 @@ const Index = () => {
       <Partners />
       <PersonaSelector />
       <Pipeline />
+      <InvestorSignals />
       <Suspense fallback={<div className="py-32" aria-hidden />}>
         <Contact />
       </Suspense>
