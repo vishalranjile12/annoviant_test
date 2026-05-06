@@ -21,7 +21,7 @@ const groups: Group[] = [
     title: "Executive Leadership",
     people: [
       { name: "Ajay Houde", role: "CEO & Co-founder", credentials: "PhD, MBA", photo: "/team/ajay-houde.jpg", href: "/founder-story", linkedin: "https://www.linkedin.com/in/ajayhoude/" },
-      { name: "Naren Vyavahare", role: "CTO & Co-founder", credentials: "PhD", photo: "/team/naren-vyavahare.jpg", linkedin: "https://www.linkedin.com/in/naren-vyavahare-147a4213/" },
+      { name: "Naren Vyavahare", role: "CTO & Co-founder", credentials: "PhD", photo: "/team/naren-vyavahare.jpg", href: "/founder-story#naren", linkedin: "https://www.linkedin.com/in/narendra-vyavahare-147a4213/" },
       { name: "Jeremy Ollerenshaw", role: "Pre-clinical Director", credentials: "PhD", photo: "/team/jeremy-ollerenshaw.png" },
       { name: "Lisa Peacock", role: "Regulatory Director", photo: "/team/lisa-peacock.png" },
       { name: "Patrice Gerard", role: "Strategy Officer", photo: "/team/patrice-gerard.jpg", linkedin: "https://www.linkedin.com/in/patrice-gerard-1a48928/" },
@@ -118,7 +118,7 @@ const TeamPage = () => {
                             to={p.href}
                             className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:text-secondary transition-smooth"
                           >
-                            Read founder story <ArrowUpRight className="h-3 w-3" />
+                            Read story <ArrowUpRight className="h-3 w-3" />
                           </Link>
                         )}
                         {p.linkedin && (

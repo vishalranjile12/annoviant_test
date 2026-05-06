@@ -2,8 +2,7 @@ import { useState } from "react";
 import { PlayCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 
-// Replace with the actual YouTube ID when available
-const YT_ID = "";
+const YT_ID = "zFQBaeZuotE";
 
 export const Explainer = () => {
   const [playing, setPlaying] = useState(false);
