@@ -1,69 +1,120 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
-
-const docs: Record<string, { title: string; intro: string; sections: { heading: string; body: string }[] }> = {
-  privacy: {
-    title: "Privacy Policy",
-    intro: "How Annoviant collects, uses, and protects information from visitors to this site and inquiries from clinical and investor partners.",
-    sections: [
-      { heading: "Information we collect", body: "We collect contact information you submit through inquiry forms (name, email, organization, role) and standard server logs (IP address, browser, referring page). We do not knowingly collect protected health information through this site." },
-      { heading: "How we use information", body: "We use submitted information solely to respond to your inquiry, share materials matched to your role, and meet legal and regulatory obligations. We do not sell personal information." },
-      { heading: "Cookies", body: "We use a minimal set of functional cookies necessary for site operation. We do not use third-party advertising trackers." },
-      { heading: "Contact", body: "Privacy questions: privacy@annoviant.com." },
-    ],
-  },
-  terms: {
-    title: "Terms of Use",
-    intro: "These terms govern your use of annoviant.com.",
-    sections: [
-      { heading: "Investigational status", body: "TxGuard® indications are investigational unless otherwise specified. The TxGuard® Pulmonary Valved Graft holds an FDA Humanitarian Use Device designation (2020). Information on this site is intended for medical, scientific, and investor audiences and does not constitute medical advice." },
-      { heading: "No medical advice", body: "Content is informational. Patients should consult their own qualified healthcare professionals for medical decisions." },
-      { heading: "Intellectual property", body: "TxGuard® is a registered trademark of Annoviant. Site content is © Annoviant, Inc. All rights reserved." },
-      { heading: "Forward-looking statements", body: "Pipeline status, market projections, and pre-clinical findings reflect Annoviant's current view and may change. Forecasts are not guarantees." },
-    ],
-  },
-  fcoi: {
-    title: "Financial Conflict of Interest (FCOI) Policy",
-    intro: "Annoviant maintains an FCOI policy consistent with NIH grant requirements (42 CFR Part 50, Subpart F).",
-    sections: [
-      { heading: "Scope", body: "All Annoviant investigators participating in PHS-funded research are subject to FCOI training, disclosure, and management requirements." },
-      { heading: "Disclosure", body: "Significant financial interests related to institutional responsibilities must be disclosed annually and within 30 days of acquisition or discovery." },
-      { heading: "Management", body: "Identified financial conflicts of interest are reviewed and managed in accordance with NIH guidance prior to expenditure of grant funds." },
-      { heading: "Public accessibility", body: "Annoviant maintains procedures to make information about identified FCOIs available to the public upon request, consistent with 42 CFR §50.605(a)(5)." },
-    ],
-  },
-};
+import { legalDocs } from "@/data/legal";
 
 const LegalPage = () => {
-  const { slug = "" } = useParams();
-  const doc = docs[slug];
+  const { slug = "" } = useParams<{ slug: keyof typeof legalDocs }>();
+  const doc = legalDocs[slug as keyof typeof legalDocs];
 
   if (!doc) {
     return (
-      <PageShell eyebrow="Legal" title="Document not found" intro="The legal document you requested is not available.">
+      <PageShell
+        eyebrow="Legal"
+        title="Document not found"
+        intro="The legal document you requested is not available."
+      >
         <Seo title="Legal, Annoviant" description="Annoviant legal documents." />
-        <section className="py-20 md:py-28" />
+        <section className="py-20 md:py-28 container mx-auto">
+          <Link to="/legal/privacy" className="text-primary hover:text-secondary">
+            View the Privacy Policy
+          </Link>
+        </section>
       </PageShell>
     );
   }
 
+  // Build a quick table-of-contents anchor map from each section heading.
+  const slugifyHeading = (h: string) =>
+    h
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "");
+
   return (
     <PageShell eyebrow="Legal" title={doc.title} intro={doc.intro}>
-      <Seo
-        title={`${doc.title}, Annoviant`}
-        description={doc.intro}
-      />
-      <section className="py-16 md:py-24">
+      <Seo title={`${doc.title}, Annoviant`} description={doc.intro} />
+
+      <section className="py-12 md:py-16">
         <div className="container mx-auto max-w-3xl">
-          {doc.sections.map((s) => (
-            <div key={s.heading} className="mb-10">
-              <h2 className="mb-3 text-xl">{s.heading}</h2>
-              <p className="text-muted-foreground medical-body">{s.body}</p>
-            </div>
-          ))}
-          <p className="text-xs text-muted-foreground border-t border-border pt-6">
-            Last updated: {new Date().getFullYear()}. This document is a placeholder for an Annoviant-approved legal version.
+          <div className="text-xs uppercase tracking-widest text-muted-foreground font-semibold mb-10">
+            Effective {doc.effectiveDate}
+          </div>
+
+          {/* Table of contents */}
+          <nav aria-label="Table of contents" className="mb-12 border-l-2 border-border pl-5">
+            <p className="text-[11px] uppercase tracking-widest text-secondary font-semibold mb-3">
+              On this page
+            </p>
+            <ol className="space-y-1.5">
+              {doc.sections.map((s) => (
+                <li key={s.heading}>
+                  <a
+                    href={`#${slugifyHeading(s.heading)}`}
+                    className="text-sm text-foreground/80 hover:text-primary transition-smooth"
+                  >
+                    {s.heading}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+
+          {/* Sections */}
+          <article className="space-y-12">
+            {doc.sections.map((s) => (
+              <section key={s.heading} id={slugifyHeading(s.heading)}>
+                <h2 className="mb-4 text-xl md:text-2xl scroll-mt-24">{s.heading}</h2>
+                <div className="space-y-4">
+                  {s.paragraphs.map((p, i) => (
+                    <p key={i} className="text-foreground/85 medical-body">
+                      {p}
+                    </p>
+                  ))}
+                  {s.list && s.list.length > 0 &&
+                    (s.listOrdered ? (
+                      <ol className="list-decimal pl-5 space-y-2 text-foreground/85 medical-body marker:text-secondary marker:font-semibold">
+                        {s.list.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ol>
+                    ) : (
+                      <ul className="list-disc pl-5 space-y-2 text-foreground/85 medical-body marker:text-secondary">
+                        {s.list.map((item, i) => (
+                          <li key={i}>{item}</li>
+                        ))}
+                      </ul>
+                    ))}
+                </div>
+              </section>
+            ))}
+          </article>
+
+          {/* Cross-links */}
+          <div className="mt-16 pt-8 border-t border-border grid sm:grid-cols-3 gap-3 text-xs">
+            {(["privacy", "terms", "fcoi"] as const).map((s) => (
+              <Link
+                key={s}
+                to={`/legal/${s}`}
+                className={`block px-4 py-3 rounded-md border transition-smooth ${
+                  s === doc.slug
+                    ? "border-primary/30 bg-primary/5 text-primary font-semibold"
+                    : "border-border hover:border-primary/40 text-foreground/80 hover:text-primary"
+                }`}
+              >
+                <span className="block uppercase tracking-widest text-[10px] text-muted-foreground mb-0.5">
+                  Legal
+                </span>
+                <span className="block">{legalDocs[s].title}</span>
+              </Link>
+            ))}
+          </div>
+
+          <p className="text-xs text-muted-foreground mt-8">
+            This document is published in good faith and reflects prevailing healthcare-industry
+            standards (HIPAA, GDPR/CCPA, FDA medical-device guidance, and 42 CFR Part 50 Subpart F
+            for the FCOI Policy). It is not legal advice. Annoviant counsel reviews this document
+            prior to publication and from time to time as regulations evolve.
           </p>
         </div>
       </section>
