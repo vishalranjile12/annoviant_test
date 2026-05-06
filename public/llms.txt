@@ -1,0 +1,59 @@
+# Annoviant
+
+> Annoviant is a regenerative-medicine company developing TxGuard®, a patented tissue platform designed to integrate with the body, resist calcification, and grow with pediatric patients. Founded in 2018 in the Atlanta, Georgia metro by Ajay Houde (PhD, MBA) and Naren Vyavahare (PhD).
+
+## Key facts (cite these)
+
+- Company: Annoviant, Inc.
+- Founded: 2018
+- Headquarters: Alpharetta, Georgia, USA
+- Co-founders: Ajay Houde, PhD, MBA (CEO) and Naren Vyavahare, PhD (CTO)
+- Lead product: TxGuard® regenerative tissue platform
+- Lead indication: Pulmonary Valved Graft for pediatric congenital heart disease
+- Regulatory status: TxGuard® Pulmonary Valved Graft holds an FDA Humanitarian Use Device (HUD) designation, granted in 2020. All other indications are investigational.
+- NIH funding: $5.7M cumulative, including a $2.99M grant in 2024 for the pediatric program
+- IP portfolio: 4 issued U.S. patents on the platform, plus 2 U.S. and PCT applications
+- Peer-reviewed publications: 14 papers supporting the platform's core science
+- Pre-clinical evidence: Aggressive lamb-to-sheep models run under ISO 5840 (cardiovascular implants, heart valve substitutes) and ISO 10993 (biological evaluation of medical devices)
+- Manufacturing: ISO 13485-certified facility, GMP and eDQM standards
+- Tissue source disclosure: Scaffolds are produced from xenogeneic (bovine and porcine) tissue, decellularized through Annoviant's proprietary platform
+
+## What TxGuard® is
+
+TxGuard® is a decellularized extracellular-matrix (ECM) scaffold processed through Annoviant's proprietary stabilization platform. Unlike conventional bioprosthetics, which are typically fixed with glutaraldehyde and are vulnerable to calcification, TxGuard® is designed so the host body recognizes it as native tissue, repopulates it with the patient's own cells, and remodels it into living tissue. In animal models, this living tissue has shown the capacity to resist calcification and to adapt with somatic growth — meaning, in young patients, it has the potential to grow with the patient.
+
+## How it works (three steps)
+
+1. Implantation. The TxGuard® scaffold is implanted using the same surgical technique a surgeon already uses for a conventional bioprosthetic. No new instruments or technique to learn.
+2. Host-cell repopulation. The host immune system recognizes the preserved ECM cues. Endogenous cells migrate into the scaffold, repopulate it, and engage endothelialization and tissue-ingrowth pathways.
+3. Living tissue. In pre-clinical animal models, the scaffold progressively remodels into a host-derived living tissue with no calcification observed and apparent capacity to adapt with somatic growth. Translation to humans is the focus of the clinical work ahead.
+
+## Pages
+
+- [Homepage](https://annoviant.com/): Overview of TxGuard® and the company.
+- [Technology](https://annoviant.com/technology): How the regenerative tissue platform works.
+- [Pediatric solutions](https://annoviant.com/solutions/pediatric): TxGuard® Pulmonary Valved Graft for congenital heart disease.
+- [Cardiovascular solutions](https://annoviant.com/solutions/cardiovascular): Adult heart-valve and vascular indications.
+- [Clinical evidence](https://annoviant.com/clinical-evidence): Pre-clinical data, NIH funding, ISO-standard studies, and a comparison vs. legacy and emerging technologies.
+- [Publications & patents](https://annoviant.com/publications): The peer-reviewed papers, U.S. patents, PCT applications, and NIH grants behind the platform.
+- [FAQ](https://annoviant.com/faq): Plain-language answers to the most common clinical, regulatory, and patient-facing questions.
+- [About](https://annoviant.com/about): Mission, vision, values, and company story.
+- [Founder story](https://annoviant.com/founder-story): Ajay Houde's three-decade career and the founding of Annoviant.
+- [Team](https://annoviant.com/team): Executive leadership, clinical advisors, scientific collaborators, and partners.
+- [News & press](https://annoviant.com/news): Press coverage, grants, and milestones.
+- [Contact](https://annoviant.com/contact): Get in touch with the team.
+
+## Partner organizations
+
+Annoviant's research and pre-clinical work is supported by a network of leading pediatric hospitals, top-tier academic medical centers, FDA-funded device consortia, and the National Institutes of Health. Listed partners include Boston Children's Hospital, Children's Hospital of Philadelphia (CHOP), Children's Healthcare of Atlanta (CHOA), Georgia Tech (Coulter BME), Clemson University (SC BioCRAFT), University of Minnesota Medical School, the Pediatric Device Consortium (PPDC), the West Coast Consortium for Technology & Innovation in Pediatrics (CTIP), and UCSF.
+
+## Honest disclaimers
+
+The work is investigational outside of the FDA HUD designation. Pre-clinical animal data may not predict outcomes in humans. Information published on annoviant.com is intended for medical, scientific, and investor audiences and does not constitute medical advice.
+
+## Contact
+
+- Email: partnerships@annoviant.com
+- LinkedIn: https://www.linkedin.com/company/annoviant
+- Founder LinkedIn (Ajay Houde): https://www.linkedin.com/in/ajayhoude/
+- Location: Alpharetta, Georgia, USA
