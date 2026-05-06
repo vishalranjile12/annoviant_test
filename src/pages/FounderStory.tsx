@@ -108,12 +108,12 @@ const FounderStoryPage = () => {
                 Founder Story · Ajay Houde, PhD, MBA
               </p>
               <h1 className="text-white mb-6 text-balance leading-[1.05]">
-                60+ patents. Five product-launch awards. One stubborn belief that <span className="text-gradient">hearts can heal themselves</span>
+                Three decades of patents and product launches, all in service of one stubborn idea: <span className="text-gradient">hearts can heal themselves</span>
               </h1>
               <p className="text-lg md:text-xl text-white/80 medical-body">
-                Ajay Houde spent more than two decades shipping medical devices at scale,
-                long enough to see the same uncomfortable pattern: bioprosthetics were
-                never designed to last. Annoviant is his answer.
+                Ajay spent more than two decades shipping medical devices at scale, long
+                enough to notice the same uncomfortable pattern. Bioprosthetics weren&rsquo;t
+                built to last. Annoviant is the company he started to do something about it.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-3">
@@ -181,17 +181,16 @@ const FounderStoryPage = () => {
             <h2 className="mb-8">A scientist before he was a founder</h2>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
               <span className="float-left font-bold text-6xl md:text-7xl leading-[0.85] mr-3 mt-1 text-primary">A</span>
-              jay Houde grew up in India, in a household where Hindi, Marathi, and Kannada
-              all carried the weight of family. He arrived in the United States with the
-              kind of curiosity that does not announce itself, only the conviction that the
-              most ambitious work in medicine almost never arrives on schedule, but it does
-              arrive, eventually, for those who refuse to let it go.
+              jay grew up in India, in a household where Hindi, Marathi, and Kannada all carried
+              the weight of family. He came to the United States with the kind of curiosity that
+              doesn&rsquo;t announce itself, and one quiet conviction: the most ambitious work in
+              medicine rarely shows up on schedule, but it shows up for the people who refuse to
+              let it go.
             </p>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
-              He studied. He earned credentials. And then he did the unglamorous thing
-              that distinguishes most great founders from most great ideas: he went to
-              work, inside the industry, for a long time, before he ever tried to remake
-              it.
+              He studied. He earned the credentials. And then he did the unglamorous thing that
+              separates most great founders from most great ideas, he went to work inside the
+              industry, for a long time, before he ever tried to remake it.
             </p>
           </Reveal>
 
@@ -214,26 +213,24 @@ const FounderStoryPage = () => {
             </p>
             <h2 className="mb-8">Two decades inside the industry</h2>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
-              Ajay's first U.S. patent was granted in 1997. By the time the next thirty
-              years had passed, his name would be on more than sixty issued patents
-              spanning surgical sealants, infection control, sterilization systems, and
-              regenerative medicine. Most founders measure their portfolio by the
-              hundreds of pages they have raised on. Ajay measured his by the products
-              that actually reached patients.
+              Ajay&rsquo;s first U.S. patent was granted in 1997. By the time another three decades
+              had gone by, his name would be on more than sixty issued patents, spread across
+              surgical sealants, infection control, sterilization systems, and regenerative
+              medicine. Most founders measure their portfolio by the slide deck they raised on.
+              Ajay measured his by the products that actually reached patients.
             </p>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
-              The most public chapter of that work was Kimberly-Clark Health Care, where
-              he led R&D programs that earned five separate New Product Launch Awards
-              between 2006 and 2014. In 2008, InteguSEAL® Microbial Sealant, a product
-              he helped bring to market, was named one of only 33 winners of the Medical
-              Design Excellence Awards. The product reduced surgical-site infections.
-              The lesson, for him, was permanent: <em>what gets implanted matters as much
-              as how.</em>
+              The most public chapter was Kimberly-Clark Health Care, where he led R&amp;D
+              programs that earned five separate New Product Launch Awards between 2006 and 2014.
+              In 2008, a product he helped bring to market, InteguSEAL® Microbial Sealant, was
+              named one of only 33 winners of the Medical Design Excellence Awards. It reduced
+              surgical-site infections. The lesson stuck: <em>what gets implanted matters every
+              bit as much as how.</em>
             </p>
             <p className="text-lg text-foreground/85 leading-relaxed">
-              He had ideas all along about regenerative tissue. He kept them
-              intentionally on the back burner, because biology is patient, and because
-              he wanted to learn how to ship before he tried to revolutionize.
+              He had ideas about regenerative tissue the whole time. He kept them on a back burner
+              on purpose, because biology rewards patience, and because he wanted to learn how to
+              ship before he tried to revolutionize anything.
             </p>
           </Reveal>
 
@@ -253,25 +250,24 @@ const FounderStoryPage = () => {
             </p>
             <h2 className="mb-8">The audacious idea, finally</h2>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
-              The premise sounded almost too simple to be possible. What if the implant
-              were not a permanent foreign object at all, but a scaffold the body could
-              recognize as its own, repopulate with its own cells, and remodel into
-              living tissue? What if, in a child, that tissue could grow?
+              The premise sounded almost too simple to be true. What if the implant didn&rsquo;t
+              have to be a permanent foreign object at all? What if it could be a scaffold the
+              body recognized as its own, moved its cells into, and remade into living tissue?
+              And in a child, what if that tissue could grow?
             </p>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
-              Most established players had tried versions of regeneration and moved on.
-              The biology was hard. The regulatory path was long. The economics were
-              uncertain. To Ajay, those were not reasons to walk away. They were the
-              reasons the problem still existed.
+              Most of the established players had tried versions of regeneration and moved on.
+              The biology was hard. The regulatory path was long. The economics looked
+              uncertain. None of those were reasons to walk away. They were the reasons the
+              problem still existed.
             </p>
             <p className="text-lg text-foreground/85 leading-relaxed">
-              Annoviant was founded in 2018 in the Atlanta metro, alongside co-founder
-              Naren Vyavahare, PhD, whose academic program had been laying the
-              scientific foundation for years. There was no shortcut. The team ran
-              ISO 5840 and ISO 10993 studies. They worked through aggressive
-              lamb-to-sheep models. They published. They patented. They listened to
-              surgeons. They answered every hard question, including the ones that did
-              not have easy answers yet.
+              Annoviant was founded in 2018 in the Atlanta metro, alongside co-founder Naren
+              Vyavahare, PhD, whose academic program had been laying the scientific foundation
+              for years. There were no shortcuts. They ran ISO 5840 and ISO 10993 studies. They
+              worked through aggressive lamb-to-sheep models. They published. They patented.
+              They listened to surgeons. They answered every hard question, including the ones
+              that didn&rsquo;t have easy answers yet.
             </p>
           </Reveal>
 
@@ -291,28 +287,25 @@ const FounderStoryPage = () => {
             </p>
             <h2 className="mb-8">Why the work continues</h2>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
-              In 2020, the FDA granted the TxGuard® Pulmonary Valved Graft a
-              Humanitarian Use Device designation. In 2024, the NIH awarded a $2.99M
-              grant for the pediatric program, bringing cumulative NIH backing of the
-              platform to $5.7M. Manufacturing readiness was reached at an ISO 13485
-              certified facility, a milestone many platforms never reach. None of it
-              happened quickly. All of it happened.
+              In 2020, the FDA granted the Pulmonary Valved Graft a Humanitarian Use Device
+              designation. In 2024, the NIH awarded a $2.99M grant for the pediatric program,
+              bringing cumulative NIH backing of the platform to $5.7M. Manufacturing readiness
+              landed at an ISO 13485&ndash;certified facility, a milestone many platforms never
+              reach. None of it happened quickly. All of it happened.
             </p>
             <p className="text-lg text-foreground/85 leading-relaxed mb-6">
-              Roughly 40,000 newborns are diagnosed with congenital heart disease in the
-              United States every year. For the most fragile of them, today's
-              bioprosthetic options cannot grow, which means a lifetime of repeat
-              surgeries. The team Ajay built, executives, clinical advisors, scientific
-              collaborators, and partner hospitals, did not come together for a
-              startup. They came together for those children.
+              Around 40,000 newborns are diagnosed with congenital heart disease in the United
+              States every year. For the most fragile of them, today&rsquo;s bioprosthetic options
+              can&rsquo;t grow, which means a lifetime of repeat surgeries. The team Ajay built,
+              executives, clinical advisors, scientific collaborators, and partner hospitals,
+              didn&rsquo;t come together for a startup. They came together for those children.
             </p>
             <p className="text-lg text-foreground/85 leading-relaxed">
-              The work is investigational. Pre-clinical animal data may not predict
-              outcomes in humans. Annoviant says these things plainly because the team's
-              integrity is part of the product. But the direction is unmistakable: a
-              regenerative tissue platform that integrates, adapts, and endures, for
-              adults, and for the children who deserve a chance to grow with their
-              hearts.
+              The work is investigational. Pre-clinical animal data may not predict outcomes in
+              humans. We say so plainly because being honest is part of the product. The
+              direction, though, is unmistakable: a regenerative tissue platform that integrates,
+              adapts, and lasts, for adults, and for the children who deserve a chance to grow
+              with their own hearts.
             </p>
           </Reveal>
 
@@ -322,15 +315,15 @@ const FounderStoryPage = () => {
                 A letter from Ajay
               </p>
               <p className="text-foreground/85 leading-relaxed mb-4">
-                If you are a surgeon, I want to know what would change your practice. If
-                you are an investor, I want you to scrutinize the science as hard as we
-                have. If you are a parent of a child with congenital heart disease, I
-                want you to know that the people inside this company think about your
-                child more than is reasonable, and we will keep doing so until the
-                standard of care is no longer something you have to dread.
+                If you&rsquo;re a surgeon, I want to know what would actually change your practice.
+                If you&rsquo;re an investor, I want you to scrutinize the science as hard as we
+                have. If you&rsquo;re the parent of a child with congenital heart disease, I want
+                you to know that the people inside this company think about your child more than
+                is reasonable, and we&rsquo;ll keep doing so until the standard of care is no
+                longer something you have to dread.
               </p>
               <p className="text-foreground/85 leading-relaxed mb-6">
-                We are early. We are honest about that. We are also entirely committed.
+                We&rsquo;re early. We&rsquo;re honest about that. We&rsquo;re also all in.
               </p>
               <div className="flex items-center justify-between gap-4 flex-wrap">
                 <div className="flex items-center gap-4">
@@ -393,9 +386,8 @@ const FounderStoryPage = () => {
             </p>
             <h2 className="text-white mb-5">If this work matters to you, it matters to us</h2>
             <p className="text-white/80 medical-body mx-auto mb-8">
-              Surgeons, investors, partners, and families: every meaningful chapter of
-              this story has begun with someone reaching out. The next one might be
-              yours.
+              Surgeons, investors, partners, families, every meaningful chapter of this story has
+              begun with someone reaching out. The next one might be yours.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Button asChild size="lg" className="gradient-primary border-0 shadow-glow min-h-[44px]">

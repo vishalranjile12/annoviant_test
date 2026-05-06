@@ -56,12 +56,12 @@ export const Contact = () => {
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
           <div className="lg:col-span-2">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              Request a briefing
+              Get in touch
             </p>
-            <h2 id="contact-heading" className="text-white mb-5">Let's advance regenerative medicine, together</h2>
+            <h2 id="contact-heading" className="text-white mb-5">Tell us why you&rsquo;re here. We&rsquo;ll meet you there</h2>
             <p className="text-white/75 medical-body mb-8">
-              Whether you're a surgeon, investor, healthcare partner, or family, our team will
-              respond with materials matched to your context.
+              Surgeon, investor, partner, parent, whoever you are, send us a note. We&rsquo;ll
+              answer with materials and a real person, not a form letter.
             </p>
             <ul className="space-y-3 text-white/80 text-sm" aria-label="Direct contact">
               <li className="flex items-center gap-3">
@@ -80,10 +80,10 @@ export const Contact = () => {
           {submitted ? (
             <div className="lg:col-span-3 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-sm p-8 md:p-10 flex flex-col items-start gap-4">
               <div className="h-12 w-12 rounded-full bg-success/20 grid place-items-center"><CheckCircle2 className="h-6 w-6 text-success" /></div>
-              <h3 className="text-white text-xl">Thank you, your inquiry was received</h3>
+              <h3 className="text-white text-xl">Thanks, we&rsquo;ve got it</h3>
               <p className="text-white/75 text-sm">
-                Our clinical and partnerships team will review your request and respond within
-                two business days with materials matched to your role.
+                Someone on our clinical or partnerships team will read this and reply within two
+                business days, with the materials that actually fit your role.
               </p>
               <Button onClick={() => setSubmitted(false)} variant="secondary" size="sm">Send another</Button>
             </div>

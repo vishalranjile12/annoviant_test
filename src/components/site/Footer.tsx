@@ -9,8 +9,9 @@ export const Footer = () => (
         <div className="lg:col-span-4">
           <Logo light />
           <p className="text-sm mt-4 text-white/55 max-w-sm">
-            Annoviant develops TxGuard®, a patented regenerative tissue platform, designed to
-            integrate, adapt, and endure for cardiovascular and soft-tissue applications.
+            We&rsquo;re Annoviant. We&rsquo;re building TxGuard®, a tissue platform that the body
+            recognizes as its own and remakes into living tissue, for heart valves, vascular
+            grafts, and soft-tissue repair.
           </p>
           <p className="text-xs uppercase tracking-widest text-secondary mt-5 font-semibold">
             Enabling healthier lives.
@@ -77,11 +78,11 @@ export const Footer = () => (
         <p className="flex items-start gap-2">
           <ShieldCheck className="h-3.5 w-3.5 mt-0.5 flex-shrink-0 text-secondary" />
           <span>
-            <strong className="text-white/70 font-semibold">Investigational disclosure.</strong> TxGuard® is an
-            investigational platform under pre-clinical and IND-enabling development for many indications. The TxGuard®
-            Pulmonary Valved Graft holds an FDA Humanitarian Use Device designation (2020). Information on this site
-            is intended for medical, scientific, and investor audiences. Decellularized tissue scaffolds derive from
-            xenogeneic (bovine/porcine) sources processed through Annoviant&rsquo;s proprietary platform.
+            <strong className="text-white/70 font-semibold">A few honest words.</strong> TxGuard® is investigational
+            for most indications, still working through pre-clinical and IND-enabling development. The Pulmonary Valved
+            Graft has an FDA Humanitarian Use Device designation (2020). Everything you&rsquo;ll read here is meant for
+            clinicians, researchers, and investors who want to dig in. Our scaffolds are made from bovine and porcine
+            tissue, decellularized through our own platform, and we say so because patients have a right to know.
           </span>
         </p>
         <div className="flex flex-col sm:flex-row justify-between gap-3">

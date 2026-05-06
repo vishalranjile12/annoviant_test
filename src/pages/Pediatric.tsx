@@ -7,18 +7,18 @@ import { Baby, HeartPulse, Sparkles, ShieldCheck, ArrowRight, FileText } from "l
 const benefits = [
   {
     icon: Sparkles,
-    title: "Designed to grow with the patient",
-    body: "TxGuard® is engineered to support host-mediated remodeling, observed in pre-clinical models to adapt with somatic growth, addressing a critical limitation of fixed bioprosthetic conduits.",
+    title: "Built to grow up with the child",
+    body: "In animal studies, the scaffold remodels into the host's own tissue and appears to adapt with growth. That's the trait fixed bioprosthetics can't offer, and the reason pediatric patients keep coming back to surgery.",
   },
   {
     icon: ShieldCheck,
-    title: "Engineered to resist calcification",
-    body: "Calcification is a primary driver of bioprosthetic failure in pediatric patients. The TxGuard® platform is designed to mitigate this dominant mode of degeneration.",
+    title: "Engineered against calcification",
+    body: "Calcification is what fails most pediatric heart valves earliest. We've designed TxGuard® to resist it, and the pre-clinical data so far is consistent with that.",
   },
   {
     icon: HeartPulse,
-    title: "FDA Humanitarian Use Device designation",
-    body: "The TxGuard® Pulmonary Valved Graft received FDA HUD designation in 2020, a regulatory milestone advancing access for pediatric congenital heart disease.",
+    title: "Already on the FDA's radar",
+    body: "The Pulmonary Valved Graft holds an FDA Humanitarian Use Device designation since 2020, an early regulatory step that opens a faster path for pediatric congenital heart disease.",
   },
 ];
 
@@ -40,8 +40,8 @@ const PediatricPage = () => {
   return (
     <PageShell
       eyebrow="Solutions · Pediatric"
-      title={<>For the <span className="text-gradient">youngest patients</span>, a conduit designed to adapt</>}
-      intro="The TxGuard® Pulmonary Valved Graft is a regenerative-tissue conduit being developed for the right ventricular outflow tract, designed for children whose hearts are still growing."
+      title={<>A heart valve that <span className="text-gradient">grows up with the child</span></>}
+      intro="Children with congenital heart disease shouldn't need four open-chest surgeries before adulthood. The TxGuard® Pulmonary Valved Graft is our attempt to change that."
       heroImage="/hero/baby-doctor.jpg"
     >
       <Seo
@@ -54,27 +54,26 @@ const PediatricPage = () => {
         <div className="container mx-auto grid lg:grid-cols-5 gap-12 items-start">
           <div className="lg:col-span-3">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              The pediatric reality
+              Why pediatrics first
             </p>
-            <h2 className="mb-5">40,000 newborns. One urgent gap</h2>
+            <h2 className="mb-5">40,000 newborns. The same impossible problem</h2>
             <p className="text-muted-foreground medical-body mb-5">
-              Roughly 40,000 newborns in the U.S. are diagnosed with congenital heart disease
-              each year. For those who need pulmonary valve replacement, today&rsquo;s
-              bioprosthetic options cannot grow with the patient, meaning multiple
-              high-risk re-interventions over a child&rsquo;s lifetime.
+              Around 40,000 newborns in the U.S. are diagnosed with congenital heart disease every
+              year. The ones who need a pulmonary valve replacement face a quiet but brutal cycle:
+              the valve doesn&rsquo;t grow, the child does, so the surgery comes around again. And again.
             </p>
             <p className="text-muted-foreground medical-body mb-8">
-              The TxGuard® Pulmonary Valved Graft is being developed to address this gap.
-              Backed by $5.7M in NIH funding and supported by a robust ecosystem of pediatric
-              hospitals, FDA-funded device consortia, and key opinion leaders, it is
-              engineered to integrate with host tissue and adapt with the patient.
+              The Pulmonary Valved Graft is the program closest to our hearts, and the first one
+              we&rsquo;re bringing forward. With $5.7M in NIH funding behind it, and partnerships with
+              pediatric hospitals and FDA-funded device consortia, it&rsquo;s designed to integrate with
+              the child&rsquo;s own tissue rather than be replaced by it.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="gradient-primary border-0">
-                <Link to="/clinical-evidence">View pre-clinical data <ArrowRight className="ml-1 h-4 w-4" /></Link>
+                <Link to="/clinical-evidence">See the pre-clinical data <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/contact?role=clinician">Request clinician briefing</Link>
+                <Link to="/contact?role=clinician">Talk to our clinical team</Link>
               </Button>
             </div>
           </div>
@@ -82,26 +81,25 @@ const PediatricPage = () => {
           <aside className="lg:col-span-2 rounded-2xl bg-accent-soft border border-empathy/30 overflow-hidden">
             <img
               src="/hero/father-son.jpg"
-              alt="A parent and child, Annoviant develops technology aimed at reducing the cycle of repeat heart surgeries for pediatric patients"
+              alt="A father holding his young son, the people this work is for"
               loading="lazy"
               className="w-full h-48 object-cover"
             />
             <div className="p-7">
-            <Baby className="h-7 w-7 text-[hsl(var(--empathy))] mb-4" />
-            <h3 className="mb-3">For families</h3>
-            <p className="text-sm text-foreground/80 mb-4">
-              We know the weight of hearing your child needs heart surgery, and the deeper
-              fear of being told it will need to happen again. Our work is grounded in a
-              simple goal: a heart valve that can grow with your child, so that one surgery
-              can mean one surgery.
-            </p>
-            <p className="text-sm text-foreground/80 mb-5">
-              The technology is investigational. We share what we know, and what we don&rsquo;t
-              yet, clearly.
-            </p>
-            <Button asChild variant="secondary" className="w-full">
-              <Link to="/contact?role=patient">Sign up for updates</Link>
-            </Button>
+              <Baby className="h-7 w-7 text-[hsl(var(--empathy))] mb-4" />
+              <h3 className="mb-3">If you're a parent reading this</h3>
+              <p className="text-sm text-foreground/80 mb-4">
+                We know what it's like to hear that your child needs heart surgery, and how much
+                worse it sounds when you're told they'll need it again. We're working toward the
+                opposite outcome: one surgery that lasts.
+              </p>
+              <p className="text-sm text-foreground/80 mb-5">
+                We're not there yet. The technology is still investigational. We'll tell you what
+                we know, and where we're still working, as honestly as we can.
+              </p>
+              <Button asChild variant="secondary" className="w-full">
+                <Link to="/contact?role=patient">Keep me posted</Link>
+              </Button>
             </div>
           </aside>
         </div>
@@ -109,7 +107,7 @@ const PediatricPage = () => {
 
       <section className="py-20 md:py-28 bg-muted/40">
         <div className="container mx-auto">
-          <h2 className="mb-12 max-w-2xl">Why TxGuard® for pediatric patients</h2>
+          <h2 className="mb-12 max-w-2xl">Three reasons we're starting here</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {benefits.map(({ icon: Icon, title, body }) => (
               <div key={title} className="bg-card rounded-xl p-7 border border-border shadow-card">
@@ -125,11 +123,12 @@ const PediatricPage = () => {
           <div className="mt-12 rounded-2xl border border-border bg-card p-7 md:p-9 grid md:grid-cols-[auto_1fr] gap-6 items-center">
             <FileText className="h-12 w-12 text-primary md:mr-4" />
             <div>
-              <h3 className="mb-2">Pre-clinical animal data</h3>
+              <h3 className="mb-2">A note on what we know, and don't</h3>
               <p className="text-sm text-muted-foreground">
-                Performance has been characterized in aggressive lamb-to-sheep models under
-                ISO 5840 and ISO 10993 guidance, with independent studies at reputable
-                institutions. Pre-clinical animal results may not predict outcomes in humans.
+                What we've shown to date comes from aggressive lamb-to-sheep models, run under
+                ISO 5840 and ISO 10993, with independent studies at reputable institutions.
+                That's a high bar, but it's not human data. Translation to people is what we're
+                working on next.
               </p>
             </div>
           </div>
