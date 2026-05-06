@@ -71,7 +71,7 @@ export const Nav = () => {
       role="banner"
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded focus:bg-primary focus:px-3 focus:py-2 focus:text-primary-foreground">Skip to main content</a>
-      <div className="container mx-auto flex items-center h-16 md:h-20">
+      <div className="container mx-auto flex items-center h-20 md:h-24">
         <Logo light={transparent} />
 
         <nav className="hidden lg:flex items-center gap-1 ml-auto" aria-label="Primary">
@@ -135,7 +135,7 @@ export const Nav = () => {
       </div>
 
       {open && (
-        <div className="lg:hidden bg-background border-t border-border max-h-[calc(100vh-4rem)] overflow-y-auto">
+        <div className="lg:hidden bg-background border-t border-border max-h-[calc(100vh-5rem)] overflow-y-auto">
           <div className="container mx-auto py-4 flex flex-col gap-1">
             {groups.map((g) => (
               <div key={g.label} className="border-b border-border/60 last:border-0 py-2">
