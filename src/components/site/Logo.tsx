@@ -5,9 +5,9 @@ export const Logo = ({ light = false }: { light?: boolean }) => (
     <img
       src={light ? "/brand/annoviant-logo-ko.png" : "/brand/annoviant-logo-color.png"}
       alt="Annoviant, Innovations for Healthier Lives"
-      width={180}
-      height={50}
-      className="h-9 md:h-10 w-auto"
+      width={260}
+      height={72}
+      className="h-12 md:h-14 w-auto"
     />
   </Link>
 );
