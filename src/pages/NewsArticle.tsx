@@ -116,6 +116,7 @@ const NewsArticlePage = () => {
                   height={960}
                   loading="eager"
                   className="relative w-full aspect-[4/3] object-cover rounded-2xl border border-white/15 shadow-elegant"
+                  style={{ objectPosition: article.imagePosition ?? "center" }}
                 />
               </figure>
             )}
