@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { Button } from "@/components/ui/button";
+import { CountUp } from "@/components/site/CountUp";
 import { Heart, Activity, ShieldCheck, ArrowRight, GitBranch, Stethoscope } from "lucide-react";
 
 const indications = [
@@ -113,7 +114,9 @@ const CardiovascularPage = () => {
               ].map(([n, l]) => (
                 <div key={l} className="flex items-baseline justify-between gap-4 border-b border-border last:border-0 pb-3 last:pb-0">
                   <dt className="text-sm text-muted-foreground">{l}</dt>
-                  <dd className="text-2xl font-bold text-primary">{n}</dd>
+                  <dd className="text-2xl font-bold text-primary tabular-nums">
+                    <CountUp value={n} />
+                  </dd>
                 </div>
               ))}
             </dl>
@@ -127,27 +130,58 @@ const CardiovascularPage = () => {
 
       <section className="py-20 md:py-28 bg-muted/40">
         <div className="container mx-auto">
-          <h2 className="mb-12 max-w-2xl">Where we're headed next</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {indications.map(({ icon: Icon, title, stage, body }) => (
-              <div key={title} className="bg-card rounded-xl p-7 border border-border shadow-card hover:shadow-elegant transition-smooth">
-                <div className="flex items-start justify-between mb-5">
-                  <div className="h-11 w-11 rounded-lg gradient-primary grid place-items-center shadow-glow">
-                    <Icon className="h-5 w-5 text-primary-foreground" />
-                  </div>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-secondary bg-secondary/10 px-2 py-1 rounded">
-                    {stage}
-                  </span>
-                </div>
-                <h3 className="mb-3 text-base">{title}</h3>
-                <p className="text-sm text-muted-foreground">{body}</p>
-              </div>
-            ))}
+          <div className="max-w-2xl mb-12">
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
+              Where we&rsquo;re headed
+            </p>
+            <h2 className="mb-4">Five indications, one platform</h2>
+            <p className="text-muted-foreground medical-body">
+              We move slowly and openly. Each indication earns its place in the pipeline by the
+              data, not the deck. Here is what we&rsquo;re working on, and how far along each is.
+            </p>
           </div>
-          <p className="text-xs text-muted-foreground mt-8 max-w-3xl">
+
+          {/* Bento grid: lead indication featured larger, rest balanced */}
+          <div className="grid grid-cols-1 lg:grid-cols-6 lg:auto-rows-[minmax(220px,_1fr)] gap-5">
+            {indications.map(({ icon: Icon, title, stage, body }, idx) => {
+              const isFeatured = idx === 0;
+              const isMid = idx === 1;
+              const span = isFeatured
+                ? "lg:col-span-3 lg:row-span-2 min-h-[380px] gradient-deep text-white border-transparent"
+                : isMid
+                ? "lg:col-span-3 min-h-[200px] bg-card"
+                : "lg:col-span-2 min-h-[200px] bg-card";
+
+              return (
+                <Reveal key={title} delay={idx * 60}>
+                  <article
+                    className={`relative rounded-2xl border border-border p-7 md:p-8 shadow-card hover:shadow-elegant transition-smooth overflow-hidden flex flex-col h-full ${span}`}
+                  >
+                    {isFeatured && (
+                      <div aria-hidden className="absolute -bottom-32 -right-32 h-[420px] w-[420px] rounded-full bg-secondary/30 blur-[140px]" />
+                    )}
+                    <div className="relative flex items-start justify-between mb-5">
+                      <div className={`h-11 w-11 rounded-lg grid place-items-center ${isFeatured ? "bg-white/10 backdrop-blur" : "gradient-primary shadow-glow"}`}>
+                        <Icon className={`h-5 w-5 ${isFeatured ? "text-white" : "text-primary-foreground"}`} aria-hidden />
+                      </div>
+                      <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full ${isFeatured ? "bg-white/10 text-secondary border border-white/20" : "bg-secondary/10 text-secondary"}`}>
+                        {stage}
+                      </span>
+                    </div>
+                    <h3 className={`relative mb-3 ${isFeatured ? "text-white text-2xl md:text-3xl" : "text-base"}`}>{title}</h3>
+                    <p className={`relative ${isFeatured ? "text-white/85 text-base md:text-lg medical-body" : "text-sm text-muted-foreground"}`}>
+                      {body}
+                    </p>
+                  </article>
+                </Reveal>
+              );
+            })}
+          </div>
+
+          <p className="text-xs text-muted-foreground mt-10 max-w-3xl">
             Every indication on this page except the pediatric Pulmonary Valved Graft (FDA HUD
             designation, 2020) is still investigational. None of them are available for human
-            use yet, and we won't pretend otherwise.
+            use yet, and we won&rsquo;t pretend otherwise.
           </p>
         </div>
       </section>

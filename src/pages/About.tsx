@@ -65,21 +65,35 @@ const AboutPage = () => {
 
       <section className="py-20 md:py-28 bg-muted/40">
         <div className="container mx-auto">
-          <div className="max-w-2xl mb-12">
+          <div className="max-w-2xl mb-16">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
               How we work
             </p>
             <h2 className="mb-4">Four habits, none of them flashy</h2>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-            {values.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="rounded-xl bg-card border border-border p-7 shadow-card">
-                <Icon className="h-7 w-7 text-primary mb-4" />
-                <h3 className="mb-2 text-base">{title}</h3>
-                <p className="text-sm text-muted-foreground">{body}</p>
-              </div>
+
+          {/* Magazine-style numbered editorial. Big oversized numerals, alternating column placement. */}
+          <ol className="space-y-12 md:space-y-16 max-w-5xl">
+            {values.map(({ icon: Icon, title, body }, i) => (
+              <li
+                key={title}
+                className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start ${
+                  i % 2 === 1 ? "md:[&>*:first-child]:md:order-2 md:[&>*:nth-child(2)]:md:order-1" : ""
+                }`}
+              >
+                <div className="md:col-span-4 flex md:flex-col items-baseline md:items-start gap-4">
+                  <span className="font-handwritten text-6xl md:text-7xl leading-none text-primary/30 tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Icon className="h-7 w-7 text-primary md:mt-2" aria-hidden />
+                </div>
+                <div className="md:col-span-8 md:border-l md:border-border md:pl-8">
+                  <h3 className="text-xl md:text-2xl mb-3">{title}</h3>
+                  <p className="text-base text-muted-foreground medical-body">{body}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 

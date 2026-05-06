@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck, PlayCircle } from "lucide-react";
+import { CountUp } from "./CountUp";
 
 const hero = "/hero/heart-bg.jpg";
 
@@ -12,7 +13,7 @@ export const Hero = () => (
       width={1920}
       height={1080}
       fetchPriority="high"
-      className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen"
+      className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen heartbeat"
     />
     <div className="absolute inset-0 bg-gradient-to-r from-surface-deep/95 via-surface-deep/70 to-transparent" />
     <div
@@ -61,7 +62,7 @@ export const Hero = () => (
             <div key={l}>
               <dt className="sr-only">{l}</dt>
               <dd>
-                <span className="text-2xl md:text-3xl font-bold text-white">{n}</span>
+                <CountUp value={n} className="text-2xl md:text-3xl font-bold text-white tabular-nums" />
                 <span className="block text-xs text-white/60 mt-1">{l}</span>
               </dd>
             </div>
