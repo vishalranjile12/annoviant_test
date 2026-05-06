@@ -52,18 +52,27 @@ const PublicationsPage = () => {
         jsonLd={ld}
       />
 
-      <section className="py-20 md:py-28">
+      <section className="py-16 md:py-20">
         <div className="container mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
+          {/* Compact stat strip, only inner dividers */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 mb-10">
             {[
-              { v: "14", l: "Peer-reviewed publications" },
+              { v: "14", l: "peer-reviewed papers" },
               { v: "4", l: "U.S. patents issued" },
-              { v: "2", l: "U.S. & PCT applications filed" },
-              { v: "$5.7M", l: "NIH grant funding to date" },
-            ].map((s) => (
-              <div key={s.l} className="rounded-xl border border-border bg-card p-6 shadow-card">
-                <div className="text-3xl font-bold text-primary">{s.v}</div>
-                <p className="text-sm text-muted-foreground mt-2">{s.l}</p>
+              { v: "2", l: "U.S. & PCT applications" },
+              { v: "$5.7M", l: "NIH funding to date" },
+            ].map((s, i) => (
+              <div
+                key={s.l}
+                className={`py-5 lg:py-6 px-5 lg:px-6
+                  ${i === 0 ? "border-r border-border lg:border-r" : ""}
+                  ${i === 1 ? "lg:border-r border-border" : ""}
+                  ${i === 2 ? "border-r border-border lg:border-r" : ""}
+                  ${i < 2 ? "border-b border-border lg:border-b-0" : ""}
+                `}
+              >
+                <div className="text-2xl md:text-3xl font-bold text-primary tabular-nums">{s.v}</div>
+                <p className="text-xs text-muted-foreground mt-1">{s.l}</p>
               </div>
             ))}
           </div>
@@ -98,31 +107,49 @@ const PublicationsPage = () => {
             </div>
           </div>
 
-          <ul className="space-y-3" aria-live="polite">
-            {filtered.map((i) => {
+          <ul aria-live="polite">
+            {filtered.map((i, idx) => {
               const Icon = i.type === "Patent" ? Award : i.type === "Grant" ? Award : FileText;
               const Tag: "a" | "div" = i.href ? "a" : "div";
               const tagProps = i.href ? { href: i.href, target: "_blank", rel: "noopener noreferrer" } : {};
               return (
-                <li key={i.title}>
+                <li
+                  key={i.title}
+                  className={idx < filtered.length - 1 ? "border-b border-border" : ""}
+                >
                   <Tag
                     {...tagProps}
-                    className="block rounded-xl border border-border bg-card p-6 shadow-card hover:shadow-elegant transition-smooth group"
+                    className="group block px-5 md:px-6 py-4 md:py-5 hover:bg-muted/40 transition-smooth"
                   >
-                    <div className="flex items-start gap-5">
-                      <div className="h-11 w-11 rounded-lg bg-primary/10 grid place-items-center flex-shrink-0">
-                        <Icon className="h-5 w-5 text-primary" />
-                      </div>
+                    <div className="flex items-center gap-4 md:gap-6">
+                      {/* Year, fixed-width left rail */}
+                      <span className="hidden sm:block text-sm font-semibold text-muted-foreground tabular-nums w-12 flex-shrink-0">
+                        {i.year}
+                      </span>
+
+                      {/* Type pill */}
+                      <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-secondary w-24 flex-shrink-0">
+                        <Icon className="h-3.5 w-3.5" aria-hidden />
+                        {i.type}
+                      </span>
+
+                      {/* Title + source */}
                       <div className="flex-1 min-w-0">
-                        <div className="flex items-center gap-3 text-xs uppercase tracking-wider text-muted-foreground mb-1.5">
-                          <span className="font-semibold text-secondary">{i.type}</span>
-                          <span>·</span>
-                          <span>{i.year}</span>
+                        <div className="text-sm md:text-base font-semibold text-foreground group-hover:text-primary transition-smooth leading-snug">
+                          {i.title}
                         </div>
-                        <h3 className="text-base mb-1 group-hover:text-primary transition-smooth">{i.title}</h3>
-                        {i.source && <p className="text-xs text-muted-foreground">{i.source}</p>}
+                        {i.source && (
+                          <div className="text-xs text-muted-foreground mt-0.5 truncate">{i.source}</div>
+                        )}
+                        {/* mobile-only meta */}
+                        <div className="sm:hidden text-[11px] uppercase tracking-wider text-muted-foreground mt-1.5 font-semibold">
+                          {i.year}
+                        </div>
                       </div>
-                      {i.href && <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary mt-1" />}
+
+                      {i.href && (
+                        <ExternalLink className="h-4 w-4 text-muted-foreground group-hover:text-primary flex-shrink-0" aria-hidden />
+                      )}
                     </div>
                   </Tag>
                 </li>

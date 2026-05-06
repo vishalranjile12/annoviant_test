@@ -3,7 +3,9 @@ import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { Button } from "@/components/ui/button";
 import { StorytellerTable, type StorytellerColumn, type StorytellerRow } from "@/components/site/StorytellerTable";
-import { Award, FileText, Microscope, ShieldCheck, FlaskConical, ArrowRight, Check } from "lucide-react";
+import { Reveal } from "@/components/site/Reveal";
+import { CountUp } from "@/components/site/CountUp";
+import { Award, FileText, Microscope, ShieldCheck, FlaskConical, ArrowRight, Check, Beaker, GitBranch, Calendar } from "lucide-react";
 
 const columns: StorytellerColumn[] = [
   { key: "tx", label: "TxGuard®", sublabel: "Annoviant", highlight: true },
@@ -77,7 +79,10 @@ const milestones = [
   { icon: FileText, value: "14", label: "Peer-reviewed scientific publications" },
   { icon: FlaskConical, value: "ISO 5840 / 10993", label: "Pre-clinical guidance followed in animal studies" },
   { icon: Microscope, value: "GLP", label: "Independent studies at reputable institutions" },
-  { icon: Award, value: "ISO 13485", label: "Manufacturing readiness at certified facility" },
+  { icon: Beaker, value: "ISO 13485", label: "Manufacturing readiness at a certified facility" },
+  { icon: GitBranch, value: "4", label: "Issued U.S. patents on the TxGuard® platform" },
+  { icon: FileText, value: "2", label: "U.S. and PCT applications currently pending" },
+  { icon: Calendar, value: "25+", label: "Years of regenerative-tissue research behind the science" },
 ];
 
 const ClinicalEvidencePage = () => {
@@ -101,15 +106,37 @@ const ClinicalEvidencePage = () => {
         jsonLd={ld}
       />
 
-      <section className="py-20 md:py-28">
+      {/* 3x3 evidence table, no card chrome, just shared dividing rules */}
+      <section className="py-12 md:py-16" aria-labelledby="evidence-table-heading">
         <div className="container mx-auto">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {milestones.map(({ icon: Icon, value, label }) => (
-              <div key={label} className="rounded-xl border border-border bg-card p-7 shadow-card">
-                <Icon className="h-6 w-6 text-primary mb-4" />
-                <div className="text-2xl font-bold text-foreground mb-1">{value}</div>
-                <p className="text-sm text-muted-foreground">{label}</p>
-              </div>
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-2">
+              The receipts at a glance
+            </p>
+            <h2 id="evidence-table-heading" className="mb-8 max-w-3xl text-xl md:text-2xl">
+              Nine numbers that tell the story
+            </h2>
+          </Reveal>
+
+          {/* Clean inner-only separators via a 1px-gap on a colored grid container. The
+              gap shows the parent's bg-border color where children don't cover it,
+              giving us perfect dividers between every cell without per-cell border math. */}
+          <div
+            role="table"
+            aria-labelledby="evidence-table-heading"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border"
+          >
+            {milestones.map(({ icon: Icon, value, label }, i) => (
+              <Reveal as="div" key={label} delay={i * 40} role="cell">
+                <div className="group relative h-full px-5 md:px-6 py-5 md:py-6 bg-background hover:bg-muted/40 transition-smooth">
+                  <Icon className="h-4 w-4 text-primary mb-3" aria-hidden />
+                  <CountUp
+                    value={value}
+                    className="block text-xl md:text-2xl font-bold text-foreground mb-1.5 tabular-nums"
+                  />
+                  <p className="text-xs text-muted-foreground leading-snug">{label}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>
