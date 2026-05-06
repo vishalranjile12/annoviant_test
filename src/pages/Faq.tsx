@@ -50,10 +50,19 @@ const FaqPage = () => {
   const ld = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    inLanguage: "en-US",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["[data-speakable]"],
+    },
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
       name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: f.a,
+        inLanguage: "en-US",
+      },
     })),
   };
 
