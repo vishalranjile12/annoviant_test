@@ -2,8 +2,23 @@ import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { RegenerationTimeline } from "@/components/site/RegenerationTimeline";
 import { Reveal } from "@/components/site/Reveal";
-import { CheckCircle2, Beaker, Layers, Activity, ShieldCheck, Info } from "lucide-react";
+import { CountUp } from "@/components/site/CountUp";
+import { CheckCircle2, Beaker, Layers, Activity, ShieldCheck, Info, Sparkles, Wind, Droplet } from "lucide-react";
 import scaffold from "@/assets/tissue-scaffold.jpg";
+
+const productAttributes = [
+  { icon: Sparkles, label: "Regenerative", note: "Host cells repopulate the scaffold", image: "/hero/attributes/regenerative.jpg" },
+  { icon: Droplet, label: "Thrombo-resistant", note: "Designed against clot formation", image: "/hero/attributes/thrombo-resistant.jpg" },
+  { icon: ShieldCheck, label: "Calcification-resistant", note: "Engineered against the dominant failure mode", image: "/hero/attributes/calcification.jpg" },
+  { icon: Wind, label: "Pliable", note: "Handles like native tissue", image: "/hero/attributes/pliable.jpg" },
+];
+
+const cvdStats = [
+  { value: "48%", label: "of U.S. adults are affected by cardiovascular disease (CVD)" },
+  { value: "120M", label: "CVD cases per year in the U.S., projected to reach 184M by 2050" },
+  { value: "580K", label: "valve-replacement and CABG surgeries every year in the U.S." },
+  { value: "~25%", label: "of CVD patients face combined heart valve and coronary artery disease" },
+];
 
 const pillars = [
   { icon: Layers, title: "Decellularized ECM scaffold", body: "A proprietary process removes immunogenic cellular material while aiming to preserve the native extracellular matrix architecture and biochemical signaling cues." },
@@ -36,17 +51,121 @@ const TechnologyPage = () => {
         jsonLd={ld}
       />
 
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
+      {/* The CVD problem stripe, ported from the original About TxGuard page */}
+      <section className="py-16 md:py-20 bg-muted/40" aria-labelledby="cvd-heading">
+        <div className="container mx-auto">
+          <Reveal>
+            <div className="max-w-2xl mb-10">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-3">
+                Why this matters
+              </p>
+              <h2 id="cvd-heading" className="mb-4">The problem we set out to solve</h2>
+              <p className="text-muted-foreground medical-body">
+                Cardiovascular disease is the leading cause of death in the United States.
+                Around one in four CVD patients face combined heart valve disease and coronary
+                artery disease, and surgeons are still working with materials that have been
+                largely unchanged for fifty years.
+              </p>
+            </div>
+          </Reveal>
+          {/* gap-px stripe pattern, no outer frame */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+            {cvdStats.map((s) => (
+              <div key={s.label} className="bg-background px-5 md:px-6 py-6">
+                <CountUp value={s.value} className="block text-2xl md:text-3xl font-bold text-primary tabular-nums" />
+                <p className="text-xs text-muted-foreground mt-2 leading-snug">{s.label}</p>
+              </div>
+            ))}
+          </div>
+          <p className="text-[11px] text-muted-foreground mt-4">
+            Sources: AHA, CDC. Projections per published reports.
+          </p>
+        </div>
+      </section>
+
+      {/* Cell-matrix animation, the iconic TxGuard visual from the original site */}
+      <section className="py-20 md:py-28" aria-labelledby="matrix-heading">
+        <div className="container mx-auto">
+          <Reveal>
+            <figure className="mb-14 md:mb-16">
+              <img
+                src="/hero/cell-matrix-stages.gif"
+                alt="Animated illustration of host cells repopulating the TxGuard scaffold over time, the implanted scaffold is gradually remodeled into living tissue"
+                width={1600}
+                height={1600}
+                loading="lazy"
+                className="w-full h-auto"
+              />
+              <figcaption className="mt-3 text-[11px] text-muted-foreground text-center">
+                Pre-clinical animation. Host cells repopulating the scaffold and remodeling
+                it into living tissue.
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-3">
+                What TxGuard® is
+              </p>
+              <h2 id="matrix-heading" className="mb-5">
+                Decellularized scaffold &middot; patented stabilization &middot; living tissue
+              </h2>
+              <p className="text-muted-foreground medical-body mb-5">
+                Annoviant&rsquo;s TxGuard® process decellularizes biological tissue, stabilizes
+                it with patented chemistry, and applies a proprietary sterilization. The result
+                is an off-the-shelf scaffold that the body recognizes as native: cells migrate
+                in, the matrix is gradually remodeled, and the implant becomes the patient&rsquo;s
+                own tissue.
+              </p>
+              <p className="text-muted-foreground medical-body">
+                In pre-clinical sheep models studied to roughly five human-equivalent years,
+                TxGuard® showed normal clinical function with no calcification, thrombosis,
+                infection, or tissue overgrowth, plus successful host cell&ndash;mediated
+                remodeling.
+              </p>
+            </div>
+
+            {/* The four product attributes, image-led cards from the original site */}
+            <ul className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" aria-label="TxGuard product attributes">
+              {productAttributes.map(({ icon: Icon, label, note, image }) => (
+                <li key={label} className="rounded-xl border border-border bg-card overflow-hidden">
+                  <div className="aspect-[4/3] overflow-hidden bg-muted">
+                    <img
+                      src={image}
+                      alt={`${label} attribute`}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-2.5 mb-1.5">
+                      <Icon className="h-4 w-4 text-primary" aria-hidden />
+                      <span className="text-sm font-semibold text-foreground">{label}</span>
+                    </div>
+                    <p className="text-[11px] text-muted-foreground leading-snug">{note}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28 bg-muted/40">
+        <div className="container mx-auto grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <img
             src={scaffold}
             alt="Microscopic illustration of the TxGuard regenerative tissue scaffold showing extracellular matrix architecture"
             width={1280}
             height={960}
             loading="lazy"
-            className="rounded-2xl shadow-elegant border border-border"
+            className="w-full h-auto"
           />
           <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-3">
+              The process
+            </p>
             <h2 className="mb-5">How it works</h2>
             <p className="text-muted-foreground medical-body mb-6">
               The TxGuard® process gently removes cellular content while protecting the
@@ -54,28 +173,30 @@ const TechnologyPage = () => {
               an acellular scaffold designed to be recognized by the body as its own, a
               blueprint for regeneration, not a foreign implant.
             </p>
-            <ul className="space-y-3" aria-label="Key technical features">
+            <ul className="space-y-3 mb-8" aria-label="Key technical features">
               {[
                 "Designed to preserve native ECM architecture",
                 "Engineered to remove immunogenic cellular debris",
                 "Maintains tensile and elastic mechanics",
                 "Compatible with cardiac and soft-tissue indications",
               ].map((f) => (
-                <li key={f} className="flex gap-3"><CheckCircle2 className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" /><span>{f}</span></li>
+                <li key={f} className="flex gap-3">
+                  <CheckCircle2 className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" />
+                  <span>{f}</span>
+                </li>
               ))}
             </ul>
 
-            <div className="mt-8 rounded-xl border border-border bg-muted/40 p-5 flex gap-3">
-              <Info className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-              <div className="text-sm">
-                <p className="font-semibold text-foreground mb-1">Tissue source disclosure</p>
-                <p className="text-muted-foreground">
-                  TxGuard® scaffolds are produced from xenogeneic (bovine and porcine) tissue
-                  decellularized through Annoviant&rsquo;s proprietary platform. We disclose
-                  source materials transparently to support informed clinical, ethical, and
-                  religious decision-making.
-                </p>
-              </div>
+            <div className="border-l-2 border-primary/30 pl-5">
+              <p className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary mb-2">
+                <Info className="h-4 w-4" aria-hidden /> Tissue source disclosure
+              </p>
+              <p className="text-sm text-muted-foreground">
+                TxGuard® scaffolds are produced from xenogeneic (bovine and porcine) tissue
+                decellularized through Annoviant&rsquo;s proprietary platform. We disclose
+                source materials transparently to support informed clinical, ethical, and
+                religious decision-making.
+              </p>
             </div>
           </div>
         </div>

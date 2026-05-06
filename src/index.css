@@ -155,9 +155,9 @@
 
   /* Beating heart, applied to the hero background image. The keyframes
      mirror a real cardiac cycle, lub (S1) and dub (S2), spaced over ~1.4s
-     for a calm 60-ish BPM. Plays through twice on entry, then settles. */
+     for a calm 60-ish BPM. Plays through six cycles on entry, then settles. */
   .heartbeat {
-    animation: heartbeat 1.4s ease-in-out 2 forwards;
+    animation: heartbeat 1.4s ease-in-out 6 forwards;
     transform-origin: center center;
     will-change: transform;
   }

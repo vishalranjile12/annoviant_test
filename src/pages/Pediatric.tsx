@@ -1,8 +1,28 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
+import { Reveal } from "@/components/site/Reveal";
+import { CountUp } from "@/components/site/CountUp";
 import { Button } from "@/components/ui/button";
-import { Baby, HeartPulse, Sparkles, ShieldCheck, ArrowRight, FileText } from "lucide-react";
+import { Baby, HeartPulse, Sparkles, ShieldCheck, ArrowRight, FileText, CheckCircle2 } from "lucide-react";
+
+// CHD scope, ported from the original TxGuard Pediatric page
+const chdScope = [
+  { value: "1.3M", label: "newborns diagnosed with CHD globally each year" },
+  { value: "40,000", label: "new U.S. CHD patients annually, primarily conotruncal anomalies" },
+  { value: "2,500", label: "U.S. CHD newborns each year who need substitute conduit arteries" },
+];
+
+// The seven technology benefits from the original page, in their published order.
+const technologyBenefits = [
+  "Decellularized tissue can be physically stabilized for two-year storage.",
+  "Immunogenic cellular materials are removed to reduce immunogenicity.",
+  "An antioxidant in the tissue prevents oxidative damage during remodeling.",
+  "No in-vitro bioreactor or stem-cell manipulation is required, simplifying the regulatory path.",
+  "Scaffold is designed to resist calcification and thrombosis.",
+  "Promotes remodeling while reducing the inflammatory response.",
+  "Holds remodeling and growth potential, especially for juvenile patients.",
+];
 
 const benefits = [
   {
@@ -105,7 +125,81 @@ const PediatricPage = () => {
         </div>
       </section>
 
-      <section className="py-20 md:py-28 bg-muted/40">
+      {/* CHD scope stripe, ported from the original TxGuard Pediatric page */}
+      <section className="py-12 md:py-16" aria-labelledby="chd-scope-heading">
+        <div className="container mx-auto">
+          <Reveal>
+            <div className="max-w-2xl mb-8">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-3">
+                The numbers behind congenital heart disease
+              </p>
+              <h2 id="chd-scope-heading" className="mb-3 text-xl md:text-2xl">Why pediatric, and why now</h2>
+              <p className="text-muted-foreground medical-body">
+                Most of the conotruncal anomalies and right-ventricular outflow conditions
+                require pulmonary-circulation conduit or patch augmentation. The materials in
+                use today are still the limiting factor.
+              </p>
+            </div>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-px bg-border">
+            {chdScope.map((s) => (
+              <div key={s.label} className="bg-background px-5 md:px-6 py-6">
+                <CountUp value={s.value} className="block text-2xl md:text-3xl font-bold text-primary tabular-nums" />
+                <p className="text-xs text-muted-foreground mt-2 leading-snug">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TxGuard technology benefits + cell matrix animation, ported from original */}
+      <section className="py-20 md:py-28 bg-muted/40" aria-labelledby="benefits-heading">
+        <div className="container mx-auto">
+          <Reveal>
+            <figure className="mb-14 md:mb-16">
+              <img
+                src="/hero/cell-matrix-stages.gif"
+                alt="Animation of host cells repopulating the TxGuard scaffold over time, the implanted scaffold is gradually remodeled into living tissue and grows with the patient"
+                width={1600}
+                height={1600}
+                loading="lazy"
+                className="w-full h-auto"
+              />
+              <figcaption className="mt-3 text-[11px] text-muted-foreground text-center">
+                Pre-clinical animation. Host cells repopulating the scaffold and remodeling it
+                into living tissue.
+              </figcaption>
+            </figure>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <div className="max-w-3xl">
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-3">
+                Why TxGuard® for pediatric patients
+              </p>
+              <h2 id="benefits-heading" className="mb-5">
+                Seven properties that matter when the patient is still growing
+              </h2>
+              <p className="text-muted-foreground medical-body mb-6">
+                Today&rsquo;s replacement materials have significant limitations, thrombogenicity,
+                durability issues, infection susceptibility, and no growth potential, so
+                pediatric patients face multiple re-interventions. TxGuard® is engineered against
+                each of those failure modes.
+              </p>
+              <ul className="space-y-3" aria-label="TxGuard benefits for pediatric patients">
+                {technologyBenefits.map((b) => (
+                  <li key={b} className="flex gap-3">
+                    <CheckCircle2 className="h-5 w-5 text-secondary flex-shrink-0 mt-0.5" aria-hidden />
+                    <span className="text-sm text-foreground">{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28">
         <div className="container mx-auto">
           <h2 className="mb-12 max-w-2xl">Three reasons we're starting here</h2>
           <div className="grid md:grid-cols-3 gap-6">
