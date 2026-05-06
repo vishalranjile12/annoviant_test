@@ -92,6 +92,7 @@ export const articles: NewsArticle[] = [
     excerpt:
       "Two decades of medical-device leadership and private-equity experience joining the Annoviant business advisory.",
     source: "Annoviant team announcement, February 21, 2023",
+    image: "/team/gregg-tobin.jpg",
     paragraphs: [
       { p: "Gregg Tobin has joined Annoviant in the role of Business Advisor. Currently serving as President and Chief Executive Officer of a medical device manufacturing company, Tobin brings over two decades of progressive professional experience. His career has focused on expanding revenue and profitability for companies valued in the millions of dollars, encompassing both publicly traded and privately held organizations across multiple sectors." },
       { p: "Tobin's background emphasizes the medical device industry specifically. In his capacity as an operating executive and private equity investor, he has directed acquisitions and committed substantial capital to numerous operating enterprises." },
@@ -108,6 +109,7 @@ export const articles: NewsArticle[] = [
     excerpt:
       "Annoviant joins the inaugural cohort of Georgia Tech's Center for MedTech Excellence, a 16-week mentoring and training program.",
     source: "Originally published December 2022",
+    image: "/news/qtq-thumb.jpeg",
     paragraphs: [
       { p: "The Center for MedTech Excellence, housed within Georgia Tech's Enterprise Innovation Institute, has announced its inaugural cohort of 17 early-stage startups. The 16-week mentoring and training program aims to advance medical devices and technologies within Atlanta." },
       { p: "Nakia Melecio, Senior Research Faculty at Georgia Tech, spearheaded the initiative after observing that existing support systems failed to adequately serve medical-device and life-sciences entrepreneurs. He noted that talented founders were departing the region:" },
@@ -126,6 +128,7 @@ export const articles: NewsArticle[] = [
     excerpt:
       "Bob Storey, Managing Partner of The LaunchPort and Vapotherm founder, joins as Business Advisor.",
     source: "Annoviant team announcement, December 5, 2022",
+    image: "/team/robert-storey.jpg",
     paragraphs: [
       { p: "Annoviant has announced the addition of Robert Storey to its team in the role of Business Advisor." },
       { p: "Storey serves as Managing Partner of The LaunchPort in Baltimore, Maryland, a venture center supporting early-stage medical-device companies navigating regulatory approval and commercial adoption. He holds the position of Vice Chairman on Maryland's Life Sciences Advisory Board and collaborates with the FDA, payors, device manufacturers, and healthcare providers on medical-device initiatives in the Capitol Region." },
@@ -145,6 +148,7 @@ export const articles: NewsArticle[] = [
     excerpt:
       "Director of the Cardiac ICU at Children's Healthcare of Atlanta and Emory pediatrics professor joins the scientific advisory.",
     source: "Annoviant team announcement, November 21, 2022",
+    image: "/team/kevin-maher.jpg",
     paragraphs: [
       { p: "Annoviant announced the addition of Kevin Maher, MD, as a scientific advisor to the organization." },
       { p: "Dr. Maher holds the position of Professor of Pediatrics at Emory University School of Medicine and directs the Cardiac Intensive Care Unit at Children's Healthcare of Atlanta. His medical training includes completion of medical school at the University of Maryland, followed by pediatric residency and chief residency at the same institution. He subsequently completed fellowship training in pediatric cardiology at the University of Michigan and received additional cardiac ICU training at DuPont Children's Hospital." },
@@ -163,6 +167,7 @@ export const articles: NewsArticle[] = [
     excerpt:
       "An overview of why pediatric heart valve replacement remains underserved, and how TxGuard® approaches the problem.",
     source: "Originally published October 2022",
+    image: "/news/platform-pediatric.jpg",
     paragraphs: [
       { p: "Annoviant is developing next-generation biomaterials to fabricate cardiovascular devices for children with congenital heart disease. Approximately 40,000 newborns in the U.S. annually and 1.3 million children globally are affected by this condition. Young patients requiring valve and conduit replacements face life-threatening complications from absent pulmonary valves, aortic stenosis, and other cardiac abnormalities." },
       { p: "The Centers for Disease Control and Prevention reports roughly 2.9 million Americans currently living with congenital heart disease. Traditional commercial devices present significant challenges, including calcification, thrombosis, and infection. Children need repeated surgeries as they grow, creating substantial healthcare costs estimated at $5.61 billion annually for the U.S. healthcare system." },
@@ -181,6 +186,7 @@ export const articles: NewsArticle[] = [
     excerpt:
       "An earlier NIH SBIR Phase II grant that helped take TxGuard® from the lab toward IND-enabling work, building the foundation for the 2024 award.",
     source: "October 4, 2021",
+    image: "/news/heart-matrix-blue.jpg",
     paragraphs: [
       { p: "Annoviant LLC, formerly TGen Tech LLC, announced it has received a $1.85 million grant for two years from the National Institutes of Health to advance development and commercialization of the TxGuard® pulmonary-valved conduit. This award continues support from a Phase I Small Business Technology Transfer grant the company received in 2019." },
       { p: "The conduit represents innovative technology for treating congenital heart disease in children. Designed primarily for pediatric patients, the device resists early deterioration and allows regeneration with host cells, enabling growth alongside the child. Congenital heart disease affects approximately 40,000 newborns annually in the U.S. Valve and conduit replacements address conditions including absent pulmonary valve, aortic stenosis, double outlet right ventricle, and other structural heart issues." },

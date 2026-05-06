@@ -189,20 +189,33 @@ const NewsPage = () => {
                   >
                     <Link
                       to={`/news/${p.slug}`}
-                      className="group flex items-center gap-4 md:gap-6 py-4 md:py-5 hover:bg-muted/40 transition-smooth -mx-4 px-4 md:-mx-6 md:px-6 rounded-md"
+                      className="group flex items-center gap-4 md:gap-5 py-4 md:py-5 hover:bg-muted/40 transition-smooth -mx-4 px-4 md:-mx-6 md:px-6 rounded-md"
                     >
-                      <span className="hidden sm:block text-sm font-semibold text-muted-foreground tabular-nums w-28 flex-shrink-0">
+                      {p.image ? (
+                        <img
+                          src={p.image}
+                          alt=""
+                          aria-hidden
+                          loading="lazy"
+                          width={64}
+                          height={64}
+                          className="h-12 w-12 md:h-14 md:w-14 rounded-lg object-cover flex-shrink-0 border border-border"
+                        />
+                      ) : (
+                        <div aria-hidden className="h-12 w-12 md:h-14 md:w-14 rounded-lg bg-primary/10 flex-shrink-0" />
+                      )}
+                      <span className="hidden sm:block text-sm font-semibold text-muted-foreground tabular-nums w-24 flex-shrink-0">
                         {p.date}
                       </span>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-secondary w-28 flex-shrink-0">
+                      <span className="hidden md:block text-[10px] font-bold uppercase tracking-widest text-secondary w-28 flex-shrink-0">
                         {p.category}
                       </span>
                       <span className="flex-1 min-w-0">
                         <span className="text-sm md:text-base font-semibold text-foreground group-hover:text-primary transition-smooth leading-snug block">
                           {p.title}
                         </span>
-                        <span className="sm:hidden text-[11px] uppercase tracking-wider text-muted-foreground mt-1 font-semibold block">
-                          {p.date}
+                        <span className="md:hidden text-[11px] uppercase tracking-wider text-muted-foreground mt-1 font-semibold block">
+                          {p.date} &middot; {p.category}
                         </span>
                       </span>
                       <ArrowUpRight className="h-4 w-4 text-muted-foreground group-hover:text-primary flex-shrink-0" aria-hidden />
