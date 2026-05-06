@@ -3,6 +3,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { Button } from "@/components/ui/button";
 import { CountUp } from "@/components/site/CountUp";
+import { Reveal } from "@/components/site/Reveal";
 import { Heart, Activity, ShieldCheck, ArrowRight, GitBranch, Stethoscope } from "lucide-react";
 
 const indications = [
@@ -129,8 +130,8 @@ const CardiovascularPage = () => {
       </section>
 
       <section className="py-20 md:py-28 bg-muted/40">
-        <div className="container mx-auto">
-          <div className="max-w-2xl mb-12">
+        <div className="container mx-auto space-y-6">
+          <div className="max-w-2xl mb-6">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
               Where we&rsquo;re headed
             </p>
@@ -141,44 +142,87 @@ const CardiovascularPage = () => {
             </p>
           </div>
 
-          {/* Bento grid: lead indication featured larger, rest balanced */}
-          <div className="grid grid-cols-1 lg:grid-cols-6 lg:auto-rows-[minmax(220px,_1fr)] gap-5">
-            {indications.map(({ icon: Icon, title, stage, body }, idx) => {
-              const isFeatured = idx === 0;
-              const isMid = idx === 1;
-              const span = isFeatured
-                ? "lg:col-span-3 lg:row-span-2 min-h-[380px] gradient-deep text-white border-transparent"
-                : isMid
-                ? "lg:col-span-3 min-h-[200px] bg-card"
-                : "lg:col-span-2 min-h-[200px] bg-card";
-
-              return (
-                <Reveal key={title} delay={idx * 60}>
-                  <article
-                    className={`relative rounded-2xl border border-border p-7 md:p-8 shadow-card hover:shadow-elegant transition-smooth overflow-hidden flex flex-col h-full ${span}`}
-                  >
-                    {isFeatured && (
-                      <div aria-hidden className="absolute -bottom-32 -right-32 h-[420px] w-[420px] rounded-full bg-secondary/30 blur-[140px]" />
-                    )}
-                    <div className="relative flex items-start justify-between mb-5">
-                      <div className={`h-11 w-11 rounded-lg grid place-items-center ${isFeatured ? "bg-white/10 backdrop-blur" : "gradient-primary shadow-glow"}`}>
-                        <Icon className={`h-5 w-5 ${isFeatured ? "text-white" : "text-primary-foreground"}`} aria-hidden />
+          {/* Tier 1, lead indication, full-width hero card */}
+          {indications[0] && (
+            <Reveal>
+              <article className="relative rounded-2xl gradient-deep text-white shadow-elegant border border-white/10 overflow-hidden p-7 md:p-10 lg:p-12">
+                <div aria-hidden className="absolute -bottom-32 -right-32 h-[420px] w-[420px] rounded-full bg-secondary/30 blur-[140px]" />
+                <div aria-hidden className="absolute -top-32 -left-32 h-[360px] w-[360px] rounded-full bg-primary/40 blur-[140px]" />
+                <div className="relative grid lg:grid-cols-12 gap-6 lg:gap-10 items-start">
+                  <div className="lg:col-span-8">
+                    <div className="flex items-center gap-3 mb-5">
+                      <div className="h-11 w-11 rounded-lg bg-white/10 backdrop-blur grid place-items-center">
+                        {(() => {
+                          const Icon = indications[0].icon;
+                          return <Icon className="h-5 w-5 text-white" aria-hidden />;
+                        })()}
                       </div>
-                      <span className={`text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full ${isFeatured ? "bg-white/10 text-secondary border border-white/20" : "bg-secondary/10 text-secondary"}`}>
+                      <span className="text-[11px] font-semibold uppercase tracking-widest text-secondary border border-white/20 bg-white/10 px-3 py-1.5 rounded-full">
+                        {indications[0].stage}
+                      </span>
+                    </div>
+                    <h3 className="text-white text-2xl md:text-3xl mb-4">{indications[0].title}</h3>
+                    <p className="text-white/85 medical-body text-base md:text-lg">
+                      {indications[0].body}
+                    </p>
+                  </div>
+                  <div className="lg:col-span-4 lg:border-l lg:border-white/15 lg:pl-10">
+                    <p className="text-[11px] uppercase tracking-widest text-secondary font-semibold mb-3">
+                      Why this one first
+                    </p>
+                    <p className="text-sm text-white/75">
+                      The same scaffold that anchors our pediatric program, scaled for adult
+                      anatomy. The biology is the most mature in our pipeline.
+                    </p>
+                  </div>
+                </div>
+              </article>
+            </Reveal>
+          )}
+
+          {/* Tier 2, two mid indications side by side */}
+          <div className="grid md:grid-cols-2 gap-6">
+            {indications.slice(1, 3).map(({ icon: Icon, title, stage, body }, i) => (
+              <Reveal key={title} delay={i * 80}>
+                <article className="h-full rounded-2xl border border-border bg-card p-7 md:p-8 shadow-card hover:shadow-elegant transition-smooth">
+                  <div className="flex items-start justify-between mb-5">
+                    <div className="h-11 w-11 rounded-lg gradient-primary grid place-items-center shadow-glow">
+                      <Icon className="h-5 w-5 text-primary-foreground" aria-hidden />
+                    </div>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-secondary bg-secondary/10 px-2.5 py-1 rounded-full">
+                      {stage}
+                    </span>
+                  </div>
+                  <h3 className="mb-3 text-xl">{title}</h3>
+                  <p className="text-sm text-muted-foreground">{body}</p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+          {/* Tier 3, remaining exploratory indications, compact */}
+          {indications.length > 3 && (
+            <div className={`grid gap-5 ${indications.length - 3 === 1 ? "" : "md:grid-cols-2"}`}>
+              {indications.slice(3).map(({ icon: Icon, title, stage, body }, i) => (
+                <Reveal key={title} delay={i * 60}>
+                  <article className="h-full rounded-2xl border border-border bg-muted/40 p-6 md:p-7 hover:bg-card hover:shadow-card transition-smooth">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="h-10 w-10 rounded-lg bg-primary/10 grid place-items-center">
+                        <Icon className="h-5 w-5 text-primary" aria-hidden />
+                      </div>
+                      <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
                         {stage}
                       </span>
                     </div>
-                    <h3 className={`relative mb-3 ${isFeatured ? "text-white text-2xl md:text-3xl" : "text-base"}`}>{title}</h3>
-                    <p className={`relative ${isFeatured ? "text-white/85 text-base md:text-lg medical-body" : "text-sm text-muted-foreground"}`}>
-                      {body}
-                    </p>
+                    <h3 className="mb-2 text-base">{title}</h3>
+                    <p className="text-sm text-muted-foreground">{body}</p>
                   </article>
                 </Reveal>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          )}
 
-          <p className="text-xs text-muted-foreground mt-10 max-w-3xl">
+          <p className="text-xs text-muted-foreground pt-4 max-w-3xl">
             Every indication on this page except the pediatric Pulmonary Valved Graft (FDA HUD
             designation, 2020) is still investigational. None of them are available for human
             use yet, and we won&rsquo;t pretend otherwise.

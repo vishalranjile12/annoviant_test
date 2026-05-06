@@ -25,23 +25,29 @@ export const Evidence = () => (
           </p>
         </div>
       </Reveal>
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+      {/* Stripe with internal separators only. The 1px grid gap on a colored container
+          paints clean dividers between cells and never around the outside. */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
         {items.map(({ icon: Icon, label, value, href }, i) => (
           <Reveal key={label} delay={i * 80}>
             <Link
               to={href}
-              className="group rounded-xl border border-border p-6 bg-card shadow-card hover:border-primary/40 hover:shadow-elegant transition-smooth flex flex-col h-full min-h-[44px]"
+              className="group block h-full bg-background hover:bg-muted/40 transition-smooth px-5 md:px-6 py-6 md:py-7"
             >
-              <Icon className="h-6 w-6 text-primary mb-4" />
-              <div className="text-xs uppercase tracking-wider text-muted-foreground mb-1">{label}</div>
-              <div className="text-lg font-semibold text-foreground">{value}</div>
-              <span className="mt-4 text-xs font-semibold text-primary inline-flex items-center gap-1 group-hover:text-secondary transition-smooth">
+              <Icon className="h-5 w-5 text-primary mb-3" aria-hidden />
+              <div className="text-[11px] uppercase tracking-wider text-muted-foreground mb-1.5 leading-snug">
+                {label}
+              </div>
+              <div className="text-base md:text-lg font-semibold text-foreground">{value}</div>
+              <span className="mt-4 text-[11px] font-semibold text-primary inline-flex items-center gap-1 group-hover:text-secondary transition-smooth">
                 Details <ArrowRight className="h-3 w-3 group-hover:translate-x-1 transition-smooth" />
               </span>
             </Link>
           </Reveal>
         ))}
       </div>
+
       <p className="text-xs text-muted-foreground mt-6">
         We share full publications and regulatory documents with qualified clinical and investor
         partners on request. Pre-clinical animal data won't tell you everything about human outcomes,
