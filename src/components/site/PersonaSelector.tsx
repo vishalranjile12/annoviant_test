@@ -16,9 +16,9 @@ const paths = [
   {
     icon: TrendingUp,
     eyebrow: "Investors",
-    title: "Looking at a multi-indication platform?",
-    body: "$5.7M in NIH grants, an FDA HUD designation already in hand, real IP, and a clear path to commercialization.",
-    cta: "Talk to us",
+    title: "Looking at a de-risked, multi-indication platform?",
+    body: "Most regen-med startups ship one product. We have an FDA milestone in hand, $5.7M in NIH validation, ISO 13485 manufacturing readiness, and a multi-indication scope in a market Edwards, Medtronic, and J&J actively operate in.",
+    cta: "Start the conversation",
     href: "/contact?role=investor",
     tone: "clinical",
   },

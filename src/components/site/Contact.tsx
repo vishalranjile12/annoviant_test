@@ -82,8 +82,13 @@ export const Contact = () => {
               <div className="h-12 w-12 rounded-full bg-success/20 grid place-items-center"><CheckCircle2 className="h-6 w-6 text-success" /></div>
               <h3 className="text-white text-xl">Thanks, we&rsquo;ve got it</h3>
               <p className="text-white/75 text-sm">
-                Someone on our clinical or partnerships team will read this and reply within two
-                business days, with the materials that actually fit your role.
+                {role === "investor"
+                  ? "We'll respond within two business days with diligence materials and access to the data room. Most calls start with a 30-minute walk-through of where the platform is, what de-risks it today, and what's coming next."
+                  : role === "clinician"
+                  ? "Someone on our clinical team will reply within two business days with pre-clinical data, the comparator analysis, and a path into the program."
+                  : role === "patient"
+                  ? "We'll add you to program updates and reach out personally when there's something real to share. We won't waste your inbox."
+                  : "Someone on our partnerships team will reply within two business days with the materials that actually fit your role."}
               </p>
               <Button onClick={() => setSubmitted(false)} variant="secondary" size="sm">Send another</Button>
             </div>

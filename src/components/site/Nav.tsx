@@ -29,7 +29,6 @@ const groups: NavGroup[] = [
       { href: "/clinical-evidence", label: "Evidence Hub", description: "Pre-clinical data & comparison" },
       { href: "/publications", label: "Publications & Patents", description: "Peer-reviewed papers, IP portfolio" },
       { href: "/faq", label: "Clinical FAQ", description: "Answers for surgeons and partners" },
-      { href: "/news", label: "News & Press", description: "Grants, milestones, coverage" },
     ],
   },
   {
@@ -37,9 +36,8 @@ const groups: NavGroup[] = [
     children: [
       { href: "/about", label: "About Annoviant", description: "Mission, values, ecosystem" },
       { href: "/founder-story", label: "Founders Story", description: "How Annoviant came to be" },
-      { href: "/founder-story#ajay", label: "Ajay", description: "Ajay Houde, CEO & co-founder" },
-      { href: "/founder-story#naren", label: "Naren", description: "Naren Vyavahare, CTO & co-founder" },
       { href: "/team", label: "Our Team", description: "Leadership, advisors, collaborators" },
+      { href: "/news", label: "News & Press", description: "Grants, milestones, coverage" },
       { href: "/contact", label: "Contact", description: "Request a briefing" },
     ],
   },
@@ -77,37 +75,47 @@ export const Nav = () => {
         <Logo light={transparent} />
 
         <nav className="hidden lg:flex items-center gap-1 ml-auto" aria-label="Primary">
-          {groups.map((g) => (
-            <div key={g.label} className="relative group">
-              <button
-                className={`flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-md transition-smooth ${
-                  transparent ? "text-white/85 hover:text-white" : "text-foreground/80 hover:text-primary"
-                }`}
-                aria-haspopup="true"
-              >
-                {g.label}
-                <ChevronDown className="h-3.5 w-3.5 opacity-70" />
-              </button>
-              {g.children && (
-                <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-smooth">
-                  <div className="w-72 rounded-xl border border-border bg-popover shadow-elegant p-2">
-                    {g.children.map((c) => (
-                      <Link
-                        key={c.href}
-                        to={c.href}
-                        className="block rounded-md px-3 py-2.5 hover:bg-muted transition-smooth"
-                      >
-                        <div className="text-sm font-semibold text-foreground">{c.label}</div>
-                        {c.description && (
-                          <div className="text-xs text-muted-foreground mt-0.5">{c.description}</div>
-                        )}
-                      </Link>
-                    ))}
+          {groups.map((g) => {
+            const linkBase = `flex items-center gap-1 text-sm font-medium px-3 py-2 rounded-md transition-smooth ${
+              transparent ? "text-white/85 hover:text-white" : "text-foreground/80 hover:text-primary"
+            }`;
+
+            // Top-level link, no dropdown
+            if (g.href && !g.children) {
+              return (
+                <Link key={g.label} to={g.href} className={linkBase}>
+                  {g.label}
+                </Link>
+              );
+            }
+
+            return (
+              <div key={g.label} className="relative group">
+                <button className={linkBase} aria-haspopup="true">
+                  {g.label}
+                  <ChevronDown className="h-3.5 w-3.5 opacity-70" />
+                </button>
+                {g.children && (
+                  <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-smooth">
+                    <div className="w-72 rounded-xl border border-border bg-popover shadow-elegant p-2">
+                      {g.children.map((c) => (
+                        <Link
+                          key={c.href}
+                          to={c.href}
+                          className="block rounded-md px-3 py-2.5 hover:bg-muted transition-smooth"
+                        >
+                          <div className="text-sm font-semibold text-foreground">{c.label}</div>
+                          {c.description && (
+                            <div className="text-xs text-muted-foreground mt-0.5">{c.description}</div>
+                          )}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              )}
-            </div>
-          ))}
+                )}
+              </div>
+            );
+          })}
         </nav>
 
         <div className="hidden lg:flex items-center gap-2 ml-8 xl:ml-12">
@@ -131,14 +139,23 @@ export const Nav = () => {
           <div className="container mx-auto py-4 flex flex-col gap-1">
             {groups.map((g) => (
               <div key={g.label} className="border-b border-border/60 last:border-0 py-2">
-                <button
-                  className="w-full flex items-center justify-between px-2 py-2 text-left font-semibold text-foreground"
-                  onClick={() => setMobileExpanded(mobileExpanded === g.label ? null : g.label)}
-                  aria-expanded={mobileExpanded === g.label}
-                >
-                  {g.label}
-                  <ChevronDown className={`h-4 w-4 transition-smooth ${mobileExpanded === g.label ? "rotate-180" : ""}`} />
-                </button>
+                {g.href && !g.children ? (
+                  <Link
+                    to={g.href}
+                    className="block w-full px-2 py-2 text-left font-semibold text-foreground"
+                  >
+                    {g.label}
+                  </Link>
+                ) : (
+                  <button
+                    className="w-full flex items-center justify-between px-2 py-2 text-left font-semibold text-foreground"
+                    onClick={() => setMobileExpanded(mobileExpanded === g.label ? null : g.label)}
+                    aria-expanded={mobileExpanded === g.label}
+                  >
+                    {g.label}
+                    <ChevronDown className={`h-4 w-4 transition-smooth ${mobileExpanded === g.label ? "rotate-180" : ""}`} />
+                  </button>
+                )}
                 {mobileExpanded === g.label && g.children && (
                   <div className="pl-3 pb-2 flex flex-col gap-1">
                     {g.children.map((c) => (

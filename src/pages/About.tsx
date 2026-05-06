@@ -57,7 +57,9 @@ const AboutPage = () => {
             <h3 className="mb-3">What we&rsquo;ve earned</h3>
             <p className="text-muted-foreground text-sm">
               $5.7M in NIH funding (including a $2.99M grant for the pediatric program), an FDA
-              HUD designation, four issued U.S. patents, and the trust of partners we admire.
+              HUD designation already in hand, four issued U.S. patents, ISO 13485 manufacturing
+              readiness, and the kind of strategic interest that comes with operating in a market
+              Edwards, Medtronic, and J&amp;J actively watch.
             </p>
           </div>
         </div>

@@ -72,16 +72,18 @@ const CardiovascularPage = () => {
             </p>
             <h2 className="mb-5">$3.6B today. $8B+ by 2035</h2>
             <p className="text-muted-foreground medical-body mb-5">
-              The U.S. heart-valve market is on a 7–9% growth trajectory through 2035, and most of
-              that growth comes from a hard problem: bioprosthetics fail, and patients come back
-              for surgery. A platform that addresses that, even modestly, has room to grow with
-              the demand.
+              The U.S. heart-valve market is on a 7&ndash;9% growth trajectory through 2035, and
+              most of that growth keeps coming from one stubborn problem: bioprosthetics fail,
+              and patients come back for surgery. The companies that own this market today,
+              Edwards, Medtronic, J&amp;J, Boston Scientific, are all watching for the
+              regenerative answer. We&rsquo;re building it.
             </p>
             <ul className="space-y-3 mb-8">
               {[
-                "Surgeons use the same technique they use today, no relearning",
-                "Off-the-shelf logistics, with living-tissue behavior once implanted",
-                "Designed to lower lifetime cost of care by reducing re-operations",
+                "Same surgical technique, no relearning, no new instruments",
+                "Off-the-shelf logistics, living-tissue behavior once implanted",
+                "Designed to compound value over time by reducing re-operations across decades of patient life",
+                "Multi-indication scope across pediatric, adult, and vascular, one platform, many shots on goal",
               ].map((f) => (
                 <li key={f} className="flex gap-3"><ShieldCheck className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" /><span className="text-sm">{f}</span></li>
               ))}
@@ -91,7 +93,7 @@ const CardiovascularPage = () => {
                 <Link to="/clinical-evidence">Compare TxGuard® to today's options <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/contact?role=investor">Talk to us</Link>
+                <Link to="/contact?role=investor">Open the conversation</Link>
               </Button>
             </div>
           </div>
