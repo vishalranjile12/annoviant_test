@@ -32,7 +32,8 @@ export const PageShell = ({
           width={1920}
           height={600}
           className="absolute inset-0 w-full h-full object-cover opacity-50 mix-blend-screen"
-          fetchPriority="high"
+          // @ts-expect-error, React 18 emits a warning for camelCase, lowercase is the canonical HTML attr
+          fetchpriority="high"
         />
       )}
       <div className="absolute inset-0 bg-gradient-to-r from-surface-deep/95 via-surface-deep/70 to-transparent" />

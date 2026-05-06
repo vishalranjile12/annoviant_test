@@ -3,6 +3,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { Button } from "@/components/ui/button";
 import { CountUp } from "@/components/site/CountUp";
+import { Reveal } from "@/components/site/Reveal";
 import { Heart, Activity, ShieldCheck, ArrowRight, GitBranch, Stethoscope } from "lucide-react";
 
 const indications = [
