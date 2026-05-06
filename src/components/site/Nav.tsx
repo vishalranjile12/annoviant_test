@@ -32,17 +32,12 @@ const groups: NavGroup[] = [
     ],
   },
   {
-    label: "News",
-    href: "/news",
-  },
-  {
     label: "Company",
     children: [
       { href: "/about", label: "About Annoviant", description: "Mission, values, ecosystem" },
       { href: "/founder-story", label: "Founders Story", description: "How Annoviant came to be" },
-      { href: "/founder-story#ajay", label: "Ajay", description: "Ajay Houde, CEO & co-founder" },
-      { href: "/founder-story#naren", label: "Naren", description: "Naren Vyavahare, CTO & co-founder" },
       { href: "/team", label: "Our Team", description: "Leadership, advisors, collaborators" },
+      { href: "/news", label: "News & Press", description: "Grants, milestones, coverage" },
       { href: "/contact", label: "Contact", description: "Request a briefing" },
     ],
   },

@@ -11,6 +11,8 @@ export type NewsArticle = {
   source?: string;
   /** Optional hero image (path under /public). */
   image?: string;
+  /** Optional CSS `object-position` value for the hero image. Defaults to `center`. Use `top` (or e.g. `50% 25%`) for headshots so the face is not cropped. */
+  imagePosition?: string;
   /** Body, an array of plain-text paragraphs. Pull-quotes use the `quote` field instead. */
   paragraphs: ({ p: string } | { quote: string; cite?: string })[];
 };
@@ -93,6 +95,7 @@ export const articles: NewsArticle[] = [
       "Two decades of medical-device leadership and private-equity experience joining the Annoviant business advisory.",
     source: "Annoviant team announcement, February 21, 2023",
     image: "/team/gregg-tobin.jpg",
+    imagePosition: "center 20%",
     paragraphs: [
       { p: "Gregg Tobin has joined Annoviant in the role of Business Advisor. Currently serving as President and Chief Executive Officer of a medical device manufacturing company, Tobin brings over two decades of progressive professional experience. His career has focused on expanding revenue and profitability for companies valued in the millions of dollars, encompassing both publicly traded and privately held organizations across multiple sectors." },
       { p: "Tobin's background emphasizes the medical device industry specifically. In his capacity as an operating executive and private equity investor, he has directed acquisitions and committed substantial capital to numerous operating enterprises." },
@@ -129,6 +132,7 @@ export const articles: NewsArticle[] = [
       "Bob Storey, Managing Partner of The LaunchPort and Vapotherm founder, joins as Business Advisor.",
     source: "Annoviant team announcement, December 5, 2022",
     image: "/team/robert-storey.jpg",
+    imagePosition: "center 20%",
     paragraphs: [
       { p: "Annoviant has announced the addition of Robert Storey to its team in the role of Business Advisor." },
       { p: "Storey serves as Managing Partner of The LaunchPort in Baltimore, Maryland, a venture center supporting early-stage medical-device companies navigating regulatory approval and commercial adoption. He holds the position of Vice Chairman on Maryland's Life Sciences Advisory Board and collaborates with the FDA, payors, device manufacturers, and healthcare providers on medical-device initiatives in the Capitol Region." },
@@ -149,6 +153,7 @@ export const articles: NewsArticle[] = [
       "Director of the Cardiac ICU at Children's Healthcare of Atlanta and Emory pediatrics professor joins the scientific advisory.",
     source: "Annoviant team announcement, November 21, 2022",
     image: "/team/kevin-maher.jpg",
+    imagePosition: "center 20%",
     paragraphs: [
       { p: "Annoviant announced the addition of Kevin Maher, MD, as a scientific advisor to the organization." },
       { p: "Dr. Maher holds the position of Professor of Pediatrics at Emory University School of Medicine and directs the Cardiac Intensive Care Unit at Children's Healthcare of Atlanta. His medical training includes completion of medical school at the University of Maryland, followed by pediatric residency and chief residency at the same institution. He subsequently completed fellowship training in pediatric cardiology at the University of Michigan and received additional cardiac ICU training at DuPont Children's Hospital." },

@@ -67,6 +67,7 @@ const NewsPage = () => {
                     aria-hidden
                     loading="lazy"
                     className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    style={{ objectPosition: featured.imagePosition ?? "center" }}
                   />
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-surface-deep via-surface-deep/70 to-surface-deep/10" />
@@ -105,6 +106,7 @@ const NewsPage = () => {
                         aria-hidden
                         loading="lazy"
                         className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        style={{ objectPosition: p.imagePosition ?? "center" }}
                       />
                     )}
                     <div className="absolute inset-0 bg-gradient-to-t from-surface-deep via-surface-deep/65 to-transparent" />
@@ -200,6 +202,7 @@ const NewsPage = () => {
                           width={64}
                           height={64}
                           className="h-12 w-12 md:h-14 md:w-14 rounded-lg object-cover flex-shrink-0 border border-border"
+                          style={{ objectPosition: p.imagePosition ?? "center" }}
                         />
                       ) : (
                         <div aria-hidden className="h-12 w-12 md:h-14 md:w-14 rounded-lg bg-primary/10 flex-shrink-0" />
