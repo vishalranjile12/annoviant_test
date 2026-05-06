@@ -63,8 +63,8 @@ const TeamPage = () => {
   return (
     <PageShell
       eyebrow="Our Team"
-      title={<>Experienced leaders, advisors, <span className="text-gradient">and a robust ecosystem</span></>}
-      intro="Annoviant is led by a team with deep experience across regenerative medicine, cardiovascular surgery, regulatory science, and commercial scale-up, supported by a network of clinical, manufacturing, and academic collaborators."
+      title={<>The people, <span className="text-gradient">and the people behind the people</span></>}
+      intro="Annoviant is a small team carrying a lot of work, and a much larger circle of advisors, clinicians, scientists, and partners who help us carry it. Below is who we are, and who keeps us honest."
       heroImage="/hero/heart-bg.jpg"
     >
       <Seo

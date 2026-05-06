@@ -14,14 +14,14 @@ export const Explainer = () => {
         <Reveal>
           <div className="max-w-2xl mb-10">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              Watch the explainer
+              Two minutes
             </p>
             <h2 id="explainer-heading" className="mb-4">
-              See TxGuard® in <span className="text-gradient">two minutes</span>
+              The whole idea, in <span className="text-gradient">two minutes</span>
             </h2>
             <p className="text-muted-foreground medical-body">
-              A short overview of how the TxGuard® regenerative tissue platform works and the
-              indications it is being developed for.
+              If you'd rather watch than read, this is the short version. The biology, the
+              mechanism, and where we're aiming to use it, no jargon required.
             </p>
           </div>
         </Reveal>

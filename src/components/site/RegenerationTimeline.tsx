@@ -6,23 +6,23 @@ const stages = [
   {
     step: "01",
     icon: Layers,
-    title: "Implantation",
-    technical: "An acellular extracellular-matrix (ECM) scaffold derived from xenogeneic tissue is processed through Annoviant's proprietary stabilization platform and surgically implanted using standard technique.",
-    layman: "A specially engineered tissue scaffold is implanted using the same surgical technique your team already knows.",
+    title: "We implant the scaffold",
+    technical: "The TxGuard® scaffold, an acellular extracellular matrix processed through our proprietary stabilization platform, is implanted using the same surgical technique a surgeon already uses for a conventional bioprosthetic.",
+    layman: "Surgeons place the scaffold the same way they place a regular heart valve. No new instruments. No new technique to learn.",
   },
   {
     step: "02",
     icon: Sparkles,
-    title: "Host-Cell Repopulation",
-    technical: "The host immune system recognizes the preserved ECM cues. Endogenous cells migrate, repopulate, and remodel the scaffold, engaging endothelialization and tissue ingrowth pathways.",
-    layman: "The body recognizes the scaffold as 'self,' moves its own cells into it, and begins remodeling it from within.",
+    title: "The body moves in",
+    technical: "The host's immune system recognizes the preserved ECM cues. Endogenous cells migrate into the scaffold, repopulate it, and engage endothelialization and tissue-ingrowth pathways.",
+    layman: "The body sees the scaffold as familiar territory and starts moving its own cells into it, the way it would heal any tissue.",
   },
   {
     step: "03",
     icon: HeartPulse,
-    title: "Living Tissue",
-    technical: "Pre-clinical data demonstrate progressive remodeling toward a host-derived, living tissue construct that, in animal models, has shown resistance to calcification and the capacity to adapt with somatic growth.",
-    layman: "Over time, the scaffold has been observed to become a living, integrated tissue, and in young patients, to grow with them.",
+    title: "It becomes living tissue",
+    technical: "In pre-clinical animal models, the scaffold has progressively remodeled into a host-derived living tissue, with no calcification observed and the apparent capacity to adapt with somatic growth.",
+    layman: "Over time, the scaffold becomes the patient's own tissue. In young animals, it has grown with them. We're working to confirm the same in humans.",
   },
 ];
 
@@ -34,14 +34,16 @@ export const RegenerationTimeline = () => {
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <div className="max-w-2xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              Mechanism of Action
+              How it actually works
             </p>
             <h2 id="mechanism-heading" className="mb-4">
-              From engineered scaffold to <span className="text-gradient">living tissue</span>
+              From scaffold to <span className="text-gradient">living tissue</span>, in three steps
             </h2>
             <p className="text-muted-foreground medical-body">
-              The TxGuard® platform follows a simple three-step regenerative journey, a process
-              characterized in pre-clinical models and supported by 14 peer-reviewed publications.
+              The biology behind TxGuard® is straightforward. Most of what we've spent years on is
+              making sure each step works the way it's supposed to, in real animals, under the kind
+              of stress a heart actually sees. Here's the story in plain language, with a toggle
+              if you want the clinical version.
             </p>
           </div>
           <div
@@ -93,9 +95,10 @@ export const RegenerationTimeline = () => {
         </ol>
 
         <p className="text-xs text-muted-foreground mt-8 max-w-3xl">
-          Pre-clinical animal data (lamb-to-sheep models, ISO 5840 / 10993 guidelines). Human
-          clinical results may vary. The TxGuard® Pulmonary Valved Graft holds an FDA Humanitarian
-          Use Device designation (2020); other indications remain investigational.
+          What we describe here is what we've seen in pre-clinical animal studies (lamb-to-sheep
+          models, run under ISO 5840 and 10993 guidelines). Human results may differ. The TxGuard®
+          Pulmonary Valved Graft has FDA Humanitarian Use Device designation (2020); the rest of
+          the platform is still investigational.
         </p>
       </div>
     </section>

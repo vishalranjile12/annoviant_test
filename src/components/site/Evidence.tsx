@@ -3,10 +3,10 @@ import { FileText, Award, Microscope, Shield, ArrowRight } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const items = [
-  { icon: Award, label: "NIH grant funding", value: "$5.7M", href: "/publications" },
-  { icon: Microscope, label: "Pre-clinical studies", value: "ISO 5840 / 10993", href: "/clinical-evidence" },
-  { icon: FileText, label: "Peer-reviewed publications", value: "14 papers", href: "/publications" },
-  { icon: Shield, label: "Regulatory milestone", value: "FDA HUD (2020)", href: "/clinical-evidence" },
+  { icon: Award, label: "Raised in NIH grants to date", value: "$5.7M", href: "/publications" },
+  { icon: Microscope, label: "Pre-clinical studies, run to ISO standards", value: "ISO 5840 / 10993", href: "/clinical-evidence" },
+  { icon: FileText, label: "Peer-reviewed papers from the program", value: "14 papers", href: "/publications" },
+  { icon: Shield, label: "Pediatric pulmonary valved graft, FDA milestone", value: "HUD designation, 2020", href: "/clinical-evidence" },
 ];
 
 export const Evidence = () => (
@@ -15,12 +15,13 @@ export const Evidence = () => (
       <Reveal>
         <div className="max-w-2xl mb-14">
           <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-            Clinical &amp; scientific foundation
+            The receipts
           </p>
-          <h2 id="evidence-heading" className="mb-5">Built on rigorous science</h2>
+          <h2 id="evidence-heading" className="mb-5">We've done the science. Here's the paperwork</h2>
           <p className="text-muted-foreground medical-body">
-            Annoviant's research program is anchored in NIH-funded research, peer-reviewed
-            publications, ISO-guided pre-clinical studies, and a growing IP portfolio.
+            Regenerative medicine attracts a lot of bold claims. We'd rather show our work,
+            grants we've earned, papers we've published, animal studies we've run to standard,
+            and an FDA milestone we hold today.
           </p>
         </div>
       </Reveal>
@@ -42,8 +43,9 @@ export const Evidence = () => (
         ))}
       </div>
       <p className="text-xs text-muted-foreground mt-6">
-        Detailed publications and regulatory documentation are available on request to qualified
-        clinical and investor partners. Pre-clinical animal data may not predict outcomes in humans.
+        We share full publications and regulatory documents with qualified clinical and investor
+        partners on request. Pre-clinical animal data won't tell you everything about human outcomes,
+        and we don't pretend it will.
       </p>
     </div>
   </section>

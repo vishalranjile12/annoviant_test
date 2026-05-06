@@ -12,13 +12,13 @@ export const Pipeline = () => (
     <div className="container mx-auto">
       <div className="max-w-2xl mb-12">
         <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-          Pipeline
+          What we're working on
         </p>
-        <h2 id="pipeline-heading" className="mb-5">A platform, not a single product</h2>
+        <h2 id="pipeline-heading" className="mb-5">One platform. A handful of programs</h2>
         <p className="text-muted-foreground medical-body">
-          The TxGuard® regenerative tissue platform underpins multiple programs across cardiovascular
-          and soft-tissue indications, led by the Pulmonary Valved Graft for pediatric congenital
-          heart disease.
+          We started with the Pulmonary Valved Graft because pediatric patients have the worst
+          options today. The same platform can go further, though, and we're opening adjacent
+          programs as the data earns it.
         </p>
       </div>
 
@@ -54,8 +54,8 @@ export const Pipeline = () => (
         ))}
       </div>
       <p className="text-xs text-muted-foreground mt-5 max-w-3xl">
-        Pipeline status as of 2026. All programs except the Pulmonary Valved Graft (FDA HUD
-        designation, 2020) are investigational and not approved for human use.
+        Pipeline as of 2026. The Pulmonary Valved Graft holds an FDA Humanitarian Use Device
+        designation (2020). Everything else is investigational and not yet approved for use in people.
       </p>
     </div>
   </section>

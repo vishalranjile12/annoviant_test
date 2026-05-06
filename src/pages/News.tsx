@@ -31,8 +31,8 @@ const posts = [
 const NewsPage = () => (
   <PageShell
     eyebrow="News &amp; Press"
-    title={<>The latest from <span className="text-gradient">Annoviant</span></>}
-    intro="Press coverage, grants, and milestones as we advance the TxGuard® regenerative tissue platform."
+    title={<>What we&rsquo;ve been up to, <span className="text-gradient">on the record</span></>}
+    intro="Press coverage, grants, and the milestones along the way. If you want to follow what&rsquo;s actually happening at Annoviant, this is where to start."
     heroImage="/hero/heart-bg.jpg"
   >
     <Seo

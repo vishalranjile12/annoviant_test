@@ -8,7 +8,7 @@ export const Hero = () => (
   <section className="relative min-h-[100svh] flex items-center overflow-hidden gradient-hero" aria-label="Introduction to TxGuard">
     <img
       src={hero}
-      alt="Visualization of the TxGuard regenerative tissue platform, a glowing heart representing host-mediated remodeling"
+      alt="A glowing heart, the visual metaphor for TxGuard, a tissue platform that the body remakes into living tissue"
       width={1920}
       height={1080}
       fetchPriority="high"
@@ -24,39 +24,39 @@ export const Hero = () => (
       <div className="max-w-3xl animate-fade-up">
         <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-3 py-1.5 text-xs font-medium text-white/85 mb-6">
           <ShieldCheck className="h-3.5 w-3.5 text-secondary" />
-          $5.7M NIH-funded · FDA HUD designation · 14 peer-reviewed publications
+          $5.7M in NIH funding · FDA HUD designation · 14 peer-reviewed papers
         </div>
         <h1 className="text-white mb-6">
-          Redefining heart surgery with<br />
-          <span className="text-gradient">durable, living implants</span>
+          A heart implant that <span className="text-gradient">grows with the patient</span>
         </h1>
         <p className="text-lg md:text-xl text-white/80 medical-body mb-10">
-          TxGuard® is a patented regenerative tissue platform designed to integrate, adapt, and
-          endure, engineered to resist calcification, support host-mediated remodeling, and grow
-          with pediatric patients.
+          For decades, heart surgery has forced the same trade-off: an implant that lasts, or
+          an implant that fits. TxGuard® is our attempt to give surgeons both. It's a
+          regenerative tissue platform that the body remakes into its own living tissue,
+          engineered to resist calcification and to keep up with a child as they grow.
         </p>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="lg" className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[44px]">
             <Link to="/clinical-evidence">
-              View Clinical Evidence <ArrowRight className="ml-1 h-4 w-4" />
+              See the evidence <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white bg-transparent min-h-[44px]">
-            <Link to="/contact">Partner with Us</Link>
+            <Link to="/contact">Talk to our team</Link>
           </Button>
           <Button asChild size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white min-h-[44px]">
             <a href="#explainer">
-              <PlayCircle className="mr-1.5 h-4 w-4" /> Watch the explainer
+              <PlayCircle className="mr-1.5 h-4 w-4" /> Watch the 2-min overview
             </a>
           </Button>
         </div>
 
         <dl className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
           {[
-            ["$5.7M", "NIH grant funding"],
-            ["4", "U.S. patents issued"],
-            ["14", "Peer-reviewed papers"],
-            ["7+", "Years of preclinical data"],
+            ["$5.7M", "raised in NIH grants"],
+            ["4", "U.S. patents on the platform"],
+            ["14", "peer-reviewed papers"],
+            ["7+", "years of pre-clinical data"],
           ].map(([n, l]) => (
             <div key={l}>
               <dt className="sr-only">{l}</dt>
@@ -68,8 +68,9 @@ export const Hero = () => (
           ))}
         </dl>
         <p className="text-[11px] text-white/50 mt-4 max-w-2xl">
-          Patent and publication counts as of 2026. NIH funding includes grants awarded to
-          Annoviant and its founding research program. Pre-clinical animal data may not predict outcomes in humans.
+          Counts current as of 2026. Funding figures include grants to Annoviant and the founding
+          research program. The work is investigational; pre-clinical animal data may not predict
+          outcomes in humans.
         </p>
       </div>
     </div>

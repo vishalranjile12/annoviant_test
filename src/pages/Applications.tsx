@@ -12,19 +12,19 @@ type App = {
 };
 
 const apps: App[] = [
-  { icon: Baby, name: "Pediatric Pulmonary Valve", status: "Lead indication · FDA HUD", body: "Pulmonary-valved graft designed to support host-mediated remodeling and somatic growth in pediatric congenital heart disease.", href: "/solutions/pediatric" },
-  { icon: Heart, name: "Adult Cardiovascular", status: "Pre-clinical · advancing", body: "Aortic, mitral, tricuspid, and pulmonary valve programs targeting the dominant failure modes of today's bioprosthetics.", href: "/solutions/cardiovascular" },
-  { icon: Activity, name: "Vascular Grafts", status: "Expanded potential", body: "Regenerative vascular conduits for bypass and reconstruction with the potential to remodel into living vessel." },
-  { icon: Droplet, name: "Urology", status: "Exploratory", body: "Tissue scaffolds for urological reconstruction where regenerative integration is critical for long-term function." },
-  { icon: Stethoscope, name: "Gastrointestinal", status: "Exploratory", body: "Soft-tissue applications across the GI tract, supporting repair, reconstruction, and regeneration." },
-  { icon: Bandage, name: "Wound &amp; Soft Tissue", status: "Exploratory", body: "Regenerative tissue solutions for complex wound, hernia, and soft-tissue repair." },
+  { icon: Baby, name: "Pediatric Pulmonary Valve", status: "Lead indication · FDA HUD", body: "The pulmonary valved graft we built first, designed to grow with children whose hearts won't stop changing on us.", href: "/solutions/pediatric" },
+  { icon: Heart, name: "Adult Cardiovascular", status: "Pre-clinical · advancing", body: "Aortic, mitral, tricuspid, and adult pulmonary valves, the indications where bioprosthetic failures hurt the most.", href: "/solutions/cardiovascular" },
+  { icon: Activity, name: "Vascular Grafts", status: "Expanded potential", body: "A regenerative conduit for bypass and reconstruction, with the potential to remodel into living vessel rather than sit inert." },
+  { icon: Droplet, name: "Urology", status: "Exploratory", body: "Tissue scaffolds for urological reconstruction, where the body needs to heal in, not around, the implant." },
+  { icon: Stethoscope, name: "Gastrointestinal", status: "Exploratory", body: "Soft-tissue applications across the GI tract, places where regenerating the tissue beats replacing it." },
+  { icon: Bandage, name: "Wound &amp; Soft Tissue", status: "Exploratory", body: "Regenerative scaffolds for the complex wound, hernia, and soft-tissue cases that don't fit a standard solution." },
 ];
 
 const ApplicationsPage = () => (
   <PageShell
     eyebrow="Applications"
-    title={<>One platform · <span className="text-gradient">many indications</span></>}
-    intro="The TxGuard® regenerative tissue platform is being developed across a broad range of cardiovascular and soft-tissue indications, wherever conventional materials have fallen short of patient needs."
+    title={<>One platform, <span className="text-gradient">a lot of places it can help</span></>}
+    intro="TxGuard® started as a pediatric heart valve, but it&rsquo;s a platform, not a single product. Anywhere conventional materials fall short of the patient, we&rsquo;re asking whether regenerative tissue can do better."
     heroImage="/hero/heart-stock.jpg"
   >
     <Seo
@@ -63,8 +63,9 @@ const ApplicationsPage = () => (
         })}
       </div>
       <p className="text-xs text-muted-foreground mt-8 max-w-3xl">
-        All applications other than the TxGuard® Pulmonary Valved Graft (FDA HUD designation,
-        2020) are investigational and have not received regulatory approval for human use.
+        Everything except the pediatric Pulmonary Valved Graft (FDA HUD designation, 2020) is
+        investigational. None of them are approved for use in people, and we won&rsquo;t pretend
+        otherwise.
       </p>
     </section>
   </PageShell>

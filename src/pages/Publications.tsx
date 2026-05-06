@@ -42,8 +42,8 @@ const PublicationsPage = () => {
   return (
     <PageShell
       eyebrow="Publications &amp; Patents"
-      title={<>The <span className="text-gradient">scientific record</span></>}
-      intro="Peer-reviewed publications, granted U.S. patents, PCT applications, and NIH grants supporting the TxGuard® regenerative tissue platform."
+      title={<>The <span className="text-gradient">paper trail</span></>}
+      intro="Peer-reviewed papers, U.S. patents, PCT applications, and NIH grants behind the TxGuard® platform, all in one place. Filter, search, and dig as deep as you want."
       heroImage="/hero/microscope.jpg"
     >
       <Seo
@@ -134,8 +134,8 @@ const PublicationsPage = () => {
           </ul>
 
           <p className="text-xs text-muted-foreground mt-8 max-w-3xl">
-            Sample listing of publications shown for illustration. Full bibliography available
-            to qualified clinical and investor partners on request.
+            What&rsquo;s shown here is a sample. The complete bibliography is available to qualified
+            clinical and investor partners, just ask.
           </p>
         </div>
       </section>

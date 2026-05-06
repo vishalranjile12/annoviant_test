@@ -42,14 +42,14 @@ const NotFound = () => {
         <div aria-hidden className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-secondary/30 blur-[120px]" />
         <div className="container mx-auto relative max-w-3xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-4 animate-fade-up">
-            Error 404
+            404
           </p>
           <h1 className="text-white mb-6 animate-fade-up" style={{ animationDelay: "80ms" }}>
-            We could not find that page
+            We can&rsquo;t find that one
           </h1>
           <p className="text-lg text-white/80 medical-body mb-10 animate-fade-up" style={{ animationDelay: "160ms" }}>
-            The page may have moved or no longer exists. Try one of the suggestions below or
-            return to the homepage.
+            The page may have moved, or it might never have lived here. Try one of these instead,
+            or head home.
           </p>
           <div className="flex flex-wrap gap-3 mb-12 animate-fade-up" style={{ animationDelay: "240ms" }}>
             <Button asChild size="lg" className="gradient-primary border-0 min-h-[44px]">

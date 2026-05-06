@@ -20,15 +20,15 @@ export const Partners = () => (
       <Reveal>
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-            Backed by a robust ecosystem
+            We don't do this alone
           </p>
           <h2 id="partners-heading" className="mb-4">
-            Trusted by leading healthcare organizations &amp; collaborators
+            The hospitals, universities, and consortia who&rsquo;ve joined us
           </h2>
           <p className="text-muted-foreground medical-body mx-auto">
-            Annoviant&rsquo;s research, pre-clinical, and translational work is supported by leading
-            pediatric hospitals, top-tier academic medical centers, FDA-funded device consortia,
-            and the National Institutes of Health.
+            Pediatric hospitals you&rsquo;ve heard of, academic medical centers running our pre-clinical
+            studies, and FDA-funded device consortia helping us navigate regulation. Listing them
+            below isn&rsquo;t just polite, it&rsquo;s the truth about how this work gets done.
           </p>
         </div>
       </Reveal>
@@ -62,9 +62,9 @@ export const Partners = () => (
       </ul>
 
       <p className="text-xs text-muted-foreground mt-10 text-center max-w-3xl mx-auto">
-        Logos and named institutions reflect collaborators across Annoviant&rsquo;s research,
-        pre-clinical validation, and grant-funded programs. Affiliations do not imply endorsement
-        of investigational TxGuard® products.
+        Each of these institutions has worked with us in some way: research, pre-clinical studies,
+        or grant-funded programs. Their logos here are gratitude, not endorsement, of any
+        investigational TxGuard® product.
       </p>
     </div>
   </section>
