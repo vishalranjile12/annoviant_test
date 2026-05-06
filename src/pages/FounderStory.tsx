@@ -4,7 +4,7 @@ import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
-import { Quote, ArrowRight, Sparkles, Mail, Linkedin } from "lucide-react";
+import { Quote, ArrowRight, Sparkles, Mail, Linkedin, PlayCircle } from "lucide-react";
 
 const milestones = [
   {
