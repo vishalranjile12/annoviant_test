@@ -35,7 +35,7 @@ export const Partners = () => (
 
       <ul
         aria-label="Partner organizations and collaborators"
-        className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 items-center gap-x-8 gap-y-10"
+        className="grid grid-cols-2 sm:grid-cols-3 max-w-5xl mx-auto items-center gap-x-8 sm:gap-x-12 gap-y-12 sm:gap-y-16"
       >
         {partners.map((p, i) => {
           const Tag = p.href ? "a" : "div";
@@ -45,15 +45,15 @@ export const Partners = () => (
               <Tag
                 {...tagProps}
                 title={p.name}
-                className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-smooth focus-visible:opacity-100 focus-visible:grayscale-0 inline-block"
+                className="hover:scale-105 transition-smooth focus-visible:scale-105 inline-block"
               >
                 <img
                   src={p.logo}
                   alt={p.name}
                   loading="lazy"
-                  width={200}
-                  height={70}
-                  className="h-14 md:h-16 w-auto object-contain"
+                  width={300}
+                  height={105}
+                  className="h-20 md:h-24 lg:h-28 w-auto object-contain"
                 />
               </Tag>
             </Reveal>
