@@ -1,4 +1,5 @@
 import { Reveal } from "./Reveal";
+import { Marquee } from "./Marquee";
 
 type Partner = { name: string; logo: string; href?: string };
 
@@ -20,7 +21,7 @@ export const Partners = () => (
       <Reveal>
         <div className="text-center mb-12 max-w-2xl mx-auto">
           <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-            We don't do this alone
+            We don&rsquo;t do this alone
           </p>
           <h2 id="partners-heading" className="mb-4">
             The hospitals, universities, and consortia who&rsquo;ve joined us
@@ -32,35 +33,34 @@ export const Partners = () => (
           </p>
         </div>
       </Reveal>
+    </div>
 
-      <ul
-        aria-label="Partner organizations and collaborators"
-        className="grid grid-cols-2 sm:grid-cols-3 max-w-5xl mx-auto items-center gap-x-8 sm:gap-x-12 gap-y-12 sm:gap-y-16"
-      >
-        {partners.map((p, i) => {
-          const Tag = p.href ? "a" : "div";
-          const tagProps = p.href ? { href: p.href, target: "_blank", rel: "noopener noreferrer" } : {};
-          return (
-            <Reveal key={p.name} as="li" delay={i * 50} className="flex items-center justify-center">
-              <Tag
-                {...tagProps}
-                title={p.name}
-                className="hover:scale-105 transition-smooth focus-visible:scale-105 inline-block"
-              >
-                <img
-                  src={p.logo}
-                  alt={p.name}
-                  loading="lazy"
-                  width={300}
-                  height={105}
-                  className="h-20 md:h-24 lg:h-28 w-auto object-contain"
-                />
-              </Tag>
-            </Reveal>
-          );
-        })}
-      </ul>
+    {/* Full-bleed marquee, hover to pause */}
+    <Marquee durationSec={48} ariaLabel="Annoviant partner organizations" className="mt-2">
+      {partners.map((p) => {
+        const Tag = p.href ? "a" : "div";
+        const tagProps = p.href ? { href: p.href, target: "_blank", rel: "noopener noreferrer" } : {};
+        return (
+          <Tag
+            key={p.name}
+            {...tagProps}
+            title={p.name}
+            className="block hover:scale-105 focus-visible:scale-105 transition-smooth"
+          >
+            <img
+              src={p.logo}
+              alt={p.name}
+              loading="lazy"
+              width={300}
+              height={105}
+              className="h-16 md:h-20 w-auto object-contain"
+            />
+          </Tag>
+        );
+      })}
+    </Marquee>
 
+    <div className="container mx-auto">
       <p className="text-xs text-muted-foreground mt-10 text-center max-w-3xl mx-auto">
         Each of these institutions has worked with us in some way: research, pre-clinical studies,
         or grant-funded programs. Their logos here are gratitude, not endorsement, of any

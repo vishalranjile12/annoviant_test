@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { RegenerationTimeline } from "@/components/site/RegenerationTimeline";
+import { Reveal } from "@/components/site/Reveal";
 import { CheckCircle2, Beaker, Layers, Activity, ShieldCheck, Info } from "lucide-react";
 import scaffold from "@/assets/tissue-scaffold.jpg";
 
@@ -84,18 +85,43 @@ const TechnologyPage = () => {
 
       <section className="py-20 md:py-28">
         <div className="container mx-auto">
-          <h2 className="mb-12 max-w-2xl">Four pillars of the TxGuard® approach</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {pillars.map(({ icon: Icon, title, body }) => (
-              <div key={title} className="bg-card rounded-xl p-7 border border-border shadow-card">
-                <div className="h-11 w-11 rounded-lg gradient-primary flex items-center justify-center mb-5 shadow-glow">
-                  <Icon className="h-5 w-5 text-primary-foreground" />
-                </div>
-                <h3 className="mb-3">{title}</h3>
-                <p className="text-sm text-muted-foreground">{body}</p>
-              </div>
+          <Reveal>
+            <div className="max-w-2xl mb-14">
+              <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
+                What sets it apart
+              </p>
+              <h2 className="mb-4">Four pillars of the TxGuard® approach</h2>
+              <p className="text-muted-foreground medical-body">
+                The science is best understood in plain terms. Here's the four ideas that, taken
+                together, define how the platform works.
+              </p>
+            </div>
+          </Reveal>
+
+          <ol className="space-y-12 md:space-y-16 max-w-5xl">
+            {pillars.map(({ icon: Icon, title, body }, i) => (
+              <Reveal as="li" key={title} delay={i * 80}>
+                <article
+                  className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start ${
+                    i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
+                  }`}
+                >
+                  <div className="md:col-span-4 flex md:flex-col items-baseline md:items-start gap-4">
+                    <span className="text-5xl md:text-6xl font-bold text-primary/25 leading-none tabular-nums">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <div className="h-12 w-12 rounded-xl gradient-primary grid place-items-center shadow-glow md:mt-2">
+                      <Icon className="h-5 w-5 text-primary-foreground" aria-hidden />
+                    </div>
+                  </div>
+                  <div className="md:col-span-8 md:border-l md:border-border md:pl-8">
+                    <h3 className="mb-3 text-xl">{title}</h3>
+                    <p className="text-base text-muted-foreground medical-body">{body}</p>
+                  </div>
+                </article>
+              </Reveal>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
     </PageShell>

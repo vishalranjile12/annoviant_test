@@ -3,6 +3,7 @@ import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
 import { Reveal } from "@/components/site/Reveal";
+import { CountUp } from "@/components/site/CountUp";
 import { Button } from "@/components/ui/button";
 import { Quote, ArrowRight, Sparkles, Mail, Linkedin, PlayCircle } from "lucide-react";
 
@@ -259,7 +260,7 @@ const FounderStoryPage = () => {
               <div key={l} className="animate-fade-up" style={{ animationDelay: "240ms" }}>
                 <dt className="sr-only">{l}</dt>
                 <dd>
-                  <span className="text-2xl md:text-3xl font-bold text-white">{n}</span>
+                  <CountUp value={n} className="text-2xl md:text-3xl font-bold text-white tabular-nums" />
                   <span className="block text-xs text-white/60 mt-1">{l}</span>
                 </dd>
               </div>
@@ -556,7 +557,7 @@ const FounderStoryPage = () => {
                 <div key={l}>
                   <dt className="sr-only">{l}</dt>
                   <dd>
-                    <span className="text-2xl md:text-3xl font-bold text-white">{n}</span>
+                    <CountUp value={n} className="text-2xl md:text-3xl font-bold text-white tabular-nums" />
                     <span className="block text-xs text-white/60 mt-1">{l}</span>
                   </dd>
                 </div>
