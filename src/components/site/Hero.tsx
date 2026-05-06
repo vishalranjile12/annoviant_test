@@ -12,7 +12,8 @@ export const Hero = () => (
       alt="A glowing heart, the visual metaphor for TxGuard, a tissue platform that the body remakes into living tissue"
       width={1920}
       height={1080}
-      fetchPriority="high"
+      // @ts-expect-error, React 18 emits a warning for camelCase, lowercase is the canonical HTML attr
+      fetchpriority="high"
       className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen heartbeat"
     />
     <div className="absolute inset-0 bg-gradient-to-r from-surface-deep/95 via-surface-deep/70 to-transparent" />
