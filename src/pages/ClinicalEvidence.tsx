@@ -91,8 +91,8 @@ const ClinicalEvidencePage = () => {
   return (
     <PageShell
       eyebrow="Clinical Evidence"
-      title={<>Built on <span className="text-gradient">rigorous science</span></>}
-      intro="The TxGuard® program is anchored in NIH-funded research, peer-reviewed publications, ISO-guided pre-clinical studies, and comparative analysis against legacy and emerging technologies."
+      title={<>The <span className="text-gradient">science</span>, the data, and how we stack up</>}
+      intro="Regenerative medicine attracts a lot of bold claims. We'd rather show our work, NIH-funded research, peer-reviewed papers, ISO-standard pre-clinical studies, and an honest comparison against the technologies we're trying to replace."
       heroImage="/hero/microscope.jpg"
     >
       <Seo
@@ -119,14 +119,14 @@ const ClinicalEvidencePage = () => {
         <div className="container mx-auto">
           <div className="max-w-2xl mb-10">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              Comparative analysis
+              How we stack up
             </p>
-            <h2 className="mb-4">TxGuard® vs. legacy &amp; emerging technologies</h2>
+            <h2 className="mb-4">TxGuard® vs. the alternatives</h2>
             <p className="text-muted-foreground medical-body">
-              An at-a-glance look at how the TxGuard® platform is positioned against
-              glutaraldehyde-treated bioprosthetics and emerging regenerative approaches,
-              with the &ldquo;why it matters&rdquo; on every row. Comparator information based on
-              reported public information.
+              An honest, side-by-side look at how our platform compares to glutaraldehyde-treated
+              bioprosthetics and other emerging regenerative approaches. The &ldquo;why it
+              matters&rdquo; column is the part most spec sheets leave out, so we put it first.
+              Information about other technologies comes from their public reports.
             </p>
           </div>
 
@@ -137,9 +137,8 @@ const ClinicalEvidencePage = () => {
           />
 
           <p className="text-xs text-muted-foreground mt-5 max-w-3xl">
-            Pre-clinical animal data may not predict outcomes in humans. Comparator status
-            described per published reports and reflects Annoviant&rsquo;s reading of available
-            literature.
+            Animal data only takes us so far, human results may differ. The comparator entries
+            reflect what&rsquo;s been published publicly, read through our team&rsquo;s lens.
           </p>
         </div>
       </section>
@@ -148,33 +147,32 @@ const ClinicalEvidencePage = () => {
         <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              Pre-clinical results
+              How we tested it
             </p>
-            <h2 className="mb-5">Aggressive lamb-to-sheep model under ISO guidance</h2>
+            <h2 className="mb-5">An aggressive sheep model, run by the book</h2>
             <p className="text-muted-foreground medical-body mb-5">
-              In-vivo studies followed strict ISO 5840 (cardiovascular implants, heart valve
-              substitutes) and ISO 10993 (biological evaluation of medical devices) guidelines.
-              Independent pre-clinical work has been performed at reputable institutions, with
-              N=3, N=6, and N=10 GLP cohorts characterizing safety and durability over
-              extended periods.
+              We followed ISO 5840 (the standard for cardiovascular heart-valve implants) and
+              ISO 10993 (biological evaluation of medical devices). Independent labs at reputable
+              institutions ran the work, in N=3, N=6, and N=10 GLP cohorts that pushed the
+              platform across long durations.
             </p>
             <p className="text-muted-foreground medical-body mb-8">
-              In these animal models, the platform has been characterized as resistant to
-              calcification, supportive of in-situ remodeling, and capable of integrating as
-              living tissue. Human clinical results may differ.
+              Across those studies, the scaffold resisted calcification, remodeled in place into
+              host tissue, and held up mechanically. Animal data, of course, is animal data,
+              human results may differ.
             </p>
             <Button asChild size="lg" className="gradient-primary border-0">
-              <Link to="/publications">View Publications &amp; Patents <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              <Link to="/publications">Browse the publications <ArrowRight className="ml-1 h-4 w-4" /></Link>
             </Button>
           </div>
           <div className="rounded-2xl border border-border bg-card p-8 shadow-card">
-            <h3 className="mb-5">What we&rsquo;ve confirmed in pre-clinical work</h3>
+            <h3 className="mb-5">What we&rsquo;ve seen so far</h3>
             <ul className="space-y-4">
               {[
                 "No calcification observed across study durations",
-                "In-situ remodeling consistent with host-mediated tissue formation",
-                "Maintained tensile and elastic mechanical performance",
-                "No findings inconsistent with ISO 10993 biocompatibility criteria",
+                "Remodeling consistent with the body laying down its own tissue",
+                "Mechanical performance, tensile and elastic, held up over time",
+                "Nothing inconsistent with ISO 10993 biocompatibility criteria",
               ].map((b) => (
                 <li key={b} className="flex gap-3">
                   <Check className="h-5 w-5 text-success flex-shrink-0 mt-0.5" />
@@ -183,8 +181,8 @@ const ClinicalEvidencePage = () => {
               ))}
             </ul>
             <p className="text-[11px] text-muted-foreground mt-6">
-              Pre-clinical animal data. Detailed publications and study protocols available to
-              qualified clinical and investor partners on request.
+              Pre-clinical animal data. The full studies and protocols are available to qualified
+              clinical and investor partners, just ask.
             </p>
           </div>
         </div>

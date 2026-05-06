@@ -4,10 +4,10 @@ import { Seo } from "@/components/site/Seo";
 import { Target, Users, Award, Eye, Heart, Lightbulb, ArrowRight } from "lucide-react";
 
 const values = [
-  { icon: Heart, title: "Customer focus", body: "We listen, engage, and deliver meaningful solutions for clinicians, patients, and partners." },
-  { icon: Lightbulb, title: "Creativity", body: "We think creatively to solve critical healthcare challenges where incremental improvement has fallen short." },
-  { icon: Users, title: "Collaboration", body: "We work together, across hospitals, consortia, and investors, to achieve greater impact." },
-  { icon: Award, title: "Confidence", body: "We act with trust, accountability, and conviction, grounded in rigorous science." },
+  { icon: Heart, title: "We listen first", body: "Surgeons, patients, partners, the people doing the work and the people receiving it. They tell us what matters. We try to listen before we ship." },
+  { icon: Lightbulb, title: "Stubborn creativity", body: "Most of the easy wins in heart-valve replacement have been taken. We work on the hard ones, the ones where incremental improvement won't get there." },
+  { icon: Users, title: "Better together", body: "We've never built any of this alone. Hospitals, consortia, investors, advisors, every meaningful step has had a co-author." },
+  { icon: Award, title: "Quiet conviction", body: "We don't oversell. We let the evidence carry the weight. When we're sure, we're sure, and when we're not, we say so." },
 ];
 
 const AboutPage = () => {
@@ -24,8 +24,8 @@ const AboutPage = () => {
   return (
     <PageShell
       eyebrow="About Annoviant"
-      title={<>Innovations for <span className="text-gradient">healthier lives</span></>}
-      intro="Annoviant is a regenerative medicine company developing TxGuard®, a patented tissue platform engineered to address the failure modes of today's bioprosthetics and improve outcomes for patients of every age."
+      title={<>We&rsquo;re building <span className="text-gradient">healthier lives</span>, one surgery at a time</>}
+      intro="Annoviant is a regenerative-medicine company. We&rsquo;re building TxGuard®, a tissue platform meant to outlast today&rsquo;s bioprosthetics and to keep up with patients of every age, especially the youngest ones."
       heroImage="/hero/heart-stock.jpg"
     >
       <Seo
@@ -38,28 +38,26 @@ const AboutPage = () => {
         <div className="container mx-auto grid md:grid-cols-3 gap-8">
           <div>
             <Target className="h-7 w-7 text-primary mb-4" />
-            <h3 className="mb-3">Our Mission</h3>
+            <h3 className="mb-3">Why we exist</h3>
             <p className="text-muted-foreground text-sm">
-              Redefining cardiovascular surgery through regenerative biomaterials that
-              integrate, adapt, and endure, delivering durable outcomes for patients of every
-              age.
+              To change what cardiovascular implants can be, biomaterials that the body remakes
+              as living tissue, so that one surgery has a chance of being enough.
             </p>
           </div>
           <div>
             <Eye className="h-7 w-7 text-primary mb-4" />
-            <h3 className="mb-3">Our Vision</h3>
+            <h3 className="mb-3">Where we&rsquo;re headed</h3>
             <p className="text-muted-foreground text-sm">
-              A world where heart surgery aims to require fewer repeat interventions,
-              enabled by living, regenerative implants.
+              A future where children with congenital heart disease aren&rsquo;t scheduled for their
+              fourth surgery before high school, because the implant grew up with them.
             </p>
           </div>
           <div>
             <Award className="h-7 w-7 text-primary mb-4" />
-            <h3 className="mb-3">Recognition</h3>
+            <h3 className="mb-3">What we&rsquo;ve earned</h3>
             <p className="text-muted-foreground text-sm">
-              Awarded $5.7M cumulative NIH funding, including $2.99M to advance the TxGuard®
-              pulmonary-valved conduit for pediatric heart disease, alongside a portfolio of
-              issued IP and pending applications.
+              $5.7M in NIH funding (including a $2.99M grant for the pediatric program), an FDA
+              HUD designation, four issued U.S. patents, and the trust of partners we admire.
             </p>
           </div>
         </div>
@@ -69,9 +67,9 @@ const AboutPage = () => {
         <div className="container mx-auto">
           <div className="max-w-2xl mb-12">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              Our values
+              How we work
             </p>
-            <h2 className="mb-4">How we work</h2>
+            <h2 className="mb-4">Four habits, none of them flashy</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
             {values.map(({ icon: Icon, title, body }) => (
@@ -89,26 +87,25 @@ const AboutPage = () => {
         <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              The journey
+              How we got here
             </p>
-            <h2 className="mb-5">Founded in 2018. Built on 25+ years of science</h2>
+            <h2 className="mb-5">Founded in 2018. Twenty-five years in the making</h2>
             <p className="text-muted-foreground medical-body mb-4">
-              Annoviant was founded in 2018 to bring 25+ years of academic regenerative-tissue
-              research, supported by more than $20M in cumulative grants, into a
-              commercializable, multi-indication platform.
+              The company is young. The science behind it isn&rsquo;t. Annoviant was founded in 2018
+              to take twenty-five-plus years of academic regenerative-tissue research, more than
+              $20M in cumulative grants behind it, and turn it into something a surgeon could
+              actually pick up off a shelf.
             </p>
             <p className="text-muted-foreground medical-body">
-              Today, the company operates with manufacturing readiness at an ISO 13485
-              facility, a rare milestone at this stage, and continues to advance the
-              TxGuard® platform across cardiovascular and soft-tissue indications with input
-              from leading clinical and scientific collaborators.
+              Today we&rsquo;re manufacturing-ready at an ISO 13485 facility, a rare milestone at our
+              stage. And we keep moving the platform forward, one indication at a time, with input
+              from clinicians and scientists we trust.
             </p>
           </div>
           <blockquote className="rounded-2xl bg-card border border-border p-9 shadow-card">
             <p className="font-handwritten text-3xl md:text-4xl text-foreground leading-tight">
-              &ldquo;Our work is grounded in a simple goal: cardiovascular implants that
-              integrate, adapt, and endure, for adults and for the children who deserve a
-              chance to grow with their hearts.&rdquo;
+              &ldquo;Our goal is simple: cardiovascular implants that integrate, adapt, and last,
+              for adults, and for the children who deserve a chance to grow with their hearts.&rdquo;
             </p>
             <footer className="mt-6 flex items-center justify-between gap-3 flex-wrap">
               <span className="text-sm uppercase tracking-widest text-muted-foreground">
@@ -118,7 +115,7 @@ const AboutPage = () => {
                 to="/founder-story"
                 className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:text-secondary transition-smooth"
               >
-                Read the founder story <ArrowRight className="h-3.5 w-3.5" />
+                Read his story <ArrowRight className="h-3.5 w-3.5" />
               </Link>
             </footer>
           </blockquote>

@@ -2,32 +2,32 @@ import { AlertTriangle, RefreshCw, Baby, HeartPulse } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const stats = [
-  { value: "127M+", label: "U.S. adults with cardiovascular disease", source: "AHA" },
-  { value: "40,000", label: "Newborns diagnosed with CHD each year", source: "CDC" },
-  { value: "~1M", label: "Cardiovascular surgeries per year (U.S.)", source: "CDC" },
-  { value: "$418B", label: "Annual U.S. cost of CVD", source: "AHA" },
+  { value: "127M+", label: "U.S. adults living with cardiovascular disease", source: "American Heart Association" },
+  { value: "40,000", label: "newborns diagnosed with congenital heart disease every year", source: "CDC" },
+  { value: "~1M", label: "cardiovascular surgeries every year in the U.S.", source: "CDC" },
+  { value: "$418B", label: "what cardiovascular disease costs the U.S. annually", source: "AHA" },
 ];
 
 const items = [
   {
     icon: AlertTriangle,
-    title: "Bioprosthetic valves degenerate",
-    body: "Glutaraldehyde-treated bioprosthetics are vulnerable to calcification, thrombosis, and accelerated structural degeneration, driving sub-optimal long-term outcomes.",
+    title: "The valves we have today break down",
+    body: "Bioprosthetics fixed with glutaraldehyde calcify, clot, and lose their structure over time. We've been working around that since the 1970s.",
   },
   {
     icon: RefreshCw,
-    title: "Repeat surgery is the norm",
-    body: "Device failure forces complex, costly re-interventions over a patient's lifetime, increasing hospitalization costs and patient burden.",
+    title: "Patients come back for surgery",
+    body: "When a valve fails, the patient is back in the OR. Re-operations are riskier, more expensive, and harder on families than the first surgery.",
   },
   {
     icon: Baby,
-    title: "Children outgrow their valves",
-    body: "Pediatric patients need devices that grow with them. Today's bioprosthetics cannot, leaving the youngest patients with the most challenging options.",
+    title: "Children outgrow what we put inside them",
+    body: "A child's heart keeps growing. The implant doesn't. So pediatric patients can face four, five, even six open-chest surgeries before adulthood.",
   },
   {
     icon: HeartPulse,
-    title: "Disparities compound the problem",
-    body: "CVD disproportionately affects geriatric and historically underserved racial groups. Better, more durable implants are a global health-equity priority.",
+    title: "And the burden isn't shared evenly",
+    body: "Heart disease falls hardest on older adults and on historically underserved communities. Better, more durable implants are a public-health priority, not just a medical one.",
   },
 ];
 
@@ -37,14 +37,14 @@ export const Problem = () => (
       <Reveal>
         <div className="max-w-2xl mb-12">
           <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-            The clinical gap
+            The problem we keep coming back to
           </p>
           <h2 id="problem-heading" className="mb-5">
-            Cardiac patients deserve devices that <span className="text-gradient">don't fail them</span>
+            Heart patients deserve implants that <span className="text-gradient">don't fail them</span>
           </h2>
           <p className="text-muted-foreground medical-body">
-            Despite decades of incremental improvement, dominant categories of prosthetic
-            valves still force surgeons into the same compromises.
+            Bioprosthetic valves have improved a lot in fifty years. They still ask surgeons to make
+            the same uncomfortable trade-offs they always have. Here's what that looks like in numbers.
           </p>
         </div>
       </Reveal>

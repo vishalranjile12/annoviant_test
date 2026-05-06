@@ -5,44 +5,44 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 
 const faqs = [
   {
-    q: "What is TxGuard®?",
-    a: "TxGuard® is a patented regenerative tissue platform developed by Annoviant. It is a decellularized extracellular-matrix (ECM) scaffold processed through Annoviant's proprietary stabilization platform, designed to integrate with host tissue, resist calcification, and support host-mediated remodeling.",
+    q: "So what is TxGuard®, in one sentence?",
+    a: "It's a tissue scaffold that the body recognizes as its own. We strip the cells out of starting tissue, keep the structure intact, and the body moves in to remodel it. The hope is a heart implant that lasts, integrates, and (in children) grows.",
   },
   {
-    q: "What tissue source does TxGuard® use?",
-    a: "TxGuard® scaffolds are produced from xenogeneic (bovine and porcine) tissue, decellularized through Annoviant's proprietary platform. We disclose source materials transparently to support informed clinical, ethical, and religious decision-making.",
+    q: "Where does the starting tissue come from?",
+    a: "From bovine and porcine sources, processed through our own platform. We say so plainly, because patients have a right to know what's being implanted, including for ethical or religious reasons.",
   },
   {
-    q: "Has TxGuard® been tested in humans?",
-    a: "TxGuard® indications are investigational. The TxGuard® Pulmonary Valved Graft holds an FDA Humanitarian Use Device designation (2020). Pre-clinical evidence to date is from animal studies (lamb-to-sheep models, ISO 5840 / 10993 guidance). Pre-clinical animal results may not predict outcomes in humans.",
+    q: "Has it been used in people yet?",
+    a: "Not in any approved indication. The Pulmonary Valved Graft has an FDA Humanitarian Use Device designation (2020), but the broader platform is still investigational. The evidence we have is from animal studies, lamb-to-sheep models, run under ISO 5840 and 10993, and animal results don't always carry over to humans.",
   },
   {
-    q: "How does TxGuard® differ from glutaraldehyde-treated bioprosthetics?",
-    a: "Conventional bioprosthetics are typically fixed with glutaraldehyde, which is associated with calcification, accelerated structural degeneration, and re-intervention over time. TxGuard® is engineered to address those failure modes through preserved ECM architecture and host-mediated remodeling, without glutaraldehyde fixation.",
+    q: "How is this different from a regular bioprosthetic?",
+    a: "Most bioprosthetics get fixed with glutaraldehyde, which is part of why they calcify and break down. TxGuard® doesn't use glutaraldehyde. The scaffold keeps its native ECM structure, which is what lets the body remodel it instead of treating it as a foreign object.",
   },
   {
-    q: "Does TxGuard® grow with the patient?",
-    a: "In pre-clinical animal models, the TxGuard® scaffold has been characterized as supporting host-mediated remodeling and somatic adaptation. Translation to human pediatric patients remains an active area of research and clinical investigation.",
+    q: "Can it really grow with a child?",
+    a: "In animal models, yes, it appears to. The scaffold remodels into the host's own tissue and adapts as the animal grows. We're working to confirm what happens in human pediatric patients, that's exactly what the clinical work ahead is for.",
   },
   {
-    q: "What regulatory milestones have been achieved?",
-    a: "The TxGuard® Pulmonary Valved Graft received an FDA Humanitarian Use Device (HUD) designation in 2020. Other indications remain investigational and have not received FDA approval for human use.",
+    q: "What about regulation? What's actually in hand?",
+    a: "The Pulmonary Valved Graft holds an FDA HUD designation from 2020. Everything else on the platform is investigational, no FDA approval for human use, and we won't pretend otherwise.",
   },
   {
-    q: "Has the platform been peer-reviewed?",
-    a: "The core technology underlying TxGuard® is supported by 14 peer-reviewed scientific publications and protected by 4 issued U.S. patents and 2 pending U.S. / PCT applications.",
+    q: "Has the science been peer-reviewed?",
+    a: "Yes. The work behind TxGuard® is in 14 peer-reviewed papers, plus 4 issued U.S. patents and 2 pending U.S./PCT applications.",
   },
   {
-    q: "Where is TxGuard® manufactured?",
-    a: "TxGuard® is manufactured at an ISO 13485-certified facility, supporting GMP and eDQM standards. Reaching manufacturing readiness at this stage of clinical development is a rare milestone for a regenerative-medicine platform.",
+    q: "Who actually makes it?",
+    a: "We do, at an ISO 13485-certified facility that meets GMP and eDQM standards. Reaching that level of manufacturing readiness this early is unusual, and a big part of why we can move forward at all.",
   },
   {
-    q: "How can clinicians or investigators access more detailed data?",
-    a: "Detailed publications, study protocols, and regulatory documentation are available on request to qualified clinical and investor partners. Use the contact form and select your role for a routed response within two business days.",
+    q: "How can I see the full data?",
+    a: "If you're a clinician, researcher, or investor, ask. We share publications, study protocols, and regulatory documents with qualified partners. The contact form has a role dropdown, pick yours, and we'll route the right materials within two business days.",
   },
   {
-    q: "I am the parent of a child with congenital heart disease. Is TxGuard® available for my child?",
-    a: "TxGuard® is investigational and not yet broadly available. We share what we know, and what we do not yet know, transparently. If you would like to be notified of program milestones and clinical trial updates, you can sign up via the contact form (select 'Patient or family member').",
+    q: "I'm a parent. Is this available for my child today?",
+    a: "Not today. The work is still investigational. We'll share what we know, and what we don't, as honestly as we can. If you'd like to follow what's happening, the contact form has a 'Patient or family member' option, and we'll send updates when there's something real to report.",
   },
 ];
 
@@ -60,8 +60,8 @@ const FaqPage = () => {
   return (
     <PageShell
       eyebrow="Clinical FAQ"
-      title={<>Frequently asked <span className="text-gradient">clinical questions</span></>}
-      intro="Answers to the questions surgeons, researchers, partners, and families most commonly ask about TxGuard® and the Annoviant regenerative tissue platform."
+      title={<>The questions <span className="text-gradient">we get asked the most</span></>}
+      intro="Surgeons, researchers, partners, and parents tend to ask the same things. We&rsquo;ve gathered the most common questions here, with the answers as plainly as we can give them."
       heroImage="/hero/microscope.jpg"
     >
       <Seo
@@ -92,8 +92,8 @@ const FaqPage = () => {
           </Reveal>
 
           <p className="text-xs text-muted-foreground mt-10 text-center">
-            Pre-clinical animal data may not predict outcomes in humans. Information on this page is
-            for medical, scientific, and investor audiences and does not constitute medical advice.
+            Animal data only takes us so far, human results may differ. What you read here is for
+            clinicians, researchers, and investors, it isn&rsquo;t medical advice.
           </p>
         </div>
       </section>

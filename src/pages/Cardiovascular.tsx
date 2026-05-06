@@ -7,33 +7,33 @@ import { Heart, Activity, ShieldCheck, ArrowRight, GitBranch, Stethoscope } from
 const indications = [
   {
     icon: Heart,
-    title: "Pulmonary Valved Graft (Adult)",
+    title: "Pulmonary Valved Graft for adults",
     stage: "Pre-clinical · advancing",
-    body: "Building on the lead pediatric program, the platform is being explored for adult right ventricular outflow tract reconstruction.",
+    body: "The same platform that anchors our pediatric program, scaled for adult right ventricular outflow tract reconstruction.",
   },
   {
     icon: Heart,
     title: "Aortic Valve",
     stage: "Exploring",
-    body: "An $8B+ projected market by 2035. The TxGuard® platform is being investigated as a regenerative-tissue alternative to glutaraldehyde-treated bioprosthetics.",
+    body: "The biggest single segment in the heart-valve market, and one where calcification still drives most of the failures. We're investigating TxGuard® as the regenerative alternative.",
   },
   {
     icon: Heart,
     title: "Mitral & Tricuspid Valves",
     stage: "Potential",
-    body: "Regenerative-tissue solutions for the largest valve replacement segments, preliminary platform investigation underway.",
+    body: "Together these are the highest-volume valve replacements in the U.S. We're at early platform investigation here, more to come.",
   },
   {
     icon: GitBranch,
     title: "Vascular Grafts",
     stage: "Expanded potential",
-    body: "Regenerative vascular conduits for bypass and reconstruction with the potential to remodel into living vessel.",
+    body: "A regenerative conduit for bypass and reconstruction work that, if the biology holds, could remodel into living vessel.",
   },
   {
     icon: Activity,
     title: "Cardiac Patch",
     stage: "Exploring",
-    body: "Soft-tissue patch for septal-defect closure and cardiac reconstruction, leveraging the same regenerative-tissue platform.",
+    body: "A soft-tissue patch for septal-defect closure and cardiac reconstruction, built on the same platform as the valves.",
   },
 ];
 
@@ -52,8 +52,8 @@ const CardiovascularPage = () => {
   return (
     <PageShell
       eyebrow="Solutions · Cardiovascular"
-      title={<>A regenerative platform for the <span className="text-gradient">$8B+ heart-valve market</span></>}
-      intro="The TxGuard® regenerative tissue platform is being developed across adult cardiovascular indications, engineered to address the calcification and re-intervention burden of today's bioprosthetics."
+      title={<>The <span className="text-gradient">$8B heart-valve market</span> needs something better than glutaraldehyde</>}
+      intro="Adult cardiovascular surgery has been working around the same set of bioprosthetic problems for decades. We're building TxGuard® for the indications where those compromises hurt the most."
       heroImage="/hero/cardio-stock.jpg"
     >
       <Seo
@@ -66,30 +66,30 @@ const CardiovascularPage = () => {
         <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              The market opportunity
+              The opportunity, in plain terms
             </p>
             <h2 className="mb-5">$3.6B today. $8B+ by 2035</h2>
             <p className="text-muted-foreground medical-body mb-5">
-              The U.S. heart valve market is projected to grow at 7–9% CAGR, driven by
-              demographic shifts and the persistent re-intervention burden of current
-              bioprosthetics. Annoviant&rsquo;s multi-indication TxGuard® platform is
-              positioned to address this growing demand with regenerative-tissue solutions.
+              The U.S. heart-valve market is on a 7–9% growth trajectory through 2035, and most of
+              that growth comes from a hard problem: bioprosthetics fail, and patients come back
+              for surgery. A platform that addresses that, even modestly, has room to grow with
+              the demand.
             </p>
             <ul className="space-y-3 mb-8">
               {[
-                "Seamless surgical integration, no change in current technique",
-                "Engineered as a durable, off-the-shelf device with living-tissue properties",
-                "Designed to deliver cost-savings vs. current standard of care",
+                "Surgeons use the same technique they use today, no relearning",
+                "Off-the-shelf logistics, with living-tissue behavior once implanted",
+                "Designed to lower lifetime cost of care by reducing re-operations",
               ].map((f) => (
                 <li key={f} className="flex gap-3"><ShieldCheck className="h-5 w-5 text-secondary mt-0.5 flex-shrink-0" /><span className="text-sm">{f}</span></li>
               ))}
             </ul>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="gradient-primary border-0">
-                <Link to="/clinical-evidence">Comparative evidence <ArrowRight className="ml-1 h-4 w-4" /></Link>
+                <Link to="/clinical-evidence">Compare TxGuard® to today's options <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
               <Button asChild size="lg" variant="outline">
-                <Link to="/contact?role=investor">Investor briefing</Link>
+                <Link to="/contact?role=investor">Talk to us</Link>
               </Button>
             </div>
           </div>
@@ -103,13 +103,13 @@ const CardiovascularPage = () => {
             />
             <div className="p-8">
             <Stethoscope className="h-7 w-7 text-primary mb-4" />
-            <h3 className="mb-4">By the numbers</h3>
+            <h3 className="mb-4">The numbers we keep on the wall</h3>
             <dl className="space-y-4">
               {[
-                ["8–10K", "TxGuard® PVG units / year (target indication)"],
-                ["90–100K+", "Aortic valve units / year (U.S.)"],
-                ["180K+", "Mitral & Tricuspid units / year (U.S.)"],
-                ["7–9%", "CAGR (heart valve market, 2024–2035)"],
+                ["8–10K", "Pulmonary Valved Grafts a year, our entry indication"],
+                ["90–100K+", "aortic valves placed in the U.S. each year"],
+                ["180K+", "mitral and tricuspid valves placed in the U.S. each year"],
+                ["7–9%", "annual heart-valve market growth through 2035"],
               ].map(([n, l]) => (
                 <div key={l} className="flex items-baseline justify-between gap-4 border-b border-border last:border-0 pb-3 last:pb-0">
                   <dt className="text-sm text-muted-foreground">{l}</dt>
@@ -118,7 +118,7 @@ const CardiovascularPage = () => {
               ))}
             </dl>
             <p className="text-[11px] text-muted-foreground mt-5">
-              Sources: published market reports. Forecasts not guaranteed.
+              Numbers from published market reports. Forecasts are forecasts, not promises.
             </p>
             </div>
           </div>
@@ -127,7 +127,7 @@ const CardiovascularPage = () => {
 
       <section className="py-20 md:py-28 bg-muted/40">
         <div className="container mx-auto">
-          <h2 className="mb-12 max-w-2xl">Indications under development</h2>
+          <h2 className="mb-12 max-w-2xl">Where we're headed next</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {indications.map(({ icon: Icon, title, stage, body }) => (
               <div key={title} className="bg-card rounded-xl p-7 border border-border shadow-card hover:shadow-elegant transition-smooth">
@@ -145,9 +145,9 @@ const CardiovascularPage = () => {
             ))}
           </div>
           <p className="text-xs text-muted-foreground mt-8 max-w-3xl">
-            All indications are investigational. The TxGuard® Pulmonary Valved Graft for
-            pediatric CHD holds an FDA Humanitarian Use Device designation (2020). Other
-            indications have not received FDA approval and are not available for human use.
+            Every indication on this page except the pediatric Pulmonary Valved Graft (FDA HUD
+            designation, 2020) is still investigational. None of them are available for human
+            use yet, and we won't pretend otherwise.
           </p>
         </div>
       </section>
