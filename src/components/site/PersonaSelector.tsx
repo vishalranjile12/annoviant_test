@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Microscope, Heart, ArrowRight, TrendingUp } from "lucide-react";
 import { Reveal } from "./Reveal";
+import { TiltCard } from "./TiltCard";
 
 const paths = [
   {
@@ -50,35 +51,37 @@ export const PersonaSelector = () => (
 
       <div className="grid md:grid-cols-3 gap-6">
         {paths.map(({ icon: Icon, eyebrow, title, body, cta, href, tone }, i) => (
-          <Reveal key={eyebrow} delay={i * 100}>
-            <Link
-              to={href}
-              className={`group rounded-2xl border p-7 shadow-card hover:shadow-elegant hover:-translate-y-1 transition-smooth flex flex-col h-full min-h-[44px] ${
-                tone === "empathy"
-                  ? "bg-accent-soft border-empathy/30"
-                  : "bg-card border-border"
-              }`}
-            >
-              <div
-                className={`h-12 w-12 rounded-xl grid place-items-center mb-5 ${
-                  tone === "empathy" ? "gradient-empathy text-white" : "gradient-primary text-primary-foreground shadow-glow"
+          <Reveal key={eyebrow} delay={i * 100} className="h-full">
+            <TiltCard className="h-full">
+              <Link
+                to={href}
+                className={`group rounded-2xl border p-7 shadow-card hover:shadow-elegant transition-smooth flex flex-col h-full min-h-[44px] ${
+                  tone === "empathy"
+                    ? "bg-accent-soft border-empathy/30"
+                    : "bg-card border-border"
                 }`}
               >
-                <Icon className="h-5 w-5" />
-              </div>
-              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
-                {eyebrow}
-              </p>
-              <h3 className="mb-3">{title}</h3>
-              <p className="text-sm text-muted-foreground mb-6 flex-1">{body}</p>
-              <span
-                className={`inline-flex items-center gap-2 text-sm font-semibold transition-smooth ${
-                  tone === "empathy" ? "text-[hsl(var(--empathy))]" : "text-primary group-hover:text-secondary"
-                }`}
-              >
-                {cta} <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-smooth" />
-              </span>
-            </Link>
+                <div
+                  className={`h-12 w-12 rounded-xl grid place-items-center mb-5 ${
+                    tone === "empathy" ? "gradient-empathy text-white" : "gradient-primary text-primary-foreground shadow-glow"
+                  }`}
+                >
+                  <Icon className="h-5 w-5" />
+                </div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
+                  {eyebrow}
+                </p>
+                <h3 className="mb-3">{title}</h3>
+                <p className="text-sm text-muted-foreground mb-6 flex-1">{body}</p>
+                <span
+                  className={`inline-flex items-center gap-2 text-sm font-semibold transition-smooth ${
+                    tone === "empathy" ? "text-[hsl(var(--empathy))]" : "text-primary group-hover:text-secondary"
+                  }`}
+                >
+                  {cta} <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-smooth" />
+                </span>
+              </Link>
+            </TiltCard>
           </Reveal>
         ))}
       </div>

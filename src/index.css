@@ -122,6 +122,66 @@
   .shadow-card { box-shadow: var(--shadow-card); }
   .transition-smooth { transition: var(--transition-smooth); }
 
+  /* Marquee, infinite logo ticker */
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+            mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  }
+  .marquee__track {
+    display: flex;
+    width: max-content;
+    animation: marquee-scroll linear infinite;
+    will-change: transform;
+  }
+  .marquee:hover .marquee__track,
+  .marquee:focus-within .marquee__track {
+    animation-play-state: paused;
+  }
+  .marquee__group {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    padding-right: 4rem;
+    flex-shrink: 0;
+  }
+  @keyframes marquee-scroll {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-50%, 0, 0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__track { animation: none; transform: none; }
+  }
+
+  /* Beating heart, applied to the hero background image. The keyframes
+     mirror a real cardiac cycle, lub (S1) and dub (S2), spaced over ~1.4s
+     for a calm 60-ish BPM. Plays through twice on entry, then settles. */
+  .heartbeat {
+    animation: heartbeat 1.4s ease-in-out 2 forwards;
+    transform-origin: center center;
+    will-change: transform;
+  }
+  @keyframes heartbeat {
+    0%   { transform: scale(1); }
+    14%  { transform: scale(1.035); }   /* lub */
+    28%  { transform: scale(1); }
+    42%  { transform: scale(1.05); }    /* dub, slightly stronger */
+    70%  { transform: scale(1); }
+    100% { transform: scale(1); }       /* rest before next cycle */
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .heartbeat { animation: none; }
+  }
+
+  /* 3D tilt card */
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+  @media (hover: none) {
+    .tilt-card:hover { transform: none !important; }
+  }
+
   .animate-fade-up {
     animation: fade-up 700ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }
