@@ -67,7 +67,7 @@ export const Footer = () => (
           <div>
             <div className="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Company</div>
             <Link to="/about" className="block py-1 hover:text-secondary">About</Link>
-            <Link to="/founder-story" className="block py-1 hover:text-secondary">Founder Story</Link>
+            <Link to="/founder-story" className="block py-1 hover:text-secondary">Founders Story</Link>
             <Link to="/team" className="block py-1 hover:text-secondary">Team</Link>
             <Link to="/contact" className="block py-1 hover:text-secondary">Contact</Link>
           </div>

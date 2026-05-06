@@ -6,6 +6,69 @@ import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { Quote, ArrowRight, Sparkles, Mail, Linkedin, PlayCircle } from "lucide-react";
 
+const narenMilestones = [
+  {
+    year: "Origins",
+    label: "From India, with chemistry",
+    body:
+      "Naren grew up and trained in India, where the foundation for the rest of his career was built quietly: chemistry, physical sciences, and the kind of laboratory discipline that rewards patience over cleverness.",
+  },
+  {
+    year: "Jan 1997",
+    label: "Research Asst Professor, University of Pennsylvania",
+    body:
+      "His first U.S. faculty role: the University of Pennsylvania School of Medicine, working on the kind of biomaterials questions that would anchor the next thirty years.",
+  },
+  {
+    year: "1999",
+    label: "Also at the University of Michigan",
+    body:
+      "A research assistant professorship at Michigan added a second institutional perspective before he settled on the lab he&rsquo;d build for the long haul.",
+  },
+  {
+    year: "Nov 1999",
+    label: "Joins Clemson University",
+    body:
+      "Naren joins Clemson, the institution he&rsquo;s been at ever since. He becomes Hunter Endowed Chair and Professor of Bioengineering, and starts the lab program that produces TxGuard®&rsquo;s scientific foundation.",
+  },
+  {
+    year: "Across two decades",
+    label: "150+ papers, 15+ patents, dozens of students",
+    body:
+      "Out of the lab come 150+ peer-reviewed journal publications, 6 book chapters, 15+ international and U.S. patents, and 15 PhD and 21 MS students graduated as their major advisor. He directs the NIH-funded SC BioCRAFT center.",
+  },
+  {
+    year: "Recognition",
+    label: "AIMBE Fellow and Clemson honors",
+    body:
+      "Elected a Fellow of the American Institute of Medical and Biological Engineering. Clemson recognizes him with the McQueen Quattlebaum Faculty Excellence Award and an Alumni Award for outstanding achievement in research.",
+  },
+  {
+    year: "Dec 2016",
+    label: "Co-founds Elastrin Therapeutics",
+    body:
+      "His first translational venture, focused on targeting elastin-degrading diseases like vascular calcification.",
+  },
+  {
+    year: "May 2018",
+    label: "Co-founds Annoviant",
+    body:
+      "With Ajay Houde. The company that takes his lab&rsquo;s heart-valve biomaterials toward the clinic.",
+  },
+  {
+    year: "Sep 2018",
+    label: "Co-founds Elastintech",
+    body:
+      "A third company, on the same scientific through-line: extracellular-matrix preservation, applied wherever the body needs it most.",
+  },
+  {
+    year: "Today",
+    label: "Still teaching, still publishing, still building",
+    body:
+      "Twenty-six years at Clemson. Three companies he co-founded. An NIH-funded center he directs. The next generation of bioengineers in his lab. He shows no signs of slowing.",
+  },
+];
+
 const milestones = [
   {
     year: "Origins",
@@ -205,8 +268,8 @@ const FounderStoryPage = () => {
         </div>
       </section>
 
-      {/* Editorial body */}
-      <article id="story" className="py-20 md:py-28">
+      {/* Ajay's editorial body */}
+      <article id="ajay" className="py-20 md:py-28">
         <div className="container mx-auto max-w-3xl">
           <Reveal>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-4">
@@ -641,6 +704,29 @@ const FounderStoryPage = () => {
           </Reveal>
         </div>
       </article>
+
+      {/* Naren's milestone timeline */}
+      <section className="py-20 md:py-28 bg-muted/40" aria-labelledby="naren-journey-heading">
+        <div className="container mx-auto max-w-4xl">
+          <Reveal>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-4">
+              Naren&rsquo;s journey
+            </p>
+            <h2 id="naren-journey-heading" className="mb-12">From a chemistry lab in India to a Clemson endowed chair</h2>
+          </Reveal>
+
+          <ol className="relative border-l-2 border-border pl-8 md:pl-12 space-y-10">
+            {narenMilestones.map((m, i) => (
+              <Reveal as="li" key={m.year + m.label} delay={i * 80} className="relative">
+                <span aria-hidden className="absolute -left-[39px] md:-left-[55px] top-1.5 h-5 w-5 rounded-full gradient-primary shadow-glow ring-4 ring-muted/40" />
+                <div className="text-sm font-bold uppercase tracking-widest text-secondary mb-1">{m.year}</div>
+                <h3 className="mb-2 text-lg" dangerouslySetInnerHTML={{ __html: m.label }} />
+                <p className="text-sm text-muted-foreground max-w-2xl" dangerouslySetInnerHTML={{ __html: m.body }} />
+              </Reveal>
+            ))}
+          </ol>
+        </div>
+      </section>
 
       {/* Closing CTA */}
       <section className="py-20 md:py-28 gradient-deep text-white relative overflow-hidden">
