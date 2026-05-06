@@ -2,7 +2,42 @@ import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { Reveal } from "@/components/site/Reveal";
-import { Heart, Activity, Droplet, Bandage, Stethoscope, Baby, ArrowRight, ShieldCheck } from "lucide-react";
+import {
+  Heart,
+  Activity,
+  Droplet,
+  Bandage,
+  Stethoscope,
+  Baby,
+  ArrowRight,
+  ShieldCheck,
+  Layers,
+  Eye,
+  Network,
+  Shield,
+  Sparkles,
+  Wind,
+} from "lucide-react";
+
+// 8 soft-tissue surgical applications, ported verbatim from the
+// original https://annoviant.com/txguard-applications/ page.
+const softTissue = [
+  { icon: Layers, name: "Bridging of fascial defects", body: "Self-healing patch for skin repair." },
+  { icon: Heart, name: "Cardiovascular devices", body: "Nonthrombogenic and calcification-resistant." },
+  { icon: Stethoscope, name: "Duodenal injury patch", body: "Decellularized small intestinal submucosa." },
+  { icon: Shield, name: "Passive biological membrane", body: "Surgical adhesion prevention during surgery, dura mater, peritoneum." },
+  { icon: Droplet, name: "Bladder tissue", body: "Elastic tissue graft." },
+  { icon: Bandage, name: "Hernia repair patch", body: "Inguinal herniorrhaphy, regenerative pericardium patch." },
+  { icon: Eye, name: "Wound healing", body: "Infection-resistant elastic patch." },
+  { icon: Network, name: "Venous valve graft", body: "Nonthrombogenic graft." },
+];
+
+const productAttributes = [
+  { icon: Sparkles, label: "Regenerative", image: "/hero/attributes/regenerative.jpg" },
+  { icon: Droplet, label: "Thrombo-resistant", image: "/hero/attributes/thrombo-resistant.jpg" },
+  { icon: ShieldCheck, label: "Calcification-resistant", image: "/hero/attributes/calcification.jpg" },
+  { icon: Wind, label: "Pliable", image: "/hero/attributes/pliable.jpg" },
+];
 
 const pediatric = {
   icon: Baby,
@@ -176,6 +211,71 @@ const ApplicationsPage = () => (
           Everything except the pediatric Pulmonary Valved Graft (FDA HUD designation, 2020) is
           investigational. None of them are approved for use in people, and we won&rsquo;t pretend
           otherwise.
+        </p>
+      </div>
+    </section>
+
+    {/* Eight soft-tissue surgical applications, ported from the original
+        TxGuard Applications page, presented as a stripe with internal separators. */}
+    <section className="py-16 md:py-24 bg-muted/40" aria-labelledby="soft-tissue-heading">
+      <div className="container mx-auto">
+        <Reveal>
+          <div className="max-w-2xl mb-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-3">
+              Soft tissue, beyond the heart
+            </p>
+            <h2 id="soft-tissue-heading" className="mb-4">
+              Eight surgical applications where regeneration matters
+            </h2>
+            <p className="text-muted-foreground medical-body">
+              Wherever a surgeon needs tissue to heal in rather than be replaced, the same
+              TxGuard® process can help. These are the eight specific soft-tissue applications
+              where the platform has been investigated.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-border">
+          {softTissue.map(({ icon: Icon, name, body }, i) => (
+            <Reveal key={name} delay={i * 40}>
+              <article className="group h-full bg-background hover:bg-card transition-smooth px-5 md:px-6 py-6">
+                <div className="flex items-start gap-3 mb-2">
+                  <span className="text-[11px] font-bold tabular-nums text-primary/40 mt-1">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Icon className="h-5 w-5 text-primary mt-0.5" aria-hidden />
+                </div>
+                <h3 className="text-base mb-1.5">{name}</h3>
+                <p className="text-xs text-muted-foreground leading-snug">{body}</p>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+
+        {/* Four product attribute cards, with the original AdobeStock visuals */}
+        <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-px bg-border" aria-label="TxGuard product attributes">
+          {productAttributes.map(({ icon: Icon, label, image }) => (
+            <li key={label} className="bg-background overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden bg-muted">
+                <img
+                  src={image}
+                  alt={`${label} attribute`}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="px-4 py-3 flex items-center gap-2.5">
+                <Icon className="h-4 w-4 text-primary flex-shrink-0" aria-hidden />
+                <span className="text-sm font-semibold text-foreground">{label}</span>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        <p className="text-[11px] text-muted-foreground mt-6">
+          Investigational across these applications. Annoviant&rsquo;s primary focus today is the
+          cardiovascular indications above; soft-tissue applications listed here reflect the
+          breadth of the platform&rsquo;s scientific potential.
         </p>
       </div>
     </section>
