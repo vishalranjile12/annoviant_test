@@ -70,44 +70,56 @@ const NewsArticlePage = () => {
       />
       <Nav />
 
-      {/* Article header */}
+      {/* Article hero, dark gradient with split text + image layout (or text-only when no image) */}
       <section className="relative pt-32 md:pt-40 pb-16 md:pb-20 gradient-hero text-white overflow-hidden">
-        {article.image && (
-          <img
-            src={article.image}
-            alt=""
-            aria-hidden
-            className="absolute inset-0 w-full h-full object-cover opacity-40 mix-blend-screen"
-            width={1920}
-            height={1080}
-          />
-        )}
         <div className="absolute inset-0 bg-gradient-to-b from-surface-deep/95 via-surface-deep/85 to-surface-deep" />
         <div aria-hidden className="absolute -bottom-40 -right-40 h-[500px] w-[500px] rounded-full bg-secondary/25 blur-[140px]" />
-        <div className="container mx-auto relative max-w-4xl">
+        <div aria-hidden className="absolute -top-32 -left-32 h-[400px] w-[400px] rounded-full bg-primary/40 blur-[140px]" />
+        <div className="container mx-auto relative">
           <Link
             to="/news"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-secondary mb-6 hover:text-white transition-smooth"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-secondary mb-8 hover:text-white transition-smooth"
           >
             <ArrowLeft className="h-3.5 w-3.5" /> All news
           </Link>
-          <div className="flex items-center gap-3 text-[11px] uppercase tracking-widest font-semibold mb-4">
-            <span className="px-2.5 py-1 rounded-full bg-secondary/15 border border-secondary/30 text-secondary">
-              {article.category}
-            </span>
-            <span className="inline-flex items-center gap-1.5 text-white/70">
-              <Calendar className="h-3 w-3" />
-              <time dateTime={article.isoDate}>{article.date}</time>
-            </span>
+
+          <div className={article.image ? "grid lg:grid-cols-12 gap-8 lg:gap-12 items-center" : ""}>
+            {/* Text column */}
+            <div className={article.image ? "lg:col-span-7" : "max-w-4xl"}>
+              <div className="flex items-center gap-3 text-[11px] uppercase tracking-widest font-semibold mb-4">
+                <span className="px-2.5 py-1 rounded-full bg-secondary/15 border border-secondary/30 text-secondary">
+                  {article.category}
+                </span>
+                <span className="inline-flex items-center gap-1.5 text-white/70">
+                  <Calendar className="h-3 w-3" />
+                  <time dateTime={article.isoDate}>{article.date}</time>
+                </span>
+              </div>
+              <h1 className="text-white mb-6 animate-fade-up">{article.title}</h1>
+              <p
+                className="text-lg text-white/80 medical-body"
+                dangerouslySetInnerHTML={{ __html: article.excerpt }}
+              />
+              {article.source && (
+                <p className="mt-6 text-xs text-white/55 uppercase tracking-widest">{article.source}</p>
+              )}
+            </div>
+
+            {/* Featured image column, sized so the hero stays balanced, not towering */}
+            {article.image && (
+              <figure className="lg:col-span-5 relative max-w-md lg:max-w-none lg:ml-auto w-full">
+                <div aria-hidden className="absolute -inset-3 rounded-3xl gradient-primary blur-2xl opacity-30" />
+                <img
+                  src={article.image}
+                  alt={article.title}
+                  width={1280}
+                  height={960}
+                  loading="eager"
+                  className="relative w-full aspect-[4/3] object-cover rounded-2xl border border-white/15 shadow-elegant"
+                />
+              </figure>
+            )}
           </div>
-          <h1 className="text-white max-w-3xl mb-6 animate-fade-up">{article.title}</h1>
-          <p
-            className="text-lg text-white/80 medical-body max-w-3xl"
-            dangerouslySetInnerHTML={{ __html: article.excerpt }}
-          />
-          {article.source && (
-            <p className="mt-6 text-xs text-white/55 uppercase tracking-widest">{article.source}</p>
-          )}
         </div>
       </section>
 
