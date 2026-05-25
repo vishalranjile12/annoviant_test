@@ -62,6 +62,7 @@ export const Footer = () => (
             <Link to="/clinical-evidence" className="block py-1 hover:text-secondary">Evidence Hub</Link>
             <Link to="/publications" className="block py-1 hover:text-secondary">Publications &amp; Patents</Link>
             <Link to="/faq" className="block py-1 hover:text-secondary">Clinical FAQ</Link>
+            <Link to="/answers" className="block py-1 hover:text-secondary">TxGuard&reg; Answers</Link>
           </div>
           <div>
             <div className="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Company</div>

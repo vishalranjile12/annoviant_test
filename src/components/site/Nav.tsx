@@ -34,6 +34,7 @@ const groups: NavGroup[] = [
       { href: "/clinical-evidence", label: "Evidence Hub", description: "Pre-clinical data & comparison" },
       { href: "/publications", label: "Publications & Patents", description: "Peer-reviewed papers, IP portfolio" },
       { href: "/faq", label: "Clinical FAQ", description: "Answers for surgeons and partners" },
+      { href: "/answers", label: "TxGuard® Answers", description: "Plain-language knowledge base" },
     ],
   },
   {
