@@ -31,6 +31,10 @@ const seedArticles = [
 const publicPermissions = [
   'api::news-article.news-article.find',
   'api::news-article.news-article.findOne',
+  'api::blog-post.blog-post.find',
+  'api::blog-post.blog-post.findOne',
+  'api::answer.answer.find',
+  'api::answer.answer.findOne',
   'api::contact-submission.contact-submission.create',
 ];
 
@@ -77,7 +81,26 @@ async function seedNewsArticles(strapi: Core.Strapi) {
 }
 
 export default {
-  register() {},
+  register({ strapi }: { strapi: Core.Strapi }) {
+    // Lightweight healthcheck endpoint for Railway / uptime monitors.
+    // Returns 200 as soon as the HTTP server is listening, independent of
+    // database state — Strapi's own readiness happens in bootstrap.
+    strapi.server.routes([
+      {
+        method: 'GET',
+        path: '/_health',
+        handler: (ctx) => {
+          ctx.status = 200;
+          ctx.body = { status: 'ok' };
+        },
+        config: {
+          auth: false,
+          policies: [],
+          middlewares: [],
+        },
+      },
+    ]);
+  },
 
   async bootstrap({ strapi }: { strapi: Core.Strapi }) {
     await ensurePublicPermissions(strapi);
