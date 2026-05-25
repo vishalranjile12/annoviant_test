@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldCheck, PlayCircle } from "lucide-react";
+import { ArrowRight, ShieldCheck } from "lucide-react";
 import { CountUp } from "./CountUp";
 
 const hero = "/hero/heart-bg.jpg";
@@ -29,27 +29,28 @@ export const Hero = () => (
           $5.7M in NIH funding · FDA HUD designation · 14 peer-reviewed papers
         </div>
         <h1 className="text-white mb-6">
-          A heart implant that <span className="text-gradient">grows with the patient</span>
+          Regenerative tissue technology for <span className="text-gradient">pediatric and cardiovascular repair</span>
         </h1>
         <p className="text-lg md:text-xl text-white/80 medical-body mb-10">
-          For decades, heart surgery has forced the same trade-off: an implant that lasts, or
-          an implant that fits. TxGuard® is our attempt to give surgeons both. It's a
-          regenerative tissue platform that the body remakes into its own living tissue,
-          engineered to resist calcification and to keep up with a child as they grow.
+          TxGuard® is a patented biological tissue platform designed to address calcification,
+          thrombosis, infection, degeneration, and repeat-intervention risk in heart-valve and
+          soft-tissue applications, engineered to be remade into the patient&rsquo;s own living
+          tissue and to grow with them.
         </p>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="lg" className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[44px]">
-            <Link to="/clinical-evidence">
-              See the evidence <ArrowRight className="ml-1 h-4 w-4" />
+            <Link to="/contact?role=partner">
+              Partner with us <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white bg-transparent min-h-[44px]">
-            <Link to="/contact">Talk to our team</Link>
+            <Link to="/technology">Explore TxGuard® technology</Link>
           </Button>
           <Button asChild size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white min-h-[44px]">
-            <a href="#explainer">
-              <PlayCircle className="mr-1.5 h-4 w-4" /> Watch the 2-min overview
-            </a>
+            <Link to="/publications">View publications &amp; patents</Link>
+          </Button>
+          <Button asChild size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white min-h-[44px]">
+            <Link to="/solutions/pediatric">Understand the need</Link>
           </Button>
         </div>
 

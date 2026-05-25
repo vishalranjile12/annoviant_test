@@ -37,12 +37,12 @@ const issues: Issue[] = [
 ];
 
 export const Problem = () => (
-  <section className="py-24 md:py-32 bg-muted/40" aria-labelledby="problem-heading">
+  <section id="clinical-need" className="py-24 md:py-32 bg-muted/40 scroll-mt-24" aria-labelledby="problem-heading">
     <div className="container mx-auto">
       <Reveal>
         <div className="max-w-2xl mb-16">
           <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-            The problem we keep coming back to
+            The clinical need &amp; the market
           </p>
           <h2 id="problem-heading" className="mb-5">
             Heart patients deserve implants that <span className="text-gradient">don't fail them</span>
@@ -50,7 +50,8 @@ export const Problem = () => (
           <p className="text-muted-foreground medical-body">
             Bioprosthetic valves have improved a lot in fifty years. They still ask surgeons to make
             the same uncomfortable trade-offs they always have. Here's what that looks like, in
-            people, in dollars, and in repeat surgeries.
+            people, in dollars, and in repeat surgeries, a multi-billion-dollar problem the largest
+            device companies are actively trying to solve.
           </p>
         </div>
       </Reveal>

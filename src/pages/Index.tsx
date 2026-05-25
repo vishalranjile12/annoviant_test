@@ -8,13 +8,13 @@ import { Explainer } from "@/components/site/Explainer";
 import { Evidence } from "@/components/site/Evidence";
 import { Partners } from "@/components/site/Partners";
 import { PersonaSelector } from "@/components/site/PersonaSelector";
+import { Differentiation } from "@/components/site/Differentiation";
 import { InvestorSignals } from "@/components/site/InvestorSignals";
 import { Pipeline } from "@/components/site/Pipeline";
 import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
 
-// Defer the Contact form (Radix Select etc.) below the fold,
-// it isn't visible until the user scrolls past Pipeline.
+// Defer the Contact form (Radix Select etc.); it sits near the bottom of the page.
 const Contact = lazy(() => import("@/components/site/Contact").then((m) => ({ default: m.Contact })));
 
 const Index = () => {
@@ -75,22 +75,23 @@ const Index = () => {
   return (
     <main id="main">
       <Seo
-        title="Annoviant | Regenerative Medical Devices &amp; TxGuard® Technology"
-        description="Annoviant develops TxGuard®, a patented regenerative tissue technology for cardiovascular and pediatric heart disease, designed to reduce repeat surgeries."
+        title="Annoviant | Regenerative Tissue Technology for Pediatric & Cardiovascular Repair"
+        description="Annoviant develops TxGuard®, a patented biological tissue platform for pediatric and cardiovascular repair, designed to resist calcification and thrombosis, support host-mediated remodeling, and reduce repeat interventions."
         canonical="https://annoviant.com/"
         jsonLd={ld}
       />
       <Nav />
       <Hero />
-      <Explainer />
+      <PersonaSelector />
       <Problem />
       <Technology />
       <RegenerationTimeline />
+      <Differentiation />
+      <Pipeline />
       <Evidence />
       <Partners />
-      <PersonaSelector />
-      <Pipeline />
       <InvestorSignals />
+      <Explainer />
       <Suspense fallback={<div className="py-32" aria-hidden />}>
         <Contact />
       </Suspense>

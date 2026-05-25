@@ -11,6 +11,7 @@ const AboutPage = lazy(() => import("./pages/About.tsx"));
 const NewsPage = lazy(() => import("./pages/News.tsx"));
 const NewsArticlePage = lazy(() => import("./pages/NewsArticle.tsx"));
 const ContactPage = lazy(() => import("./pages/Contact.tsx"));
+const InvestorBriefingPage = lazy(() => import("./pages/InvestorBriefing.tsx"));
 const PediatricPage = lazy(() => import("./pages/Pediatric.tsx"));
 const CardiovascularPage = lazy(() => import("./pages/Cardiovascular.tsx"));
 const ClinicalEvidencePage = lazy(() => import("./pages/ClinicalEvidence.tsx"));
@@ -71,6 +72,7 @@ const App = () => (
             <Route path="/news" element={<NewsPage />} />
             <Route path="/news/:slug" element={<NewsArticlePage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/investor-briefing" element={<InvestorBriefingPage />} />
             <Route path="/legal/:slug" element={<LegalPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

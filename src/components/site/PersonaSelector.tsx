@@ -5,29 +5,29 @@ import { TiltCard } from "./TiltCard";
 
 const paths = [
   {
+    icon: TrendingUp,
+    eyebrow: "For investors & strategic partners",
+    title: "A de-risked, multi-indication tissue platform",
+    body: "An FDA milestone already in hand, $5.7M in NIH validation, ISO 13485 manufacturing readiness, and a platform spanning pediatric and adult heart valves, vascular grafts, and soft-tissue repair, in a market Edwards, Medtronic, Abbott, Boston Scientific, and J&J actively operate in.",
+    cta: "Partner with us",
+    href: "/contact?role=investor",
+    tone: "clinical",
+  },
+  {
     icon: Microscope,
-    eyebrow: "Surgeons & researchers",
-    title: "Want the data behind the story?",
-    body: "Pre-clinical results, the mechanism of action, ISO-standard safety studies, and where we are with clinical collaborations.",
+    eyebrow: "For clinicians",
+    title: "The data and mechanism behind TxGuard®",
+    body: "Pre-clinical results, the mechanism of action, ISO-standard safety studies, comparator analysis against legacy bioprosthetics, and where we are with clinical collaborations.",
     cta: "See the evidence",
     href: "/clinical-evidence",
     tone: "clinical",
   },
   {
-    icon: TrendingUp,
-    eyebrow: "Investors",
-    title: "Looking at a de-risked, multi-indication platform?",
-    body: "Most regen-med startups ship one product. We have an FDA milestone in hand, $5.7M in NIH validation, ISO 13485 manufacturing readiness, and a multi-indication scope in a market Edwards, Medtronic, and J&J actively operate in.",
-    cta: "Start the conversation",
-    href: "/contact?role=investor",
-    tone: "clinical",
-  },
-  {
     icon: Heart,
-    eyebrow: "Patients & families",
-    title: "Hoping for a heart that can grow with your child?",
-    body: "Plain-language explanations of what we're working on, what's still investigational, and how to stay updated.",
-    cta: "Read the parent guide",
+    eyebrow: "For patients & families",
+    title: "An implant designed to grow with your child",
+    body: "Plain-language explanations of congenital heart disease, why repeat surgeries happen today, and how a regenerative implant is intended to help, including what is still investigational.",
+    cta: "Understand the need",
     href: "/solutions/pediatric",
     tone: "empathy",
   },
@@ -39,12 +39,12 @@ export const PersonaSelector = () => (
       <Reveal>
         <div className="max-w-2xl mb-12">
           <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-            Pick the door that fits
+            For investors, clinicians, and families
           </p>
-          <h2 id="persona-heading" className="mb-4">What brought you here?</h2>
+          <h2 id="persona-heading" className="mb-4">Choose your path</h2>
           <p className="text-muted-foreground medical-body">
-            We talk to surgeons differently than we talk to investors, and to families differently
-            than we talk to either. Pick the path that fits, and we'll meet you there.
+            We talk to strategic partners differently than we talk to surgeons, and to families
+            differently than either. Pick the route that fits, and we&rsquo;ll meet you there.
           </p>
         </div>
       </Reveal>

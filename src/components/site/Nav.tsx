@@ -13,18 +13,23 @@ const groups: NavGroup[] = [
     children: [
       { href: "/technology", label: "About TxGuard®", description: "How the regenerative platform works" },
       { href: "/technology#mechanism", label: "Mechanism of Action", description: "From scaffold to living tissue" },
+      { href: "/#differentiation", label: "Why it's different", description: "Regenerative tissue vs. conventional prosthetics" },
     ],
   },
   {
-    label: "Solutions",
+    label: "Pipeline",
     children: [
-      { href: "/solutions/pediatric", label: "Pediatric", description: "Pulmonary-valved conduit for CHD" },
-      { href: "/solutions/cardiovascular", label: "Cardiovascular", description: "Adult heart valve & vascular" },
-      { href: "/applications", label: "All Applications", description: "Soft-tissue platform indications" },
+      { href: "/solutions/pediatric", label: "Pulmonary Valved Conduit", description: "Pediatric CHD, FDA HUD designation" },
+      { href: "/solutions/cardiovascular", label: "Cardiovascular Applications", description: "Adult heart valve & vascular" },
+      { href: "/applications", label: "Future Soft-Tissue Applications", description: "Platform expansion across indications" },
     ],
   },
   {
-    label: "Clinical Evidence",
+    label: "Clinical Need",
+    href: "/#clinical-need",
+  },
+  {
+    label: "Evidence",
     children: [
       { href: "/clinical-evidence", label: "Evidence Hub", description: "Pre-clinical data & comparison" },
       { href: "/publications", label: "Publications & Patents", description: "Peer-reviewed papers, IP portfolio" },
@@ -32,14 +37,20 @@ const groups: NavGroup[] = [
     ],
   },
   {
-    label: "Company",
+    label: "Team",
     children: [
-      { href: "/about", label: "About Annoviant", description: "Mission, values, ecosystem" },
-      { href: "/founder-story", label: "Founders Story", description: "How Annoviant came to be" },
       { href: "/team", label: "Our Team", description: "Leadership, advisors, collaborators" },
-      { href: "/news", label: "News & Press", description: "Grants, milestones, coverage" },
-      { href: "/contact", label: "Contact", description: "Request a briefing" },
+      { href: "/about", label: "About Annoviant", description: "Mission, values, ecosystem" },
+      { href: "/founder-story", label: "Founders' Story", description: "How Annoviant came to be" },
     ],
+  },
+  {
+    label: "News",
+    href: "/news",
+  },
+  {
+    label: "Contact",
+    href: "/contact",
   },
 ];
 
@@ -118,9 +129,9 @@ export const Nav = () => {
           })}
         </nav>
 
-        <div className="hidden lg:flex items-center gap-2 ml-8 xl:ml-12">
+        <div className="hidden lg:flex items-center gap-2 ml-4 xl:ml-8">
           <Button asChild variant={transparent ? "secondary" : "default"} size="sm" className={transparent ? "" : "gradient-primary text-primary-foreground border-0"}>
-            <Link to="/contact">Request a Briefing</Link>
+            <Link to="/investor-briefing">Investor Briefing</Link>
           </Button>
         </div>
 
@@ -172,7 +183,7 @@ export const Nav = () => {
               </div>
             ))}
             <Button asChild className="mt-3 gradient-primary border-0">
-              <Link to="/contact">Request a Briefing</Link>
+              <Link to="/investor-briefing">Investor Briefing</Link>
             </Button>
           </div>
         </div>
