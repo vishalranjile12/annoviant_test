@@ -11,9 +11,12 @@ RUN bun run build
 # --- Serve the built assets ---
 FROM node:22-alpine AS runtime
 WORKDIR /app
-RUN npm install -g serve@14
+# Pinned to 14.2.4 — newer 14.x patches changed -l parsing and reject bare
+# port numbers, causing "Unknown --listen endpoint scheme" on startup.
+RUN npm install -g serve@14.2.4
 COPY --from=build /app/dist ./dist
 ENV PORT=8080
 EXPOSE 8080
 # -s rewrites unknown paths to index.html so client-side routes resolve.
-CMD ["sh", "-c", "serve -s dist -l ${PORT:-8080}"]
+# Explicit tcp:// URI so serve's parser doesn't guess the scheme.
+CMD ["sh", "-c", "serve -s dist --listen tcp://0.0.0.0:${PORT:-8080}"]
