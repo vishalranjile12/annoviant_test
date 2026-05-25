@@ -12,6 +12,12 @@ const NewsPage = lazy(() => import("./pages/News.tsx"));
 const NewsArticlePage = lazy(() => import("./pages/NewsArticle.tsx"));
 const ContactPage = lazy(() => import("./pages/Contact.tsx"));
 const InvestorBriefingPage = lazy(() => import("./pages/InvestorBriefing.tsx"));
+const InvestorsPage = lazy(() => import("./pages/Investors.tsx"));
+const ForInvestorsPage = lazy(() => import("./pages/ForInvestors.tsx"));
+const ForCliniciansPage = lazy(() => import("./pages/ForClinicians.tsx"));
+const ForPatientsPage = lazy(() => import("./pages/ForPatients.tsx"));
+const BlogPage = lazy(() => import("./pages/Blog.tsx"));
+const BlogPostPage = lazy(() => import("./pages/BlogPost.tsx"));
 const AnswersIndexPage = lazy(() => import("./pages/Answers.tsx"));
 const AnswerPage = lazy(() => import("./pages/AnswerPage.tsx"));
 const PediatricPage = lazy(() => import("./pages/Pediatric.tsx"));
@@ -75,6 +81,12 @@ const App = () => (
             <Route path="/news/:slug" element={<NewsArticlePage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/investor-briefing" element={<InvestorBriefingPage />} />
+            <Route path="/investors" element={<InvestorsPage />} />
+            <Route path="/for-investors" element={<ForInvestorsPage />} />
+            <Route path="/for-clinicians" element={<ForCliniciansPage />} />
+            <Route path="/for-patients" element={<ForPatientsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:slug" element={<BlogPostPage />} />
             <Route path="/answers" element={<AnswersIndexPage />} />
             <Route path="/answers/:slug" element={<AnswerPage />} />
             <Route path="/legal/:slug" element={<LegalPage />} />

@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "answers",
+  "info": {
+    "singularName": "answer",
+    "pluralName": "answers",
+    "displayName": "Answer",
+    "description": "AEO/GEO knowledge-base entries — direct answer + structured body + FAQ"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "question": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "question",
+      "required": true
+    },
+    "shortAnswer": {
+      "type": "text",
+      "required": true
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "metaDescription": {
+      "type": "text"
+    },
+    "keywords": {
+      "type": "json"
+    },
+    "updated": {
+      "type": "string"
+    },
+    "sections": {
+      "type": "json"
+    },
+    "faqs": {
+      "type": "json"
+    },
+    "citations": {
+      "type": "json"
+    },
+    "related": {
+      "type": "json"
+    },
+    "ctaLabel": {
+      "type": "string"
+    },
+    "ctaHref": {
+      "type": "string"
+    }
+  }
+}

@@ -9,6 +9,14 @@ type NavGroup = { label: string; href?: string; children?: NavLink[] };
 
 const groups: NavGroup[] = [
   {
+    label: "For…",
+    children: [
+      { href: "/for-investors", label: "Investors & Partners", description: "FDA HUD, IP, pipeline, qualified briefing" },
+      { href: "/for-clinicians", label: "Clinicians & Surgeons", description: "Mechanism, evidence, publications, FAQ" },
+      { href: "/for-patients", label: "Patients & Families", description: "Plain-language answers, what we&rsquo;re working on" },
+    ],
+  },
+  {
     label: "Technology",
     children: [
       { href: "/technology", label: "About TxGuard®", description: "How the regenerative platform works" },
@@ -47,7 +55,10 @@ const groups: NavGroup[] = [
   },
   {
     label: "News",
-    href: "/news",
+    children: [
+      { href: "/news", label: "Press & Milestones", description: "Coverage, grants, regulatory milestones" },
+      { href: "/blog", label: "Blog", description: "Long-form posts and updates from the team" },
+    ],
   },
   {
     label: "Contact",
