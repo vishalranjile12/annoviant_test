@@ -58,6 +58,7 @@ const RouteFallback = () => (
   </div>
 );
 
+// Frontend includes audience routing, public investor page, and CMS-backed blog.
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
