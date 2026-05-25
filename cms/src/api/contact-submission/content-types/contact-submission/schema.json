@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contact_submissions",
+  "info": {
+    "singularName": "contact-submission",
+    "pluralName": "contact-submissions",
+    "displayName": "Contact Submission",
+    "description": "Briefing requests from the website contact form"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "organization": {
+      "type": "string"
+    },
+    "inquiryType": {
+      "type": "enumeration",
+      "enum": ["investor", "clinician", "patient", "other"],
+      "default": "investor",
+      "required": true
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}

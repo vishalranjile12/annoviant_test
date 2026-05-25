@@ -13,6 +13,8 @@ import { InvestorSignals } from "@/components/site/InvestorSignals";
 import { Pipeline } from "@/components/site/Pipeline";
 import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
+import { HomeSectionNav } from "@/components/site/HomeSectionNav";
+import { StickyEngagement } from "@/components/site/StickyEngagement";
 
 // Defer the Contact form (Radix Select etc.); it sits near the bottom of the page.
 const Contact = lazy(() => import("@/components/site/Contact").then((m) => ({ default: m.Contact })));
@@ -73,7 +75,7 @@ const Index = () => {
   ];
 
   return (
-    <main id="main">
+    <main id="main" className="pb-20">
       <Seo
         title="Annoviant | Regenerative Tissue Technology for Pediatric & Cardiovascular Repair"
         description="Annoviant develops TxGuard®, a patented biological tissue platform for pediatric and cardiovascular repair, designed to resist calcification and thrombosis, support host-mediated remodeling, and reduce repeat interventions."
@@ -81,6 +83,7 @@ const Index = () => {
         jsonLd={ld}
       />
       <Nav />
+      <HomeSectionNav />
       <Hero />
       <PersonaSelector />
       <Problem />
@@ -96,6 +99,7 @@ const Index = () => {
         <Contact />
       </Suspense>
       <Footer />
+      <StickyEngagement />
     </main>
   );
 };
