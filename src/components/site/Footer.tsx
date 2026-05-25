@@ -1,6 +1,50 @@
 import { Link } from "react-router-dom";
 import { Logo } from "./Logo";
-import { Linkedin, Instagram, Mail, ShieldCheck } from "lucide-react";
+import { Linkedin, Instagram, Mail, ShieldCheck, Lock } from "lucide-react";
+
+type LinkItem = { to: string; label: string };
+type Group = { title: string; links: LinkItem[] };
+
+const groups: Group[] = [
+  {
+    title: "For…",
+    links: [
+      { to: "/for-investors", label: "Investors & Partners" },
+      { to: "/for-clinicians", label: "Clinicians & Surgeons" },
+      { to: "/for-patients", label: "Patients & Families" },
+    ],
+  },
+  {
+    title: "Platform & Pipeline",
+    links: [
+      { to: "/technology", label: "About TxGuard®" },
+      { to: "/applications", label: "Applications" },
+      { to: "/solutions/pediatric", label: "Pediatric" },
+      { to: "/solutions/cardiovascular", label: "Cardiovascular" },
+      { to: "/#pipeline", label: "Pipeline" },
+    ],
+  },
+  {
+    title: "Evidence",
+    links: [
+      { to: "/clinical-evidence", label: "Evidence Hub" },
+      { to: "/publications", label: "Publications & Patents" },
+      { to: "/faq", label: "Clinical FAQ" },
+      { to: "/answers", label: "TxGuard® Answers" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { to: "/about", label: "About" },
+      { to: "/founder-story", label: "Founders' Story" },
+      { to: "/team", label: "Team" },
+      { to: "/news", label: "News & Press" },
+      { to: "/blog", label: "Blog" },
+      { to: "/contact", label: "Contact" },
+    ],
+  },
+];
 
 export const Footer = () => (
   <footer className="bg-surface-deep text-white/70 pt-16 pb-10 border-t border-white/5">
@@ -16,6 +60,24 @@ export const Footer = () => (
           <p className="text-xs uppercase tracking-widest text-secondary mt-5 font-semibold">
             Enabling healthier lives.
           </p>
+
+          {/* Investor entry — promoted to logo column so it sits high in the footer */}
+          <div className="mt-7 flex flex-wrap gap-2">
+            <Link
+              to="/investors"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/85 hover:bg-white/10 hover:text-white transition-smooth"
+            >
+              Investor view
+            </Link>
+            <Link
+              to="/investor-briefing"
+              className="inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/85 hover:bg-white/10 hover:text-white transition-smooth"
+            >
+              <Lock className="h-3 w-3 text-secondary" aria-hidden />
+              Briefing room
+            </Link>
+          </div>
+
           <div className="flex items-center gap-3 mt-6">
             <a
               href="https://www.linkedin.com/company/annoviant"
@@ -45,35 +107,24 @@ export const Footer = () => (
           </div>
         </div>
 
-        <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm">
-          <div>
-            <div className="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Technology</div>
-            <Link to="/technology" className="block py-1 hover:text-secondary">About TxGuard®</Link>
-            <Link to="/applications" className="block py-1 hover:text-secondary">Applications</Link>
-            <Link to="/#pipeline" className="block py-1 hover:text-secondary">Pipeline</Link>
-          </div>
-          <div>
-            <div className="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Solutions</div>
-            <Link to="/solutions/pediatric" className="block py-1 hover:text-secondary">Pediatric</Link>
-            <Link to="/solutions/cardiovascular" className="block py-1 hover:text-secondary">Cardiovascular</Link>
-          </div>
-          <div>
-            <div className="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Evidence</div>
-            <Link to="/clinical-evidence" className="block py-1 hover:text-secondary">Evidence Hub</Link>
-            <Link to="/publications" className="block py-1 hover:text-secondary">Publications &amp; Patents</Link>
-            <Link to="/faq" className="block py-1 hover:text-secondary">Clinical FAQ</Link>
-            <Link to="/answers" className="block py-1 hover:text-secondary">TxGuard&reg; Answers</Link>
-          </div>
-          <div>
-            <div className="font-semibold text-white mb-3 text-xs uppercase tracking-wider">Company</div>
-            <Link to="/about" className="block py-1 hover:text-secondary">About</Link>
-            <Link to="/founder-story" className="block py-1 hover:text-secondary">Founders Story</Link>
-            <Link to="/team" className="block py-1 hover:text-secondary">Team</Link>
-            <Link to="/news" className="block py-1 hover:text-secondary">News &amp; Press</Link>
-            <Link to="/investor-briefing" className="block py-1 hover:text-secondary">Investor Briefing</Link>
-            <Link to="/contact" className="block py-1 hover:text-secondary">Contact</Link>
-          </div>
-        </div>
+        <nav className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8 text-sm" aria-label="Footer">
+          {groups.map((g) => (
+            <div key={g.title}>
+              <div className="font-semibold text-white mb-3 text-xs uppercase tracking-wider">
+                {g.title}
+              </div>
+              <ul className="space-y-1">
+                {g.links.map((l) => (
+                  <li key={l.to}>
+                    <Link to={l.to} className="block py-1 hover:text-secondary transition-smooth">
+                      {l.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
       </div>
 
       <div className="mt-12 pt-6 border-t border-white/10 text-xs text-white/45 space-y-3">

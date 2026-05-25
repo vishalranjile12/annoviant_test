@@ -8,6 +8,7 @@ import { Explainer } from "@/components/site/Explainer";
 import { Evidence } from "@/components/site/Evidence";
 import { Partners } from "@/components/site/Partners";
 import { PersonaSelector } from "@/components/site/PersonaSelector";
+import { CredentialsStrip } from "@/components/site/CredentialsStrip";
 import { Differentiation } from "@/components/site/Differentiation";
 import { InvestorSignals } from "@/components/site/InvestorSignals";
 import { Pipeline } from "@/components/site/Pipeline";
@@ -85,6 +86,7 @@ const Index = () => {
       <Nav />
       <HomeSectionNav />
       <Hero />
+      <CredentialsStrip />
       <PersonaSelector />
       <Problem />
       <Technology />
