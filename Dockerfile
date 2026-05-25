@@ -8,15 +8,12 @@ RUN bun install --frozen-lockfile
 COPY . .
 RUN bun run build
 
-# --- Serve the built assets ---
-FROM node:22-alpine AS runtime
-WORKDIR /app
-# Pinned to 14.2.4 — newer 14.x patches changed -l parsing and reject bare
-# port numbers, causing "Unknown --listen endpoint scheme" on startup.
-RUN npm install -g serve@14.2.4
-COPY --from=build /app/dist ./dist
-ENV PORT=8080
+# --- Serve the built assets with nginx ---
+# nginx is the boring, reliable choice. We switched away from `serve` because
+# serve@14.x's `parseEndpoint` is broken — bare ports and tcp:// URIs both
+# throw "Unknown --listen endpoint scheme (protocol): undefined" at startup.
+FROM nginx:1.27-alpine AS runtime
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 8080
-# -s rewrites unknown paths to index.html so client-side routes resolve.
-# Explicit tcp:// URI so serve's parser doesn't guess the scheme.
-CMD ["sh", "-c", "serve -s dist --listen tcp://0.0.0.0:${PORT:-8080}"]
+# nginx:alpine's default CMD already runs nginx in the foreground.
