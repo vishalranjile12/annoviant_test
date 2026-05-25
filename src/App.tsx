@@ -58,7 +58,7 @@ const RouteFallback = () => (
   </div>
 );
 
-// Frontend: audience routing, public investor page, CMS-backed blog; served by nginx.
+// Frontend: audience routing, public investor page, CMS-backed blog; nginx (railway.toml fixed).
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
