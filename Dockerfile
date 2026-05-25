@@ -6,6 +6,19 @@ WORKDIR /app
 COPY package.json bun.lockb ./
 RUN bun install --frozen-lockfile
 COPY . .
+
+# Build-time env vars for Vite — VITE_* must be set before `bun run build`
+# or Vite cannot inline them into the client bundle. Railway passes service
+# variables as Docker build args automatically when these ARGs are declared.
+ARG VITE_STRAPI_URL
+ARG VITE_STRAPI_TOKEN
+ARG VITE_BRIEFING_CODE
+ARG VITE_INVESTOR_DATAROOM_URL
+ENV VITE_STRAPI_URL=${VITE_STRAPI_URL}
+ENV VITE_STRAPI_TOKEN=${VITE_STRAPI_TOKEN}
+ENV VITE_BRIEFING_CODE=${VITE_BRIEFING_CODE}
+ENV VITE_INVESTOR_DATAROOM_URL=${VITE_INVESTOR_DATAROOM_URL}
+
 RUN bun run build
 
 # --- Serve the built assets with nginx ---
