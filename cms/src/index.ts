@@ -90,8 +90,10 @@ export default {
         method: 'GET',
         path: '/_health',
         handler: (ctx) => {
-          ctx.status = 200;
+          // Body assignment must come before status; Koa downgrades 200 → 204
+          // when the body isn't set at the time the status is read.
           ctx.body = { status: 'ok' };
+          ctx.status = 200;
         },
         config: {
           auth: false,
