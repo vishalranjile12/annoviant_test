@@ -70,6 +70,10 @@
 @layer base {
   * { @apply border-border; }
   html { scroll-behavior: smooth; }
+  [id] { scroll-margin-top: 6.5rem; }
+  @media (min-width: 768px) {
+    [id] { scroll-margin-top: 7.5rem; }
+  }
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;

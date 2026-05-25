@@ -12,9 +12,9 @@ import { InvestorSignals } from "@/components/site/InvestorSignals";
 import { Pipeline } from "@/components/site/Pipeline";
 import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
+import { HomeSectionNav } from "@/components/site/HomeSectionNav";
+import { StickyEngagement } from "@/components/site/StickyEngagement";
 
-// Defer the Contact form (Radix Select etc.) below the fold,
-// it isn't visible until the user scrolls past Pipeline.
 const Contact = lazy(() => import("@/components/site/Contact").then((m) => ({ default: m.Contact })));
 
 const Index = () => {
@@ -73,7 +73,7 @@ const Index = () => {
   ];
 
   return (
-    <main id="main">
+    <main id="main" className="pb-20">
       <Seo
         title="Annoviant | Regenerative Medical Devices &amp; TxGuard® Technology"
         description="Annoviant develops TxGuard®, a patented regenerative tissue technology for cardiovascular and pediatric heart disease, designed to reduce repeat surgeries."
@@ -81,6 +81,7 @@ const Index = () => {
         jsonLd={ld}
       />
       <Nav />
+      <HomeSectionNav />
       <Hero />
       <Explainer />
       <Problem />
@@ -95,6 +96,7 @@ const Index = () => {
         <Contact />
       </Suspense>
       <Footer />
+      <StickyEngagement />
     </main>
   );
 };

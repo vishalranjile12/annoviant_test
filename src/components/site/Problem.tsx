@@ -37,7 +37,7 @@ const issues: Issue[] = [
 ];
 
 export const Problem = () => (
-  <section className="py-24 md:py-32 bg-muted/40" aria-labelledby="problem-heading">
+  <section id="problem" className="py-24 md:py-32 bg-muted/40" aria-labelledby="problem-heading">
     <div className="container mx-auto">
       <Reveal>
         <div className="max-w-2xl mb-16">
