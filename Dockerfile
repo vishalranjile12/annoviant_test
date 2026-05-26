@@ -10,12 +10,15 @@ COPY . .
 # Build-time env vars for Vite — VITE_* must be set before `bun run build`
 # or Vite cannot inline them into the client bundle. Railway passes service
 # variables as Docker build args automatically when these ARGs are declared.
+#
+# Note: all VITE_* vars end up in the public client bundle. They are NOT
+# secrets — never put API tokens, signing keys, or anything sensitive here.
+# Public-read CMS endpoints are accessed without a token; if you ever need
+# authenticated reads, do it through a server-side proxy, not a VITE_* var.
 ARG VITE_STRAPI_URL
-ARG VITE_STRAPI_TOKEN
 ARG VITE_BRIEFING_CODE
 ARG VITE_INVESTOR_DATAROOM_URL
 ENV VITE_STRAPI_URL=${VITE_STRAPI_URL}
-ENV VITE_STRAPI_TOKEN=${VITE_STRAPI_TOKEN}
 ENV VITE_BRIEFING_CODE=${VITE_BRIEFING_CODE}
 ENV VITE_INVESTOR_DATAROOM_URL=${VITE_INVESTOR_DATAROOM_URL}
 
