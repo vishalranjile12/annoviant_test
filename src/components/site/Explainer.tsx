@@ -2,7 +2,7 @@ import { useState } from "react";
 import { PlayCircle } from "lucide-react";
 import { Reveal } from "./Reveal";
 
-const YT_ID = "zFQBaeZuotE";
+const YT_ID = "h8u6cgM4toE";
 
 export const Explainer = () => {
   const [playing, setPlaying] = useState(false);
