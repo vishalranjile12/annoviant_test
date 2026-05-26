@@ -1,4 +1,10 @@
-export type NewsCategory = "Media" | "Press Release" | "Announcement" | "Regulatory";
+export type NewsCategory =
+  | "Media"
+  | "Press Release"
+  | "Announcement"
+  | "Regulatory"
+  | "Milestone"
+  | "Event";
 
 export type NewsArticle = {
   slug: string;

@@ -1,32 +1,5 @@
 import type { Core } from '@strapi/strapi';
-
-const seedArticles = [
-  {
-    title: "Alpharetta startup's technology could revolutionize cardiac surgeries",
-    slug: 'alpharetta-startup-cardiac-surgeries',
-    category: 'Media' as const,
-    publishedDate: '2024-08-01',
-    externalUrl:
-      'https://annoviant.com/2024/08/alpharetta-startups-technology-could-revolutionize-cardiac-surgeries/',
-  },
-  {
-    title:
-      'Annoviant™ Awarded $2.99 Million NIH Grant to Advance TxGuard™ Pulmonary-Valved Conduit for Pediatric Heart Disease',
-    slug: 'annoviant-nih-grant-txguard-pulmonary-valved-conduit',
-    category: 'Press Release' as const,
-    publishedDate: '2024-04-01',
-    externalUrl:
-      'https://annoviant.com/2024/04/annoviant-awarded-2-99-million-nih-grant-to-advance-txguard-pulmonary-valved-conduit-for-pediatric-heart-disease/',
-  },
-  {
-    title: 'Alpharetta-Based Annoviant is a Medical Device Startup That Truly Grows With Patients',
-    slug: 'alpharetta-annoviant-grows-with-patients',
-    category: 'Media' as const,
-    publishedDate: '2023-04-01',
-    externalUrl:
-      'https://annoviant.com/2023/04/alpharetta-based-annoviant-is-a-medical-device-startup-that-truly-grows-with-patients/',
-  },
-];
+import { newsSeed } from './seed-data/news-articles';
 
 const publicPermissions = [
   'api::news-article.news-article.find',
@@ -60,38 +33,61 @@ async function ensurePublicPermissions(strapi: Core.Strapi) {
   }
 }
 
+/**
+ * Idempotent news-article seeder.
+ *
+ * For each article in the seed file, checks whether a row with the same slug
+ * already exists. If not, creates it. Existing rows are left alone, so any
+ * edits made in the Strapi admin after the initial seed are preserved across
+ * boots and redeploys.
+ */
 async function seedNewsArticles(strapi: Core.Strapi) {
-  const existing = await strapi.db.query('api::news-article.news-article').findMany({ limit: 1 });
+  let created = 0;
 
-  if (existing.length > 0) {
-    return;
-  }
+  for (const article of newsSeed) {
+    const existing = await strapi.db
+      .query('api::news-article.news-article')
+      .findOne({ where: { slug: article.slug } });
 
-  for (const article of seedArticles) {
+    if (existing) continue;
+
     await strapi.documents('api::news-article.news-article').create({
       data: {
-        ...article,
-        publishedAt: new Date().toISOString(),
+        title: article.title,
+        slug: article.slug,
+        category: article.category,
+        publishedDate: article.publishedDate,
+        displayDate: article.displayDate,
+        excerpt: article.excerpt,
+        source: article.source,
+        image: article.image,
+        imagePosition: article.imagePosition,
+        externalUrl: article.externalUrl,
+        paragraphs: article.paragraphs,
       },
       status: 'published',
     });
+
+    created += 1;
   }
 
-  strapi.log.info('Seeded initial news articles');
+  if (created > 0) {
+    strapi.log.info(`Seeded ${created} news article(s); skipped ${newsSeed.length - created} already present`);
+  }
 }
 
 export default {
   register({ strapi }: { strapi: Core.Strapi }) {
     // Lightweight healthcheck endpoint for Railway / uptime monitors.
     // Returns 200 as soon as the HTTP server is listening, independent of
-    // database state — Strapi's own readiness happens in bootstrap.
+    // database state.
     strapi.server.routes([
       {
         method: 'GET',
         path: '/_health',
         handler: (ctx) => {
-          // Body assignment must come before status; Koa downgrades 200 → 204
-          // when the body isn't set at the time the status is read.
+          // Body must be assigned before status; Koa downgrades 200 to 204
+          // when the body is not set at the time the status is read.
           ctx.body = { status: 'ok' };
           ctx.status = 200;
         },

@@ -5,10 +5,11 @@ import { Seo } from "@/components/site/Seo";
 import { Reveal } from "@/components/site/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight, Calendar, Quote } from "lucide-react";
-import { articleBySlug, articles } from "@/data/news";
+import { useUnifiedNews } from "@/hooks/useCmsContent";
 
 const NewsArticlePage = () => {
   const { slug = "" } = useParams();
+  const { articles, articleBySlug } = useUnifiedNews();
   const article = articleBySlug(slug);
 
   // Show a friendly fallback rather than a 404 if the slug doesn't match

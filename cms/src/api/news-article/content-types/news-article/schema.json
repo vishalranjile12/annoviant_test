@@ -5,7 +5,7 @@
     "singularName": "news-article",
     "pluralName": "news-articles",
     "displayName": "News Article",
-    "description": "Press coverage, grants, and company milestones"
+    "description": "Press coverage, grants, announcements, and company milestones"
   },
   "options": {
     "draftAndPublish": true
@@ -23,7 +23,7 @@
     },
     "category": {
       "type": "enumeration",
-      "enum": ["Media", "Press Release", "Milestone", "Event"],
+      "enum": ["Media", "Press Release", "Announcement", "Regulatory", "Milestone", "Event"],
       "default": "Media",
       "required": true
     },
@@ -31,11 +31,26 @@
       "type": "date",
       "required": true
     },
+    "displayDate": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "image": {
+      "type": "string"
+    },
+    "imagePosition": {
+      "type": "string"
+    },
     "externalUrl": {
       "type": "string"
     },
     "excerpt": {
       "type": "text"
+    },
+    "paragraphs": {
+      "type": "json"
     },
     "content": {
       "type": "richtext"
