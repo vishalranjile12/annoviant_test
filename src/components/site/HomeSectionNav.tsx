@@ -63,7 +63,7 @@ export const HomeSectionNav = () => {
   return (
     <nav
       aria-label="Page sections"
-      className="fixed top-16 md:top-20 inset-x-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-lg"
+      className="fixed top-20 md:top-24 inset-x-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-lg"
     >
       {/* Subtle right-edge fade to signal that the row is scrollable. */}
       <div
