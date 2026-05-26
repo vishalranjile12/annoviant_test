@@ -78,8 +78,8 @@ const ForInvestors = () => {
       intro="If you're an investor, corporate development analyst, or strategic partner, here are the paths that answer your questions fastest. Pick where you want to start."
     >
       <Seo
-        title="For Investors & Strategic Partners | Annoviant"
-        description="Annoviant investor entry point. Thesis, pipeline, regulatory pathway, IP, evidence, and the qualified-party briefing."
+        title="For Investors & Strategic Partners | TxGuard® Regenerative Tissue Platform"
+        description="Annoviant develops TxGuard®, a regenerative tissue platform for pediatric and cardiovascular surgery. FDA HUD designation, $5.7M NIH funding, 4 U.S. patents, ISO 13485 manufacturing-ready. Investor overview and qualified-party briefing."
         canonical={`${SITE}/for-investors`}
       />
 

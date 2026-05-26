@@ -51,8 +51,8 @@ const ForPatients = () => (
     heroImage="/hero/heart-bg.jpg"
   >
     <Seo
-      title="For Patients & Families | Annoviant"
-      description="Plain-language explanations of TxGuard®, pediatric congenital heart disease, adult heart valve disease, and what regenerative tissue means for patients."
+      title="For Patients & Families | Understanding TxGuard® Regenerative Tissue"
+      description="Plain-language information for patients and families about TxGuard®, pediatric congenital heart disease, adult heart valve disease, and what regenerative tissue technology could mean. Annoviant's TxGuard® is investigational."
       canonical={`${SITE}/for-patients`}
     />
 

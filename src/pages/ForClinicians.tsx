@@ -78,8 +78,8 @@ const ForClinicians = () => {
       intro="If you're a cardiothoracic or vascular surgeon, an interventional cardiologist, a research clinician, or a trial PI, these paths get you to mechanism, data, and access fastest."
     >
       <Seo
-        title="For Clinicians & Surgeons | Annoviant"
-        description="Annoviant clinician entry. Mechanism of action, comparative pre-clinical evidence, publications and patents, surgeon FAQ, pediatric and adult programs."
+        title="For Clinicians & Cardiothoracic Surgeons | TxGuard® Platform"
+        description="Mechanism, evidence, and access to Annoviant's TxGuard® regenerative tissue platform for cardiothoracic, vascular, and interventional cardiology. Decellularized ECM scaffold, calcification resistance, host-mediated remodeling, FDA HUD designation."
         canonical={`${SITE}/for-clinicians`}
       />
 

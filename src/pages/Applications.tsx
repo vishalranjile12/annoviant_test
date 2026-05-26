@@ -102,6 +102,29 @@ const ApplicationsPage = () => (
       description="TxGuard® applications include pediatric pulmonary valves, adult cardiovascular indications, vascular grafts, urology, GI, and wound/soft-tissue repair."
     />
 
+    {/* Storytelling anchor — why a platform, not a product. */}
+    <section className="py-16 md:py-20" aria-labelledby="story-heading">
+      <div className="container mx-auto max-w-3xl">
+        <Reveal>
+          <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
+            One science, many indications
+          </p>
+          <h2 id="story-heading" className="text-2xl md:text-3xl mb-5 leading-snug">
+            Tissue platforms are usually built around one indication. We took the opposite path.
+          </h2>
+          <p className="text-muted-foreground medical-body text-lg">
+            The chemistry that makes TxGuard® work as a pediatric heart valve is the same chemistry
+            that makes it work as a vascular graft, a urology repair, or a wound patch. The body
+            recognizes the scaffold; the body remodels the scaffold. That biology does not change
+            from one organ to the next. So our pipeline tracks where the platform is being
+            investigated rather than where it has been forced to fit.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+
+    <Pipeline />
+
     <section className="py-20 md:py-28">
       <div className="container mx-auto space-y-6">
         {/* Tier 1, lead indication, full-width hero card */}
@@ -218,8 +241,6 @@ const ApplicationsPage = () => (
 
     {/* Eight soft-tissue surgical applications, ported from the original
         TxGuard Applications page, presented as a stripe with internal separators. */}
-    <Pipeline />
-
     <section className="py-16 md:py-24 bg-muted/40" aria-labelledby="soft-tissue-heading">
       <div className="container mx-auto">
         <Reveal>

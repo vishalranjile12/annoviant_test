@@ -92,8 +92,8 @@ const Investors = () => {
       intro="Annoviant develops TxGuard®, a regenerative tissue platform for pediatric and cardiovascular repair. This page summarizes the publicly disclosable credentials. Detailed diligence materials are shared by invitation."
     >
       <Seo
-        title="Investors & Strategic Partners | Annoviant"
-        description="Public investor overview. FDA HUD designation, $5.7M NIH funding, 4 U.S. patents, ISO 13485 manufacturing-ready. Detailed diligence materials by invitation."
+        title="Investors | Annoviant TxGuard® Regenerative Tissue Platform"
+        description="Public investor overview for Annoviant. FDA Humanitarian Use Device designation, $5.7M cumulative NIH funding, 4 issued U.S. patents and 2 pending PCT applications, ISO 13485 manufacturing readiness, 14 peer-reviewed papers. Detailed diligence materials available by invitation."
         canonical={`${SITE}/investors`}
         jsonLd={ld}
       />

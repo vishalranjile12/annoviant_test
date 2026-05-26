@@ -52,6 +52,28 @@ const TechnologyPage = () => {
         jsonLd={ld}
       />
 
+      {/* Storytelling anchor — sets the stakes before the technical detail. */}
+      <section className="py-16 md:py-20" aria-labelledby="story-heading">
+        <div className="container mx-auto max-w-3xl">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
+              Why a third answer
+            </p>
+            <h2 id="story-heading" className="text-2xl md:text-3xl mb-5 leading-snug">
+              For fifty years, what we put inside the human body to replace tissue has had two
+              answers. Neither was the right one.
+            </h2>
+            <p className="text-muted-foreground medical-body text-lg">
+              Synthetic materials the body never accepts. Or animal tissue, chemically fixed so the
+              body can&rsquo;t reject it. Both decisions trade away regeneration to buy stability.
+              TxGuard® is the third answer: a biological scaffold the body recognizes as its own,
+              processed in a way that resists the failure modes of conventional bioprosthetics, and
+              designed to be remodeled into the patient&rsquo;s own living tissue.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
       {/* The CVD problem stripe, ported from the original About TxGuard page */}
       <section className="py-16 md:py-20 bg-muted/40" aria-labelledby="cvd-heading">
         <div className="container mx-auto">

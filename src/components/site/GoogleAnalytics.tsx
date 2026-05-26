@@ -1,5 +1,6 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { hasAnalyticsConsent } from "./CookieConsent";
 
 const env = import.meta.env as Record<string, string | undefined>;
 const GA_ID = env.VITE_GA4_MEASUREMENT_ID;
@@ -12,24 +13,33 @@ declare global {
 }
 
 /**
- * Google Analytics 4 integration.
+ * Google Analytics 4 integration, gated on explicit cookie consent.
  *
- * Reads the measurement ID from VITE_GA4_MEASUREMENT_ID. If unset, this is a
- * no-op so dev/local builds don't error.
+ * - Does nothing until the user clicks Accept in the CookieConsent banner.
+ * - When consent is granted, injects gtag.js once and tracks subsequent
+ *   route changes as page_view events.
+ * - Listens for cookie-consent-change events so consent given during the
+ *   session takes effect without a reload.
  *
- * Behavior:
- *   - Injects gtag.js once on first render.
- *   - Disables the automatic page_view that gtag fires on `config` (otherwise
- *     SPA navigations would double-count the initial pageview).
- *   - Fires a page_view event on every route change (pathname + search).
- *
- * Mount once near the App root, inside a Router so useLocation works.
+ * Reads the measurement ID from VITE_GA4_MEASUREMENT_ID. If unset, this is
+ * a no-op so dev/local builds don't error.
  */
 export const GoogleAnalytics = () => {
   const { pathname, search } = useLocation();
+  const [consented, setConsented] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!GA_ID) return;
+    setConsented(hasAnalyticsConsent());
+    const onChange = (e: Event) => {
+      const detail = (e as CustomEvent<string>).detail;
+      setConsented(detail === "accepted");
+    };
+    window.addEventListener("cookie-consent-change", onChange);
+    return () => window.removeEventListener("cookie-consent-change", onChange);
+  }, []);
+
+  useEffect(() => {
+    if (!GA_ID || !consented) return;
 
     // Already loaded → just track this navigation.
     if (window.gtag) {
@@ -49,10 +59,10 @@ export const GoogleAnalytics = () => {
     };
     window.gtag("js", new Date());
     // send_page_view: false prevents double-tracking on initial config; we
-    // fire page_view explicitly below and on every route change.
+    // fire page_view explicitly here and on every route change.
     window.gtag("config", GA_ID, { send_page_view: false });
     window.gtag("event", "page_view", { page_path: pathname + search });
-  }, [pathname, search]);
+  }, [pathname, search, consented]);
 
   return null;
 };

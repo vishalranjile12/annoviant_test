@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { GoogleAnalytics } from "@/components/site/GoogleAnalytics";
+import { CookieConsent } from "@/components/site/CookieConsent";
 import Index from "./pages/Index.tsx";
 
 const TechnologyPage = lazy(() => import("./pages/Technology.tsx"));
@@ -96,6 +97,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        <CookieConsent />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
