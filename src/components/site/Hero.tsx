@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { CountUp } from "./CountUp";
 import { Typewriter } from "./Typewriter";
 
@@ -27,10 +27,6 @@ export const Hero = () => (
 
     <div className="relative container mx-auto py-32 md:py-40">
       <div className="max-w-3xl animate-fade-up">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 backdrop-blur px-3 py-1.5 text-xs font-medium text-white/85 mb-6">
-          <ShieldCheck className="h-3.5 w-3.5 text-secondary" />
-          $5.7M in NIH funding · FDA HUD designation · 14 peer-reviewed papers
-        </div>
         <h1 className="text-white mb-6">
           Regenerative tissue technology for <Typewriter words={applicationWords} /> applications.
         </h1>
