@@ -37,10 +37,9 @@ export const Hero = () => (
           Regenerative tissue technology for <Typewriter words={applicationWords} />
         </h1>
         <p className="text-lg md:text-xl text-white/80 medical-body mb-10">
-          TxGuard® is a patented biological tissue platform designed to reduce calcification,
-          thrombosis, infection, and the need for repeat surgery in heart-valve and soft-tissue
-          applications. The scaffold is built to be remodeled by the body into the patient&rsquo;s
-          own living tissue, so it can grow with them.
+          TxGuard® is a patented biological tissue platform. The scaffold is designed to be
+          remodeled by the body into the patient&rsquo;s own living tissue, so a single platform
+          can adapt and grow across the surgical applications it&rsquo;s built for.
         </p>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="lg" className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[44px]">
