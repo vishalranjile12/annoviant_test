@@ -32,25 +32,19 @@ export const Hero = () => (
           Regenerative tissue technology for <span className="text-gradient">pediatric and cardiovascular repair</span>
         </h1>
         <p className="text-lg md:text-xl text-white/80 medical-body mb-10">
-          TxGuard® is a patented biological tissue platform designed to address calcification,
-          thrombosis, infection, degeneration, and repeat-intervention risk in heart-valve and
-          soft-tissue applications, engineered to be remade into the patient&rsquo;s own living
-          tissue and to grow with them.
+          TxGuard® is a patented biological tissue platform designed to reduce calcification,
+          thrombosis, infection, and the need for repeat surgery in heart-valve and soft-tissue
+          applications. The scaffold is built to be remodeled by the body into the patient&rsquo;s
+          own living tissue, so it can grow with them.
         </p>
         <div className="flex flex-wrap gap-3">
           <Button asChild size="lg" className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[44px]">
-            <Link to="/contact?role=partner">
-              Partner with us <ArrowRight className="ml-1 h-4 w-4" />
+            <Link to="/technology">
+              Explore the technology <ArrowRight className="ml-1 h-4 w-4" />
             </Link>
           </Button>
           <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white bg-transparent min-h-[44px]">
-            <Link to="/technology">Explore TxGuard® technology</Link>
-          </Button>
-          <Button asChild size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white min-h-[44px]">
-            <Link to="/publications">View publications &amp; patents</Link>
-          </Button>
-          <Button asChild size="lg" variant="ghost" className="text-white hover:bg-white/10 hover:text-white min-h-[44px]">
-            <Link to="/solutions/pediatric">Understand the need</Link>
+            <Link to="/for-investors">For investors &amp; partners</Link>
           </Button>
         </div>
 

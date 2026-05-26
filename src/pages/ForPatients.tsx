@@ -11,21 +11,21 @@ const paths = [
   {
     icon: HelpCircle,
     title: "Plain-language answers",
-    body: "What TxGuard® is, what it&rsquo;s for, what we know today and what we don&rsquo;t. Written for families and patients, not for specialists.",
+    body: "What TxGuard® is, what it&rsquo;s for, what we know today and what we don&rsquo;t. Written for families, not specialists.",
     href: "/answers",
     cta: "Read the answers",
   },
   {
     icon: Baby,
     title: "Children & congenital heart disease",
-    body: "The lead program. Why kids born with heart defects often need multiple surgeries, and how regenerative tissue is designed to change that.",
+    body: "The lead program. Why children with heart defects often need multiple surgeries, and how regenerative tissue is designed to change that.",
     href: "/solutions/pediatric",
     cta: "Pediatric program",
   },
   {
     icon: Heart,
     title: "Adult heart valve disease",
-    body: "How current bioprosthetic valves break down, what re-operations look like, and what we&rsquo;re working on for adult patients.",
+    body: "How current bioprosthetic valves wear down, what re-operations look like, and what we&rsquo;re working on for adult patients.",
     href: "/solutions/cardiovascular",
     cta: "Adult heart program",
   },
@@ -47,7 +47,7 @@ const ForPatients = () => (
         <span className="text-gradient">part of your family</span>
       </>
     }
-    intro="Most of our website is written for surgeons and investors. This page is written for you. Here&rsquo;s the honest, plain-language version of what Annoviant is, what we&rsquo;re working on, and what it means for patients."
+    intro="Most of our website is written for surgeons and investors. This page is written for you. Here is what Annoviant is, what we are working on, and what it might mean for patients."
     heroImage="/hero/heart-bg.jpg"
   >
     <Seo
@@ -66,14 +66,14 @@ const ForPatients = () => (
             </h2>
             <p className="text-muted-foreground medical-body mb-3">
               Annoviant&rsquo;s TxGuard® technology is <strong>investigational</strong>. That means
-              it&rsquo;s being developed and tested, but it is not yet FDA-approved for routine use in
+              it is still being developed and tested. It is not yet FDA-approved for routine use in
               humans. We hold an FDA Humanitarian Use Device designation for one pediatric
-              application, which is a step in the regulatory pathway, not a final approval.
+              application. That is an early step in the regulatory pathway, not a final approval.
             </p>
             <p className="text-muted-foreground medical-body">
               If you or a loved one is facing surgery, please talk to your cardiologist or
-              cardiothoracic surgeon. We can&rsquo;t give medical advice, and we can&rsquo;t make
-              treatment promises. What we can do is share what we&rsquo;re working on.
+              cardiothoracic surgeon. We cannot give medical advice or make treatment promises. What
+              we can do is share what we are working on.
             </p>
           </div>
         </Reveal>
@@ -122,7 +122,7 @@ const ForPatients = () => (
               <div>
                 <h3 className="text-lg font-semibold mb-1">Want to follow along?</h3>
                 <p className="text-sm text-muted-foreground">
-                  We don&rsquo;t spam. We post updates when there&rsquo;s real news, milestones,
+                  We do not send spam. We post updates when there is real news. Milestones,
                   publications, regulatory progress.
                 </p>
               </div>

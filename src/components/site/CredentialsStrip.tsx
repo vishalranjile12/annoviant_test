@@ -51,10 +51,10 @@ export const CredentialsStrip = () => (
       <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-secondary mb-2">
-            Where regulators, scientists, and capital have already weighed in
+            Where the work stands today
           </p>
           <h2 id="credentials-heading" className="text-xl md:text-2xl font-semibold text-white max-w-2xl">
-            Credentials, not aspirations.
+            A documented track record.
           </h2>
         </div>
         <Link
@@ -86,9 +86,9 @@ export const CredentialsStrip = () => (
       </ul>
 
       <p className="text-[11px] text-white/45 mt-6 max-w-3xl">
-        TxGuard® is investigational. FDA HUD designation does not equal FDA approval; it permits a
-        pathway for devices intended for rare-disease populations. Pre-clinical data may not predict
-        outcomes in humans.
+        TxGuard® is investigational. FDA Humanitarian Use Device designation is not the same as FDA
+        approval. It is a regulatory pathway for devices intended to treat or diagnose rare
+        conditions. Pre-clinical results may not predict outcomes in humans.
       </p>
     </div>
   </section>

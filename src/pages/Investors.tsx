@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
@@ -13,9 +14,10 @@ import {
   Layers,
   TrendingUp,
   Lock,
-  FileText,
   Calendar,
   ExternalLink,
+  ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { articles } from "@/data/news";
 
@@ -24,18 +26,23 @@ const SITE = "https://annoviant.com";
 const thesis = [
   {
     icon: ShieldCheck,
-    headline: "FDA milestone, already in hand",
-    body: "FDA Humanitarian Use Device designation, granted 2020, for the pediatric Pulmonary Valved Graft. A pathway most regenerative-medicine platforms are still chasing.",
+    headline: "FDA milestone already in hand",
+    body: "FDA Humanitarian Use Device designation, granted in 2020, for the pediatric Pulmonary Valved Graft. A regulatory pathway most regenerative-medicine platforms are still working toward.",
   },
   {
     icon: Award,
-    headline: "$5.7M in NIH validation",
-    body: "Four NIH grants to date, including a $2.99M award in 2024. Public funding is third-party diligence that the science holds up under scrutiny.",
+    headline: "$5.7M in NIH funding",
+    body: "Four NIH grants to date, including a $2.99M award in 2024. Public funding represents independent scientific review.",
+  },
+  {
+    icon: Layers,
+    headline: "One platform, multiple indications",
+    body: "Pediatric and adult heart valves, vascular grafts, and soft-tissue repair, all from the same stabilization platform.",
   },
   {
     icon: FlaskConical,
     headline: "14 peer-reviewed papers",
-    body: "Plus 4 issued U.S. patents and 2 pending PCT applications covering the TxGuard® platform. The science is documented, not hand-wavy.",
+    body: "Plus 4 issued U.S. patents and 2 pending PCT applications covering the TxGuard® platform. The science is published and documented.",
   },
   {
     icon: Factory,
@@ -43,23 +50,18 @@ const thesis = [
     body: "Quality system designed to scale. A milestone many regenerative-medicine platforms never reach.",
   },
   {
-    icon: Layers,
-    headline: "Platform, not a single product",
-    body: "Pediatric and adult heart valves, vascular grafts, soft-tissue repair, all from one stabilization platform. One de-risked science, many shots on goal.",
-  },
-  {
     icon: TrendingUp,
     headline: "$8B+ U.S. market by 2035",
-    body: "A 7–9% CAGR space where Edwards, Medtronic, Abbott, Boston Scientific, and J&J actively operate. Strategic interest is part of the territory.",
+    body: "A 7 to 9 percent annual growth space where Edwards, Medtronic, Abbott, Boston Scientific, and Johnson & Johnson all operate today.",
   },
 ];
 
 const milestones = [
-  { date: "2018", label: "Annoviant founded", body: "Spun out of Clemson research; platform stabilization chemistry developed." },
-  { date: "2020", label: "FDA HUD designation", body: "Pediatric pulmonary valved graft receives Humanitarian Use Device designation." },
-  { date: "2022", label: "$1.85M SBIR Phase II", body: "Federal funding accelerates pre-clinical program." },
-  { date: "2024", label: "$2.99M NIH grant", body: "Largest single award to date; pediatric pulmonary valved conduit pathway." },
-  { date: "Next", label: "IND-enabling studies", body: "Path to first-in-human for the pediatric program; adjacent indications follow." },
+  { date: "2018", label: "Annoviant founded", body: "Spun out of Clemson University research. Platform stabilization chemistry developed." },
+  { date: "2020", label: "FDA HUD designation", body: "The pediatric pulmonary valved graft receives Humanitarian Use Device designation." },
+  { date: "2024", label: "$2.99M NIH grant", body: "The largest single award to date. Supports the pediatric pulmonary valved conduit pathway." },
+  { date: "2022", label: "$1.85M SBIR Phase II", body: "Federal funding accelerates the pre-clinical program." },
+  { date: "Next", label: "IND-enabling studies", body: "The path to first-in-human studies for the pediatric program. Adjacent indications follow." },
 ];
 
 const pipeline = [
@@ -67,27 +69,32 @@ const pipeline = [
     tier: "Tier 1 · Lead",
     name: "Pediatric Pulmonary Valved Conduit",
     status: "FDA HUD · IND-enabling",
-    body: "The lead indication and regulatory anchor. A child's heart grows; today's implants don't. TxGuard® is designed to be remodeled into living tissue that grows with the patient.",
+    body: "The lead indication and regulatory anchor. A child's heart grows. Today's implants don't. TxGuard® is designed to be remodeled into living tissue that grows with the patient.",
     href: "/solutions/pediatric",
   },
   {
     tier: "Tier 2 · Adjacent",
     name: "Adult Cardiovascular & Vascular Grafts",
     status: "Pre-clinical",
-    body: "Adult heart-valve replacement and vascular bypass grafts. Same platform chemistry; larger addressable market; well-defined competitive landscape.",
+    body: "Adult heart-valve replacement and vascular bypass grafts. Same platform chemistry, larger addressable market.",
     href: "/solutions/cardiovascular",
   },
   {
-    tier: "Tier 3 · Platform Expansion",
+    tier: "Tier 3 · Platform expansion",
     name: "Soft-Tissue Applications",
     status: "Exploratory",
-    body: "Urology, GI, wound and soft-tissue repair. Platform optionality the same de-risked science can extend to.",
+    body: "Urology, gastrointestinal, wound and soft-tissue repair. Additional indications the same science can support.",
     href: "/applications",
   },
 ];
 
 const Investors = () => {
+  const [showAllThesis, setShowAllThesis] = useState(false);
+  const [showFullHistory, setShowFullHistory] = useState(false);
   const recentPress = articles.slice(0, 3);
+
+  const visibleThesis = showAllThesis ? thesis : thesis.slice(0, 3);
+  const visibleMilestones = showFullHistory ? milestones : milestones.slice(0, 3);
 
   const ld = [
     {
@@ -95,7 +102,7 @@ const Investors = () => {
       "@type": "WebPage",
       name: "Investors & Strategic Partners | Annoviant",
       description:
-        "Annoviant develops TxGuard®, a patented regenerative tissue platform for pediatric and cardiovascular repair. FDA HUD designation, $5.7M in NIH grants, 4 U.S. patents, ISO 13485 manufacturing readiness.",
+        "Annoviant develops TxGuard®, a regenerative tissue platform for pediatric and cardiovascular repair. FDA HUD designation, $5.7M in NIH grants, 4 U.S. patents, ISO 13485 manufacturing readiness.",
       url: `${SITE}/investors`,
     },
   ];
@@ -105,14 +112,14 @@ const Investors = () => {
       eyebrow="Investors & Strategic Partners"
       title={
         <>
-          A de-risked platform <span className="text-gradient">in a category strategics already own</span>
+          A regenerative tissue platform <span className="text-gradient">built for cardiovascular surgery</span>
         </>
       }
-      intro="Annoviant develops TxGuard®, a patented regenerative tissue platform for pediatric and cardiovascular repair. The clinical need is large, the regulatory pathway is opened, the science is published, and the manufacturing is designed to scale."
+      intro="Annoviant develops TxGuard®, a regenerative tissue platform for pediatric and cardiovascular repair. The clinical need is well-documented, the regulatory pathway is open, the science is peer-reviewed, and manufacturing is built to scale."
     >
       <Seo
         title="Investors & Strategic Partners | Annoviant"
-        description="Annoviant TxGuard® regenerative tissue platform — FDA HUD designation, $5.7M NIH funding, 4 U.S. patents, ISO 13485 manufacturing-ready. Investor overview, pipeline, milestones."
+        description="Annoviant TxGuard® regenerative tissue platform. FDA HUD designation, $5.7M NIH funding, 4 U.S. patents, ISO 13485 manufacturing-ready. Investor overview, pipeline, milestones."
         canonical={`${SITE}/investors`}
         jsonLd={ld}
       />
@@ -126,17 +133,17 @@ const Investors = () => {
                 Why now
               </p>
               <h2 id="thesis-heading" className="mb-5">
-                The six things that <span className="text-gradient">make this real</span>
+                What grounds the <span className="text-gradient">opportunity</span>
               </h2>
               <p className="text-muted-foreground medical-body">
-                Cardiovascular implants are a fifty-year-old technology fighting biology it was never
-                designed to befriend. TxGuard® is designed to be remade into the patient&rsquo;s own
-                tissue, with the regulatory, IP, and manufacturing scaffolding to actually ship.
+                Most cardiovascular implants rely on chemistry developed fifty years ago. TxGuard®
+                is designed to be remodeled into the patient&rsquo;s own tissue. The regulatory,
+                intellectual property, and manufacturing foundation is in place.
               </p>
             </div>
           </Reveal>
           <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {thesis.map(({ icon: Icon, headline, body }, i) => (
+            {visibleThesis.map(({ icon: Icon, headline, body }, i) => (
               <Reveal as="li" key={headline} delay={i * 60}>
                 <article className="h-full rounded-2xl border border-border bg-card p-6 hover:shadow-elegant transition-smooth">
                   <span className="inline-flex h-10 w-10 rounded-lg gradient-primary items-center justify-center shadow-glow mb-4">
@@ -148,6 +155,26 @@ const Investors = () => {
               </Reveal>
             ))}
           </ul>
+
+          {thesis.length > 3 && (
+            <div className="flex justify-center mt-8">
+              <Button
+                variant="outline"
+                onClick={() => setShowAllThesis(!showAllThesis)}
+                aria-expanded={showAllThesis}
+              >
+                {showAllThesis ? (
+                  <>
+                    Show fewer <ChevronUp className="ml-1 h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    Show all {thesis.length} reasons <ChevronDown className="ml-1 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -160,12 +187,12 @@ const Investors = () => {
                 Milestones
               </p>
               <h2 id="milestones-heading" className="mb-5">
-                A record you can <span className="text-gradient">trace</span>
+                Where we&rsquo;ve <span className="text-gradient">been</span>
               </h2>
             </div>
           </Reveal>
           <ol className="space-y-6 max-w-3xl">
-            {milestones.map((m, i) => (
+            {visibleMilestones.map((m, i) => (
               <Reveal as="li" key={m.label} delay={i * 60}>
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 py-5 border-t border-border first:border-t-0">
                   <div className="sm:col-span-2 text-2xl font-bold text-primary tabular-nums">
@@ -179,6 +206,25 @@ const Investors = () => {
               </Reveal>
             ))}
           </ol>
+          {milestones.length > 3 && (
+            <div className="flex justify-center mt-8 max-w-3xl">
+              <Button
+                variant="outline"
+                onClick={() => setShowFullHistory(!showFullHistory)}
+                aria-expanded={showFullHistory}
+              >
+                {showFullHistory ? (
+                  <>
+                    Show recent only <ChevronUp className="ml-1 h-4 w-4" />
+                  </>
+                ) : (
+                  <>
+                    Show full history <ChevronDown className="ml-1 h-4 w-4" />
+                  </>
+                )}
+              </Button>
+            </div>
+          )}
         </div>
       </section>
 
@@ -191,7 +237,7 @@ const Investors = () => {
                 Pipeline
               </p>
               <h2 id="pipeline-heading" className="mb-5">
-                One platform, <span className="text-gradient">three tiers of opportunity</span>
+                One platform, <span className="text-gradient">three tiers</span>
               </h2>
             </div>
           </Reveal>
@@ -226,10 +272,10 @@ const Investors = () => {
           <Reveal>
             <div className="max-w-2xl mb-12">
               <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-                IP & evidence
+                IP &amp; evidence
               </p>
               <h2 id="ip-heading" className="mb-5">
-                The scientific footprint, <span className="text-gradient">documented</span>
+                Published, patented, <span className="text-gradient">on file</span>
               </h2>
             </div>
           </Reveal>
@@ -237,13 +283,13 @@ const Investors = () => {
             <article className="rounded-2xl border border-border bg-card p-6">
               <h3 className="text-lg font-semibold mb-3">Intellectual property</h3>
               <ul className="space-y-2 text-sm text-muted-foreground medical-body">
-                <li>· 4 issued U.S. patents covering TxGuard® stabilization platform</li>
+                <li>· 4 issued U.S. patents on the TxGuard® stabilization platform</li>
                 <li>· 2 pending PCT applications for adjacent indications</li>
-                <li>· Patent portfolio reviewed under NDA in the qualified-party briefing</li>
+                <li>· Full patent portfolio available under NDA in the qualified-party briefing</li>
               </ul>
               <Button asChild variant="outline" className="mt-5">
                 <Link to="/publications">
-                  Patents & publications <ArrowRight className="ml-1 h-4 w-4" />
+                  Patents &amp; publications <ArrowRight className="ml-1 h-4 w-4" />
                 </Link>
               </Button>
             </article>
@@ -251,8 +297,8 @@ const Investors = () => {
             <article className="rounded-2xl border border-border bg-card p-6">
               <h3 className="text-lg font-semibold mb-3">Pre-clinical evidence</h3>
               <ul className="space-y-2 text-sm text-muted-foreground medical-body">
-                <li>· 14 peer-reviewed papers across 7+ years</li>
-                <li>· Comparative data vs. legacy bioprosthetic tissue</li>
+                <li>· 14 peer-reviewed papers across seven years</li>
+                <li>· Comparative data versus legacy bioprosthetic tissue</li>
                 <li>· ISO-standard study summaries available to qualified parties</li>
               </ul>
               <Button asChild variant="outline" className="mt-5">
@@ -276,7 +322,7 @@ const Investors = () => {
                     Press
                   </p>
                   <h2 id="press-heading" className="mb-2">
-                    Recent <span className="text-gradient">on the record</span>
+                    Recent <span className="text-gradient">coverage</span>
                   </h2>
                 </div>
                 <Link
@@ -326,7 +372,7 @@ const Investors = () => {
               </span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-secondary mb-2">
-                  Diligence-grade detail
+                  Diligence materials
                 </p>
                 <h2 id="briefing-cta-heading" className="text-2xl md:text-3xl font-semibold text-white mb-3">
                   The qualified-investor briefing
@@ -335,7 +381,7 @@ const Investors = () => {
             </div>
             <p className="text-white/80 medical-body mb-8 max-w-2xl">
               Pre-clinical study packages, regulatory strategy, IP detail, financials, and the data
-              room sit behind NDA. Briefing access is by invitation; request one below and we&rsquo;ll
+              room sit behind NDA. Briefing access is by invitation. Request one below and we&rsquo;ll
               respond within two business days.
             </p>
             <div className="flex flex-wrap gap-3">
