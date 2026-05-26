@@ -256,20 +256,32 @@ const ApplicationsPage = () => (
         </div>
 
         {/* Four product attribute cards, with the original AdobeStock visuals */}
-        <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-px bg-border" aria-label="TxGuard product attributes">
-          {productAttributes.map(({ icon: Icon, label, image }) => (
-            <li key={label} className="bg-background overflow-hidden">
+        <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" aria-label="TxGuard product attributes">
+          {productAttributes.map(({ icon: Icon, label, image }, i) => (
+            <li
+              key={label}
+              className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 motion-safe:animate-fade-up"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <span
+                aria-hidden
+                className="absolute inset-x-0 top-0 h-0.5 gradient-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+              />
               <div className="aspect-[4/3] overflow-hidden bg-muted">
                 <img
                   src={image}
                   alt={`${label} attribute`}
                   loading="lazy"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="px-4 py-3 flex items-center gap-2.5">
-                <Icon className="h-4 w-4 text-primary flex-shrink-0" aria-hidden />
-                <span className="text-sm font-semibold text-foreground">{label}</span>
+                <span className="inline-flex h-7 w-7 rounded-md bg-primary/10 items-center justify-center group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300 flex-shrink-0">
+                  <Icon className="h-3.5 w-3.5 text-primary" aria-hidden />
+                </span>
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                  {label}
+                </span>
               </div>
             </li>
           ))}

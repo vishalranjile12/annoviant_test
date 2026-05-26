@@ -127,22 +127,45 @@ const TechnologyPage = () => {
               </p>
             </div>
 
-            {/* The four product attributes, image-led cards from the original site */}
+            {/* The four product attributes, image-led cards with hover affordances */}
             <ul className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" aria-label="TxGuard product attributes">
-              {productAttributes.map(({ icon: Icon, label, note, image }) => (
-                <li key={label} className="rounded-xl border border-border bg-card overflow-hidden">
-                  <div className="aspect-[4/3] overflow-hidden bg-muted">
+              {productAttributes.map(({ icon: Icon, label, note, image }, i) => (
+                <li
+                  key={label}
+                  className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 motion-safe:animate-fade-up"
+                  style={{ animationDelay: `${i * 80}ms` }}
+                >
+                  {/* Top accent bar that wipes in on hover */}
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-0.5 gradient-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                  />
+                  {/* Soft radial glow that fades in on hover */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background:
+                        "radial-gradient(120% 80% at 50% 0%, hsl(var(--secondary) / 0.12), transparent 60%)",
+                    }}
+                  />
+
+                  <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                     <img
                       src={image}
                       alt={`${label} attribute`}
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-4">
+                  <div className="relative p-4">
                     <div className="flex items-center gap-2.5 mb-1.5">
-                      <Icon className="h-4 w-4 text-primary" aria-hidden />
-                      <span className="text-sm font-semibold text-foreground">{label}</span>
+                      <span className="inline-flex h-7 w-7 rounded-md bg-primary/10 items-center justify-center group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
+                        <Icon className="h-3.5 w-3.5 text-primary" aria-hidden />
+                      </span>
+                      <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                        {label}
+                      </span>
                     </div>
                     <p className="text-[11px] text-muted-foreground leading-snug">{note}</p>
                   </div>
