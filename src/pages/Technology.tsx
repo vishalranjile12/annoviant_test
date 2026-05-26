@@ -42,7 +42,7 @@ const TechnologyPage = () => {
     <PageShell
       eyebrow="The TxGuard® Platform"
       title={<>A regenerative tissue platform, engineered to <span className="text-gradient">grow with the patient</span></>}
-      intro="TxGuard® is a patented breakthrough in regenerative tissue. Unlike fixed bioprosthetics, it is designed to integrate with host tissue, address the failure modes of today's devices, and last."
+      intro="TxGuard® is a patented regenerative tissue platform. Unlike conventional bioprosthetics, it is designed to integrate with host tissue, resist the common failure modes of today's devices, and last."
       heroImage="/hero/heart-matrix.jpg"
     >
       <Seo
@@ -211,10 +211,10 @@ const TechnologyPage = () => {
               <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
                 What sets it apart
               </p>
-              <h2 className="mb-4">Four pillars of the TxGuard® approach</h2>
+              <h2 className="mb-4">The four ideas behind TxGuard®</h2>
               <p className="text-muted-foreground medical-body">
-                The science is best understood in plain terms. Here's the four ideas that, taken
-                together, define how the platform works.
+                The science, in plain terms. Four ideas that, taken together, define how the
+                platform works.
               </p>
             </div>
           </Reveal>

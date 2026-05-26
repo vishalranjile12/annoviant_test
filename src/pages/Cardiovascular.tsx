@@ -110,10 +110,10 @@ const CardiovascularPage = () => {
             <h3 className="mb-4">The numbers we keep on the wall</h3>
             <dl className="space-y-4">
               {[
-                ["8–10K", "Pulmonary Valved Grafts a year, our entry indication"],
-                ["90–100K+", "aortic valves placed in the U.S. each year"],
+                ["8-10K", "Pulmonary Valved Grafts a year, our entry indication"],
+                ["90-100K+", "aortic valves placed in the U.S. each year"],
                 ["180K+", "mitral and tricuspid valves placed in the U.S. each year"],
-                ["7–9%", "annual heart-valve market growth through 2035"],
+                ["7-9%", "annual heart-valve market growth through 2035"],
               ].map(([n, l]) => (
                 <div key={l} className="flex items-baseline justify-between gap-4 border-b border-border last:border-0 pb-3 last:pb-0">
                   <dt className="text-sm text-muted-foreground">{l}</dt>
