@@ -21,6 +21,7 @@ const groups: NavGroup[] = [
     children: [
       { href: "/technology", label: "About TxGuard®", description: "How the regenerative platform works" },
       { href: "/technology#mechanism", label: "Mechanism of Action", description: "From scaffold to living tissue" },
+      { href: "/#clinical-need", label: "The Clinical Need", description: "Why today's implants fall short" },
       { href: "/#differentiation", label: "Why it's different", description: "Regenerative tissue vs. conventional prosthetics" },
     ],
   },
@@ -33,10 +34,6 @@ const groups: NavGroup[] = [
     ],
   },
   {
-    label: "Clinical Need",
-    href: "/#clinical-need",
-  },
-  {
     label: "Evidence",
     children: [
       { href: "/clinical-evidence", label: "Evidence Hub", description: "Pre-clinical data & comparison" },
@@ -46,23 +43,15 @@ const groups: NavGroup[] = [
     ],
   },
   {
-    label: "Team",
+    label: "Company",
     children: [
-      { href: "/team", label: "Our Team", description: "Leadership, advisors, collaborators" },
       { href: "/about", label: "About Annoviant", description: "Mission, values, ecosystem" },
+      { href: "/team", label: "Our Team", description: "Leadership, advisors, collaborators" },
       { href: "/founder-story", label: "Founders' Story", description: "How Annoviant came to be" },
+      { href: "/news", label: "News & Press", description: "Coverage, grants, regulatory milestones" },
+      { href: "/blog", label: "Blog", description: "Long-form posts from the team" },
+      { href: "/contact", label: "Contact", description: "Talk to us" },
     ],
-  },
-  {
-    label: "News",
-    children: [
-      { href: "/news", label: "Press & Milestones", description: "Coverage, grants, regulatory milestones" },
-      { href: "/blog", label: "Blog", description: "Long-form posts and updates from the team" },
-    ],
-  },
-  {
-    label: "Contact",
-    href: "/contact",
   },
 ];
 
