@@ -7,7 +7,6 @@ const sections = [
   { id: "technology", label: "Technology" },
   { id: "differentiation", label: "Differentiation" },
   { id: "pipeline", label: "Pipeline" },
-  { id: "evidence", label: "Evidence" },
 ];
 
 export const HomeSectionNav = () => {
