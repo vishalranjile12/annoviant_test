@@ -6,7 +6,14 @@ import { Typewriter } from "./Typewriter";
 
 const hero = "/hero/heart-bg.jpg";
 
-const applicationWords = ["Cardio", "Vascular", "Urology", "Gastro", "Graft", "Wound"];
+const applicationWords = [
+  "Cardio applications",
+  "Vascular applications",
+  "Urology applications",
+  "Gastro applications",
+  "Graft applications",
+  "Wound applications",
+];
 
 export const Hero = () => (
   <section className="relative min-h-[100svh] flex items-center overflow-hidden gradient-hero" aria-label="Introduction to TxGuard">
@@ -28,7 +35,7 @@ export const Hero = () => (
     <div className="relative container mx-auto py-32 md:py-40">
       <div className="max-w-3xl animate-fade-up">
         <h1 className="text-white mb-6">
-          Regenerative tissue technology for <Typewriter words={applicationWords} /> applications.
+          Regenerative tissue technology for <Typewriter words={applicationWords} />.
         </h1>
         <p className="text-lg md:text-xl text-white/80 medical-body mb-10">
           TxGuard® is a patented biological tissue platform designed to reduce calcification,
