@@ -7,6 +7,7 @@ import { Partners } from "@/components/site/Partners";
 import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
 import { StickyEngagement } from "@/components/site/StickyEngagement";
+import { BriefingPromptCard } from "@/components/site/BriefingPromptCard";
 
 // Defer the Contact form (Radix Select etc.); it sits near the bottom of the page.
 const Contact = lazy(() => import("@/components/site/Contact").then((m) => ({ default: m.Contact })));
@@ -89,6 +90,7 @@ const Index = () => {
       </Suspense>
       <Footer />
       <StickyEngagement />
+      <BriefingPromptCard />
     </main>
   );
 };
