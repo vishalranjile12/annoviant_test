@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
@@ -11,90 +10,65 @@ import {
   FlaskConical,
   Scale,
   Factory,
-  Layers,
-  TrendingUp,
-  Lock,
   Calendar,
+  Lock,
   ExternalLink,
-  ChevronDown,
-  ChevronUp,
 } from "lucide-react";
 import { articles } from "@/data/news";
 
 const SITE = "https://annoviant.com";
 
-const thesis = [
+const publicCredentials = [
   {
     icon: ShieldCheck,
-    headline: "FDA milestone already in hand",
-    body: "FDA Humanitarian Use Device designation, granted in 2020, for the pediatric Pulmonary Valved Graft. A regulatory pathway most regenerative-medicine platforms are still working toward.",
+    metric: "FDA HUD",
+    label: "Humanitarian Use Device designation, 2020 (pediatric pulmonary valved graft)",
   },
   {
     icon: Award,
-    headline: "$5.7M in NIH funding",
-    body: "Four NIH grants to date, including a $2.99M award in 2024. Public funding represents independent scientific review.",
+    metric: "$5.7M",
+    label: "NIH grants to date (most recent: $2.99M, 2024)",
   },
   {
-    icon: Layers,
-    headline: "One platform, multiple indications",
-    body: "Pediatric and adult heart valves, vascular grafts, and soft-tissue repair, all from the same stabilization platform.",
-  },
-  {
-    icon: FlaskConical,
-    headline: "14 peer-reviewed papers",
-    body: "Plus 4 issued U.S. patents and 2 pending PCT applications covering the TxGuard® platform. The science is published and documented.",
+    icon: Scale,
+    metric: "4 + 2",
+    label: "Issued U.S. patents and pending PCT applications",
   },
   {
     icon: Factory,
-    headline: "ISO 13485 manufacturing-ready",
-    body: "Quality system designed to scale. A milestone many regenerative-medicine platforms never reach.",
+    metric: "ISO 13485",
+    label: "Manufacturing readiness designed to scale",
   },
   {
-    icon: TrendingUp,
-    headline: "$8B+ U.S. market by 2035",
-    body: "A 7 to 9 percent annual growth space where Edwards, Medtronic, Abbott, Boston Scientific, and Johnson & Johnson all operate today.",
+    icon: FlaskConical,
+    metric: "14",
+    label: "Peer-reviewed papers across seven years",
   },
 ];
 
-const milestones = [
-  { date: "2018", label: "Annoviant founded", body: "Spun out of Clemson University research. Platform stabilization chemistry developed." },
-  { date: "2020", label: "FDA HUD designation", body: "The pediatric pulmonary valved graft receives Humanitarian Use Device designation." },
-  { date: "2024", label: "$2.99M NIH grant", body: "The largest single award to date. Supports the pediatric pulmonary valved conduit pathway." },
-  { date: "2022", label: "$1.85M SBIR Phase II", body: "Federal funding accelerates the pre-clinical program." },
-  { date: "Next", label: "IND-enabling studies", body: "The path to first-in-human studies for the pediatric program. Adjacent indications follow." },
-];
-
-const pipeline = [
+const pipelineOverview = [
   {
-    tier: "Tier 1 · Lead",
     name: "Pediatric Pulmonary Valved Conduit",
-    status: "FDA HUD · IND-enabling",
-    body: "The lead indication and regulatory anchor. A child's heart grows. Today's implants don't. TxGuard® is designed to be remodeled into living tissue that grows with the patient.",
-    href: "/solutions/pediatric",
+    tier: "Lead",
   },
   {
-    tier: "Tier 2 · Adjacent",
     name: "Adult Cardiovascular & Vascular Grafts",
-    status: "Pre-clinical",
-    body: "Adult heart-valve replacement and vascular bypass grafts. Same platform chemistry, larger addressable market.",
-    href: "/solutions/cardiovascular",
+    tier: "Adjacent",
   },
   {
-    tier: "Tier 3 · Platform expansion",
     name: "Soft-Tissue Applications",
-    status: "Exploratory",
-    body: "Urology, gastrointestinal, wound and soft-tissue repair. Additional indications the same science can support.",
-    href: "/applications",
+    tier: "Platform expansion",
   },
+];
+
+const publicMilestones = [
+  { date: "2018", label: "Annoviant founded" },
+  { date: "2020", label: "FDA HUD designation" },
+  { date: "2024", label: "$2.99M NIH grant awarded" },
 ];
 
 const Investors = () => {
-  const [showAllThesis, setShowAllThesis] = useState(false);
-  const [showFullHistory, setShowFullHistory] = useState(false);
   const recentPress = articles.slice(0, 3);
-
-  const visibleThesis = showAllThesis ? thesis : thesis.slice(0, 3);
-  const visibleMilestones = showFullHistory ? milestones : milestones.slice(0, 3);
 
   const ld = [
     {
@@ -102,7 +76,7 @@ const Investors = () => {
       "@type": "WebPage",
       name: "Investors & Strategic Partners | Annoviant",
       description:
-        "Annoviant develops TxGuard®, a regenerative tissue platform for pediatric and cardiovascular repair. FDA HUD designation, $5.7M in NIH grants, 4 U.S. patents, ISO 13485 manufacturing readiness.",
+        "Public overview for investors and strategic partners. FDA HUD designation, $5.7M in NIH funding, 4 U.S. patents, ISO 13485 manufacturing readiness. Diligence materials available by invitation.",
       url: `${SITE}/investors`,
     },
   ];
@@ -115,121 +89,54 @@ const Investors = () => {
           A regenerative tissue platform <span className="text-gradient">built for cardiovascular surgery</span>
         </>
       }
-      intro="Annoviant develops TxGuard®, a regenerative tissue platform for pediatric and cardiovascular repair. The clinical need is well-documented, the regulatory pathway is open, the science is peer-reviewed, and manufacturing is built to scale."
+      intro="Annoviant develops TxGuard®, a regenerative tissue platform for pediatric and cardiovascular repair. This page summarizes the publicly disclosable credentials. Detailed diligence materials are shared by invitation."
     >
       <Seo
         title="Investors & Strategic Partners | Annoviant"
-        description="Annoviant TxGuard® regenerative tissue platform. FDA HUD designation, $5.7M NIH funding, 4 U.S. patents, ISO 13485 manufacturing-ready. Investor overview, pipeline, milestones."
+        description="Public investor overview. FDA HUD designation, $5.7M NIH funding, 4 U.S. patents, ISO 13485 manufacturing-ready. Detailed diligence materials by invitation."
         canonical={`${SITE}/investors`}
         jsonLd={ld}
       />
 
-      {/* Investment thesis */}
-      <section className="py-20 md:py-28" aria-labelledby="thesis-heading">
+      {/* Public credentials */}
+      <section className="py-20 md:py-28" aria-labelledby="credentials-heading">
         <div className="container mx-auto">
           <Reveal>
             <div className="max-w-2xl mb-12">
               <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-                Why now
+                Public record
               </p>
-              <h2 id="thesis-heading" className="mb-5">
-                What grounds the <span className="text-gradient">opportunity</span>
+              <h2 id="credentials-heading" className="mb-5">
+                Where the work <span className="text-gradient">stands today</span>
               </h2>
               <p className="text-muted-foreground medical-body">
-                Most cardiovascular implants rely on chemistry developed fifty years ago. TxGuard®
-                is designed to be remodeled into the patient&rsquo;s own tissue. The regulatory,
-                intellectual property, and manufacturing foundation is in place.
+                These are the milestones we can talk about in public. The strategic context,
+                pre-clinical detail, financials, and use of funds sit behind an invitation in the
+                briefing room.
               </p>
             </div>
           </Reveal>
-          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {visibleThesis.map(({ icon: Icon, headline, body }, i) => (
-              <Reveal as="li" key={headline} delay={i * 60}>
-                <article className="h-full rounded-2xl border border-border bg-card p-6 hover:shadow-elegant transition-smooth">
-                  <span className="inline-flex h-10 w-10 rounded-lg gradient-primary items-center justify-center shadow-glow mb-4">
-                    <Icon className="h-5 w-5 text-primary-foreground" aria-hidden />
+
+          <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+            {publicCredentials.map(({ icon: Icon, metric, label }, i) => (
+              <Reveal as="li" key={metric} delay={i * 50}>
+                <article className="h-full rounded-2xl border border-border bg-card p-5">
+                  <span className="inline-flex h-9 w-9 rounded-md bg-primary/10 items-center justify-center mb-4">
+                    <Icon className="h-4 w-4 text-primary" aria-hidden />
                   </span>
-                  <h3 className="text-lg font-semibold mb-2">{headline}</h3>
-                  <p className="text-sm text-muted-foreground medical-body">{body}</p>
+                  <div className="text-xl md:text-2xl font-bold text-foreground tabular-nums leading-tight mb-2">
+                    {metric}
+                  </div>
+                  <p className="text-xs text-muted-foreground leading-snug">{label}</p>
                 </article>
               </Reveal>
             ))}
           </ul>
-
-          {thesis.length > 3 && (
-            <div className="flex justify-center mt-8">
-              <Button
-                variant="outline"
-                onClick={() => setShowAllThesis(!showAllThesis)}
-                aria-expanded={showAllThesis}
-              >
-                {showAllThesis ? (
-                  <>
-                    Show fewer <ChevronUp className="ml-1 h-4 w-4" />
-                  </>
-                ) : (
-                  <>
-                    Show all {thesis.length} reasons <ChevronDown className="ml-1 h-4 w-4" />
-                  </>
-                )}
-              </Button>
-            </div>
-          )}
         </div>
       </section>
 
-      {/* Milestones timeline */}
-      <section className="py-20 md:py-28 bg-muted/40" aria-labelledby="milestones-heading">
-        <div className="container mx-auto">
-          <Reveal>
-            <div className="max-w-2xl mb-12">
-              <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-                Milestones
-              </p>
-              <h2 id="milestones-heading" className="mb-5">
-                Where we&rsquo;ve <span className="text-gradient">been</span>
-              </h2>
-            </div>
-          </Reveal>
-          <ol className="space-y-6 max-w-3xl">
-            {visibleMilestones.map((m, i) => (
-              <Reveal as="li" key={m.label} delay={i * 60}>
-                <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 py-5 border-t border-border first:border-t-0">
-                  <div className="sm:col-span-2 text-2xl font-bold text-primary tabular-nums">
-                    {m.date}
-                  </div>
-                  <div className="sm:col-span-10">
-                    <h3 className="text-base font-semibold mb-1">{m.label}</h3>
-                    <p className="text-sm text-muted-foreground medical-body">{m.body}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </ol>
-          {milestones.length > 3 && (
-            <div className="flex justify-center mt-8 max-w-3xl">
-              <Button
-                variant="outline"
-                onClick={() => setShowFullHistory(!showFullHistory)}
-                aria-expanded={showFullHistory}
-              >
-                {showFullHistory ? (
-                  <>
-                    Show recent only <ChevronUp className="ml-1 h-4 w-4" />
-                  </>
-                ) : (
-                  <>
-                    Show full history <ChevronDown className="ml-1 h-4 w-4" />
-                  </>
-                )}
-              </Button>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Pipeline */}
-      <section className="py-20 md:py-28" aria-labelledby="pipeline-heading">
+      {/* Pipeline overview, names only */}
+      <section className="py-20 md:py-28 bg-muted/40" aria-labelledby="pipeline-heading">
         <div className="container mx-auto">
           <Reveal>
             <div className="max-w-2xl mb-12">
@@ -239,81 +146,60 @@ const Investors = () => {
               <h2 id="pipeline-heading" className="mb-5">
                 One platform, <span className="text-gradient">three tiers</span>
               </h2>
+              <p className="text-muted-foreground medical-body">
+                Program-by-program detail, status, and timelines are part of the qualified-investor
+                briefing.
+              </p>
             </div>
           </Reveal>
           <ul className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {pipeline.map((p, i) => (
+            {pipelineOverview.map((p, i) => (
               <Reveal as="li" key={p.name} delay={i * 60}>
-                <Link
-                  to={p.href}
-                  className="group block h-full rounded-2xl border border-border bg-card p-6 hover:shadow-elegant transition-smooth"
-                >
+                <article className="h-full rounded-2xl border border-border bg-card p-6">
                   <p className="text-xs font-semibold uppercase tracking-widest text-secondary mb-3">
                     {p.tier}
                   </p>
-                  <h3 className="text-lg font-semibold mb-2">{p.name}</h3>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-xs font-medium text-primary mb-3">
-                    {p.status}
-                  </span>
-                  <p className="text-sm text-muted-foreground medical-body mb-4">{p.body}</p>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-smooth">
-                    Explore <ArrowRight className="h-4 w-4" />
-                  </span>
-                </Link>
+                  <h3 className="text-lg font-semibold">{p.name}</h3>
+                </article>
               </Reveal>
             ))}
           </ul>
         </div>
       </section>
 
-      {/* IP & evidence */}
-      <section className="py-20 md:py-28 bg-muted/40" aria-labelledby="ip-heading">
+      {/* Milestones, dates + labels only */}
+      <section className="py-20 md:py-28" aria-labelledby="milestones-heading">
         <div className="container mx-auto">
           <Reveal>
             <div className="max-w-2xl mb-12">
               <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-                IP &amp; evidence
+                Key milestones
               </p>
-              <h2 id="ip-heading" className="mb-5">
-                Published, patented, <span className="text-gradient">on file</span>
+              <h2 id="milestones-heading" className="mb-5">
+                A record you can <span className="text-gradient">verify</span>
               </h2>
             </div>
           </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <article className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="text-lg font-semibold mb-3">Intellectual property</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground medical-body">
-                <li>· 4 issued U.S. patents on the TxGuard® stabilization platform</li>
-                <li>· 2 pending PCT applications for adjacent indications</li>
-                <li>· Full patent portfolio available under NDA in the qualified-party briefing</li>
-              </ul>
-              <Button asChild variant="outline" className="mt-5">
-                <Link to="/publications">
-                  Patents &amp; publications <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
-            </article>
-
-            <article className="rounded-2xl border border-border bg-card p-6">
-              <h3 className="text-lg font-semibold mb-3">Pre-clinical evidence</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground medical-body">
-                <li>· 14 peer-reviewed papers across seven years</li>
-                <li>· Comparative data versus legacy bioprosthetic tissue</li>
-                <li>· ISO-standard study summaries available to qualified parties</li>
-              </ul>
-              <Button asChild variant="outline" className="mt-5">
-                <Link to="/clinical-evidence">
-                  Clinical evidence hub <ArrowRight className="ml-1 h-4 w-4" />
-                </Link>
-              </Button>
-            </article>
-          </div>
+          <ol className="space-y-5 max-w-3xl">
+            {publicMilestones.map((m, i) => (
+              <Reveal as="li" key={m.label} delay={i * 60}>
+                <div className="grid grid-cols-1 sm:grid-cols-12 gap-4 sm:gap-8 py-4 border-t border-border first:border-t-0">
+                  <div className="sm:col-span-2 text-2xl font-bold text-primary tabular-nums">
+                    {m.date}
+                  </div>
+                  <div className="sm:col-span-10">
+                    <h3 className="text-base font-semibold">{m.label}</h3>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
         </div>
       </section>
 
       {/* Recent press */}
       {recentPress.length > 0 && (
-        <section className="py-20 md:py-28" aria-labelledby="press-heading">
+        <section className="py-20 md:py-28 bg-muted/40" aria-labelledby="press-heading">
           <div className="container mx-auto">
             <Reveal>
               <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
@@ -360,7 +246,7 @@ const Investors = () => {
         </section>
       )}
 
-      {/* Briefing CTA */}
+      {/* Briefing CTA — primary path off this page */}
       <section className="py-20 md:py-28 gradient-deep text-white relative overflow-hidden" aria-labelledby="briefing-cta-heading">
         <div aria-hidden className="absolute -top-32 -right-32 h-[420px] w-[420px] rounded-full bg-secondary/20 blur-[140px]" />
         <div aria-hidden className="absolute -bottom-32 -left-32 h-[420px] w-[420px] rounded-full bg-primary/30 blur-[140px]" />
@@ -372,7 +258,7 @@ const Investors = () => {
               </span>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-secondary mb-2">
-                  Diligence materials
+                  By invitation
                 </p>
                 <h2 id="briefing-cta-heading" className="text-2xl md:text-3xl font-semibold text-white mb-3">
                   The qualified-investor briefing
@@ -380,9 +266,10 @@ const Investors = () => {
               </div>
             </div>
             <p className="text-white/80 medical-body mb-8 max-w-2xl">
-              Pre-clinical study packages, regulatory strategy, IP detail, financials, and the data
-              room sit behind NDA. Briefing access is by invitation. Request one below and we&rsquo;ll
-              respond within two business days.
+              The full investment thesis, detailed milestones, program-by-program pipeline status,
+              market positioning, pre-clinical study summaries, IP detail, and financials sit
+              behind an invitation. Request access below and we&rsquo;ll respond within two
+              business days.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="gradient-primary text-primary-foreground border-0">
