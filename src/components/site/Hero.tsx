@@ -3,8 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { CountUp } from "./CountUp";
 import { Typewriter } from "./Typewriter";
-
-const hero = "/hero/heart-bg.jpg";
+import heroImage from "@/assets/tissue-scaffold.jpg";
 
 const applicationWords = [
   "Cardio applications",
@@ -18,8 +17,8 @@ const applicationWords = [
 export const Hero = () => (
   <section className="relative min-h-[100svh] flex items-center overflow-hidden gradient-hero" aria-label="Introduction to TxGuard">
     <img
-      src={hero}
-      alt="A glowing heart, the visual metaphor for TxGuard, a tissue platform that the body remakes into living tissue"
+      src={heroImage}
+      alt="Microscopic view of the TxGuard regenerative tissue scaffold"
       width={1920}
       height={1080}
       // @ts-expect-error, React 18 emits a warning for camelCase, lowercase is the canonical HTML attr
