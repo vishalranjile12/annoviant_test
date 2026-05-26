@@ -2,8 +2,11 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { CountUp } from "./CountUp";
+import { Typewriter } from "./Typewriter";
 
 const hero = "/hero/heart-bg.jpg";
+
+const applicationWords = ["Cardio", "Vascular", "Urology", "Gastro", "Graft", "Wound"];
 
 export const Hero = () => (
   <section className="relative min-h-[100svh] flex items-center overflow-hidden gradient-hero" aria-label="Introduction to TxGuard">
@@ -14,7 +17,7 @@ export const Hero = () => (
       height={1080}
       // @ts-expect-error, React 18 emits a warning for camelCase, lowercase is the canonical HTML attr
       fetchpriority="high"
-      className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen heartbeat"
+      className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen"
     />
     <div className="absolute inset-0 bg-gradient-to-r from-surface-deep/95 via-surface-deep/70 to-transparent" />
     <div
@@ -29,7 +32,7 @@ export const Hero = () => (
           $5.7M in NIH funding · FDA HUD designation · 14 peer-reviewed papers
         </div>
         <h1 className="text-white mb-6">
-          Regenerative tissue technology for <span className="text-gradient">pediatric and cardiovascular repair</span>
+          Regenerative tissue technology for <Typewriter words={applicationWords} /> applications.
         </h1>
         <p className="text-lg md:text-xl text-white/80 medical-body mb-10">
           TxGuard® is a patented biological tissue platform designed to reduce calcification,
