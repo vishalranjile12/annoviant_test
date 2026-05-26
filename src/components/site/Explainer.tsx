@@ -39,23 +39,34 @@ export const Explainer = () => {
               <button
                 type="button"
                 onClick={() => YT_ID && setPlaying(true)}
-                aria-label={YT_ID ? "Play explainer video" : "Explainer video, coming soon"}
+                aria-label={YT_ID ? "Play founder's notes video" : "Video, coming soon"}
                 className="group relative w-full h-full grid place-items-center text-white"
               >
+                {/* YouTube's own thumbnail for the video. maxresdefault is
+                    1280x720 and not always available; fall back to hqdefault
+                    (always present) on error. */}
                 <img
-                  src="/hero/clinical-hero.jpeg"
+                  src={`https://img.youtube.com/vi/${YT_ID}/maxresdefault.jpg`}
                   alt=""
                   aria-hidden
-                  className="absolute inset-0 w-full h-full object-cover opacity-60"
+                  className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
+                  onError={(e) => {
+                    const img = e.currentTarget;
+                    if (!img.dataset.fallback) {
+                      img.dataset.fallback = "1";
+                      img.src = `https://img.youtube.com/vi/${YT_ID}/hqdefault.jpg`;
+                    }
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-br from-surface-deep/80 via-surface-deep/50 to-secondary/30" />
+                {/* Subtle vignette so the play button stays legible. */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/40 group-hover:from-black/15 group-hover:via-black/30 group-hover:to-black/50 transition-all duration-300" />
                 <div className="relative flex flex-col items-center gap-4">
-                  <div className="h-20 w-20 rounded-full gradient-primary grid place-items-center shadow-glow group-hover:scale-105 transition-smooth">
+                  <div className="h-20 w-20 rounded-full gradient-primary grid place-items-center shadow-glow group-hover:scale-110 transition-transform duration-300">
                     <PlayCircle className="h-10 w-10 text-primary-foreground" />
                   </div>
-                  <span className="text-sm font-semibold uppercase tracking-widest text-white/90">
-                    {YT_ID ? "Play (≈2 min)" : "Explainer video, coming soon"}
+                  <span className="text-sm font-semibold uppercase tracking-widest text-white drop-shadow-lg">
+                    {YT_ID ? "Play (≈2 min)" : "Video, coming soon"}
                   </span>
                 </div>
               </button>
