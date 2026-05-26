@@ -84,6 +84,7 @@ const Index = () => {
       <Nav />
       <HomeSectionNav />
       <Hero />
+      <Explainer />
       <CredentialsStrip />
       <PersonaSelector />
       <Problem />
@@ -92,7 +93,6 @@ const Index = () => {
       <Differentiation />
       <Pipeline />
       <Partners />
-      <Explainer />
       <Suspense fallback={<div className="py-32" aria-hidden />}>
         <Contact />
       </Suspense>
