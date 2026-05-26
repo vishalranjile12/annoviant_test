@@ -12,7 +12,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { Mail, MapPin, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, Phone, ShieldCheck, CheckCircle2, Linkedin, Instagram } from "lucide-react";
 
 const ROLES = ["clinician", "investor", "partner", "patient", "media", "other"] as const;
 type Role = (typeof ROLES)[number];
@@ -63,16 +63,77 @@ export const Contact = () => {
               Surgeon, investor, partner, parent, whoever you are, send us a note. We&rsquo;ll
               answer with materials and a real person, not a form letter.
             </p>
-            <ul className="space-y-3 text-white/80 text-sm" aria-label="Direct contact">
-              <li className="flex items-center gap-3">
-                <Mail className="h-4 w-4 text-secondary flex-shrink-0" />
-                <a href="mailto:partnerships@annoviant.com" className="hover:text-white">partnerships@annoviant.com</a>
+
+            <ul className="space-y-4 text-white/80 text-sm" aria-label="Direct contact">
+              <li>
+                <p className="text-xs font-semibold uppercase tracking-widest text-secondary/80 mb-2">Email</p>
+                <div className="space-y-1.5">
+                  <div className="flex items-center gap-3">
+                    <Mail className="h-4 w-4 text-secondary flex-shrink-0" aria-hidden />
+                    <a href="mailto:contact@annoviant.com" className="hover:text-white">contact@annoviant.com</a>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="h-4 w-4 text-secondary flex-shrink-0" aria-hidden />
+                    <a href="mailto:partnerships@annoviant.com" className="hover:text-white">partnerships@annoviant.com</a>
+                  </div>
+                </div>
               </li>
-              <li className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-secondary flex-shrink-0" /> Alpharetta, Georgia · United States
+
+              <li>
+                <p className="text-xs font-semibold uppercase tracking-widest text-secondary/80 mb-2">Phone</p>
+                <div className="flex items-center gap-3">
+                  <Phone className="h-4 w-4 text-secondary flex-shrink-0" aria-hidden />
+                  <a href="tel:+16783573812" className="hover:text-white">(678) 357-3812</a>
+                </div>
               </li>
-              <li className="flex items-center gap-3">
-                <ShieldCheck className="h-4 w-4 text-secondary flex-shrink-0" /> Inquiries handled per our privacy policy
+
+              <li>
+                <p className="text-xs font-semibold uppercase tracking-widest text-secondary/80 mb-2">Offices</p>
+                <div className="space-y-2">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="h-4 w-4 text-secondary flex-shrink-0 mt-0.5" aria-hidden />
+                    <span>
+                      <span className="block text-white/95 font-medium">Georgia</span>
+                      <span className="block text-white/65">2972 Webb Bridge Road, Alpharetta, GA 30009</span>
+                    </span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <MapPin className="h-4 w-4 text-secondary flex-shrink-0 mt-0.5" aria-hidden />
+                    <span>
+                      <span className="block text-white/95 font-medium">South Carolina</span>
+                      <span className="block text-white/65">200 Patewood Dr, Building C, Greenville, SC 29615</span>
+                    </span>
+                  </div>
+                </div>
+              </li>
+
+              <li>
+                <p className="text-xs font-semibold uppercase tracking-widest text-secondary/80 mb-2">Follow along</p>
+                <div className="flex items-center gap-2">
+                  <a
+                    href="https://www.linkedin.com/company/annoviant"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Annoviant on LinkedIn"
+                    className="h-9 w-9 grid place-items-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:text-white transition-smooth"
+                  >
+                    <Linkedin className="h-4 w-4" />
+                  </a>
+                  <a
+                    href="https://www.instagram.com/annovianthealth/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Annoviant on Instagram"
+                    className="h-9 w-9 grid place-items-center rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:text-white transition-smooth"
+                  >
+                    <Instagram className="h-4 w-4" />
+                  </a>
+                </div>
+              </li>
+
+              <li className="flex items-center gap-3 text-white/55 text-xs pt-2 border-t border-white/10">
+                <ShieldCheck className="h-3.5 w-3.5 text-secondary flex-shrink-0" aria-hidden />
+                Inquiries handled per our privacy policy. We respond within two business days.
               </li>
             </ul>
           </div>
