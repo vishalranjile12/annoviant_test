@@ -1,6 +1,7 @@
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { RegenerationTimeline } from "@/components/site/RegenerationTimeline";
+import { Differentiation } from "@/components/site/Differentiation";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
 import { CheckCircle2, Beaker, Layers, Activity, ShieldCheck, Info, Sparkles, Wind, Droplet } from "lucide-react";
@@ -245,6 +246,8 @@ const TechnologyPage = () => {
           </ol>
         </div>
       </section>
+
+      <Differentiation />
     </PageShell>
   );
 };

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
+import { Pipeline } from "@/components/site/Pipeline";
 import { Reveal } from "@/components/site/Reveal";
 import {
   Heart,
@@ -217,6 +218,8 @@ const ApplicationsPage = () => (
 
     {/* Eight soft-tissue surgical applications, ported from the original
         TxGuard Applications page, presented as a stripe with internal separators. */}
+    <Pipeline />
+
     <section className="py-16 md:py-24 bg-muted/40" aria-labelledby="soft-tissue-heading">
       <div className="container mx-auto">
         <Reveal>

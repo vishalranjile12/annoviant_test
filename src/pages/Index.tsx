@@ -1,23 +1,21 @@
 import { lazy, Suspense } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
-import { Problem } from "@/components/site/Problem";
-import { Technology } from "@/components/site/Technology";
-import { RegenerationTimeline } from "@/components/site/RegenerationTimeline";
 import { Explainer } from "@/components/site/Explainer";
-import { Partners } from "@/components/site/Partners";
-import { PersonaSelector } from "@/components/site/PersonaSelector";
 import { CredentialsStrip } from "@/components/site/CredentialsStrip";
-import { Differentiation } from "@/components/site/Differentiation";
-import { Pipeline } from "@/components/site/Pipeline";
+import { Partners } from "@/components/site/Partners";
 import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
-import { HomeSectionNav } from "@/components/site/HomeSectionNav";
 import { StickyEngagement } from "@/components/site/StickyEngagement";
 
 // Defer the Contact form (Radix Select etc.); it sits near the bottom of the page.
 const Contact = lazy(() => import("@/components/site/Contact").then((m) => ({ default: m.Contact })));
 
+// Frontend: trimmed home page. Detailed narrative lives on dedicated pages:
+//   /technology   — clinical need, mechanism, differentiation
+//   /applications — pipeline programs by development stage
+//   /investors    — public investor summary
+//   /for-...      — audience routing
 const Index = () => {
   const ld = [
     {
@@ -82,16 +80,9 @@ const Index = () => {
         jsonLd={ld}
       />
       <Nav />
-      <HomeSectionNav />
       <Hero />
       <Explainer />
       <CredentialsStrip />
-      <PersonaSelector />
-      <Problem />
-      <Technology />
-      <RegenerationTimeline />
-      <Differentiation />
-      <Pipeline />
       <Partners />
       <Suspense fallback={<div className="py-32" aria-hidden />}>
         <Contact />
