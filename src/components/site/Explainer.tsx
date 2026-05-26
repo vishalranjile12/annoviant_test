@@ -13,14 +13,14 @@ export const Explainer = () => {
         <Reveal>
           <div className="max-w-2xl mb-10">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-              Two minutes
+              Idea and Vision
             </p>
             <h2 id="explainer-heading" className="mb-4">
-              The whole idea, in <span className="text-gradient">two minutes</span>
+              Founder&rsquo;s notes on <span className="text-gradient">innovation</span>
             </h2>
             <p className="text-muted-foreground medical-body">
-              If you'd rather watch than read, this is the short version. The biology, the
-              mechanism, and where we're aiming to use it, no jargon required.
+              A few minutes from our founders on why we started Annoviant, what TxGuard® is
+              built to do, and the future of regenerative tissue in surgical care.
             </p>
           </div>
         </Reveal>
