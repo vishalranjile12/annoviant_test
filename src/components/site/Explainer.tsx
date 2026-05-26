@@ -1,11 +1,34 @@
-import { useState } from "react";
-import { PlayCircle } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Play } from "lucide-react";
 import { Reveal } from "./Reveal";
 
 const YT_ID = "h8u6cgM4toE";
 
 export const Explainer = () => {
   const [playing, setPlaying] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Auto-start the embed when the player enters the viewport. Muted (browser
+  // autoplay policy requires it) — YouTube exposes an unmute button in the
+  // chrome once playback begins.
+  useEffect(() => {
+    if (!containerRef.current || playing || !YT_ID) return;
+    const el = containerRef.current;
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+            setPlaying(true);
+            io.disconnect();
+            return;
+          }
+        }
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [playing]);
 
   return (
     <section id="explainer" className="py-20 md:py-28" aria-labelledby="explainer-heading">
@@ -26,25 +49,25 @@ export const Explainer = () => {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="relative aspect-video max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-elegant border border-border bg-surface-deep">
+          <div
+            ref={containerRef}
+            className="relative aspect-video max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-elegant border border-border bg-surface-deep"
+          >
             {playing && YT_ID ? (
               <iframe
-                src={`https://www.youtube-nocookie.com/embed/${YT_ID}?autoplay=1&rel=0`}
-                title="Annoviant TxGuard explainer video"
+                src={`https://www.youtube-nocookie.com/embed/${YT_ID}?autoplay=1&mute=1&rel=0&playsinline=1`}
+                title="Annoviant founders' notes on innovation"
                 className="w-full h-full"
-                allow="accelerated-2d-canvas; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allow="autoplay; encrypted-media; picture-in-picture"
                 allowFullScreen
               />
             ) : (
               <button
                 type="button"
                 onClick={() => YT_ID && setPlaying(true)}
-                aria-label={YT_ID ? "Play founder's notes video" : "Video, coming soon"}
-                className="group relative w-full h-full grid place-items-center text-white"
+                aria-label={YT_ID ? "Play founders' notes video" : "Video, coming soon"}
+                className="group relative w-full h-full grid place-items-center"
               >
-                {/* YouTube's own thumbnail for the video. maxresdefault is
-                    1280x720 and not always available; fall back to hqdefault
-                    (always present) on error. */}
                 <img
                   src={`https://img.youtube.com/vi/${YT_ID}/maxresdefault.jpg`}
                   alt=""
@@ -59,15 +82,10 @@ export const Explainer = () => {
                     }
                   }}
                 />
-                {/* Subtle vignette so the play button stays legible. */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-black/20 to-black/40 group-hover:from-black/15 group-hover:via-black/30 group-hover:to-black/50 transition-all duration-300" />
-                <div className="relative flex flex-col items-center gap-4">
-                  <div className="h-20 w-20 rounded-full gradient-primary grid place-items-center shadow-glow group-hover:scale-110 transition-transform duration-300">
-                    <PlayCircle className="h-10 w-10 text-primary-foreground" />
-                  </div>
-                  <span className="text-sm font-semibold uppercase tracking-widest text-white drop-shadow-lg">
-                    {YT_ID ? "Play (≈2 min)" : "Video, coming soon"}
-                  </span>
+                {/* Minimal play affordance — clean white pill with a single
+                    play glyph. No dark gradient. The thumbnail does the work. */}
+                <div className="relative h-16 w-16 md:h-[72px] md:w-[72px] rounded-full bg-white grid place-items-center shadow-elegant group-hover:scale-110 transition-transform duration-300">
+                  <Play className="h-7 w-7 text-primary fill-primary translate-x-[1px]" aria-hidden />
                 </div>
               </button>
             )}
