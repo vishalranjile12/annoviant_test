@@ -18,7 +18,7 @@ export const Hero = () => (
       height={1080}
       // @ts-expect-error, React 18 emits a warning for camelCase, lowercase is the canonical HTML attr
       fetchpriority="high"
-      className="heartbeat absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen"
+      className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-screen"
     />
     <div className="absolute inset-0 bg-gradient-to-r from-surface-deep/95 via-surface-deep/70 to-transparent" />
     <div

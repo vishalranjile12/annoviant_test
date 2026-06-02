@@ -1,42 +1,41 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 
-// Signature "show, don't tell" section: a scaffold that fills with the
-// patient's own cells and comes alive as you scroll. Three stages, three
-// short captions. The visual carries the meaning; copy only labels it.
+// Signature "show, don't tell" section: a fibrous scaffold that is repopulated
+// by the patient's own cells and remodels into organized living tissue as you
+// scroll. The visual emulates real tissue, not an abstract diagram:
+//   Stage 1 — a cool, porous ECM fiber mesh (cf. decellularized-scaffold SEM)
+//   Stage 2 — rounded cells with nuclei migrate into the pores
+//   Stage 3 — warm, aligned muscle fibers with oval nuclei + cross-striations
+//             (cf. cardiac-muscle histology)
 //
-// Motion: a sticky SVG lattice. Each cell has a deterministic threshold; as
-// the active stage advances 0 → 1 → 2 the "fill" rises and more cells turn
-// from hollow scaffold rings into living (cyan) cells, with a final pulse.
-// prefers-reduced-motion collapses to the final, living state with no scrub.
+// Three layers cross-fade as the active stage advances (fill 0 → 0.5 → 1), so
+// the motion is smooth and cheap. prefers-reduced-motion jumps to the final
+// living-tissue state.
 
-type Stage = {
-  kicker: string;
-  title: string;
-  caption: string;
-};
+type Stage = { kicker: string; title: string; caption: string };
 
 const STAGES: Stage[] = [
   {
     kicker: "Step 01",
     title: "A scaffold, implanted",
     caption:
-      "The acellular TxGuard® scaffold is placed using the same technique surgeons already use — no new instruments.",
+      "The acellular TxGuard® scaffold — a fibrous extracellular-matrix mesh — is placed using the technique surgeons already use.",
   },
   {
     kicker: "Step 02",
     title: "The body moves in",
     caption:
-      "Recognizing familiar tissue cues, the patient's own cells migrate into the scaffold and repopulate it.",
+      "Recognizing familiar matrix cues, the patient's own cells migrate into the scaffold's pores and repopulate it.",
   },
   {
     kicker: "Step 03",
     title: "It becomes living tissue",
     caption:
-      "Over time the scaffold remodels into the patient's own tissue — and in young animals, it has grown with them.",
+      "The cells organize and the matrix remodels into aligned, living tissue — the patient's own, and in young animals, able to grow.",
   },
 ];
 
-// Deterministic pseudo-random so the lattice is stable across renders.
+// Deterministic PRNG so geometry is stable across renders.
 function seeded(n: number) {
   let s = n;
   return () => {
@@ -45,29 +44,66 @@ function seeded(n: number) {
   };
 }
 
-type Cell = { x: number; y: number; r: number; threshold: number; delay: number };
-
-function buildCells(): Cell[] {
-  const rand = seeded(7);
-  const cols = 14;
-  const rows = 10;
-  const cells: Cell[] = [];
-  for (let row = 0; row < rows; row++) {
-    for (let col = 0; col < cols; col++) {
-      const jx = (rand() - 0.5) * 5;
-      const jy = (rand() - 0.5) * 5;
-      const x = 8 + (col / (cols - 1)) * 84 + jx;
-      const y = 8 + (row / (rows - 1)) * 84 + jy;
-      cells.push({
-        x,
-        y,
-        r: 1.6 + rand() * 0.9,
-        threshold: rand(),
-        delay: rand() * 220,
-      });
-    }
+// ---- Scaffold mesh: a dense, irregular fibrous web forming pores (cf. ECM
+//      SEM). Primary strands join nearest nodes; finer "wisp" filaments fill
+//      the gaps for the tangled extracellular-matrix look. ----
+function buildScaffold() {
+  const rand = seeded(11);
+  const nodes: { x: number; y: number }[] = [];
+  for (let i = 0; i < 48; i++) {
+    nodes.push({ x: 2 + rand() * 96, y: 2 + rand() * 96 });
   }
-  return cells;
+  const curve = (a: { x: number; y: number }, b: { x: number; y: number }, bow: number) => {
+    const mx = (a.x + b.x) / 2 + (rand() - 0.5) * bow;
+    const my = (a.y + b.y) / 2 + (rand() - 0.5) * bow;
+    return `M ${a.x.toFixed(1)} ${a.y.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
+  };
+  const fibers: string[] = []; // primary strands
+  const wisps: string[] = []; // finer filaments
+  nodes.forEach((a, i) => {
+    const near = nodes
+      .map((b, j) => ({ j, d: (a.x - b.x) ** 2 + (a.y - b.y) ** 2 }))
+      .filter((o) => o.j !== i)
+      .sort((p, q) => p.d - q.d);
+    near.slice(0, 3).forEach(({ j }) => {
+      if (j > i) fibers.push(curve(a, nodes[j], 11));
+    });
+    // a couple of thin wisps to slightly further neighbours
+    near.slice(3, 6).forEach(({ j }) => {
+      if (rand() > 0.45) wisps.push(curve(a, nodes[j], 16));
+    });
+  });
+  return { nodes, fibers, wisps };
+}
+
+// ---- Migrating cells: rounded bodies with a darker nucleus ----
+function buildCells() {
+  const rand = seeded(29);
+  return Array.from({ length: 30 }, () => ({
+    x: 8 + rand() * 84,
+    y: 8 + rand() * 84,
+    rx: 2 + rand() * 1.2,
+    ry: 1.5 + rand() * 0.9,
+    rot: rand() * 180,
+    delay: rand() * 240,
+  }));
+}
+
+// ---- Organized fibers: aligned muscle bands with nuclei + striations ----
+function buildFibers() {
+  const rand = seeded(47);
+  const angle = -15;
+  return Array.from({ length: 6 }, (_, i) => {
+    const y = 12 + i * 14.5 + (rand() - 0.5) * 4;
+    return {
+      y,
+      angle: angle + (rand() - 0.5) * 6,
+      h: 8.5 + rand() * 2,
+      nuclei: [-26 + rand() * 6, 2 + rand() * 6, 26 + rand() * 6],
+      striations: Array.from({ length: 13 }, (_, k) => -42 + k * 7),
+      delay: i * 90,
+    };
+  });
 }
 
 export const Regeneration = () => {
@@ -75,7 +111,9 @@ export const Regeneration = () => {
   const reduced =
     typeof window !== "undefined" &&
     window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+  const scaffold = useMemo(buildScaffold, []);
   const cells = useMemo(buildCells, []);
+  const fibers = useMemo(buildFibers, []);
   const markers = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -86,21 +124,21 @@ export const Regeneration = () => {
     const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
-          if (e.isIntersecting) {
-            const idx = Number((e.target as HTMLElement).dataset.idx);
-            setStage(idx);
-          }
+          if (e.isIntersecting) setStage(Number((e.target as HTMLElement).dataset.idx));
         });
       },
-      // Fire when a stage marker reaches the vertical middle of the viewport.
       { rootMargin: "-45% 0px -45% 0px", threshold: 0 },
     );
     markers.current.forEach((m) => m && obs.observe(m));
     return () => obs.disconnect();
   }, [reduced]);
 
-  // Fill level: how much of the scaffold is "alive" at the current stage.
   const fill = stage / (STAGES.length - 1); // 0, 0.5, 1
+  const clamp = (n: number) => Math.max(0, Math.min(1, n));
+  // Layer opacities as smooth functions of fill.
+  const scaffoldOpacity = clamp(0.9 - 0.78 * fill);
+  const cellsOpacity = fill < 0.5 ? clamp(fill * 2) : clamp(1 - (fill - 0.5) * 1.3);
+  const tissueOpacity = clamp((fill - 0.4) / 0.6);
 
   return (
     <section
@@ -121,61 +159,81 @@ export const Regeneration = () => {
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
           {/* Sticky visual */}
           <div className="lg:sticky lg:top-24 order-1">
-            <div className="relative aspect-square w-full max-w-xl mx-auto rounded-3xl border border-white/10 bg-white/[0.03] overflow-hidden shadow-elegant">
+            <div className="relative aspect-square w-full max-w-xl mx-auto rounded-3xl border border-white/10 bg-[hsl(220_45%_7%)] overflow-hidden shadow-elegant">
+              {/* ambient glow shifts cool -> warm as tissue forms */}
               <div
                 aria-hidden
-                className="absolute inset-0 transition-opacity duration-700"
-                style={{ opacity: 0.25 + fill * 0.55 }}
-              >
-                <div className="absolute left-1/2 top-1/2 h-2/3 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-secondary/25 blur-3xl" />
-              </div>
+                className="absolute left-1/2 top-1/2 h-2/3 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-secondary/20 blur-3xl transition-opacity duration-700"
+                style={{ opacity: 0.6 * (1 - fill) }}
+              />
+              <div
+                aria-hidden
+                className="absolute left-1/2 top-1/2 h-2/3 w-2/3 -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl transition-opacity duration-700"
+                style={{ opacity: 0.45 * fill, background: "radial-gradient(circle, hsl(345 60% 55% / 0.5), transparent 70%)" }}
+              />
 
-              <svg
-                viewBox="0 0 100 100"
-                className={`relative w-full h-full ${stage === 2 && !reduced ? "heartbeat" : ""}`}
-                role="img"
-                aria-label={`Regeneration stage ${stage + 1} of 3: ${STAGES[stage].title}`}
-              >
-                {cells.map((c, i) => {
-                  const alive = c.threshold <= fill + 0.001;
-                  return (
-                    <g key={i}>
-                      {/* scaffold ring — always present, faint */}
-                      <circle
-                        cx={c.x}
-                        cy={c.y}
-                        r={c.r}
-                        fill="none"
-                        stroke="hsl(197 100% 70%)"
-                        strokeWidth={0.35}
-                        opacity={alive ? 0.25 : 0.4}
-                        style={{ transition: `opacity 600ms ${c.delay}ms` }}
-                      />
-                      {/* living cell — fades/scales in when reached */}
-                      <circle
-                        cx={c.x}
-                        cy={c.y}
-                        r={c.r * 0.78}
-                        fill="hsl(197 100% 50%)"
-                        opacity={alive ? 0.9 : 0}
-                        style={{
-                          transformOrigin: `${c.x}px ${c.y}px`,
-                          transform: alive ? "scale(1)" : "scale(0.2)",
-                          transition: `opacity 600ms ${c.delay}ms, transform 600ms ${c.delay}ms`,
-                        }}
-                      />
+              <svg viewBox="0 0 100 100" className="relative w-full h-full" role="img"
+                aria-label={`Regeneration stage ${stage + 1} of 3: ${STAGES[stage].title}`}>
+                <defs>
+                  <linearGradient id="fiberFill" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stopColor="hsl(350 55% 68%)" />
+                    <stop offset="0.5" stopColor="hsl(345 52% 58%)" />
+                    <stop offset="1" stopColor="hsl(338 48% 47%)" />
+                  </linearGradient>
+                </defs>
+
+                {/* Layer 1 — ECM scaffold mesh (cool, fibrous, porous) */}
+                <g style={{ opacity: scaffoldOpacity, transition: "opacity 600ms ease" }}>
+                  {scaffold.wisps.map((d, i) => (
+                    <path key={`w${i}`} d={d} fill="none" stroke="hsl(195 80% 72%)" strokeWidth={0.22}
+                      strokeLinecap="round" opacity={0.3} />
+                  ))}
+                  {scaffold.fibers.map((d, i) => (
+                    <path key={i} d={d} fill="none" stroke="hsl(195 90% 80%)" strokeWidth={0.5}
+                      strokeLinecap="round" opacity={0.6} />
+                  ))}
+                  {scaffold.nodes.map((n, i) => (
+                    <circle key={i} cx={n.x} cy={n.y} r={0.6} fill="hsl(195 95% 85%)" opacity={0.75} />
+                  ))}
+                </g>
+
+                {/* Layer 2 — migrating cells with nuclei */}
+                <g style={{ opacity: cellsOpacity, transition: "opacity 600ms ease" }}>
+                  {cells.map((c, i) => (
+                    <g key={i} transform={`translate(${c.x} ${c.y}) rotate(${c.rot})`}
+                      style={{ transition: `opacity 500ms ${c.delay}ms` }}>
+                      <ellipse rx={c.rx} ry={c.ry} fill="hsl(348 45% 62%)" opacity={0.85} />
+                      <ellipse rx={c.rx * 0.5} ry={c.ry * 0.5} fill="hsl(290 35% 24%)" />
                     </g>
-                  );
-                })}
+                  ))}
+                </g>
+
+                {/* Layer 3 — organized cardiac fibers (aligned, striated, nucleated) */}
+                <g style={{ opacity: tissueOpacity, transition: "opacity 700ms ease" }}>
+                  {fibers.map((f, i) => (
+                    <g key={i} transform={`translate(50 ${f.y}) rotate(${f.angle})`}>
+                      <rect x={-48} y={-f.h / 2} width={96} height={f.h} rx={f.h / 2}
+                        fill="url(#fiberFill)" opacity={0.92} />
+                      {/* cross-striations */}
+                      {f.striations.map((sx, k) => (
+                        <line key={k} x1={sx} y1={-f.h / 2 + 1} x2={sx} y2={f.h / 2 - 1}
+                          stroke="hsl(338 55% 38%)" strokeWidth={0.45} opacity={0.55} />
+                      ))}
+                      {/* oval nuclei along the fiber */}
+                      {f.nuclei.map((nx, k) => (
+                        <ellipse key={k} cx={nx} cy={0} rx={2.6} ry={1.5}
+                          fill="hsl(288 40% 22%)" />
+                      ))}
+                    </g>
+                  ))}
+                </g>
               </svg>
 
               <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-[11px] uppercase tracking-widest text-white/50">
                 <span>Scaffold</span>
                 <span className="flex-1 mx-3 h-px bg-white/10 relative">
-                  <span
-                    className="absolute inset-y-0 left-0 bg-secondary transition-all duration-700"
-                    style={{ width: `${fill * 100}%` }}
-                  />
+                  <span className="absolute inset-y-0 left-0 bg-secondary transition-all duration-700"
+                    style={{ width: `${fill * 100}%` }} />
                 </span>
                 <span>Living tissue</span>
               </div>
@@ -210,9 +268,9 @@ export const Regeneration = () => {
         </div>
 
         <p className="text-[11px] text-white/40 mt-4 max-w-3xl">
-          Based on pre-clinical animal studies (lamb-to-sheep models, ISO 5840 / 10993).
-          Human results may differ. TxGuard® is investigational; the Pulmonary Valved Graft
-          holds FDA Humanitarian Use Device designation (2020).
+          Illustrative. Based on pre-clinical animal studies (lamb-to-sheep models, ISO 5840 / 10993);
+          human results may differ. TxGuard® is investigational; the Pulmonary Valved Graft holds FDA
+          Humanitarian Use Device designation (2020).
         </p>
       </div>
     </section>
