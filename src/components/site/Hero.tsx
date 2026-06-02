@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import heroImage from "@/assets/tissue-scaffold.jpg";
 
 // Restrained hero — one idea, one sentence, one primary action.
@@ -41,9 +41,9 @@ export const Hero = () => (
           size="lg"
           className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[48px] px-7 text-base"
         >
-          <a href="#regeneration">
-            See how it works <ArrowDown className="ml-1.5 h-4 w-4" />
-          </a>
+          <Link to="/technology">
+            See how it works <ArrowRight className="ml-1.5 h-4 w-4" />
+          </Link>
         </Button>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import { lazy, Suspense } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
-import { Regeneration } from "@/components/site/Regeneration";
 import { Explainer } from "@/components/site/Explainer";
 import { CredentialsStrip } from "@/components/site/CredentialsStrip";
 import { Audiences } from "@/components/site/Audiences";
@@ -14,7 +13,8 @@ import { BriefingPromptCard } from "@/components/site/BriefingPromptCard";
 const Contact = lazy(() => import("@/components/site/Contact").then((m) => ({ default: m.Contact })));
 
 // Restrained home (Magenta-inspired): one idea per screen, visual-first.
-//   Hero → Regeneration (signature motion) → Explainer → Proof → Routing → Contact
+//   Hero → Explainer (founder video) → Proof → Routing → Contact
+// The scaffold→tissue animation lives on /technology (cell-matrix-stages.gif).
 // Detailed narrative lives on dedicated pages:
 //   /technology   — clinical need, mechanism, differentiation
 //   /applications — pipeline programs by development stage
@@ -85,7 +85,6 @@ const Index = () => {
       />
       <Nav />
       <Hero />
-      <Regeneration />
       <Explainer />
       <CredentialsStrip />
       <Audiences />
