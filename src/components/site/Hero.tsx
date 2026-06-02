@@ -1,21 +1,16 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import { CountUp } from "./CountUp";
-import { Typewriter } from "./Typewriter";
+import { ArrowDown } from "lucide-react";
 import heroImage from "@/assets/tissue-scaffold.jpg";
 
-const applicationWords = [
-  "Cardio applications",
-  "Vascular applications",
-  "Urology applications",
-  "Gastro applications",
-  "Graft applications",
-  "Wound applications",
-];
-
+// Restrained hero — one idea, one sentence, one primary action.
+// Credentials, stats, and disclaimers live further down the page and on
+// /investors, so the first screen stays about the product, not the fact sheet.
 export const Hero = () => (
-  <section className="relative min-h-[100svh] flex items-center overflow-hidden gradient-hero" aria-label="Introduction to TxGuard">
+  <section
+    className="relative min-h-[100svh] flex items-center overflow-hidden gradient-hero"
+    aria-label="Introduction to TxGuard"
+  >
     <img
       src={heroImage}
       alt="Microscopic view of the TxGuard regenerative tissue scaffold"
@@ -33,47 +28,34 @@ export const Hero = () => (
 
     <div className="relative container mx-auto py-32 md:py-40">
       <div className="max-w-3xl animate-fade-up">
-        <h1 className="text-white mb-6">
-          Regenerative tissue technology for <Typewriter words={applicationWords} />
+        <h1 className="text-white mb-6 text-balance">
+          Tissue the body rebuilds <span className="text-gradient">as its own.</span>
         </h1>
         <p className="text-lg md:text-xl text-white/80 medical-body mb-10">
-          TxGuard® is a patented biological tissue platform. The scaffold is designed to be
-          remodeled by the body into the patient&rsquo;s own living tissue, so a single platform
-          can adapt and grow across the surgical applications it&rsquo;s built for.
+          TxGuard® is a patented regenerative scaffold. Implanted like a conventional graft,
+          it&rsquo;s remodeled into the patient&rsquo;s own living tissue&nbsp;&mdash; designed to last,
+          and in children, to grow.
         </p>
-        <div className="flex flex-wrap gap-3">
-          <Button asChild size="lg" className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[44px]">
-            <Link to="/technology">
-              Explore the technology <ArrowRight className="ml-1 h-4 w-4" />
-            </Link>
-          </Button>
-          <Button asChild size="lg" variant="outline" className="border-white/30 text-white hover:bg-white/10 hover:text-white bg-transparent min-h-[44px]">
-            <Link to="/for-investors">For investors &amp; partners</Link>
-          </Button>
-        </div>
-
-        <dl className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 max-w-2xl">
-          {[
-            ["$5.7M", "raised in NIH grants"],
-            ["4", "U.S. patents on the platform"],
-            ["14", "peer-reviewed papers"],
-            ["7+", "years of pre-clinical data"],
-          ].map(([n, l]) => (
-            <div key={l}>
-              <dt className="sr-only">{l}</dt>
-              <dd>
-                <CountUp value={n} className="text-2xl md:text-3xl font-bold text-white tabular-nums" />
-                <span className="block text-xs text-white/60 mt-1">{l}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-        <p className="text-[11px] text-white/50 mt-4 max-w-2xl">
-          Counts current as of 2026. Funding figures include grants to Annoviant and the founding
-          research program. The work is investigational; pre-clinical animal data may not predict
-          outcomes in humans.
-        </p>
+        <Button
+          asChild
+          size="lg"
+          className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[48px] px-7 text-base"
+        >
+          <a href="#regeneration">
+            See how it works <ArrowDown className="ml-1.5 h-4 w-4" />
+          </a>
+        </Button>
       </div>
     </div>
+
+    <Link
+      to="/technology"
+      aria-hidden
+      tabIndex={-1}
+      className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-white/40 hover:text-white/70 transition-smooth"
+    >
+      <span className="text-[11px] uppercase tracking-widest">Scroll</span>
+      <ArrowDown className="h-4 w-4 animate-bounce" />
+    </Link>
   </section>
 );

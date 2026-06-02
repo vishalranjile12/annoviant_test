@@ -4,7 +4,7 @@ import { RegenerationTimeline } from "@/components/site/RegenerationTimeline";
 import { Differentiation } from "@/components/site/Differentiation";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
-import { CheckCircle2, Beaker, Layers, Activity, ShieldCheck, Info, Sparkles, Wind, Droplet } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Info, Sparkles, Wind, Droplet } from "lucide-react";
 import scaffold from "@/assets/tissue-scaffold.jpg";
 
 const productAttributes = [
@@ -19,13 +19,6 @@ const cvdStats = [
   { value: "120M", label: "CVD cases per year in the U.S., projected to reach 184M by 2050" },
   { value: "580K", label: "valve-replacement and CABG surgeries every year in the U.S." },
   { value: "~25%", label: "of CVD patients face combined heart valve and coronary artery disease" },
-];
-
-const pillars = [
-  { icon: Layers, title: "Decellularized ECM scaffold", body: "A proprietary process removes immunogenic cellular material while aiming to preserve the native extracellular matrix architecture and biochemical signaling cues." },
-  { icon: Activity, title: "Host-cell repopulation", body: "Once implanted, the scaffold is designed to be recognized as native tissue, recruiting the patient's own cells to remodel and regenerate functional tissue." },
-  { icon: ShieldCheck, title: "Calcification-resistant by design", body: "Engineered to address the dominant failure modes of conventional bioprosthetics, calcification, thrombosis, and accelerated structural degeneration." },
-  { icon: Beaker, title: "Pliable & durable", body: "Mechanical performance is maintained across the processing pipeline, supporting tissue that handles like native and is engineered to last." },
 ];
 
 const TechnologyPage = () => {
@@ -249,48 +242,6 @@ const TechnologyPage = () => {
       </section>
 
       <RegenerationTimeline />
-
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto">
-          <Reveal>
-            <div className="max-w-2xl mb-14">
-              <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-                What sets it apart
-              </p>
-              <h2 className="mb-4">The four ideas behind TxGuard®</h2>
-              <p className="text-muted-foreground medical-body">
-                The science, in plain terms. Four ideas that, taken together, define how the
-                platform works.
-              </p>
-            </div>
-          </Reveal>
-
-          <ol className="space-y-12 md:space-y-16 max-w-5xl">
-            {pillars.map(({ icon: Icon, title, body }, i) => (
-              <Reveal as="li" key={title} delay={i * 80}>
-                <article
-                  className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start ${
-                    i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
-                  }`}
-                >
-                  <div className="md:col-span-4 flex md:flex-col items-baseline md:items-start gap-4">
-                    <span className="text-5xl md:text-6xl font-bold text-primary/25 leading-none tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="h-12 w-12 rounded-xl gradient-primary grid place-items-center shadow-glow md:mt-2">
-                      <Icon className="h-5 w-5 text-primary-foreground" aria-hidden />
-                    </div>
-                  </div>
-                  <div className="md:col-span-8 md:border-l md:border-border md:pl-8">
-                    <h3 className="mb-3 text-xl">{title}</h3>
-                    <p className="text-base text-muted-foreground medical-body">{body}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
 
       <Differentiation />
     </PageShell>

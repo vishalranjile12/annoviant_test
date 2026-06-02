@@ -1,11 +1,10 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
-import { Pipeline } from "@/components/site/Pipeline";
+import { PipelineExplorer } from "@/components/site/PipelineExplorer";
 import { Reveal } from "@/components/site/Reveal";
 import {
   Heart,
-  Activity,
   Droplet,
   Bandage,
   Stethoscope,
@@ -53,43 +52,6 @@ const pediatric = {
   ],
 };
 
-const mids = [
-  {
-    icon: Heart,
-    name: "Adult Cardiovascular",
-    status: "Pre-clinical · advancing",
-    body: "Aortic, mitral, tricuspid, and adult pulmonary valves, the indications where bioprosthetic failures hurt the most.",
-    href: "/solutions/cardiovascular",
-  },
-  {
-    icon: Activity,
-    name: "Vascular Grafts",
-    status: "Expanded potential",
-    body: "A regenerative conduit for bypass and reconstruction, with the potential to remodel into living vessel rather than sit inert.",
-  },
-];
-
-const compacts = [
-  {
-    icon: Droplet,
-    name: "Urology",
-    status: "Exploratory",
-    body: "Tissue scaffolds for urological reconstruction, where the body needs to heal in, not around, the implant.",
-  },
-  {
-    icon: Stethoscope,
-    name: "Gastrointestinal",
-    status: "Exploratory",
-    body: "Soft-tissue applications across the GI tract, places where regenerating the tissue beats replacing it.",
-  },
-  {
-    icon: Bandage,
-    name: "Wound & Soft Tissue",
-    status: "Exploratory",
-    body: "Regenerative scaffolds for the complex wound, hernia, and soft-tissue cases that don't fit a standard solution.",
-  },
-];
-
 const ApplicationsPage = () => (
   <PageShell
     eyebrow="Applications"
@@ -122,8 +84,6 @@ const ApplicationsPage = () => (
         </Reveal>
       </div>
     </section>
-
-    <Pipeline />
 
     <section className="py-20 md:py-28">
       <div className="container mx-auto space-y-6">
@@ -177,67 +137,10 @@ const ApplicationsPage = () => (
           </Link>
         </Reveal>
 
-        {/* Tier 2, mid indications, two equal cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {mids.map(({ icon: Icon, name, status, body, href }, i) => {
-            const Card = href ? Link : "div";
-            const cardProps = href ? { to: href } : {};
-            return (
-              <Reveal key={name} delay={i * 80}>
-                <Card
-                  {...cardProps}
-                  className={`group block h-full rounded-2xl border border-border bg-card p-7 md:p-8 shadow-card hover:shadow-elegant transition-smooth ${href ? "hover:-translate-y-1" : ""}`}
-                >
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="h-11 w-11 rounded-lg gradient-primary grid place-items-center shadow-glow">
-                      <Icon className="h-5 w-5 text-primary-foreground" aria-hidden />
-                    </div>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-secondary bg-secondary/10 px-2.5 py-1 rounded-full">
-                      {status}
-                    </span>
-                  </div>
-                  <h3 className="mb-3 text-xl">{name}</h3>
-                  <p className="text-sm text-muted-foreground">{body}</p>
-                  {href && (
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-secondary transition-smooth">
-                      Learn more <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-smooth" />
-                    </span>
-                  )}
-                </Card>
-              </Reveal>
-            );
-          })}
-        </div>
-
-        {/* Tier 3, exploratory indications, three compact cards */}
-        <div className="grid md:grid-cols-3 gap-5">
-          {compacts.map(({ icon: Icon, name, status, body }, i) => (
-            <Reveal key={name} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-border bg-muted/40 p-6 md:p-7 hover:bg-card hover:shadow-card transition-smooth">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="h-10 w-10 rounded-lg bg-primary/10 grid place-items-center">
-                    <Icon className="h-5 w-5 text-primary" aria-hidden />
-                  </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    {status}
-                  </span>
-                </div>
-                <h3 className="mb-2 text-base">{name}</h3>
-                <p className="text-sm text-muted-foreground">{body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-
-      <div className="container mx-auto mt-10">
-        <p className="text-xs text-muted-foreground max-w-3xl">
-          Everything except the pediatric Pulmonary Valved Graft (FDA HUD designation, 2020) is
-          investigational. None of them are approved for use in people, and we won&rsquo;t pretend
-          otherwise.
-        </p>
       </div>
     </section>
+
+    <PipelineExplorer />
 
     {/* Eight soft-tissue surgical applications, ported from the original
         TxGuard Applications page, presented as a stripe with internal separators. */}
