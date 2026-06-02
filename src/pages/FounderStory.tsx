@@ -269,6 +269,64 @@ const FounderStoryPage = () => {
         </div>
       </section>
 
+      {/* At a glance — the fast path through a long story. Most visitors get
+          the gist of both founders here; the full chapters live below. */}
+      <section className="py-14 md:py-16 border-b border-border" aria-labelledby="founders-glance">
+        <div className="container mx-auto">
+          <div className="max-w-2xl mb-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-secondary mb-3">
+              The short version
+            </p>
+            <h2 id="founders-glance" className="text-2xl md:text-3xl">Two founders, one through-line</h2>
+            <p className="text-muted-foreground medical-body mt-3">
+              A scientist and an operator who spent decades on the same idea before they built
+              Annoviant around it. The full story is below &mdash; here&rsquo;s each of them in a breath.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-5">
+            {[
+              {
+                img: "/team/ajay-houde.jpg",
+                name: "Ajay Houde, PhD, MBA",
+                role: "Co-founder & CEO",
+                line: "Two decades shipping medical devices at scale and 60+ U.S. patents, then started Annoviant to fix what bioprosthetics couldn't.",
+                href: "#ajay",
+              },
+              {
+                img: "/team/naren-vyavahare.jpg",
+                name: "Naren Vyavahare, PhD",
+                role: "Co-founder & CTO · Hunter Endowed Chair, Clemson",
+                line: "150+ papers, 15+ patents, and an NIH-funded center — the heart-valve biomaterials lab that became TxGuard®'s scientific foundation.",
+                href: "#naren",
+              },
+            ].map((f) => (
+              <a
+                key={f.name}
+                href={f.href}
+                className="group flex gap-5 rounded-2xl border border-border bg-card p-5 hover:shadow-elegant hover:-translate-y-0.5 transition-smooth"
+              >
+                <img
+                  src={f.img}
+                  alt={f.name}
+                  width={120}
+                  height={150}
+                  loading="lazy"
+                  className="h-28 w-24 flex-shrink-0 rounded-xl object-cover"
+                />
+                <div className="min-w-0">
+                  <div className="font-semibold text-foreground">{f.name}</div>
+                  <div className="text-xs uppercase tracking-wide text-secondary font-semibold mt-0.5">{f.role}</div>
+                  <p className="text-sm text-muted-foreground mt-2">{f.line}</p>
+                  <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary mt-3 group-hover:gap-2 transition-all">
+                    Read {f.name.split(" ")[0]}&rsquo;s story <ArrowRight className="h-4 w-4" />
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Ajay's editorial body */}
       <article id="ajay" className="py-20 md:py-28">
         <div className="container mx-auto max-w-3xl">
