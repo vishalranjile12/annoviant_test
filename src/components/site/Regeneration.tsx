@@ -44,36 +44,50 @@ function seeded(n: number) {
   };
 }
 
-// ---- Scaffold mesh: a dense, irregular fibrous web forming pores (cf. ECM
-//      SEM). Primary strands join nearest nodes; finer "wisp" filaments fill
-//      the gaps for the tangled extracellular-matrix look. ----
+// ---- Scaffold mesh: a dense, triangulated wire-mesh draped with layered
+//      waves — like a real surgical scaffold sheet (cf. reference image),
+//      rendered light-on-dark. Vertices are displaced by summed sines so the
+//      sheet undulates; triangle edges form the porous lattice; two crest
+//      lines read as the bold folds. ----
 function buildScaffold() {
   const rand = seeded(11);
-  const nodes: { x: number; y: number }[] = [];
-  for (let i = 0; i < 48; i++) {
-    nodes.push({ x: 2 + rand() * 96, y: 2 + rand() * 96 });
-  }
-  const curve = (a: { x: number; y: number }, b: { x: number; y: number }, bow: number) => {
-    const mx = (a.x + b.x) / 2 + (rand() - 0.5) * bow;
-    const my = (a.y + b.y) / 2 + (rand() - 0.5) * bow;
-    return `M ${a.x.toFixed(1)} ${a.y.toFixed(1)} Q ${mx.toFixed(1)} ${my.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}`;
+  const cols = 30;
+  const rows = 11;
+  // vertex grid with wave displacement + slight per-vertex jitter
+  const wave = (c: number, r: number) => {
+    const u = c / (cols - 1);
+    const v = r / (rows - 1);
+    return (
+      Math.sin(u * 7.5 + v * 1.6) * 4.5 +
+      Math.sin(u * 3.1 - 0.6) * 5 +
+      Math.sin(u * 13 + v * 4) * 1.2
+    );
   };
-  const fibers: string[] = []; // primary strands
-  const wisps: string[] = []; // finer filaments
-  nodes.forEach((a, i) => {
-    const near = nodes
-      .map((b, j) => ({ j, d: (a.x - b.x) ** 2 + (a.y - b.y) ** 2 }))
-      .filter((o) => o.j !== i)
-      .sort((p, q) => p.d - q.d);
-    near.slice(0, 3).forEach(({ j }) => {
-      if (j > i) fibers.push(curve(a, nodes[j], 11));
-    });
-    // a couple of thin wisps to slightly further neighbours
-    near.slice(3, 6).forEach(({ j }) => {
-      if (rand() > 0.45) wisps.push(curve(a, nodes[j], 16));
-    });
-  });
-  return { nodes, fibers, wisps };
+  const pts: { x: number; y: number }[][] = [];
+  for (let r = 0; r < rows; r++) {
+    const row: { x: number; y: number }[] = [];
+    for (let c = 0; c < cols; c++) {
+      const x = (c / (cols - 1)) * 104 - 2 + (rand() - 0.5) * 1.4;
+      const baseY = 24 + (r / (rows - 1)) * 52;
+      row.push({ x, y: baseY + wave(c, r) + (rand() - 0.5) * 1.2 });
+    }
+    pts.push(row);
+  }
+  // triangulated edges -> one path string
+  let mesh = "";
+  for (let r = 0; r < rows; r++) {
+    for (let c = 0; c < cols; c++) {
+      const p = pts[r][c];
+      if (c < cols - 1) mesh += `M${p.x.toFixed(1)} ${p.y.toFixed(1)}L${pts[r][c + 1].x.toFixed(1)} ${pts[r][c + 1].y.toFixed(1)}`;
+      if (r < rows - 1) mesh += `M${p.x.toFixed(1)} ${p.y.toFixed(1)}L${pts[r + 1][c].x.toFixed(1)} ${pts[r + 1][c].y.toFixed(1)}`;
+      if (r < rows - 1 && c < cols - 1) mesh += `M${p.x.toFixed(1)} ${p.y.toFixed(1)}L${pts[r + 1][c + 1].x.toFixed(1)} ${pts[r + 1][c + 1].y.toFixed(1)}`;
+    }
+  }
+  // a couple of bold crest lines along rows for the "fold" emphasis
+  const ridge = (r: number) =>
+    pts[r].map((p, c) => `${c === 0 ? "M" : "L"}${p.x.toFixed(1)} ${p.y.toFixed(1)}`).join(" ");
+  const ridges = [ridge(3), ridge(7)];
+  return { mesh, ridges };
 }
 
 // ---- Migrating cells: rounded bodies with a darker nucleus ----
@@ -182,18 +196,13 @@ export const Regeneration = () => {
                   </linearGradient>
                 </defs>
 
-                {/* Layer 1 — ECM scaffold mesh (cool, fibrous, porous) */}
+                {/* Layer 1 — triangulated scaffold wire-mesh (light on dark) */}
                 <g style={{ opacity: scaffoldOpacity, transition: "opacity 600ms ease" }}>
-                  {scaffold.wisps.map((d, i) => (
-                    <path key={`w${i}`} d={d} fill="none" stroke="hsl(195 80% 72%)" strokeWidth={0.22}
-                      strokeLinecap="round" opacity={0.3} />
-                  ))}
-                  {scaffold.fibers.map((d, i) => (
-                    <path key={i} d={d} fill="none" stroke="hsl(195 90% 80%)" strokeWidth={0.5}
-                      strokeLinecap="round" opacity={0.6} />
-                  ))}
-                  {scaffold.nodes.map((n, i) => (
-                    <circle key={i} cx={n.x} cy={n.y} r={0.6} fill="hsl(195 95% 85%)" opacity={0.75} />
+                  <path d={scaffold.mesh} fill="none" stroke="hsl(222 55% 80%)" strokeWidth={0.18}
+                    strokeLinejoin="round" opacity={0.5} />
+                  {scaffold.ridges.map((d, i) => (
+                    <path key={i} d={d} fill="none" stroke="hsl(210 80% 86%)" strokeWidth={0.5}
+                      strokeLinecap="round" strokeLinejoin="round" opacity={0.85} />
                   ))}
                 </g>
 
