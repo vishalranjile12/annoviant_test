@@ -1,18 +1,21 @@
 import { lazy, Suspense } from "react";
 import { Nav } from "@/components/site/Nav";
 import { Hero } from "@/components/site/Hero";
+import { Regeneration } from "@/components/site/Regeneration";
 import { Explainer } from "@/components/site/Explainer";
 import { CredentialsStrip } from "@/components/site/CredentialsStrip";
+import { Audiences } from "@/components/site/Audiences";
 import { Partners } from "@/components/site/Partners";
 import { Footer } from "@/components/site/Footer";
 import { Seo } from "@/components/site/Seo";
-import { StickyEngagement } from "@/components/site/StickyEngagement";
 import { BriefingPromptCard } from "@/components/site/BriefingPromptCard";
 
 // Defer the Contact form (Radix Select etc.); it sits near the bottom of the page.
 const Contact = lazy(() => import("@/components/site/Contact").then((m) => ({ default: m.Contact })));
 
-// Frontend: trimmed home page. Detailed narrative lives on dedicated pages:
+// Restrained home (Magenta-inspired): one idea per screen, visual-first.
+//   Hero → Regeneration (signature motion) → Explainer → Proof → Routing → Contact
+// Detailed narrative lives on dedicated pages:
 //   /technology   — clinical need, mechanism, differentiation
 //   /applications — pipeline programs by development stage
 //   /investors    — public investor summary
@@ -82,14 +85,15 @@ const Index = () => {
       />
       <Nav />
       <Hero />
+      <Regeneration />
       <Explainer />
       <CredentialsStrip />
+      <Audiences />
       <Partners />
       <Suspense fallback={<div className="py-32" aria-hidden />}>
         <Contact />
       </Suspense>
       <Footer />
-      <StickyEngagement />
       <BriefingPromptCard />
     </main>
   );

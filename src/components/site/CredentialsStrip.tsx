@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ShieldCheck, Award, Scale, Factory, BookOpen, ArrowRight } from "lucide-react";
+import { ShieldCheck, Award, BookOpen, ArrowRight } from "lucide-react";
 
 type Credential = {
   icon: typeof ShieldCheck;
@@ -20,18 +20,6 @@ const credentials: Credential[] = [
     metric: "$5.7M",
     label: "NIH grants to date",
     detail: "Including $2.99M awarded in 2024",
-  },
-  {
-    icon: Scale,
-    metric: "4 + 2",
-    label: "Issued U.S. patents + pending PCT",
-    detail: "TxGuard® platform IP portfolio",
-  },
-  {
-    icon: Factory,
-    metric: "ISO 13485",
-    label: "Manufacturing readiness",
-    detail: "Quality system designed to scale",
   },
   {
     icon: BookOpen,
@@ -65,7 +53,7 @@ export const CredentialsStrip = () => (
         </Link>
       </div>
 
-      <ul className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4">
+      <ul className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
         {credentials.map(({ icon: Icon, metric, label, detail }) => (
           <li
             key={label}

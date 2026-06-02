@@ -1,24 +1,28 @@
+import { Link } from "react-router-dom";
 import { Stethoscope, TrendingUp, Building2, ArrowRight } from "lucide-react";
 const heart = "/hero/txguard-bg.png";
 
 const cards = [
   {
     icon: Stethoscope,
-    title: "For Surgeons & Clinicians",
-    body: "Access pre-clinical data, mechanism-of-action briefings, and information about upcoming clinical collaborations.",
+    title: "Clinicians",
+    body: "Mechanism, pre-clinical data, and publications.",
     cta: "Clinical materials",
+    href: "/for-clinicians",
   },
   {
     icon: TrendingUp,
-    title: "For Investors",
-    body: "Review the market opportunity, IP portfolio, regulatory roadmap, and funding milestones for the TxGuard™ platform.",
+    title: "Investors",
+    body: "Market, IP, regulatory roadmap, and milestones.",
     cta: "Investor briefing",
+    href: "/for-investors",
   },
   {
     icon: Building2,
-    title: "For Healthcare Partners",
-    body: "Explore partnership pathways for trials, manufacturing, and deployment across cardiovascular and soft-tissue programs.",
-    cta: "Partnership inquiry",
+    title: "Patients & families",
+    body: "Plain-language answers about what we’re building.",
+    cta: "For patients",
+    href: "/for-patients",
   },
 ];
 
@@ -33,10 +37,10 @@ export const Audiences = () => (
         <h2 className="mb-5">Choose your path</h2>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
-        {cards.map(({ icon: Icon, title, body, cta }) => (
-          <a
+        {cards.map(({ icon: Icon, title, body, cta, href }) => (
+          <Link
             key={title}
-            href="#contact"
+            to={href}
             className="group rounded-xl bg-card border border-border p-7 shadow-card hover:shadow-elegant hover:-translate-y-1 transition-smooth flex flex-col"
           >
             <Icon className="h-7 w-7 text-primary mb-5" />
@@ -45,7 +49,7 @@ export const Audiences = () => (
             <span className="inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-secondary transition-smooth">
               {cta} <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-smooth" />
             </span>
-          </a>
+          </Link>
         ))}
       </div>
     </div>
