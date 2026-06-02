@@ -36,9 +36,42 @@ Working branch: `redesign/magenta-inspired`.
 - [ ] Founder Story (2,358w / 10 screens) → visual ~400w version; long-form
       kept as optional deep-read (pending client call, audit Q4).
 
-### Phase 4 — Page consolidation (B3)
-- [ ] 27 → ~12–14 pages. Candidate merges: evidence+publications;
-      about+team+founder-story; for-* + investors cluster. Add redirects.
+### Phase 4 — Page consolidation (B3) — NEEDS CLIENT SIGN-OFF
+Deletes/merges live URLs (SEO + redirect implications), so this map is for
+approval before execution. Audit Q2 ("comfortable retiring/merging pages?").
+
+**Keep (hubs + essential):**
+`/` · `/technology` · `/applications` · `/clinical-evidence` · `/about` ·
+`/founder-story` (deep-read) · `/investors` · `/investor-briefing` (gated) ·
+`/news` (+`/news/:slug`) · `/contact` · `/for-patients` · `/answers`
+(+`/answers/:slug`, AEO value) · `/legal/:slug`
+
+**Retire → 301 redirect to:**
+| Retire | Redirect to | Why |
+|---|---|---|
+| `/for-clinicians` | `/technology` | clinician content folds into the hub |
+| `/for-investors` | `/investors` | duplicate investor landing |
+| `/publications` | `/clinical-evidence#publications` | evidence belongs in one hub |
+| `/faq` | `/clinical-evidence#faq` | same |
+| `/team` | `/about#team` | one Company page |
+| `/blog` (+`/blog/:slug`) | `/news` (+`/news/:slug`) | one editorial stream |
+| `/solutions/pediatric` | `/applications#pediatric` | *only if depth not needed* |
+| `/solutions/cardiovascular` | `/applications#cardiovascular` | *same* |
+
+Net: 24 → ~14 (or ~16 if the two `/solutions/*` program pages stay as
+standalone depth). **Open questions for client:**
+- Keep `/solutions/pediatric` + `/solutions/cardiovascular` as standalone
+  program pages, or fold into `/applications`?
+- Keep `/answers` (AEO knowledge base) and `/blog` as separate from `/news`?
+- Replacement vs. parallel launch (audit Q3) — affects whether 301s point at
+  this build's slugs or the legacy site.
+
+Execution on approval: server 301s in `nginx.conf` + `<Navigate replace>`
+fallback routes in `App.tsx`; remove retired page components; update footer
+link groups.
+
+### Phase 4b — (was Phase 4) execute the approved map
+- [ ] Implement redirects, remove merged components, fold content into hubs.
 
 ### Phase 5 — Signature interactive pieces (C2, C3)
 - [ ] Interactive pipeline / indication explorer (replaces /applications prose).
