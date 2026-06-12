@@ -25,7 +25,7 @@ const credentials: Credential[] = [
     icon: BookOpen,
     metric: "14",
     label: "Peer-reviewed papers",
-    detail: "7+ years of pre-clinical record",
+    detail: "Validating 25+ years of research",
   },
 ];
 
