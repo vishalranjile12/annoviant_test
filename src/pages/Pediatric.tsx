@@ -70,13 +70,34 @@ const PediatricPage = () => {
         jsonLd={ld}
       />
 
-      <section className="py-20 md:py-28">
+      {/* Storytelling anchor — what surgeons and parents already know but rarely say. */}
+      <section className="py-16 md:py-20" aria-labelledby="story-heading">
+        <div className="container mx-auto max-w-3xl">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
+              The number nobody likes to say out loud
+            </p>
+            <h2 id="story-heading" className="text-2xl md:text-3xl mb-5 leading-snug">
+              By the time a child with a complex congenital defect reaches adulthood, they have
+              usually been on the operating table four to six times.
+            </h2>
+            <p className="text-muted-foreground medical-body text-lg">
+              Each procedure carries real risk. Each one is harder than the last. Pediatric
+              cardiothoracic surgeons know this number. So do the parents who have lived through
+              it. We built TxGuard® because the implant that does not grow with the child is what
+              keeps bringing them back.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28 bg-muted/40">
         <div className="container mx-auto grid lg:grid-cols-5 gap-12 items-start">
           <div className="lg:col-span-3">
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
               Why pediatrics first
             </p>
-            <h2 className="mb-5">40,000 newborns. The same impossible problem</h2>
+            <h2 className="mb-5">40,000 newborns. The same impossible problem.</h2>
             <p className="text-muted-foreground medical-body mb-5">
               Around 40,000 newborns in the U.S. are diagnosed with congenital heart disease every
               year. The ones who need a pulmonary valve replacement face a quiet but brutal cycle:

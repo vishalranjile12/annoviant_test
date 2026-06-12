@@ -3,19 +3,21 @@ import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { Reveal } from "@/components/site/Reveal";
 import { Calendar, ArrowUpRight, ShieldCheck } from "lucide-react";
-import { articles, articleBySlug } from "@/data/news";
+import { useUnifiedNews } from "@/hooks/useCmsContent";
 
-// Featured = the NIH 2024 grant. Side tiles = the next two image-led stories.
-const featured = articleBySlug("annoviant-awarded-2-99-million-nih-grant-pediatric-pulmonary-valved-conduit");
-const sideSlugs = [
+// Slugs used as page anchors. These have to exist in the data source (Strapi
+// when configured, otherwise the local fallback). The seed file in cms/ keeps
+// them in sync.
+const FEATURED_SLUG =
+  "annoviant-awarded-2-99-million-nih-grant-pediatric-pulmonary-valved-conduit";
+const SIDE_SLUGS = [
   "alpharetta-startups-technology-could-revolutionize-cardiac-surgeries",
   "alpharetta-based-annoviant-medical-device-startup-grows-with-patients",
 ];
+const SBIR_SLUG = "annoviant-awarded-1-85m-sbir-phase-ii-grant";
 
-// Earlier press release that gets the editorial-band treatment alongside FDA HUD.
-const sbir = articleBySlug("annoviant-awarded-1-85m-sbir-phase-ii-grant");
-
-// Standalone milestone, not on the legacy /news index, kept on this page.
+// Standalone milestone, not in the news collection itself. Kept here so the
+// FDA HUD designation appears prominently on /news without needing a record.
 const regulatory = {
   date: "2020",
   category: "Regulatory" as const,
@@ -25,17 +27,22 @@ const regulatory = {
 };
 
 const NewsPage = () => {
+  const { articles, articleBySlug } = useUnifiedNews();
+  const featured = articleBySlug(FEATURED_SLUG);
+
   if (!featured) return null;
 
-  const sidePosts = sideSlugs
+  const sidePosts = SIDE_SLUGS
     .map((slug) => articleBySlug(slug))
     .filter((a): a is NonNullable<typeof a> => Boolean(a));
 
-  // Earlier mentions = everything else not in the hero or editorial bands
-  const surfacedSlugs = new Set([
+  const sbir = articleBySlug(SBIR_SLUG);
+
+  // Earlier mentions = everything else not in the hero or editorial bands.
+  const surfacedSlugs = new Set<string>([
     featured.slug,
-    sbir?.slug,
-    ...sideSlugs,
+    ...(sbir ? [sbir.slug] : []),
+    ...SIDE_SLUGS,
   ]);
   const earlier = articles.filter((a) => !surfacedSlugs.has(a.slug));
 

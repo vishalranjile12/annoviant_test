@@ -6,14 +6,32 @@ WORKDIR /app
 COPY package.json bun.lockb ./
 RUN bun install --frozen-lockfile
 COPY . .
+
+# Build-time env vars for Vite — VITE_* must be set before `bun run build`
+# or Vite cannot inline them into the client bundle. Railway passes service
+# variables as Docker build args automatically when these ARGs are declared.
+#
+# Note: all VITE_* vars end up in the public client bundle. They are NOT
+# secrets — never put API tokens, signing keys, or anything sensitive here.
+# Public-read CMS endpoints are accessed without a token; if you ever need
+# authenticated reads, do it through a server-side proxy, not a VITE_* var.
+ARG VITE_STRAPI_URL
+ARG VITE_BRIEFING_CODE
+ARG VITE_INVESTOR_DATAROOM_URL
+ARG VITE_GA4_MEASUREMENT_ID
+ENV VITE_STRAPI_URL=${VITE_STRAPI_URL}
+ENV VITE_BRIEFING_CODE=${VITE_BRIEFING_CODE}
+ENV VITE_INVESTOR_DATAROOM_URL=${VITE_INVESTOR_DATAROOM_URL}
+ENV VITE_GA4_MEASUREMENT_ID=${VITE_GA4_MEASUREMENT_ID}
+
 RUN bun run build
 
-# --- Serve the built assets ---
-FROM node:22-alpine AS runtime
-WORKDIR /app
-RUN npm install -g serve@14
-COPY --from=build /app/dist ./dist
-ENV PORT=8080
+# --- Serve the built assets with nginx ---
+# nginx is the boring, reliable choice. We switched away from `serve` because
+# serve@14.x's `parseEndpoint` is broken — bare ports and tcp:// URIs both
+# throw "Unknown --listen endpoint scheme (protocol): undefined" at startup.
+FROM nginx:1.27-alpine AS runtime
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 8080
-# -s rewrites unknown paths to index.html so client-side routes resolve.
-CMD ["sh", "-c", "serve -s dist -l ${PORT:-8080}"]
+# nginx:alpine's default CMD already runs nginx in the foreground.

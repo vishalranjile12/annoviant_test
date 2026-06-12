@@ -27,15 +27,24 @@ type StrapiResponse<T> = {
   };
 };
 
+export type NewsParagraphBlock =
+  | { p: string }
+  | { quote: string; cite?: string };
+
 export type NewsArticle = {
   id: number;
   documentId: string;
   title: string;
   slug: string;
-  category: "Media" | "Press Release" | "Milestone" | "Event";
+  category: "Media" | "Press Release" | "Announcement" | "Regulatory" | "Milestone" | "Event";
   publishedDate: string;
+  displayDate?: string | null;
+  source?: string | null;
+  image?: string | null;
+  imagePosition?: string | null;
   externalUrl?: string | null;
   excerpt?: string | null;
+  paragraphs?: NewsParagraphBlock[] | null;
   content?: string | null;
 };
 

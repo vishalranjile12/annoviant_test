@@ -1,9 +1,10 @@
-[build]
-builder = "RAILPACK"
-buildCommand = "npm run build"
-
+# Railway service config for the frontend (annoviant-web).
+#
+# We use the Dockerfile builder (see railway.json). The Dockerfile copies
+# the Vite build into nginx:alpine and EXPOSEs 8080; nginx's default CMD
+# runs the server. Do NOT set a startCommand here — it would override the
+# Docker CMD and silently re-launch the old `serve` binary.
 [deploy]
-startCommand = "npx serve dist -s -l $PORT"
 healthcheckPath = "/"
 healthcheckTimeout = 120
 restartPolicyType = "on_failure"

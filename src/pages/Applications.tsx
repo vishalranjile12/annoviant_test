@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
+import { PipelineExplorer } from "@/components/site/PipelineExplorer";
 import { Reveal } from "@/components/site/Reveal";
 import {
   Heart,
-  Activity,
   Droplet,
   Bandage,
   Stethoscope,
@@ -52,43 +52,6 @@ const pediatric = {
   ],
 };
 
-const mids = [
-  {
-    icon: Heart,
-    name: "Adult Cardiovascular",
-    status: "Pre-clinical · advancing",
-    body: "Aortic, mitral, tricuspid, and adult pulmonary valves, the indications where bioprosthetic failures hurt the most.",
-    href: "/solutions/cardiovascular",
-  },
-  {
-    icon: Activity,
-    name: "Vascular Grafts",
-    status: "Expanded potential",
-    body: "A regenerative conduit for bypass and reconstruction, with the potential to remodel into living vessel rather than sit inert.",
-  },
-];
-
-const compacts = [
-  {
-    icon: Droplet,
-    name: "Urology",
-    status: "Exploratory",
-    body: "Tissue scaffolds for urological reconstruction, where the body needs to heal in, not around, the implant.",
-  },
-  {
-    icon: Stethoscope,
-    name: "Gastrointestinal",
-    status: "Exploratory",
-    body: "Soft-tissue applications across the GI tract, places where regenerating the tissue beats replacing it.",
-  },
-  {
-    icon: Bandage,
-    name: "Wound & Soft Tissue",
-    status: "Exploratory",
-    body: "Regenerative scaffolds for the complex wound, hernia, and soft-tissue cases that don't fit a standard solution.",
-  },
-];
-
 const ApplicationsPage = () => (
   <PageShell
     eyebrow="Applications"
@@ -100,6 +63,27 @@ const ApplicationsPage = () => (
       title="Applications, TxGuard® Regenerative Tissue Platform | Annoviant"
       description="TxGuard® applications include pediatric pulmonary valves, adult cardiovascular indications, vascular grafts, urology, GI, and wound/soft-tissue repair."
     />
+
+    {/* Storytelling anchor — why a platform, not a product. */}
+    <section className="py-16 md:py-20" aria-labelledby="story-heading">
+      <div className="container mx-auto max-w-3xl">
+        <Reveal>
+          <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
+            One science, many indications
+          </p>
+          <h2 id="story-heading" className="text-2xl md:text-3xl mb-5 leading-snug">
+            Tissue platforms are usually built around one indication. We took the opposite path.
+          </h2>
+          <p className="text-muted-foreground medical-body text-lg">
+            The chemistry that makes TxGuard® work as a pediatric heart valve is the same chemistry
+            that makes it work as a vascular graft, a urology repair, or a wound patch. The body
+            recognizes the scaffold; the body remodels the scaffold. That biology does not change
+            from one organ to the next. So our pipeline tracks where the platform is being
+            investigated rather than where it has been forced to fit.
+          </p>
+        </Reveal>
+      </div>
+    </section>
 
     <section className="py-20 md:py-28">
       <div className="container mx-auto space-y-6">
@@ -153,67 +137,10 @@ const ApplicationsPage = () => (
           </Link>
         </Reveal>
 
-        {/* Tier 2, mid indications, two equal cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {mids.map(({ icon: Icon, name, status, body, href }, i) => {
-            const Card = href ? Link : "div";
-            const cardProps = href ? { to: href } : {};
-            return (
-              <Reveal key={name} delay={i * 80}>
-                <Card
-                  {...cardProps}
-                  className={`group block h-full rounded-2xl border border-border bg-card p-7 md:p-8 shadow-card hover:shadow-elegant transition-smooth ${href ? "hover:-translate-y-1" : ""}`}
-                >
-                  <div className="flex items-start justify-between mb-5">
-                    <div className="h-11 w-11 rounded-lg gradient-primary grid place-items-center shadow-glow">
-                      <Icon className="h-5 w-5 text-primary-foreground" aria-hidden />
-                    </div>
-                    <span className="text-[11px] font-semibold uppercase tracking-wider text-secondary bg-secondary/10 px-2.5 py-1 rounded-full">
-                      {status}
-                    </span>
-                  </div>
-                  <h3 className="mb-3 text-xl">{name}</h3>
-                  <p className="text-sm text-muted-foreground">{body}</p>
-                  {href && (
-                    <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary group-hover:text-secondary transition-smooth">
-                      Learn more <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-smooth" />
-                    </span>
-                  )}
-                </Card>
-              </Reveal>
-            );
-          })}
-        </div>
-
-        {/* Tier 3, exploratory indications, three compact cards */}
-        <div className="grid md:grid-cols-3 gap-5">
-          {compacts.map(({ icon: Icon, name, status, body }, i) => (
-            <Reveal key={name} delay={i * 60}>
-              <div className="h-full rounded-2xl border border-border bg-muted/40 p-6 md:p-7 hover:bg-card hover:shadow-card transition-smooth">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="h-10 w-10 rounded-lg bg-primary/10 grid place-items-center">
-                    <Icon className="h-5 w-5 text-primary" aria-hidden />
-                  </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                    {status}
-                  </span>
-                </div>
-                <h3 className="mb-2 text-base">{name}</h3>
-                <p className="text-sm text-muted-foreground">{body}</p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-
-      <div className="container mx-auto mt-10">
-        <p className="text-xs text-muted-foreground max-w-3xl">
-          Everything except the pediatric Pulmonary Valved Graft (FDA HUD designation, 2020) is
-          investigational. None of them are approved for use in people, and we won&rsquo;t pretend
-          otherwise.
-        </p>
       </div>
     </section>
+
+    <PipelineExplorer />
 
     {/* Eight soft-tissue surgical applications, ported from the original
         TxGuard Applications page, presented as a stripe with internal separators. */}
@@ -253,20 +180,32 @@ const ApplicationsPage = () => (
         </div>
 
         {/* Four product attribute cards, with the original AdobeStock visuals */}
-        <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-px bg-border" aria-label="TxGuard product attributes">
-          {productAttributes.map(({ icon: Icon, label, image }) => (
-            <li key={label} className="bg-background overflow-hidden">
+        <ul className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" aria-label="TxGuard product attributes">
+          {productAttributes.map(({ icon: Icon, label, image }, i) => (
+            <li
+              key={label}
+              className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 motion-safe:animate-fade-up"
+              style={{ animationDelay: `${i * 80}ms` }}
+            >
+              <span
+                aria-hidden
+                className="absolute inset-x-0 top-0 h-0.5 gradient-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+              />
               <div className="aspect-[4/3] overflow-hidden bg-muted">
                 <img
                   src={image}
                   alt={`${label} attribute`}
                   loading="lazy"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
               <div className="px-4 py-3 flex items-center gap-2.5">
-                <Icon className="h-4 w-4 text-primary flex-shrink-0" aria-hidden />
-                <span className="text-sm font-semibold text-foreground">{label}</span>
+                <span className="inline-flex h-7 w-7 rounded-md bg-primary/10 items-center justify-center group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300 flex-shrink-0">
+                  <Icon className="h-3.5 w-3.5 text-primary" aria-hidden />
+                </span>
+                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                  {label}
+                </span>
               </div>
             </li>
           ))}

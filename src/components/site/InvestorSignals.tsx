@@ -37,7 +37,7 @@ const signals: Signal[] = [
   {
     icon: TrendingUp,
     headline: "$8B+ U.S. market by 2035",
-    body: "A 7–9% CAGR space where Edwards, Medtronic, J&J, and Boston Scientific actively operate. Strategic interest is part of the territory.",
+    body: "A 7 to 9 percent annual growth space where Edwards, Medtronic, Johnson & Johnson, and Boston Scientific all operate. Strategic interest comes with the territory.",
   },
 ];
 

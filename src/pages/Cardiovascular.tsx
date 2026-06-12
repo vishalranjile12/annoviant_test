@@ -64,19 +64,42 @@ const CardiovascularPage = () => {
         jsonLd={ld}
       />
 
-      <section className="py-20 md:py-28">
+      {/* Storytelling anchor — patient reality before the market numbers. */}
+      <section className="py-16 md:py-20" aria-labelledby="story-heading">
+        <div className="container mx-auto max-w-3xl">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
+              The eight-year cliff
+            </p>
+            <h2 id="story-heading" className="text-2xl md:text-3xl mb-5 leading-snug">
+              A patient gets a new aortic valve at 65 and goes home. Eight years later, the gradient
+              is climbing.
+            </h2>
+            <p className="text-muted-foreground medical-body text-lg">
+              Calcium has built up on the leaflets. Reoperation is scheduled. The first procedure
+              extended their life. The second one is harder, riskier, and less likely to be the
+              last. That eight-year cliff is the engineering problem TxGuard® was built to solve.
+              The bioprosthetic chemistry that has dominated heart-valve replacement for fifty years
+              trades regeneration for stability. The cost of that trade gets paid in repeat
+              surgeries.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="py-20 md:py-28 bg-muted/40">
         <div className="container mx-auto grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
               The opportunity, in plain terms
             </p>
-            <h2 className="mb-5">$3.6B today. $8B+ by 2035</h2>
+            <h2 className="mb-5">A $3.6B market today. $8B+ by 2035.</h2>
             <p className="text-muted-foreground medical-body mb-5">
-              The U.S. heart-valve market is on a 7&ndash;9% growth trajectory through 2035, and
-              most of that growth keeps coming from one stubborn problem: bioprosthetics fail,
+              The U.S. heart-valve market is on a 7 to 9 percent growth trajectory through 2035,
+              and most of that growth keeps coming from one stubborn problem: bioprosthetics fail,
               and patients come back for surgery. The companies that own this market today,
-              Edwards, Medtronic, J&amp;J, Boston Scientific, are all watching for the
-              regenerative answer. We&rsquo;re building it.
+              Edwards, Medtronic, Johnson &amp; Johnson, and Boston Scientific, are all watching
+              for the regenerative answer. We&rsquo;re building it.
             </p>
             <ul className="space-y-3 mb-8">
               {[
@@ -110,10 +133,10 @@ const CardiovascularPage = () => {
             <h3 className="mb-4">The numbers we keep on the wall</h3>
             <dl className="space-y-4">
               {[
-                ["8–10K", "Pulmonary Valved Grafts a year, our entry indication"],
-                ["90–100K+", "aortic valves placed in the U.S. each year"],
+                ["8-10K", "Pulmonary Valved Grafts a year, our entry indication"],
+                ["90-100K+", "aortic valves placed in the U.S. each year"],
                 ["180K+", "mitral and tricuspid valves placed in the U.S. each year"],
-                ["7–9%", "annual heart-valve market growth through 2035"],
+                ["7-9%", "annual heart-valve market growth through 2035"],
               ].map(([n, l]) => (
                 <div key={l} className="flex items-baseline justify-between gap-4 border-b border-border last:border-0 pb-3 last:pb-0">
                   <dt className="text-sm text-muted-foreground">{l}</dt>

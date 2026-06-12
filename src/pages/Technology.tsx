@@ -1,9 +1,10 @@
 import { PageShell } from "@/components/site/PageShell";
 import { Seo } from "@/components/site/Seo";
 import { RegenerationTimeline } from "@/components/site/RegenerationTimeline";
+import { Differentiation } from "@/components/site/Differentiation";
 import { Reveal } from "@/components/site/Reveal";
 import { CountUp } from "@/components/site/CountUp";
-import { CheckCircle2, Beaker, Layers, Activity, ShieldCheck, Info, Sparkles, Wind, Droplet } from "lucide-react";
+import { CheckCircle2, ShieldCheck, Info, Sparkles, Wind, Droplet } from "lucide-react";
 import scaffold from "@/assets/tissue-scaffold.jpg";
 
 const productAttributes = [
@@ -18,13 +19,6 @@ const cvdStats = [
   { value: "120M", label: "CVD cases per year in the U.S., projected to reach 184M by 2050" },
   { value: "580K", label: "valve-replacement and CABG surgeries every year in the U.S." },
   { value: "~25%", label: "of CVD patients face combined heart valve and coronary artery disease" },
-];
-
-const pillars = [
-  { icon: Layers, title: "Decellularized ECM scaffold", body: "A proprietary process removes immunogenic cellular material while aiming to preserve the native extracellular matrix architecture and biochemical signaling cues." },
-  { icon: Activity, title: "Host-cell repopulation", body: "Once implanted, the scaffold is designed to be recognized as native tissue, recruiting the patient's own cells to remodel and regenerate functional tissue." },
-  { icon: ShieldCheck, title: "Calcification-resistant by design", body: "Engineered to address the dominant failure modes of conventional bioprosthetics, calcification, thrombosis, and accelerated structural degeneration." },
-  { icon: Beaker, title: "Pliable & durable", body: "Mechanical performance is maintained across the processing pipeline, supporting tissue that handles like native and is engineered to last." },
 ];
 
 const TechnologyPage = () => {
@@ -42,7 +36,7 @@ const TechnologyPage = () => {
     <PageShell
       eyebrow="The TxGuard® Platform"
       title={<>A regenerative tissue platform, engineered to <span className="text-gradient">grow with the patient</span></>}
-      intro="TxGuard® is a patented breakthrough in regenerative tissue. Unlike fixed bioprosthetics, it is designed to integrate with host tissue, address the failure modes of today's devices, and last."
+      intro="TxGuard® is a patented regenerative tissue platform. Unlike conventional bioprosthetics, it is designed to integrate with host tissue, resist the common failure modes of today's devices, and last."
       heroImage="/hero/heart-matrix.jpg"
     >
       <Seo
@@ -50,6 +44,28 @@ const TechnologyPage = () => {
         description="How the patented TxGuard® regenerative tissue platform works: decellularized ECM scaffold, host-mediated remodeling, and calcification resistance, backed by 14 peer-reviewed publications."
         jsonLd={ld}
       />
+
+      {/* Storytelling anchor — sets the stakes before the technical detail. */}
+      <section className="py-16 md:py-20" aria-labelledby="story-heading">
+        <div className="container mx-auto max-w-3xl">
+          <Reveal>
+            <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
+              Why a third answer
+            </p>
+            <h2 id="story-heading" className="text-2xl md:text-3xl mb-5 leading-snug">
+              For fifty years, what we put inside the human body to replace tissue has had two
+              answers. Neither was the right one.
+            </h2>
+            <p className="text-muted-foreground medical-body text-lg">
+              Synthetic materials the body never accepts. Or animal tissue, chemically fixed so the
+              body can&rsquo;t reject it. Both decisions trade away regeneration to buy stability.
+              TxGuard® is the third answer: a biological scaffold the body recognizes as its own,
+              processed in a way that resists the failure modes of conventional bioprosthetics, and
+              designed to be remodeled into the patient&rsquo;s own living tissue.
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       {/* The CVD problem stripe, ported from the original About TxGuard page */}
       <section className="py-16 md:py-20 bg-muted/40" aria-labelledby="cvd-heading">
@@ -126,22 +142,45 @@ const TechnologyPage = () => {
               </p>
             </div>
 
-            {/* The four product attributes, image-led cards from the original site */}
+            {/* The four product attributes, image-led cards with hover affordances */}
             <ul className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4" aria-label="TxGuard product attributes">
-              {productAttributes.map(({ icon: Icon, label, note, image }) => (
-                <li key={label} className="rounded-xl border border-border bg-card overflow-hidden">
-                  <div className="aspect-[4/3] overflow-hidden bg-muted">
+              {productAttributes.map(({ icon: Icon, label, note, image }, i) => (
+                <li
+                  key={label}
+                  className="group relative rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-elegant hover:-translate-y-1 transition-all duration-300 motion-safe:animate-fade-up"
+                  style={{ animationDelay: `${i * 80}ms` }}
+                >
+                  {/* Top accent bar that wipes in on hover */}
+                  <span
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-0.5 gradient-primary origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"
+                  />
+                  {/* Soft radial glow that fades in on hover */}
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute -inset-px rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                    style={{
+                      background:
+                        "radial-gradient(120% 80% at 50% 0%, hsl(var(--secondary) / 0.12), transparent 60%)",
+                    }}
+                  />
+
+                  <div className="relative aspect-[4/3] overflow-hidden bg-muted">
                     <img
                       src={image}
                       alt={`${label} attribute`}
                       loading="lazy"
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   </div>
-                  <div className="p-4">
+                  <div className="relative p-4">
                     <div className="flex items-center gap-2.5 mb-1.5">
-                      <Icon className="h-4 w-4 text-primary" aria-hidden />
-                      <span className="text-sm font-semibold text-foreground">{label}</span>
+                      <span className="inline-flex h-7 w-7 rounded-md bg-primary/10 items-center justify-center group-hover:bg-primary/20 group-hover:shadow-glow transition-all duration-300">
+                        <Icon className="h-3.5 w-3.5 text-primary" aria-hidden />
+                      </span>
+                      <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                        {label}
+                      </span>
                     </div>
                     <p className="text-[11px] text-muted-foreground leading-snug">{note}</p>
                   </div>
@@ -204,47 +243,7 @@ const TechnologyPage = () => {
 
       <RegenerationTimeline />
 
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto">
-          <Reveal>
-            <div className="max-w-2xl mb-14">
-              <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-                What sets it apart
-              </p>
-              <h2 className="mb-4">Four pillars of the TxGuard® approach</h2>
-              <p className="text-muted-foreground medical-body">
-                The science is best understood in plain terms. Here's the four ideas that, taken
-                together, define how the platform works.
-              </p>
-            </div>
-          </Reveal>
-
-          <ol className="space-y-12 md:space-y-16 max-w-5xl">
-            {pillars.map(({ icon: Icon, title, body }, i) => (
-              <Reveal as="li" key={title} delay={i * 80}>
-                <article
-                  className={`grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start ${
-                    i % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""
-                  }`}
-                >
-                  <div className="md:col-span-4 flex md:flex-col items-baseline md:items-start gap-4">
-                    <span className="text-5xl md:text-6xl font-bold text-primary/25 leading-none tabular-nums">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <div className="h-12 w-12 rounded-xl gradient-primary grid place-items-center shadow-glow md:mt-2">
-                      <Icon className="h-5 w-5 text-primary-foreground" aria-hidden />
-                    </div>
-                  </div>
-                  <div className="md:col-span-8 md:border-l md:border-border md:pl-8">
-                    <h3 className="mb-3 text-xl">{title}</h3>
-                    <p className="text-base text-muted-foreground medical-body">{body}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </ol>
-        </div>
-      </section>
+      <Differentiation />
     </PageShell>
   );
 };
