@@ -36,15 +36,24 @@ export const Hero = () => (
           it&rsquo;s remodeled into the patient&rsquo;s own living tissue&nbsp;&mdash; designed to last,
           and in children, to grow.
         </p>
-        <Button
-          asChild
-          size="lg"
-          className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[48px] px-7 text-base"
-        >
-          <a href="#regeneration">
-            See how it works <ArrowDown className="ml-1.5 h-4 w-4" />
-          </a>
-        </Button>
+        <div className="flex flex-wrap gap-3">
+          <Button
+            asChild
+            size="lg"
+            className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[48px] px-7 text-base"
+          >
+            <a href="#regeneration">
+              See how it works <ArrowDown className="ml-1.5 h-4 w-4" />
+            </a>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            className="gradient-primary text-primary-foreground shadow-glow border-0 min-h-[48px] px-7 text-base"
+          >
+            <Link to="/services">Learn More</Link>
+          </Button>
+        </div>
       </div>
     </div>
 
