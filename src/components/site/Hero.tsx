@@ -36,6 +36,14 @@ export const Hero = () => (
           it&rsquo;s remodeled into the patient&rsquo;s own living tissue&nbsp;&mdash; designed to last,
           and in children, to grow.
         </p>
+        <div className="mb-10 border-l-2 border-primary pl-5">
+          <h2 className="mb-3 text-2xl md:text-3xl font-semibold text-white">
+            Our Core Offer
+          </h2>
+          <p className="max-w-2xl text-base md:text-lg text-white/85 medical-body">
+            Clearly state what your business offers, to whom, and the main benefit they receive
+          </p>
+        </div>
         <div className="flex flex-wrap gap-3">
           <Button
             asChild
