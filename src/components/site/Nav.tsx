@@ -69,7 +69,7 @@ export const Nav = () => {
 
         <div className="hidden lg:flex items-center gap-2 ml-4 xl:ml-8">
           <Button asChild variant={transparent ? "secondary" : "default"} size="sm" className={transparent ? "" : "gradient-primary text-primary-foreground border-0"}>
-            <Link to="/investor-briefing">Investor Briefing</Link>
+            <Link to="/contact?role=clinician">Connect with Medical Affairs</Link>
           </Button>
         </div>
 
@@ -96,7 +96,7 @@ export const Nav = () => {
               </Link>
             ))}
             <Button asChild className="mt-3 gradient-primary border-0">
-              <Link to="/investor-briefing">Investor Briefing</Link>
+              <Link to="/contact?role=clinician">Connect with Medical Affairs</Link>
             </Button>
           </div>
         </div>

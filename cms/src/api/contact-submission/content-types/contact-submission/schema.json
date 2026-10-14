@@ -25,8 +25,8 @@
     },
     "inquiryType": {
       "type": "enumeration",
-      "enum": ["investor", "clinician", "patient", "other"],
-      "default": "investor",
+      "enum": ["clinician", "procurement", "partner"],
+      "default": "clinician",
       "required": true
     },
     "message": {

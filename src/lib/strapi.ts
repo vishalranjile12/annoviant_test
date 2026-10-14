@@ -52,7 +52,7 @@ export type ContactSubmissionInput = {
   name: string;
   email: string;
   organization?: string;
-  inquiryType: "investor" | "clinician" | "patient" | "other";
+  inquiryType: "clinician" | "procurement" | "partner";
   message?: string;
 };
 

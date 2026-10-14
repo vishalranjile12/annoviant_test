@@ -42,6 +42,40 @@ const benefits = [
   },
 ];
 
+const indicationComparison = [
+  {
+    criterion: "Primary pediatric use",
+    conventional: "Right-ventricular outflow tract reconstruction with established fixed-size conduits",
+    homograft: "Anatomic reconstruction using donated human tissue, subject to size and supply",
+    txguard: "Pulmonary-valved conduit under development for pediatric congenital heart disease",
+  },
+  {
+    criterion: "Growth adaptation",
+    conventional: "Does not grow with the child; patient–prosthesis mismatch can drive reintervention",
+    homograft: "Does not provide intrinsic somatic growth adaptation",
+    txguard: "Designed to remodel with host tissue and adapt with growth; observed preclinically, not established in humans",
+    highlight: true,
+  },
+  {
+    criterion: "Tissue behavior",
+    conventional: "Functions as replacement material rather than living, patient-derived tissue",
+    homograft: "Biological tissue with variable degeneration over time",
+    txguard: "Acellular ECM scaffold designed for host-cell repopulation and remodeling",
+  },
+  {
+    criterion: "Calcification strategy",
+    conventional: "Structural degeneration and calcification remain recognized limitations",
+    homograft: "Calcification and degeneration can limit service life in younger patients",
+    txguard: "Engineered for calcification resistance; current evidence is preclinical",
+  },
+  {
+    criterion: "Clinical status",
+    conventional: "Established clinical use",
+    homograft: "Established clinical use",
+    txguard: "Investigational; FDA Humanitarian Use Device designation is not approval",
+  },
+];
+
 const PediatricPage = () => {
   const ld = {
     "@context": "https://schema.org",
@@ -217,6 +251,60 @@ const PediatricPage = () => {
               </ul>
             </div>
           </Reveal>
+        </div>
+      </section>
+
+      <section id="indication-comparison" className="py-20 md:py-28" aria-labelledby="comparison-heading">
+        <div className="container mx-auto">
+          <div className="mb-10 max-w-3xl">
+            <h2 id="comparison-heading" className="mb-4">How growth adaptation changes the clinical objective</h2>
+            <p className="medical-body text-muted-foreground">
+              Existing conduits restore function, but their fixed dimensions remain a central limitation in a growing child. TxGuard® is being developed around a different objective: a scaffold that supports host remodeling and potential somatic adaptation.
+            </p>
+          </div>
+
+          <div className="overflow-hidden rounded-2xl border border-border bg-background shadow-card">
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[860px] border-collapse text-left text-sm">
+                <caption className="sr-only">Clinical indication comparison of conventional conduits, homografts, and the investigational TxGuard pulmonary-valved conduit</caption>
+                <thead className="bg-surface-deep text-white">
+                  <tr>
+                    <th scope="col" className="w-[19%] px-5 py-4 font-semibold">Clinical consideration</th>
+                    <th scope="col" className="w-[27%] px-5 py-4 font-semibold">Fixed bioprosthetic conduit</th>
+                    <th scope="col" className="w-[25%] px-5 py-4 font-semibold">Homograft</th>
+                    <th scope="col" className="w-[29%] px-5 py-4 font-semibold text-secondary">TxGuard® investigational conduit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {indicationComparison.map((row) => (
+                    <tr key={row.criterion} className={`border-t border-border align-top ${row.highlight ? "bg-secondary/10" : ""}`}>
+                      <th scope="row" className="px-5 py-5 font-semibold text-foreground">{row.criterion}</th>
+                      <td className="px-5 py-5 leading-relaxed text-muted-foreground">{row.conventional}</td>
+                      <td className="px-5 py-5 leading-relaxed text-muted-foreground">{row.homograft}</td>
+                      <td className="px-5 py-5 leading-relaxed text-foreground">
+                        <span className="flex gap-2"><CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-primary" aria-hidden />{row.txguard}</span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <p className="mt-4 max-w-4xl text-xs text-muted-foreground">
+            Comparison is intended for professional education and describes broad category characteristics. Device selection depends on patient anatomy and clinical judgment. TxGuard® performance in humans has not been established.
+          </p>
+
+          <div className="mt-12 grid gap-7 rounded-2xl bg-surface-deep p-7 text-white md:grid-cols-[1fr_auto] md:items-center md:p-10">
+            <div>
+              <h3 className="mb-3 text-2xl text-white">Discuss a pediatric case profile with Medical Affairs</h3>
+              <p className="max-w-2xl text-sm text-white/70">
+                Pediatric cardiac surgeons can request the preclinical evidence package, compare intended indications, or explore a research conversation with the Annoviant team.
+              </p>
+            </div>
+            <Button asChild size="lg" variant="secondary" className="w-full md:w-auto">
+              <Link to="/contact?role=clinician">Request a surgeon consultation <ArrowRight className="h-4 w-4" aria-hidden /></Link>
+            </Button>
+          </div>
         </div>
       </section>
 

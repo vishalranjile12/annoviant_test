@@ -78,8 +78,8 @@ const Index = () => {
   return (
     <main id="main" className="pb-20">
       <Seo
-        title="Annoviant | Regenerative Tissue Technology for Pediatric & Cardiovascular Repair"
-        description="Annoviant develops TxGuard®, a patented biological tissue platform for pediatric and cardiovascular repair, designed to resist calcification and thrombosis, support host-mediated remodeling, and reduce repeat interventions."
+        title="Annoviant | Regenerative Bioresorbable Cardiovascular Scaffolds & Heart Valves"
+        description="Annoviant develops regenerative, bioresorbable cardiovascular scaffolds and heart valves designed to remodel into living tissue and support patient growth."
         canonical="https://annoviant.com/"
         jsonLd={ld}
       />

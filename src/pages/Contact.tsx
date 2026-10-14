@@ -10,7 +10,7 @@ const ContactPage = () => (
       description="Connect with the Annoviant team. Surgeons, investors, healthcare partners, and families can request a briefing matched to their context."
     />
     <Nav />
-    <div className="pt-20"><ContactSection /></div>
+    <div className="pt-20"><ContactSection pageHeading /></div>
     <Footer />
   </main>
 );

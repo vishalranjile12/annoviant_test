@@ -88,8 +88,10 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/technology" element={<TechnologyPage />} />
+            <Route path="/about-txguard" element={<TechnologyPage />} />
             <Route path="/applications" element={<ApplicationsPage />} />
             <Route path="/solutions/pediatric" element={gate("/solutions/pediatric", <PediatricPage />)} />
+            <Route path="/pediatric-conduits" element={<PediatricPage />} />
             <Route path="/solutions/cardiovascular" element={gate("/solutions/cardiovascular", <CardiovascularPage />)} />
             <Route path="/clinical-evidence" element={gate("/clinical-evidence", <ClinicalEvidencePage />)} />
             <Route path="/publications" element={gate("/publications", <PublicationsPage />)} />

@@ -27,14 +27,14 @@ const cards = [
 ];
 
 export const Audiences = () => (
-  <section id="audiences" className="py-24 md:py-32 bg-muted/40 relative overflow-hidden">
+  <section id="audiences" className="py-24 md:py-32 bg-muted/40 relative overflow-hidden" aria-labelledby="audiences-heading">
     <img src={heart} alt="" aria-hidden width={1280} height={960} loading="lazy" className="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] opacity-[0.06] pointer-events-none" />
     <div className="container mx-auto relative">
       <div className="max-w-2xl mb-14">
         <p className="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
           Built for the people who move medicine forward
         </p>
-        <h2 className="mb-5">Choose your path</h2>
+        <h2 id="audiences-heading" className="mb-5">Choose your path</h2>
       </div>
       <div className="grid md:grid-cols-3 gap-6">
         {cards.map(({ icon: Icon, title, body, cta, href }) => (
